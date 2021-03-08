@@ -22,11 +22,15 @@ const TopBox = styled.div`
         tr {
           border-bottom: 1px solid #000;
         }
+        td {
+          vertical-align: middle;
+        }
       }
 
       tbody {
         td:first-child {
           width: 25px;
+
         }
       }
 
@@ -39,6 +43,7 @@ const TopBox = styled.div`
           border-right: 1px solid #000;
           border-bottom: 1px solid #000;
           text-align: center;
+          vertical-align: middle;
         }
 
         &:last-child {
@@ -55,12 +60,12 @@ const TopBox = styled.div`
   }
 `;
 
+
 const B1Top = () => {
   const [inputArr, setInputArr] = useState([1]);
   const onClickAddBtn = () => {
     setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
   };
-
   return (
     <>
       <TopBox>
@@ -78,11 +83,12 @@ const B1Top = () => {
                 <td>PRESS. READING (BAR)</td>
                 <td>TEMP(℃)</td>
                 <td>PERFORMED / RECOMMENDED</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
               {inputArr.map(num => (
-                <B1TableRow key={num} num={num} />
+                <B1TableRow key={num} num={num}/>
               ))}
             </tbody>
           </table>
