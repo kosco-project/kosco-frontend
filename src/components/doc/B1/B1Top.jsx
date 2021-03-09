@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
 
@@ -62,10 +62,34 @@ const TopBox = styled.div`
 
 
 const B1Top = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const [lists, setLists] = useState([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    }
+  ]);
+  const nextId = useRef(3);
+   
+  const onRemove = useCallback(
+    id => {
+      setLists(lists.filter(list => list.id !== id));
+    },
+    [lists],
+  );
+  // const onClickAddBtn = () => {
+  //   setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
+  // };
+  const onInsert = useCallback(
+    () => {
+      setLists(lists.concat({
+        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 1
+      }));
+    },
+    [lists]
+  );
+  
   return (
     <>
       <TopBox>
@@ -87,15 +111,15 @@ const B1Top = () => {
               </tr>
             </thead>
             <tbody>
-              {inputArr.map(num => (
-                <B1TableRow key={num} num={num}/>
+              {lists.map((list, index) => (
+                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
               ))}
             </tbody>
           </table>
         </div>
       </TopBox>
       <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onClickAddBtn}>
+        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
           추가
         </button>
       </div>

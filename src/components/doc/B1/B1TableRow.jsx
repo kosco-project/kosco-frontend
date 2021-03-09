@@ -10,14 +10,12 @@ const DeleteButton = styled.button`
   border: none;
 `;
 
-
-const TableRow = ({ num }) => {
+const TableRow = ({ id, onRemove, num }) => {
   const [startDate, setStartDate] = useState(new Date());
-
   return (
-    <tr className={num}>
+    <tr>
       <td>
-        <input type='text' />
+        <input type='text' value={num} readOnly/>
       </td>
       <td>
         <input type='text' />
@@ -26,7 +24,11 @@ const TableRow = ({ num }) => {
         <input type='text' />
       </td>
       <td>
-         <DatePicker selected = { startDate }  onChange={date => setStartDate(date)} dateFormat="MMM.yy" showMonthYearPicker/>
+        <DatePicker
+          selected={startDate}
+          onChange={date => setStartDate(date)}
+          dateFormat="MMM.yy"
+          showMonthYearPicker />
       </td>
       <td>
         <input type='text' />
@@ -50,7 +52,7 @@ const TableRow = ({ num }) => {
         </select>
       </td>
       <td>
-        <DeleteButton>
+        <DeleteButton onClick={() => onRemove(id)}>
           <GoX fill="#e92a2a" size="18px"/>
         </DeleteButton>
       </td>
