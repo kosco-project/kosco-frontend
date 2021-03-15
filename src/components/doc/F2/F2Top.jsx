@@ -66,11 +66,15 @@ const F2Top = () => {
   const nextId = useRef(5);
    
   const onRemove = useCallback(
-    id => {
-      setLists(lists.filter(list => list.id !== id));
+    (id, e) => {
+      e.preventDefault();
+      if (lists.length > 1) {
+        setLists(lists.filter(list => list.id !== id));
+      }
     },
     [lists],
-  ); 
+  );
+  
   const onInsert = useCallback(
     () => {
       setLists(lists.concat({
