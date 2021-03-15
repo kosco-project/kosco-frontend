@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
 import useLists from '../../../hooks/useLists';
 
-const TopBox = styled.div`
+const TableBox = styled.div`
   margin-bottom: 15px;
   border: 2px solid #000;
 
@@ -27,11 +27,9 @@ const TopBox = styled.div`
           vertical-align: middle;
         }
       }
-
       tbody {
         td:first-child {
           width: 25px;
-
         }
       }
 
@@ -40,11 +38,10 @@ const TopBox = styled.div`
         border-left: 0;
 
         td {
-          padding: 10px 5px;
+          padding: 5px 5px;
           border-right: 1px solid #000;
           border-bottom: 1px solid #000;
           text-align: center;
-          vertical-align: middle;
         }
 
         &:last-child {
@@ -55,6 +52,7 @@ const TopBox = styled.div`
 
         td:last-child {
           border-right: 0;
+          padding: 0;
         }
       }
     }
@@ -80,7 +78,7 @@ const B1Top = () => {
   ], nextId);
   return (
     <>
-      <TopBox>
+      <TableBox>
         <div className='top-description'>
           <table>
             <thead>
@@ -105,7 +103,7 @@ const B1Top = () => {
             </tbody>
           </table>
         </div>
-      </TopBox>
+      </TableBox>
       <div style={{ textAlign: 'center' }}>
         <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
           추가
