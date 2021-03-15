@@ -11,11 +11,11 @@ const DeleteButton = styled.button`
   padding-bottom: 13px;
 `;
 
-const OX2TopTableRow = ({ id, onRemove }) => {
+const OX2TopTableRow = ({ id, onRemove, num }) => {
   return (
     <div>
       <div className='title'>
-        <input type='text' style={{ width: '100%' }} />
+         {'SET NO.' + num}
       </div>
       <div className='description'>
         <input type='checkbox' defaultChecked='checked' />

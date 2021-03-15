@@ -11,11 +11,11 @@ const DeleteButton = styled.button`
   padding-bottom: 13px;
 `;
 
-const OX2BttomTableRow = ({ id, onRemove }) => {
+const OX2BttomTableRow = ({ id, onRemove, num }) => {
   return (
     <tr>
       <td>
-        <input type='text' />
+        {'NO.' + num}
       </td>
       <td>
         <input type='text' />

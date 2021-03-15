@@ -89,8 +89,8 @@ const OX2Bottom = () => {
             </tr>
           </thead>
           <tbody>
-            {lists.map(list => (
-              <OX2BttomTableRow key={list.id} id={list.id} onRemove={onRemove}/>
+            {lists.map((list, index) => (
+              <OX2BttomTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </tbody>
         </table>

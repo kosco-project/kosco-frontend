@@ -54,7 +54,7 @@ const TopBox = styled.div`
       height: calc(100% - 30px);
 
       > div {
-        width: 50px;
+        width: 12.5%;
         border-right: 1px solid #000;
         flex-shrink: 0;
 
@@ -125,8 +125,8 @@ const OX2Top = () => {
         <div className='right-box'>
           <div className='title'>Specification of medical oxygen ;</div>
           <div className='description-box'>
-            {lists.map(list => (
-              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} />
+            {lists.map((list, index) => (
+              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </div>
         </div>
