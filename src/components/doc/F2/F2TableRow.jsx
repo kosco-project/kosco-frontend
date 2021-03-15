@@ -31,7 +31,7 @@ const F2TableRow = ({ id, onRemove, num }) => {
         </select>
       </td>
       <td>
-        <DeleteButton onClick={e => onRemove(id, e)}>
+        <DeleteButton type="button" onClick={() => onRemove(id)}>
           <GoX fill="#e92a2a" size="18px"/>
         </DeleteButton>
       </td>
