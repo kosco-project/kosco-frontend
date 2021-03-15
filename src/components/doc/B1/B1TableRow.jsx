@@ -14,9 +14,7 @@ const TableRow = ({ id, onRemove, num }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <tr>
-      <td>
-        <input type='text' value={num} readOnly/>
-      </td>
+      <td>{num}</td>
       <td>
         <input type='text' />
       </td>
@@ -52,7 +50,7 @@ const TableRow = ({ id, onRemove, num }) => {
         </select>
       </td>
       <td>
-        <DeleteButton onClick={() => onRemove(id)}>
+        <DeleteButton onClick={e => onRemove(id, e)}>
           <GoX fill="#e92a2a" size="18px"/>
         </DeleteButton>
       </td>

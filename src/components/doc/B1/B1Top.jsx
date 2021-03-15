@@ -68,19 +68,25 @@ const B1Top = () => {
     },
     {
       id: 2,
-    }
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
   ]);
-  const nextId = useRef(3);
+  const nextId = useRef(5);
    
   const onRemove = useCallback(
-    id => {
-      setLists(lists.filter(list => list.id !== id));
+    (id, e) => {
+      e.preventDefault();
+      if (lists.length > 1) {
+        setLists(lists.filter(list => list.id !== id));
+      }
     },
     [lists],
   );
-  // const onClickAddBtn = () => {
-  //   setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  // };
   const onInsert = useCallback(
     () => {
       setLists(lists.concat({
