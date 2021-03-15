@@ -125,8 +125,8 @@ const OX2Top = () => {
         <div className='right-box'>
           <div className='title'>Specification of medical oxygen ;</div>
           <div className='description-box'>
-            {lists.map((list, index) => (
-              <OX2TopTableRow key={list.id} id={list.id} num={index + 1} onRemove={onRemove} />
+            {lists.map(list => (
+              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} />
             ))}
           </div>
         </div>
