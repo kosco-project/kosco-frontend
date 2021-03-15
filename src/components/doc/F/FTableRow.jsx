@@ -6,6 +6,9 @@ import { GoX } from 'react-icons/go';
 const DeleteButton = styled.button`
   cursor: pointer;
   border: none;
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
 `;
 
 const FTableRow = ({ id, onRemove, num }) => {
