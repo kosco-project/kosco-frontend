@@ -1,6 +1,7 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -63,7 +64,8 @@ const TopBox = styled.div`
 `;
 
 const FTop = () => {
-  const [lists, setLists] = useState([
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
     {
       id: 1,
     },
@@ -75,27 +77,8 @@ const FTop = () => {
     },
     {
       id: 4,
-    },
-  ]);
-  const nextId = useRef(5);
-   
-  const onRemove = useCallback(
-    (id, e) => {
-      e.preventDefault();
-      if (lists.length > 1) {
-        setLists(lists.filter(list => list.id !== id));
-      }
-    },
-    [lists],
-  ); 
-  const onInsert = useCallback(
-    () => {
-      setLists(lists.concat({
-        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 1
-      }));
-    },
-    [lists]
-  );
+    }
+  ], nextId);
 
   return (
     <>
