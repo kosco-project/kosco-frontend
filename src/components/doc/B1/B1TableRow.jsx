@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { GoX } from 'react-icons/go'; 
+import DeleteButton from '../common/DeleteButton';
 
-
-const DeleteButton = styled.button`
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  padding-top: 13px;
-  padding-bottom: 13px;
-`;
 
 const TableRow = ({ id, onRemove, num }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -52,10 +43,8 @@ const TableRow = ({ id, onRemove, num }) => {
           <option value='BAD'>BAD</option>
         </select>
       </td>
-      <td>
-        <DeleteButton type="button" onClick={() => onRemove(id)}>
-          <GoX fill="#e92a2a" size="18px"/>
-        </DeleteButton>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

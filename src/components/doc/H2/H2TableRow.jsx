@@ -1,15 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { GoX } from 'react-icons/go'; 
+import DeleteButton from '../common/DeleteButton';
 
-
-const DeleteButton = styled.button`
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  padding-top: 13px;
-  padding-bottom: 13px;
-`;
 const H2TableRow = ({ id, onRemove }) => {
   return (
     <tr>
@@ -34,10 +25,8 @@ const H2TableRow = ({ id, onRemove }) => {
           <option value='BAD'>BAD</option>
         </select>
       </td>
-      <td>
-        <DeleteButton type="button" onClick={() => onRemove(id)}>
-          <GoX fill="#e92a2a" size="18px"/>
-        </DeleteButton>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );
