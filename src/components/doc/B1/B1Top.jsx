@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
+import useLists from '../../../hooks/useLists';
 
-const TopBox = styled.div`
+const TableBox = styled.div`
   margin-bottom: 15px;
   border: 2px solid #000;
 
@@ -22,8 +23,10 @@ const TopBox = styled.div`
         tr {
           border-bottom: 1px solid #000;
         }
+        td {
+          vertical-align: middle;
+        }
       }
-
       tbody {
         td:first-child {
           width: 25px;
@@ -35,7 +38,7 @@ const TopBox = styled.div`
         border-left: 0;
 
         td {
-          padding: 10px 5px;
+          padding: 5px 5px;
           border-right: 1px solid #000;
           border-bottom: 1px solid #000;
           text-align: center;
@@ -49,21 +52,33 @@ const TopBox = styled.div`
 
         td:last-child {
           border-right: 0;
+          padding: 0;
         }
       }
     }
   }
 `;
 
-const B1Top = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
 
+const B1Top = () => {
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
   return (
     <>
-      <TopBox>
+      <TableBox>
         <div className='top-description'>
           <table>
             <thead>
@@ -78,18 +93,19 @@ const B1Top = () => {
                 <td>PRESS. READING (BAR)</td>
                 <td>TEMP(℃)</td>
                 <td>PERFORMED / RECOMMENDED</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
-              {inputArr.map(num => (
-                <B1TableRow key={num} num={num} />
+              {lists.map((list, index) => (
+                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
               ))}
             </tbody>
           </table>
         </div>
-      </TopBox>
+      </TableBox>
       <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onClickAddBtn}>
+        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
           추가
         </button>
       </div>

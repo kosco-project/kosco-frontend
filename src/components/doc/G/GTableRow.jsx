@@ -1,6 +1,7 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const GTableRow = () => {
+const GTableRow = ({ id, onRemove }) => {
   return (
     <tr>
       <td>
@@ -23,6 +24,9 @@ const GTableRow = () => {
       </td>
       <td>
         <input type='text' />
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

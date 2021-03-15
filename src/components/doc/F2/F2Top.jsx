@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import F2TableRow from './F2TableRow';
+import useLists from '../../../hooks/useLists';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -26,6 +27,7 @@ const BottomBox = styled.div`
 
       &:last-child {
         border: 0;
+        padding: 0;
       }
     }
 
@@ -48,10 +50,22 @@ const ButtonDiv = styled.div`
 `;
 
 const F2Top = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+   
 
   return (
     <>
@@ -64,16 +78,17 @@ const F2Top = () => {
               <td>Type</td>
               <td>Serial No.</td>
               <td>Remark</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {inputArr.map(num => (
-              <F2TableRow key={num} num={num} />
+            {lists.map((list, index) => (
+              <F2TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </tbody>
         </table>
         <ButtonDiv>
-          <button type='button' onClick={onClickAddBtn}>
+          <button type='button' onClick={onInsert}>
             추가
           </button>
         </ButtonDiv>

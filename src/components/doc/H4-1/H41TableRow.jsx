@@ -1,6 +1,7 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const H41TableRow = () => {
+const H41TableRow = ({ id, onRemove }) => {
   return (
     <tr>
       <td>
@@ -23,6 +24,9 @@ const H41TableRow = () => {
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import H2ATableRow from './H2ATableRow';
+import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -23,9 +24,11 @@ const TableBox = styled.div`
       padding: 10px 5px;
       text-align: center;
       border-right: 1px solid #000;
+      vertical-align: middle;
 
       &:last-child {
         border-right: 0;
+        padding: 0;
       }
     }
 
@@ -48,10 +51,22 @@ const ButtonDiv = styled.div`
 `;
 
 const H2ATop = () => {
-  const [datas, setDatas] = useState([1]);
-  const onClickAddBtn = () => {
-    setDatas(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+
 
   return (
     <>
@@ -66,17 +81,18 @@ const H2ATop = () => {
               <td>Cylinder Serial Nos.</td>
               <td>Last Hydro-Test Date</td>
               <td>Performed / Recommend.</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {datas.map(num => (
-              <H2ATableRow key={num} num={num} />
+            {lists.map(list => (
+              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} />
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>

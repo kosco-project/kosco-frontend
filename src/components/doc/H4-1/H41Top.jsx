@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import H41TableRow from './H41TableRow';
+import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -48,10 +49,22 @@ const ButtonDiv = styled.div`
 `;
 
 const H41Top = () => {
-  const [datas, setDatas] = useState([1]);
-  const onClickAddBtn = () => {
-    setDatas(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+
 
   return (
     <>
@@ -66,17 +79,18 @@ const H41Top = () => {
               <td>Cylinder Serial Nos.</td>
               <td>Last Hydro-Test Date</td>
               <td>Performed / Recommend.</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {datas.map(num => (
-              <H41TableRow key={num} num={num} />
+            {lists.map(list => (
+              <H41TableRow key={list.id} id={list.id} onRemove={onRemove}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>

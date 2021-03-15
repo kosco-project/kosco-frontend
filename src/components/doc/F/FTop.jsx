@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -55,6 +56,7 @@ const TopBox = styled.div`
 
         td:last-child {
           border-right: 0;
+          padding: 0;
         }
       }
     }
@@ -62,10 +64,21 @@ const TopBox = styled.div`
 `;
 
 const FTop = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
 
   return (
     <>
@@ -80,18 +93,19 @@ const FTop = () => {
                 <td>POSITION</td>
                 <td>CONDITION</td>
                 <td>REMARK</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
-              {inputArr.map(num => (
-                <FTableRow key={num} num={num} />
+              {lists.map((list, index) => (
+                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} />
               ))}
             </tbody>
           </table>
         </div>
       </TopBox>
       <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onClickAddBtn}>
+        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
           추가
         </button>
       </div>

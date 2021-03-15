@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ITableRow from './ITableRow';
+import useLists from '../../../hooks/useLists';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -26,6 +27,7 @@ const BottomBox = styled.div`
 
       &:last-child {
         border: 0;
+        padding: 0;
       }
     }
 
@@ -48,11 +50,22 @@ const ButtonDiv = styled.div`
 `;
 
 const ITop = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
-
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+   
   return (
     <>
       <BottomBox>
@@ -64,16 +77,17 @@ const ITop = () => {
               <td>Ser No. or Lot No.</td>
               <td>Manufacturer / Type</td>
               <td>Manufacture Date</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {inputArr.map(num => (
-              <ITableRow key={num} num={num} />
-            ))}
+          {lists.map((list, index) => (
+            <ITableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+              ))}
           </tbody>
         </table>
         <ButtonDiv>
-          <button type='button' onClick={onClickAddBtn}>
+          <button type='button' onClick={onInsert}>
             추가
           </button>
         </ButtonDiv>

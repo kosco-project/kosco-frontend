@@ -1,10 +1,11 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const OX2BttomTableRow = () => {
+const OX2BttomTableRow = ({ id, onRemove, num }) => {
   return (
     <tr>
       <td>
-        <input type='text' />
+        {'NO.' + num}
       </td>
       <td>
         <input type='text' />
@@ -23,6 +24,9 @@ const OX2BttomTableRow = () => {
       </td>
       <td>
         <input type='text' />
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

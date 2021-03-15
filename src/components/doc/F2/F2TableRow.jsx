@@ -1,6 +1,7 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const F2TableRow = ({ num }) => {
+const F2TableRow = ({ id, onRemove, num }) => {
   return (
     <tr>
       <td>{num}</td>
@@ -18,6 +19,9 @@ const F2TableRow = ({ num }) => {
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

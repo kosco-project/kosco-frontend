@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import OX2BttomTableRow from './OX2BttomTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -23,9 +24,11 @@ const TableBox = styled.div`
       padding: 10px 5px;
       text-align: center;
       border-right: 1px solid #000;
+      vertical-align: middle;
 
       &:last-child {
         border-right: 0;
+        padding: 0;
       }
     }
 
@@ -52,12 +55,22 @@ const ButtonDiv = styled.div`
 `;
 
 const OX2Bottom = () => {
-  const [datas, setDatas] = useState([1]);
-
-  const onClickAddBtn = () => {
-    setDatas(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
-
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+   
   return (
     <>
       <TableBox>
@@ -72,17 +85,18 @@ const OX2Bottom = () => {
               <td>Cylinder Serial Nos.</td>
               <td>Last Hydro-Test Date</td>
               <td>Performed / Recommend</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {datas.map((data, i) => (
-              <OX2BttomTableRow key={i} num={data} />
+            {lists.map((list, index) => (
+              <OX2BttomTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>

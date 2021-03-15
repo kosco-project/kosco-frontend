@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import H31TopTableRow from './H31TopTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ const TopBox = styled.div`
       height: calc(100% - 30px);
 
       > div {
-        width: 50px;
+        width: 12.5%;
         border-right: 1px solid #000;
         flex-shrink: 0;
 
@@ -101,13 +102,17 @@ const H31Top = () => {
     'FUNCTION TEST WITH TEST EQUIPMENT',
     'SERVICE LABEL PUT ON EQUIPMENT',
     'CYLINDER INSPECTED AS PER ENCLOSED SERVICE CHART H4.',
+    'DELETE',
   ];
 
-  const [datas2, setDatas2] = useState([1]);
+  const nextId = useRef(2);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+  ], nextId);
+   
 
-  const onClickAddBtn = () => {
-    setDatas2(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
 
   return (
     <>
@@ -121,14 +126,14 @@ const H31Top = () => {
         <div className='right-box'>
           <div className='title'>SPECIFICATION OF SETS BELOWS ;</div>
           <div className='description-box'>
-            {datas2.map((data, i) => (
-              <H31TopTableRow key={i} num={data} />
+            {lists.map((list, index) => (
+              <H31TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </div>
         </div>
       </TopBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>

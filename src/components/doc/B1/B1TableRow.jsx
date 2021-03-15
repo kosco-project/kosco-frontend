@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import DeleteButton from '../common/DeleteButton';
 
-const TableRow = ({ num }) => {
+
+const TableRow = ({ id, onRemove, num }) => {
+  const [startDate, setStartDate] = useState(new Date());
   return (
-    <tr className={num}>
+    <tr>
+      <td>{num}</td>
       <td>
         <input type='text' />
       </td>
@@ -10,10 +16,11 @@ const TableRow = ({ num }) => {
         <input type='text' />
       </td>
       <td>
-        <input type='text' />
-      </td>
-      <td>
-        <input type='date' />
+        <DatePicker
+          selected={startDate}
+          onChange={date => setStartDate(date)}
+          dateFormat="MMM.yy"
+          showMonthYearPicker />
       </td>
       <td>
         <input type='text' />
@@ -35,6 +42,9 @@ const TableRow = ({ num }) => {
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );
