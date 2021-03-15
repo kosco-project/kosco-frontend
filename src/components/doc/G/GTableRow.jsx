@@ -1,6 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+import { GoX } from 'react-icons/go'; 
 
-const GTableRow = () => {
+
+const DeleteButton = styled.button`
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+`;
+
+const GTableRow = ({ id, onRemove }) => {
   return (
     <tr>
       <td>
@@ -23,6 +34,11 @@ const GTableRow = () => {
       </td>
       <td>
         <input type='text' />
+      </td>
+      <td>
+        <DeleteButton onClick={e => onRemove(id, e)}>
+          <GoX fill="#e92a2a" size="18px"/>
+        </DeleteButton>
       </td>
     </tr>
   );

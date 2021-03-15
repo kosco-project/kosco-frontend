@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import GTableRow from './GTableRow';
 
@@ -23,9 +23,11 @@ const TableBox = styled.div`
       padding: 10px 5px;
       text-align: center;
       border-right: 1px solid #000;
+      vertical-align: middle;
 
       &:last-child {
         border-right: 0;
+        padding:0
       }
     }
 
@@ -52,10 +54,39 @@ const ButtonDiv = styled.div`
 `;
 
 const GBottom = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const [lists, setLists] = useState([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+  ]);
+  const nextId = useRef(5);
+   
+  const onRemove = useCallback(
+    (id, e) => {
+      e.preventDefault();
+      if (lists.length > 1) {
+        setLists(lists.filter(list => list.id !== id));
+      }
+    },
+    [lists],
+  ); 
+  const onInsert = useCallback(
+    () => {
+      setLists(lists.concat({
+        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 1
+      }));
+    },
+    [lists]
+  );
 
   return (
     <>
@@ -71,17 +102,18 @@ const GBottom = () => {
               <td>Caoacuty</td>
               <td>Last Hydro-Test Date</td>
               <td>Perform</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {inputArr.map(num => (
-              <GTableRow key={num} num={num} />
-            ))}
+              {lists.map(list => (
+                <GTableRow key={list.id} id={list.id} onRemove={onRemove}/>
+              ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>
