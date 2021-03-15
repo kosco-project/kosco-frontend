@@ -31,7 +31,7 @@ const FTableRow = ({ id, onRemove, num }) => {
         <input type='text' />
       </td>
       <td>
-        <DeleteButton onClick={() => onRemove(id)}>
+        <DeleteButton onClick={e => onRemove(id, e)}>
           <GoX fill="#e92a2a" size="18px"/>
         </DeleteButton>
       </td>

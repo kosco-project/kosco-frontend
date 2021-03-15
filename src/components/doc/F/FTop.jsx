@@ -46,7 +46,6 @@ const TopBox = styled.div`
         &:last-child {
           td {
             border-bottom: 0;
-            padding: 0;
           }
         }
 
@@ -56,6 +55,7 @@ const TopBox = styled.div`
 
         td:last-child {
           border-right: 0;
+          padding: 0;
         }
       }
     }
@@ -80,8 +80,11 @@ const FTop = () => {
   const nextId = useRef(5);
    
   const onRemove = useCallback(
-    id => {
-      setLists(lists.filter(list => list.id !== id));
+    (id, e) => {
+      e.preventDefault();
+      if (lists.length > 1) {
+        setLists(lists.filter(list => list.id !== id));
+      }
     },
     [lists],
   ); 
