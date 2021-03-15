@@ -105,7 +105,7 @@ const OX2Top = () => {
     'DELETE',
   ];
 
-  const nextId = useRef(5);
+  const nextId = useRef(2);
   const [onInsert, onRemove, lists] = useLists([
     {
       id: 1,
