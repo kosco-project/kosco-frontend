@@ -46,6 +46,7 @@ const TopBox = styled.div`
         &:last-child {
           td {
             border-bottom: 0;
+            padding: 0;
           }
         }
 
