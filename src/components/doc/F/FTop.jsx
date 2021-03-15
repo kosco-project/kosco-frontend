@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
 
@@ -62,10 +62,36 @@ const TopBox = styled.div`
 `;
 
 const FTop = () => {
-  const [inputArr, setInputArr] = useState([1]);
-  const onClickAddBtn = () => {
-    setInputArr(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const [lists, setLists] = useState([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+  ]);
+  const nextId = useRef(5);
+   
+  const onRemove = useCallback(
+    id => {
+      setLists(lists.filter(list => list.id !== id));
+    },
+    [lists],
+  ); 
+  const onInsert = useCallback(
+    () => {
+      setLists(lists.concat({
+        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 1
+      }));
+    },
+    [lists]
+  );
 
   return (
     <>
@@ -80,18 +106,19 @@ const FTop = () => {
                 <td>POSITION</td>
                 <td>CONDITION</td>
                 <td>REMARK</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
-              {inputArr.map(num => (
-                <FTableRow key={num} num={num} />
+              {lists.map((list, index) => (
+                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} />
               ))}
             </tbody>
           </table>
         </div>
       </TopBox>
       <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onClickAddBtn}>
+        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
           추가
         </button>
       </div>
