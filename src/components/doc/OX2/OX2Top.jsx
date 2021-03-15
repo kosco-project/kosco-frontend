@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import OX2TopTableRow from './OX2TopTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   display: flex;
@@ -101,13 +102,16 @@ const OX2Top = () => {
     'OXYGEN INHALER CHECKED',
     'DEVICE WHIT FUNCTION TEST',
     'SERVICE LABEL PUT ON DEVICE',
+    'DELETE',
   ];
 
-  const [datas2, setDatas2] = useState([1]);
-
-  const onClickAddBtn = () => {
-    setDatas2(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+  ], nextId);
+   
 
   return (
     <>
@@ -121,14 +125,14 @@ const OX2Top = () => {
         <div className='right-box'>
           <div className='title'>Specification of medical oxygen ;</div>
           <div className='description-box'>
-            {datas2.map((data, i) => (
-              <OX2TopTableRow key={i} num={data} />
+            {lists.map((list, index) => (
+              <OX2TopTableRow key={list.id} id={list.id} num={index + 1} onRemove={onRemove} />
             ))}
           </div>
         </div>
       </TopBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>
