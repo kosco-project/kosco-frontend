@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
-import H1BttomTableRow from './H1BttomTableRow';
+import H1BottomTableRow from './H1BottomTableRow';
+import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -20,17 +21,19 @@ const TableBox = styled.div`
     }
 
     td {
-      padding: 10px 5px;
+      padding: 10px 15px;
       text-align: center;
       border-right: 1px solid #000;
+      vertical-align: middle;
 
       &:last-child {
         border-right: 0;
+        padding: 0;
       }
     }
 
     td:first-child {
-      width: 80px;
+      white-space: nowrap;
     }
 
     tbody {
@@ -52,11 +55,22 @@ const ButtonDiv = styled.div`
 `;
 
 const H1Bottom = () => {
-  const [datas, setDatas] = useState([1]);
-
-  const onClickAddBtn = () => {
-    setDatas(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+  const nextId = useRef(5);
+  const [onInsert, onRemove, lists] = useLists([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    }
+  ], nextId);
+   
 
   return (
     <>
@@ -70,17 +84,18 @@ const H1Bottom = () => {
               <td>Type</td>
               <td>Serial Number</td>
               <td>Remarks</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {datas.map((data, i) => (
-              <H1BttomTableRow key={i} num={data} />
+          {lists.map((list, index) => (
+            <H1BottomTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>

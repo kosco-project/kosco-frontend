@@ -1,10 +1,11 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const H1TopTableRow = () => {
+const H1TopTableRow = ({ id, onRemove, num }) => {
   return (
     <div>
       <div className='title'>
-        <input type='text' style={{ width: '100%' }} />
+        {'SET NO.' + num}
       </div>
       <div className='description'>
         <input type='checkbox' defaultChecked='checked' />
@@ -26,6 +27,9 @@ const H1TopTableRow = () => {
       </div>
       <div className='description'>
         <input type='checkbox' defaultChecked='checked' />
+      </div>
+      <div className="description" onClick={() => onRemove(id)}>
+        <DeleteButton />
       </div>
     </div>
   );
