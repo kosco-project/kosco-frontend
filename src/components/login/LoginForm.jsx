@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 import { Input, Button } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone, KeyOutlined } from '@ant-design/icons';
@@ -46,52 +45,7 @@ const FormBox = styled.section`
   }
 `;
 
-const LoginForm = ({ history }) => {
-  const [state, setState] = useState({
-    userId: '',
-    userPw: '',
-  });
-  const [errorVisible, setErrorVisible] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-
-  const onChangeValue = e => {
-    setState(prevState => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const onSubmit = async () => {
-    const { userId, userPw } = state;
-
-    if (!userId.trim()) {
-      setErrorVisible(true);
-      setErrorMsg('아이디를 입력해주세요.');
-      return;
-    }
-
-    if (!userPw.trim()) {
-      setErrorVisible(true);
-      setErrorMsg('비밀번호를 입력해주세요.');
-      return;
-    }
-
-    const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user`, {
-      userId,
-      userPw,
-    });
-
-    if (res.data.message === 'find fail') {
-      setErrorVisible(true);
-      setErrorMsg(res.data.error);
-
-      return;
-    }
-
-    sessionStorage.setItem('KOSCO_token', res.data.token);
-
-    history.push('/home');
-  };
+const LoginForm = ({errorVisible, errorMsg, onChangeValue, onSubmit, state}) => {
 
   return (
     <FormBox>
