@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppWrapper from '../components/common/AppWrapper';
 import LoginForm from '../components/login/LoginForm';
 
+const LoginFormContainer = () => {
+  const history = useHistory();
 
-
-const LoginFormContainer = ({ history }) => {
   const [state, setState] = useState({
     userId: '',
     userPw: '',
@@ -56,7 +57,14 @@ const LoginFormContainer = ({ history }) => {
   };
   return (
     <AppWrapper>
-      <LoginForm history={history} errorVisible={errorVisible} errorMsg={errorMsg} onChangeValue={onChangeValue} onSubmit={onSubmit} state={state}/>
+      <LoginForm
+        history={history}
+        errorVisible={errorVisible}
+        errorMsg={errorMsg}
+        onChangeValue={onChangeValue}
+        onSubmit={onSubmit}
+        state={state}
+      />
     </AppWrapper>
   );
 };
