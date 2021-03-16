@@ -1,12 +1,9 @@
 import React from 'react';
-import AppWrapper from '../components/common/AppWrapper';
-import LoginForm from '../components/login/LoginForm';
+import LoginFormContainer from '../containers/LoginFormContainer';
 
-const Login = ({ history }) => {
+const Login = () => {
   return (
-    <AppWrapper>
-      <LoginForm history={history} />
-    </AppWrapper>
+    <LoginFormContainer />
   );
 };
 

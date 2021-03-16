@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import 'antd/dist/antd.css';
 import { BrowserRouter } from 'react-router-dom';
-import rootReducer from './modules';
+import rootReducer from './redux/modules';
 
 import ErrorBoundary from './components/common/ErrorBoundary';
 import GlobalStyles from './components/common/GlobalStyles';
