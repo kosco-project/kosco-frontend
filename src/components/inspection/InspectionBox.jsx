@@ -7,14 +7,14 @@ import InspectionTitleBox from './InspectionTitleBox';
 const InspectionBox = () => {
   const [inputValue, setInputValue] = useState({
     startDate: sessionStorage.getItem('startDate')
-      ? moment(JSON.parse(sessionStorage.getItem('startDate')), 'YYYY-MM-DD')
+      ? moment(sessionStorage.getItem('startDate'), 'YYYY-MM-DD')
       : moment(new Date(), 'YYYY-MM-DD'),
     endDate: sessionStorage.getItem('endDate')
-      ? moment(JSON.parse(sessionStorage.getItem('endDate')), 'YYYY-MM-DD')
+      ? moment(sessionStorage.getItem('endDate'), 'YYYY-MM-DD')
       : moment(new Date(), 'YYYY-MM-DD').add(1, 'M'),
     process: sessionStorage.getItem('process') ? +sessionStorage.getItem('process') : 1,
   });
-
+  console.log('inputvalue',inputValue);
   const onChangeDate = useCallback((_, datas) => {
     setInputValue(prevValue => ({
       ...prevValue,
