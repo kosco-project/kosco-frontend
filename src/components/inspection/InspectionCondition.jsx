@@ -19,12 +19,11 @@ const InspectionForm = styled.form`
 
 const InspectionCondition = ({ inputValue, onChangeDate, onChangeProcess }) => {
   const { startDate, endDate, process } = inputValue;
-
   return (
     <InspectionForm>
       <div className='inspection-input-box'>
         <label htmlFor='DateRange'>날짜 :</label>
-        <RangePicker size='large' onChange={onChangeDate} defaultValue={[startDate, endDate]} format={'YYYY-MM-DD'} allowClear={false} />
+        <RangePicker size='large' onChange={onChangeDate} value={[startDate, endDate]} format={'YYYY-MM-DD'} allowClear={false} />
       </div>
       <div className='inspection-input-box'>
         <label htmlFor='DateRange'>진행 :</label>

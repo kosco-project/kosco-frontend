@@ -1,7 +1,6 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Empty } from 'antd';
-import axios from 'axios';
 import InpectionItem from './InpectionItem';
 
 require('dotenv').config();
@@ -10,21 +9,7 @@ const Listbox = styled.div`
   padding: 20px 0;
 `;
 
-const InspectionList = ({ inputValue }) => {
-  const { startDate, endDate, process: processStep } = inputValue;
-
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api/inspectionList/${startDate.format('YYYY-MM-DD')}/${endDate.format('YYYY-MM-DD')}/${processStep}`
-      );
-
-      setList(res.data.list);
-    })();
-  }, [endDate, processStep, startDate]);
-
+const InspectionList = ({ list }) => {
   return (
     <Listbox>
       {list.length === 0 && <Empty />}
