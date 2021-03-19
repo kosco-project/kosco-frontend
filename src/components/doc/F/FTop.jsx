@@ -5,7 +5,7 @@ import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 
   input {
     width: 100%;
@@ -57,6 +57,8 @@ const TopBox = styled.div`
         td:last-child {
           border-right: 0;
           padding: 0;
+          vertical-align: middle;
+          cursor: pointer;
         }
       }
     }

@@ -5,7 +5,7 @@ import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 
   > .title {
     padding: 5px;
@@ -27,6 +27,8 @@ const TableBox = styled.div`
 
       &:last-child {
         border-right: 0;
+        vertical-align: middle;
+        cursor: pointer;
       }
     }
 

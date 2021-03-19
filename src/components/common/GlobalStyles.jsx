@@ -71,6 +71,7 @@ table {
 }
 button {
     outline: none;
+    padding: 0;
 }
 `;
 

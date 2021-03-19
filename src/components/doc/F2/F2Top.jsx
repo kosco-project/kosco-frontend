@@ -28,6 +28,8 @@ const BottomBox = styled.div`
       &:last-child {
         border: 0;
         padding: 0;
+        vertical-align: middle;
+        cursor: pointer;
       }
     }
 
