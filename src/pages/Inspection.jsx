@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../components/common/AppWrapper';
 import Header from '../components/common/Header';
-import InspectionBox from '../components/inspection/InspectionBox';
+import InspectionContainer from '../containers/InspectionContainer';
 
 const Inspection = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const Inspection = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <InspectionBox />
+      <InspectionContainer />
     </AppWrapper>
   );
 };
