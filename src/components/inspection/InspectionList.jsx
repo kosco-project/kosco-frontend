@@ -10,10 +10,12 @@ const Listbox = styled.div`
 `;
 
 const InspectionList = ({ list }) => {
+  
+  console.log('list', list);
   return (
-    <Listbox>
+    <Listbox >
       {list.length === 0 && <Empty />}
-      {list.length > 0 && list.map((item, i) => <InpectionItem key={i} item={item} />)}
+      {list.length > 0 && list.map((item, i) => <InpectionItem key={i} item={item}/>)}
     </Listbox>
   );
 };
