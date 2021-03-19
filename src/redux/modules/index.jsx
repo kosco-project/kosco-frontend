@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-// import inspection from './inspection';
+import inspection from './inspection';
 
 const rootReducer = combineReducers({
-  // inspection,
+  inspection,
 });
 
 export default rootReducer;

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { getVesselInfo } from '../../redux/modules/inspection';
 
 const ItemBox = styled(Link)`
   display: flex;
@@ -21,8 +23,14 @@ const ItemBox = styled(Link)`
 `;
 
 const InpectionItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const onClick = useCallback(() => (
+    dispatch(getVesselInfo(item))
+  ), [dispatch, item]);
+  
   return (
-    <ItemBox to={`/doc/${item.DOC_NO}`}>
+    <ItemBox to={`/doc/${item.DOC_NO}`} onClick={() => onClick(item)}>
       <p>{item.CUSTNM || ' '}</p>
       <p>{item.RCVDT || ' '}</p>
       <p>{item.SHIPNM || ' '}</p>
