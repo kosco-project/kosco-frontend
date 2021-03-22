@@ -1,20 +1,16 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import A1Bottom from './A1Bottom';
 import A1Top from './A1Top';
 import ButtonBox from '../common/ButtonBox';
 import Info from '../common/Info';
 
-const A1Form = () => {
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = data => console.log(data);
+const A1Form = ({ onChange, onChecked, temporaryStorage }) => {
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={temporaryStorage}>
       <Info />
-      <A1Top register={register} />
-      <A1Bottom />
+      <A1Top onChange={onChange}/>
+      <A1Bottom onChecked={onChecked}/>
       <ButtonBox />
     </form>
   );
