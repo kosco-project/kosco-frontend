@@ -20,8 +20,12 @@ const BottomBox = styled.div`
       padding: 10px 5px;
       border-right: 1px solid #000;
       text-align: center;
-
+      width: 70%;
+      &:nth-child(2) {
+        width: 15%;
+      }
       &:last-child {
+        width: 15%;
         border: 0;
       }
     }
@@ -61,7 +65,7 @@ const IBottom = () => {
             </td>
           </tr>
           <tr>
-            <td>2) Closure state of Storage Bag</td>
+            <td> Closure state of Storage Bag</td>
             <td>
               <input type='radio' checked />
             </td>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 
   > .title {
     padding: 5px;

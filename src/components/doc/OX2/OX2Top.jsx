@@ -8,7 +8,7 @@ const TopBox = styled.div`
   flex-flow: row nowrap;
   margin-bottom: 15px;
   width: 100%;
-  border: 2px solid #000;
+  border: 1px solid #000;
 
   .title {
     display: flex;
@@ -82,6 +82,9 @@ const TopBox = styled.div`
 
         > .description:not(:last-child) {
           border-bottom: 1px solid #000;
+        }
+        > .description:last-child {
+          cursor: pointer;
         }
       }
     }
