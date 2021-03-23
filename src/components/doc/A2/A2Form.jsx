@@ -4,12 +4,12 @@ import A2Bottom from './A2Bottom';
 import Info from '../common/Info';
 import A2Top from './A2Top';
 
-const A2Form = () => {
+const A2Form = ({ onChange, onChecked, temporaryStorage }) => {
   return (
-    <form>
+    <form onSubmit={temporaryStorage}>
       <Info />
-      <A2Top />
-      <A2Bottom />
+      <A2Top onChange={onChange}/>
+      <A2Bottom onChecked={onChecked}/>
       <ButtonBox />
     </form>
   );

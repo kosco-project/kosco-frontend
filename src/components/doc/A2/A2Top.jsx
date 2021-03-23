@@ -45,58 +45,58 @@ const TopBox = styled.div`
   }
 `;
 
-const A2Top = () => {
+const A2Top = ({ onChange }) => {
   return (
     <TopBox>
       <p className='top-title'>Description of Products ;</p>
       <div className='top-description'>
         <div className='form1'>
-          <input type='text' name='top1' />
+        <input type='text' data-name="0" name='top1' onChange={onChange}/>
           CO2 FIRE EXTINGUISHING SYSTEM
         </div>
         <div className='form1'>
-          <input type='text' name='top2' />
+        <input type='text' data-name="1" name='top2' onChange={onChange}/>
           FIRE DETECTION SYSTEM
         </div>
         <div className='form2'>
           From
-          <input type='text' name='top3' />
+          <input type='text' data-name="2" name='top3' onChange={onChange} />
           we received order for this inspection, and if necessary
         </div>
         <div className='form2'>Re-certification, repair and recharging of above system.</div>
         <div className='form2'>
           The inspection was carried out in the presence of
-          <input type='text' />
+          <input type='text' data-name="3" onChange={onChange} />
         </div>
         <div className='form2'>
-          CO2 installation mark; <input type='text' />
+          <input type='text' data-name="4" onChange={onChange} />
         </div>
         <div className='form2'>
           CO2 flooding line leading to;
-          <input type='text' style={{ width: 30 }} /> <span>Nos.</span>
+          <input type='text' data-name="5" onChange={onChange} style={{ width: 30 }} /> <span>Nos.</span>
         </div>
         <div className='form1'>
-          <input type='text' />
+        <input type='text' data-name="6" onChange={onChange} />
           Engine Room
         </div>
         <div className='form1'>
-          <input type='text' />
+        <input type='text' data-name="7" onChange={onChange} />
           Cargo Hold
         </div>
         <div className='form1'>
-          <input type='text' />
+        <input type='text' data-name="8" onChange={onChange} />
           Pump Room
         </div>
         <div className='form1'>
-          <input type='text' />
+        <input type='text' data-name="9" onChange={onChange} />
           Paint Locker
         </div>
         <div className='form2'>
-          Consisting of <input type='text' /> cylinders, each to be containing <input type='text' />
+          Consisting of <input type='text' data-name="10" onChange={onChange} /> cylinders, each to be containing <input type='text' data-name="11" onChange={onChange} />
           kg of CO2
         </div>
         <div className='form2'>
-          And <input type='text' /> pilot cylinders, each of capacity <input type='text' />
+          And <input type='text' data-name="12" onChange={onChange} /> pilot cylinders, each of capacity <input type='text' data-name="13" onChange={onChange} />
           Kg.
         </div>
       </div>
