@@ -58,7 +58,7 @@ const BottomBox = styled.div`
   }
 `;
 
-const A3Bottom = () => {
+const A3Bottom = ({ onChecked, onChange }) => {
   return (
     <BottomBox>
       <p className='top-title'>Description of Working System</p>
@@ -77,13 +77,13 @@ const A3Bottom = () => {
               <td>1</td>
               <td>System secured</td>
               <td>
-                <input type='radio' />
+                <input type='checkbox' data-form="D2" data-name="0" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+                <input type='checkbox' data-form="D2" data-name="0" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="0" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -91,13 +91,13 @@ const A3Bottom = () => {
               <td>2</td>
               <td>Foam liquid tank visually inspected and breather valve checked</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="1" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="1" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="1" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -105,13 +105,13 @@ const A3Bottom = () => {
               <td>3</td>
               <td>Foam concentrate content and liquid level indicator inspected / checked</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="2" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="2" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="2" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -119,13 +119,13 @@ const A3Bottom = () => {
               <td>4</td>
               <td>Distribution lines and nozzles/monitors visually inspected</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="3" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="3" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="3" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -133,13 +133,13 @@ const A3Bottom = () => {
               <td>5</td>
               <td>All cabinet doors, hinges, locks and instruction on installation visually inspected</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="4" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="4" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="4" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -147,13 +147,13 @@ const A3Bottom = () => {
               <td>6</td>
               <td>Foam mixing units inspect and correct setting of foam mix ratio checked</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="5" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="5" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="5" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -161,13 +161,13 @@ const A3Bottom = () => {
               <td>7</td>
               <td>Control cabinet(s)/release stations inspected / function tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="6" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="6" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="6" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -175,13 +175,13 @@ const A3Bottom = () => {
               <td>8</td>
               <td>Fan stop/fire dampers (if part of the system) inspected / tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="7" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="7" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="7" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -189,13 +189,13 @@ const A3Bottom = () => {
               <td>9</td>
               <td>Foam tank valve(s) inspected / function tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="8" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="8" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="8" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -203,13 +203,13 @@ const A3Bottom = () => {
               <td>10</td>
               <td>Warning alarms (Audio/visual) tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="9" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="9" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="9" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -217,13 +217,13 @@ const A3Bottom = () => {
               <td>11</td>
               <td>Pressure switches and gauges visually inspected / function tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="10" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="10" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="10" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -231,13 +231,13 @@ const A3Bottom = () => {
               <td>12</td>
               <td>Foam pump(s) – tested for correct rotation and pressure</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="11" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="11" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="11" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -245,13 +245,13 @@ const A3Bottom = () => {
               <td>13</td>
               <td>System ran through test line. Flushed and re-set</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="12" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="12" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="12" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -259,13 +259,13 @@ const A3Bottom = () => {
               <td>14</td>
               <td>Foam pump(s) including relief/overflow/de-airing valve inspected / function tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="13" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="13" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="13" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -273,13 +273,13 @@ const A3Bottom = () => {
               <td>15</td>
               <td>Selection valves visually inspected and verified correct position / function tested</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="14" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="14" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="14" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -287,13 +287,13 @@ const A3Bottom = () => {
               <td>16</td>
               <td>Control valve overhaul inspection.</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="15" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="15" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="15" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
 
@@ -301,7 +301,7 @@ const A3Bottom = () => {
               <td>17</td>
               <td>Foam concentrate sample periodical test arranged according to Foam Test Service Report</td>
               <td>
-                <input type='radio' />
+                <input type='checkbox' data-form="D2" data-name="16" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td colSpan='2'>ATTACH</td>
             </tr>
@@ -310,13 +310,13 @@ const A3Bottom = () => {
               <td>18</td>
               <td>System reconn, sealed, inspection date labels attached and system put back in servicet</td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="17" data-key="carriedOut" onChange={onChecked} />
               </td>
               <td>
-                <input type='radio' />
+              <input type='checkbox' data-form="D2" data-name="17" data-key="notCarried" onChange={onChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+                <input type='text' data-form="D2" data-name="17" data-key="remarks" onChange={onChange}/>
               </td>
             </tr>
           </tbody>
