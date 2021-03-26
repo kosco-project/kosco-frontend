@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 import { useEffect, useState } from "react";
 import A3Form from "../../components/doc/A3/A3Form";
 
@@ -8,7 +7,6 @@ const A3Container = () => {
   const [state, setState] = useState({
     H: {
       CERTNO: "",
-      CERTDT: "",
       VESSELNM: "",
     },
     D1: {
@@ -187,13 +185,11 @@ const A3Container = () => {
   }
 
   const temporaryStorage = async e => {
-    console.log('e');
     e.preventDefault();
     await setState({
       ...state,
       H: {
         CERTNO: localStorage.getItem('certNo'),
-        CERTDT: moment().format('YYYYMMDD'),
         VESSELNM: localStorage.getItem('shipNm'),
       },
     })
@@ -207,7 +203,6 @@ const A3Container = () => {
       console.log(e);
     }
   }
-  console.log(state);
 
   useEffect(() => {
     (async () => {

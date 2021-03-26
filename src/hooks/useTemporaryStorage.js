@@ -1,12 +1,10 @@
 import axios from 'axios';
-import moment from 'moment';
 import { useState } from 'react';
 
 const useTemporaryStorage = () => {
   const [state, setState] = useState({
     H: {
       CERTNO: "",
-      CERTDT: "",
       VESSELNM: "",
     },
     D1: {
@@ -92,7 +90,6 @@ const useTemporaryStorage = () => {
       ...state,
       H: {
         CERTNO: localStorage.getItem('certNo'),
-        CERTDT: moment().format('YYYYMMDD'),
         VESSELNM: localStorage.getItem('shipNm'),
       },
     })
