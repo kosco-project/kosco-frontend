@@ -6,7 +6,7 @@ const A3Container = () => {
   const [units, setUnits] = useState([]);
   const [state, setState] = useState({
     H: {
-      CERTNO: "",
+      RCVNO: "",
       VESSELNM: "",
     },
     D1: {
@@ -189,7 +189,7 @@ const A3Container = () => {
     await setState({
       ...state,
       H: {
-        CERTNO: localStorage.getItem('certNo'),
+        RCVNO: localStorage.getItem('rcvNo'),
         VESSELNM: localStorage.getItem('shipNm'),
       },
     })

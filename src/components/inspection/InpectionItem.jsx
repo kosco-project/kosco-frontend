@@ -23,6 +23,7 @@ const ItemBox = styled(Link)`
 
 const InpectionItem = ({ item }) => {
   const onClick = useCallback(item => {
+    localStorage.setItem('rcvNo', item.RCVNO);
     localStorage.setItem('certNo', item.CERT_NO);
     localStorage.setItem('shipNm', item.SHIPNM);
   }, []);
@@ -30,6 +31,7 @@ const InpectionItem = ({ item }) => {
 
   useEffect(() => {
     return (
+      localStorage.removeItem('rcvNo'),
       localStorage.removeItem('certNo'),
       localStorage.removeItem('shipNm')
     )
