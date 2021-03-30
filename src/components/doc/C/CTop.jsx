@@ -53,7 +53,8 @@ const TopBox = styled.div`
   }
 `;
 
-const CTop = () => {
+const CTop = ({ onChangeD1 }) => {
+  let id = 0;
   const datas = [
     'Manufacturer',
     'Number of tanks',
@@ -82,7 +83,7 @@ const CTop = () => {
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td style={{ padding: '0 5px' }}>
-                  <input type='text' style={{ width: '100%' }} />
+                <input type='text' data-name={id++} data-form="D1" onChange={onChangeD1} style={{ width: '100%' }} />
                 </td>
               </tr>
             ))}
