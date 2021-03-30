@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import B3Form from '../../components/doc/B3/B3Form';
+import B3Container from '../../containers/doc/B3Container';
 
 const B3 = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const B3 = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <B3Form />
+      <B3Container />
     </AppWrapper>
   );
 };
