@@ -4,12 +4,12 @@ import Info from '../common/Info';
 import A3Bottom from './A3Bottom';
 import A3Top from './A3Top';
 
-const A3Form = ({ units, onChecked, onChange, temporaryStorage }) => {
+const A3Form = ({ units, onWorkingSystemChecked, onWorkingSystem, temporaryStorage }) => {
   return (
-    <form onSubmit={temporaryStorage}>
+    <form onSubmit={e => temporaryStorage(e, { form: "A3" })}>
       <Info />
-      <A3Top units={units} onChange={onChange}/>
-      <A3Bottom onChecked={onChecked} onChange={onChange} />
+      <A3Top units={units} onWorkingSystem={onWorkingSystem}/>
+      <A3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} />
       <ButtonBox />
     </form>
   );

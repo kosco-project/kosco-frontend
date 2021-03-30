@@ -4,12 +4,12 @@ import Info from '../common/Info';
 import CBottom from './CBottom';
 import CTop from './CTop';
 
-const CForm = ({ onChecked, onChange, onChangeD1, temporaryStorage }) => {
+const CForm = ({ onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, temporaryStorage }) => {
   return (
-    <form onSubmit={temporaryStorage}>
+    <form onSubmit={e => temporaryStorage(e, { form: "C" })}>
       <Info />
-      <CTop onChangeD1={onChangeD1}/>
-      <CBottom onChecked={onChecked} onChange={onChange}/>
+      <CTop onKeyValueForm={onKeyValueForm}/>
+      <CBottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
       <ButtonBox />
     </form>
   );
