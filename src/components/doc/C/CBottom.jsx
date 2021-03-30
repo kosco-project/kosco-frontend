@@ -58,7 +58,8 @@ const BottomBox = styled.div`
   }
 `;
 
-const CBottom = () => {
+const CBottom = ({ onChange, onChecked }) => {
+  let id = 0;
   const datas = [
     'Tank main service valve closed and secured to prevent accidental discharge',
     'Distribution valves verified closed',
@@ -113,16 +114,16 @@ const CBottom = () => {
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td>
-                  <input type='radio' />
+                  <input type='checkbox' data-form="D2" data-name={id} data-key="carriedOut" onChange={onChecked} />
                 </td>
                 <td>
-                  <input type='radio' />
+                <input type='checkbox' data-form="D2" data-name={id} data-key="notCarried" onChange={onChecked} />
                 </td>
                 <td>
-                  <input type='radio' />
+                <input type='checkbox' data-form="D2" data-name={id} data-key="notApplicable" onChange={onChecked} />
                 </td>
                 <td style={{ padding: '0 5px' }}>
-                  <input type='text' />
+                <input type='text' data-form="D2" data-name={id++} data-key="Comm" onChange={onChange}/>
                 </td>
               </tr>
             ))}

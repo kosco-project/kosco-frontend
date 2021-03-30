@@ -36,14 +36,14 @@ const LoginFormContainer = () => {
       return;
     }
 
-    // const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user`, {
-    //   userId,
-    //   userPw,
-    // });
-    const res = await axios.post(`http://localhost:3050/api/user`, {
+    const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user`, {
       userId,
       userPw,
     });
+    // const res = await axios.post(`http://localhost:3050/api/user`, {
+    //   userId,
+    //   userPw,
+    // });
 
     if (res.data.message === 'find fail') {
       setErrorVisible(true);
