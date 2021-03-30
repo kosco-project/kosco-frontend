@@ -6,7 +6,7 @@ import A2Top from './A2Top';
 
 const A2Form = ({ onChange, onChecked, temporaryStorage }) => {
   return (
-    <form onSubmit={temporaryStorage}>
+    <form onSubmit={e => temporaryStorage(e, {form : "A2"})}>
       <Info />
       <A2Top onChange={onChange}/>
       <A2Bottom onChecked={onChecked}/>

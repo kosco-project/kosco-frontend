@@ -7,7 +7,7 @@ import Info from '../common/Info';
 const A1Form = ({ onChange, onChecked, temporaryStorage }) => {
 
   return (
-    <form onSubmit={temporaryStorage}>
+    <form onSubmit={e => temporaryStorage(e, {form : "A1"})}>
       <Info />
       <A1Top onChange={onChange}/>
       <A1Bottom onChecked={onChecked}/>

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 
 const TopBox = styled.div`
@@ -54,17 +53,7 @@ const TopBox = styled.div`
   }
 `;
 
-const B3Top = () => {
-  const [units, setUnits] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`);
-
-      setUnits(res.data.units);
-    })();
-  }, []);
-
+const B3Top = ({ units, onChange }) => {
   return (
     <TopBox>
       <p className='top-title'>Description of Working System</p>
@@ -84,10 +73,10 @@ const B3Top = () => {
               <td>1</td>
               <td>Manufacturer</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="0" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="0" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -96,7 +85,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="0" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
 
@@ -104,10 +93,10 @@ const B3Top = () => {
               <td>2</td>
               <td>Model</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="1" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="1" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -116,7 +105,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="1" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
 
@@ -124,10 +113,10 @@ const B3Top = () => {
               <td>3</td>
               <td>Serial no.</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="2" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="2" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -136,7 +125,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="2" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
 
@@ -144,10 +133,10 @@ const B3Top = () => {
               <td>4</td>
               <td>Maximum Charging pressure</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="3" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="3" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -156,7 +145,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="3" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
 
@@ -164,10 +153,10 @@ const B3Top = () => {
               <td>5</td>
               <td>Revolution</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="4" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="4" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -176,7 +165,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="4" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
 
@@ -184,10 +173,10 @@ const B3Top = () => {
               <td>6</td>
               <td>Location of compressor</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="5" data-key="value" onChange={onChange}/>
               </td>
               <td>
-                <select name='' id=''>
+              <select name='' id='' data-form="D1" data-name="5" data-key="unit" onChange={onChange}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -196,7 +185,7 @@ const B3Top = () => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' />
+              <input type='text' data-form="D1" data-name="5" data-key="remarks" onChange={onChange} />
               </td>
             </tr>
           </tbody>
