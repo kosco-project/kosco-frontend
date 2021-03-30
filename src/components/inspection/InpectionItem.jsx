@@ -1,8 +1,7 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getVesselInfo } from '../../redux/modules/inspection';
+
 
 const ItemBox = styled(Link)`
   display: flex;
@@ -23,12 +22,21 @@ const ItemBox = styled(Link)`
 `;
 
 const InpectionItem = ({ item }) => {
-  const dispatch = useDispatch();
-
-  const onClick = useCallback(() => (
-    dispatch(getVesselInfo(item))
-  ), [dispatch, item]);
+  const onClick = useCallback(item => {
+    localStorage.setItem('rcvNo', item.RCVNO);
+    localStorage.setItem('certNo', item.CERT_NO);
+    localStorage.setItem('shipNm', item.SHIPNM);
+  }, []);
   
+
+  useEffect(() => {
+    return (
+      localStorage.removeItem('rcvNo'),
+      localStorage.removeItem('certNo'),
+      localStorage.removeItem('shipNm')
+    )
+  })
+
   return (
     <ItemBox to={`/doc/${item.DOC_NO}`} onClick={() => onClick(item)}>
       <p>{item.CUSTNM || ' '}</p>

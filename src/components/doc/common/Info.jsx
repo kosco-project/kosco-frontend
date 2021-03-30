@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -38,19 +39,20 @@ const InfoBox = styled.div`
 `;
 
 const Info = () => {
+
   return (
     <InfoBox>
       <div className='info-date'>
         <p>Date:</p>
-        <input type='text' value='2021-01-03' disabled />
+        <input type='text' defaultValue={moment().format('YYYY-MM-DD')} disabled />
       </div>
       <div className='info-type'>
         <p>Type and name of vessel/unit:</p>
-        <input type='text' value='뭐 들어갔지' disabled />
+        <input type='text' defaultValue={ localStorage.getItem('shipNm') } disabled />
       </div>
       <div className='info-certificate'>
         <p>Certificate No:</p>
-        <input type='text' value='서트관리번호' disabled />
+        <input type='text' defaultValue={ localStorage.getItem('certNo') } disabled />
       </div>
     </InfoBox>
   );

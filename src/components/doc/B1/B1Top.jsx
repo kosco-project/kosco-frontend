@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -64,22 +63,7 @@ const TableBox = styled.div`
 `;
 
 
-const B1Top = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
+const B1Top = ({ onChange, onRemove, onInsert, lists}) => {
   return (
     <>
       <TableBox>
@@ -102,7 +86,7 @@ const B1Top = () => {
             </thead>
             <tbody>
               {lists.map((list, index) => (
-                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
               ))}
             </tbody>
           </table>
