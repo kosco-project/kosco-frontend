@@ -84,7 +84,7 @@ const useTemporaryStorage = () => {
     } 
   }
 
-  const temporaryStorage = async e => {
+  const temporaryStorage = async (e, { form }) => {
     e.preventDefault();
     await setState({
       ...state,
@@ -94,7 +94,7 @@ const useTemporaryStorage = () => {
       },
     })
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/A1/save`, state, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/save`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
