@@ -1,9 +1,8 @@
-import axios from "axios";
-import { useState } from "react";
 import CForm from "../../components/doc/C/CForm";
+import useTemporaryStorage from "../../hooks/useTemporaryStorage";
 
 const CConatiner = () => {
-  const [state, setState] = useState({
+  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage, onKeyValueForm } = useTemporaryStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -208,80 +207,8 @@ const CConatiner = () => {
     },
   })
 
-  const onChecked = e => {
-    const { checked, dataset } = e.target
-    if (checked) {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 1,
-          }
-        }
-      })
-    } else {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 0,
-          }
-        }
-      })
-    }
-  }
-  const onChange = e => {
-    const { value, dataset } = e.target
-    setState({
-      ...state,
-      [dataset.form]: {
-        ...state[dataset.form],
-        [dataset.name]: {
-          ...state[dataset.form][dataset.name],
-          [dataset.key]: value,
-        }
-      }
-    })
-  }
-
-  const onChangeD1 = e => {
-    const { value, dataset } = e.target
-    setState({
-      ...state,
-      [dataset.form]: {
-        ...state[dataset.form],
-        [dataset.name]: value,
-      }
-    })
-  }
-
-  const temporaryStorage = async e => {
-    e.preventDefault();
-    await setState({
-      ...state,
-      H: {
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
-      },
-    })
-    try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/C/save`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
-      );
-      console.log('res', res);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  console.log('state', state);
   return (
-    <CForm onChecked={onChecked} onChange={onChange} onChangeD1={onChangeD1} temporaryStorage={temporaryStorage}/>
+    <CForm onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} temporaryStorage={temporaryStorage}/>
   )
 }
 

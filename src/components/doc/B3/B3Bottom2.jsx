@@ -58,7 +58,7 @@ const BottomBox = styled.div`
   }
 `;
 
-const B3Bottom2 = ({ onChangeD3 }) => {
+const B3Bottom2 = ({ onKeyValueForm }) => {
   return (
     <BottomBox>
       <p className='top-title'>NBI Air quality requirement : Ref. to BS 4001-1:1998</p>
@@ -69,7 +69,7 @@ const B3Bottom2 = ({ onChangeD3 }) => {
               <td>A</td>
               <td>Air quality check : CO = Max. 15 ppm</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-name="0" onChange={onChangeD3} style={{ width: '100%' }} />
+                <input type='text' data-name="0" data-form="D3" onChange={onKeyValueForm} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -77,7 +77,7 @@ const B3Bottom2 = ({ onChangeD3 }) => {
               <td>B</td>
               <td>Air quality check : CO2 = Max. 500 ppm</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="1" onChange={onChangeD3} style={{ width: '100%' }} />
+              <input type='text' data-name="1" data-form="D3" onChange={onKeyValueForm} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -87,7 +87,7 @@ const B3Bottom2 = ({ onChangeD3 }) => {
                 Air quality check : H2O = Max. 50 mg/m<sup>3</sup>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="2" onChange={onChangeD3} style={{ width: '100%' }} />
+              <input type='text' data-name="2" data-form="D3" onChange={onKeyValueForm} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -97,7 +97,7 @@ const B3Bottom2 = ({ onChangeD3 }) => {
                 Air quality check : Oil = Max. 0.5 mg/m<sup>3</sup>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="3" onChange={onChangeD3} style={{ width: '100%' }} />
+              <input type='text' data-name="3" data-form="D3" onChange={onKeyValueForm} style={{ width: '100%' }} />
               </td>
             </tr>
           </tbody>

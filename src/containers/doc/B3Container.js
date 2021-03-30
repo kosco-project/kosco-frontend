@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import B3Form from "../../components/doc/B3/B3Form";
+import useTemporaryStorage from "../../hooks/useTemporaryStorage";
 
 const B3Container = () => {
   const [units, setUnits] = useState([]);
-  const [state, setState] = useState({
+  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage, onKeyValueForm } = useTemporaryStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -128,79 +129,6 @@ const B3Container = () => {
       3: "",
     }
   })
-
-  const onChecked = e => {
-    const { checked, dataset } = e.target
-    if (checked) {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 1,
-          }
-        }
-      })
-    } else {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 0,
-          }
-        }
-      })
-    }
-  }
-
-  const onChange = e => {
-    const { value, dataset } = e.target
-    setState({
-      ...state,
-      [dataset.form]: {
-        ...state[dataset.form],
-        [dataset.name]: {
-          ...state[dataset.form][dataset.name],
-          [dataset.key]: value,
-        }
-      }
-    })
-  }
-
-  const onChangeD3 = e => {
-    const { value, dataset } = e.target
-    setState({
-      ...state,
-      D3: {
-        ...state.D3,
-        [dataset.name]: value,
-      }
-    })
-  }
-
-  const temporaryStorage = async e => {
-    e.preventDefault();
-    await setState({
-      ...state,
-      H: {
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
-      },
-    })
-    try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/B3/save`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
-      );
-      console.log('res', res);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
     (async () => {
       const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`, {
@@ -210,7 +138,7 @@ const B3Container = () => {
     })();
   }, []);
   return (
-    <B3Form units={units} onChange={onChange} onChecked={onChecked} onChangeD3={onChangeD3} temporaryStorage={temporaryStorage}/>
+    <B3Form units={units} onWorkingSystem={onWorkingSystem} onWorkingSystemChecked={onWorkingSystemChecked} onKeyValueForm={onKeyValueForm} temporaryStorage={temporaryStorage}/>
   )
 }
 

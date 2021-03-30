@@ -1,87 +1,92 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const useTemporaryStorage = () => {
-  const [state, setState] = useState({
-    H: {
-      RCVNO: "",
-      VESSELNM: "",
-    },
-    D1: {
-      0: "",
-      1: "",
-      2: "",
-      3: "",
-      4: "",
-      5: "",
-      6: "",
-      7: "",
-      8: "",
-      9: "",
-      10: "",
-      11: "",
-      12: "",
-      13: "",
-    },
-    D2: {
-      0: 1,
-      1: 1,
-      2: 1,
-      3: 1,
-      4: 1,
-      5: 1,
-      6: 1,
-      7: 1,
-      8: 1,
-      9: 1,
-      10: 1,
-      11: 1,
-      12: 1,
-      13: 1,
-      14: 1,
-      15: 1,
-      16: 1,
-      17: 1,
-      18: 1,
-      19: 1,
-      20: 1,
-      21: 1,
-    },
-  })
+const useTemporaryStorage = initialState => {
+  console.log('초기값', initialState);
+  const [state, setState] = useState(initialState);
   
-  const onChange = e => {
+  const onProductsDescription = e => {
     const { value, dataset } = e.target
-    console.log(state);
-
       setState({
         ...state,
-        D1: {
-          ...state.D1,
+        [dataset.form]: {
+          ...state[dataset.form],
           [dataset.name]: value,
         },
       })
   }
 
-  const onChecked = e => {
+  const onWorkingSystem = e => {
+    const { value, dataset } = e.target
+    setState({
+      ...state,
+      [dataset.form]: {
+        ...state[dataset.form],
+        [dataset.name]: {
+          ...state[dataset.form][dataset.name],
+          [dataset.key]: value,
+        }
+      }
+    })
+  }
+
+  const onKeyValueForm = e => {
+    const { value, dataset } = e.target
+    setState({
+      ...state,
+      [dataset.form]: {
+        ...state[dataset.form],
+        [dataset.name]: value,
+      }
+    })
+  }
+
+  const onInspectionDescription = e => {
     const { checked, dataset } = e.target
-    console.log(state);
     if (checked) {
       setState({
         ...state,
-        D2: {
-          ...state.D2,
+        [dataset.form]: {
+          ...state[dataset.form],
           [dataset.name]: 1,
         }
       })
     } else {
       setState({
         ...state,
-        D2: {
-          ...state.D2,
+        [dataset.form]: {
+          ...state[dataset.form],
           [dataset.name]: 0,
         }
       })
     } 
+  }
+
+  const onWorkingSystemChecked = e => {
+    const { checked, dataset } = e.target
+    if (checked) {
+      setState({
+        ...state,
+        [dataset.form]: {
+          ...state[dataset.form],
+          [dataset.name]: {
+            ...state[dataset.form][dataset.name],
+            [dataset.key]: 1,
+          }
+        }
+      })
+    } else {
+      setState({
+        ...state,
+        [dataset.form]: {
+          ...state[dataset.form],
+          [dataset.name]: {
+            ...state[dataset.form][dataset.name],
+            [dataset.key]: 0,
+          }
+        }
+      })
+    }
   }
 
   const temporaryStorage = async (e, { form }) => {
@@ -103,8 +108,8 @@ const useTemporaryStorage = () => {
       console.log(e);
     }
   }
-
-  return [ onChange, onChecked, temporaryStorage ]
+  console.log('state',state);
+  return { onProductsDescription, onInspectionDescription, temporaryStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm }
 }
 
 export default useTemporaryStorage;

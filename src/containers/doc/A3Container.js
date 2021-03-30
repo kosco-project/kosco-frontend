@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import A3Form from "../../components/doc/A3/A3Form";
+import useTemporaryStorage from "../../hooks/useTemporaryStorage";
 
 const A3Container = () => {
   const [units, setUnits] = useState([]);
-  const [state, setState] = useState({
+  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage } = useTemporaryStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -143,67 +144,6 @@ const A3Container = () => {
     }
   })
 
-  const onChecked = e => {
-    const { checked, dataset } = e.target
-    if (checked) {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 1,
-          }
-        }
-      })
-    } else {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            [dataset.key]: 0,
-          }
-        }
-      })
-    }
-  }
-
-  const onChange = e => {
-    const { value, dataset } = e.target
-    setState({
-      ...state,
-      [dataset.form]: {
-        ...state[dataset.form],
-        [dataset.name]: {
-          ...state[dataset.form][dataset.name],
-          [dataset.key]: value,
-        }
-      }
-    })
-  }
-
-  const temporaryStorage = async e => {
-    e.preventDefault();
-    await setState({
-      ...state,
-      H: {
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
-      },
-    })
-    try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/A3/save`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
-      );
-      console.log('res', res);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
     (async () => {
       const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`, {
@@ -214,7 +154,7 @@ const A3Container = () => {
   }, []);
 
   return (
-    <A3Form units={units} onChecked={onChecked} onChange={onChange} temporaryStorage={temporaryStorage}/>
+    <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} temporaryStorage={temporaryStorage}/>
   )
 }
 
