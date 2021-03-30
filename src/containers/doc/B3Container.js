@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import A3Form from "../../components/doc/A3/A3Form";
+import B3Form from "../../components/doc/B3/B3Form";
 
-const A3Container = () => {
+const B3Container = () => {
   const [units, setUnits] = useState([]);
   const [state, setState] = useState({
     H: {
@@ -40,106 +40,92 @@ const A3Container = () => {
         unit: "대",
         remarks: "",
       },
-      6: {
-        value: "",
-        unit: "대",
-        remarks: "",
-      },
-      7: {
-        value: "",
-        unit: "대",
-        remarks: "",
-      },
     },
     D2: {
       0: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       1: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       2: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       3: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       4: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       5: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       6: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       7: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       8: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       9: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       10: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       11: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
       12: {
         carriedOut: 0,
         notCarried: 0,
-        remarks: "",
+        notApplicable: 0,
+        Comm: "",
       },
-      13: {
-        carriedOut: 0,
-        notCarried: 0,
-        remarks: "",
-      },
-      14: {
-        carriedOut: 0,
-        notCarried: 0,
-        remarks: "",
-      },
-      15: {
-        carriedOut: 0,
-        notCarried: 0,
-        remarks: "",
-      },
-      16: {
-        carriedOut: 0,
-      },
-      17: {
-        carriedOut: 0,
-        notCarried: 0,
-        remarks: "",
-      },
+    },
+    D3: {
+      0: "",
+      1: "",
+      2: "",
+      3: "",
     }
   })
 
@@ -184,6 +170,17 @@ const A3Container = () => {
     })
   }
 
+  const onChangeD3 = e => {
+    const { value, dataset } = e.target
+    setState({
+      ...state,
+      D3: {
+        ...state.D3,
+        [dataset.name]: value,
+      }
+    })
+  }
+
   const temporaryStorage = async e => {
     e.preventDefault();
     await setState({
@@ -194,7 +191,7 @@ const A3Container = () => {
       },
     })
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/A3/save`, state, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/B3/save`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
@@ -212,10 +209,9 @@ const A3Container = () => {
       setUnits(res.data.units);
     })();
   }, []);
-
   return (
-    <A3Form units={units} onChecked={onChecked} onChange={onChange} temporaryStorage={temporaryStorage}/>
+    <B3Form units={units} onChange={onChange} onChecked={onChecked} onChangeD3={onChangeD3} temporaryStorage={temporaryStorage}/>
   )
 }
 
-export default A3Container;
+export default B3Container
