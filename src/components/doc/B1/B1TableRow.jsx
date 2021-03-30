@@ -1,44 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux';
 import DeleteButton from '../common/DeleteButton';
 
-
-const TableRow = ({ id, onRemove, num }) => {
-  const [startDate, setStartDate] = useState(new Date());
+const TableRow = ({ id, onRemove, onChange, num }) => {
+  const  { TestDt }  = useSelector(state => state.b1.D1[id]);
   return (
     <tr>
       <td>{num}</td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="GasType"/>
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="SerialNo"/>
       </td>
       <td>
         <DatePicker
-          selected={startDate}
-          onChange={date => setStartDate(date)}
+          selected={TestDt}
+          name="TestDt"
           dateFormat="MMM.yy"
-          showMonthYearPicker />
+          onChange={value => onChange({ id, target: { name: "TestDt", value } })}
+          showMonthYearPicker
+        />
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="TareWT" />
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="GrossWT" />
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="Capacity" />
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })}  name="Press" />
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={({ target }) => onChange({ target, id })} name="Temp" />
       </td>
       <td>
-        <select name='' id=''>
+        <select onChange={({ target }) => onChange({ target, id })} name="Perform" >
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>

@@ -3,11 +3,11 @@ import ButtonBox from '../common/ButtonBox';
 import Info from '../common/Info';
 import B1Top from './B1Top';
 
-const B1Form = () => {
+const B1Form = ({ onChange, onRemove, onInsert, lists, onTemporaryStorage }) => {
   return (
-    <form>
+    <form onSubmit={onTemporaryStorage}>
       <Info />
-      <B1Top />
+      <B1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <ButtonBox />
     </form>
   );
