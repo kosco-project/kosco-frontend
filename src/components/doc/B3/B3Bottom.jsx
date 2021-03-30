@@ -69,7 +69,7 @@ const B3Bottom = ({ onChecked, onChange }) => {
               <td>Carried out</td>
               <td>Not carried</td>
               <td>Not applicable</td>
-              <td>Comm.</td>
+              <td>Comment</td>
             </tr>
           </thead>
           <tbody>
