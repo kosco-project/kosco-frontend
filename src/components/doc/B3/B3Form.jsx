@@ -5,13 +5,13 @@ import B3Bottom from './B3Bottom';
 import B3Bottom2 from './B3Bottom2';
 import B3Top from './B3Top';
 
-const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onAirQualityRequirement, temporaryStorage }) => {
+const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, temporaryStorage }) => {
   return (
     <form onSubmit={e => temporaryStorage(e, { form: "B3" })}>
       <Info />
       <B3Top units={units} onWorkingSystem={onWorkingSystem}/>
       <B3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
-      <B3Bottom2 onAirQualityRequirement={onAirQualityRequirement}/>
+      <B3Bottom2 onKeyValueForm={onKeyValueForm}/>
       <ButtonBox />
     </form>
   );
