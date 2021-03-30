@@ -11,7 +11,6 @@ const Listbox = styled.div`
 
 const InspectionList = ({ list }) => {
   
-  console.log('list', list);
   return (
     <Listbox >
       {list.length === 0 && <Empty />}

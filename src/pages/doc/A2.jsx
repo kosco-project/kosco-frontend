@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import A2Form from '../../components/doc/A2/A2Form';
+import A2Container from '../../containers/doc/A2Container';
 
 const A2 = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const A2 = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <A2Form />
+      <A2Container />
     </AppWrapper>
   );
 };
