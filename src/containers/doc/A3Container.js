@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import A3Form from "../../components/doc/A3/A3Form";
-import useTemporaryStorage from "../../hooks/useTemporaryStorage";
+import useStorage from "../../hooks/useStorage";
 
 const A3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage } = useTemporaryStorage({
+  const { onWorkingSystem, onWorkingSystemChecked, onStorage } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -154,7 +154,7 @@ const A3Container = () => {
   }, []);
 
   return (
-    <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} temporaryStorage={temporaryStorage}/>
+    <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onStorage={onStorage}/>
   )
 }
 

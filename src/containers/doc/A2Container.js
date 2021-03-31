@@ -1,9 +1,9 @@
 import React from 'react';
 import A2Form from "../../components/doc/A2/A2Form";
-import useTemporaryStorage from '../../hooks/useTemporaryStorage';
+import useStorage from '../../hooks/useStorage';
 
 const A2Container = () => {
-  const { onProductsDescription, onInspectionDescription, temporaryStorage } = useTemporaryStorage({
+  const { onProductsDescription, onInspectionDescription, onStorage } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -51,7 +51,7 @@ const A2Container = () => {
   });
 
   return (
-    <A2Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} temporaryStorage={temporaryStorage}/>
+    <A2Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage}/>
   )
 };
 

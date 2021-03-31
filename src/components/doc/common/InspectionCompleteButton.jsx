@@ -12,9 +12,9 @@ const Button = styled.button `
     color: #fff;
 `;
 
-const InspectionCompleteButton = ({ temporaryStorage, form, path }) => {
+const InspectionCompleteButton = ({ onStorage, form, path }) => {
   return (
-      <Button type='submit' onClick={e => temporaryStorage(e, form, path)}>검사 완료</Button>
+      <Button type='submit' onClick={e => onStorage(e, form, path)}>검사 완료</Button>
   );
 };
 
