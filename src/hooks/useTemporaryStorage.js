@@ -89,7 +89,7 @@ const useTemporaryStorage = initialState => {
     }
   }
 
-  const temporaryStorage = async (e, { form }) => {
+  const temporaryStorage = async (e, form, path) => {
     e.preventDefault();
     await setState({
       ...state,
@@ -99,7 +99,7 @@ const useTemporaryStorage = initialState => {
       },
     })
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/save`, state, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
@@ -108,6 +108,8 @@ const useTemporaryStorage = initialState => {
       console.log(e);
     }
   }
+
+
   console.log('state',state);
   return { onProductsDescription, onInspectionDescription, temporaryStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm }
 }
