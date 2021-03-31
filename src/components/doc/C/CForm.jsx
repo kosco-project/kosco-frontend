@@ -1,8 +1,19 @@
 import React from 'react';
-import ButtonBox from '../common/ButtonBox';
+import styled from 'styled-components';
 import Info from '../common/Info';
+import InspectionCompleteButton from '../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../common/TemporaryStorageButton';
 import CBottom from './CBottom';
 import CTop from './CTop';
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  text-align: center;
+  Button {
+    margin: 0 15px;
+  }`;
 
 const CForm = ({ onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, temporaryStorage }) => {
   return (
@@ -10,7 +21,10 @@ const CForm = ({ onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, tempor
       <Info />
       <CTop onKeyValueForm={onKeyValueForm}/>
       <CBottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
-      <ButtonBox />
+      <ButtonBox>
+        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="C" path="save"/>
+        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="C" path="complete"/>
+      </ButtonBox>
     </form>
   );
 };
