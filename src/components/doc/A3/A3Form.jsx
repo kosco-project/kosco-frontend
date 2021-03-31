@@ -22,8 +22,8 @@ const A3Form = ({ units, onWorkingSystemChecked, onWorkingSystem, temporaryStora
       <A3Top units={units} onWorkingSystem={onWorkingSystem}/>
       <A3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} />
       <ButtonBox>
-        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="A1" path="save"/>
-        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="A1" path="complete"/>
+        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="A3" path="save"/>
+        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="A3" path="complete"/>
       </ButtonBox>
     </form>
   );
