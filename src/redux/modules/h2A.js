@@ -26,7 +26,7 @@ export const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     1: {
       CylnType: "",
@@ -34,7 +34,7 @@ export const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     2: {
       CylnType: "",
@@ -42,7 +42,7 @@ export const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     3: {
       CylnType: "",
@@ -50,7 +50,7 @@ export const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
   },
   D2: "",
