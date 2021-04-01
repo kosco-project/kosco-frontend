@@ -1,8 +1,8 @@
 import CForm from "../../components/doc/C/CForm";
-import useTemporaryStorage from "../../hooks/useTemporaryStorage";
+import useStorage from "../../hooks/useStorage";
 
 const CConatiner = () => {
-  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage, onKeyValueForm } = useTemporaryStorage({
+  const { onWorkingSystem, onWorkingSystemChecked, onStorage, onKeyValueForm } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -208,7 +208,7 @@ const CConatiner = () => {
   })
 
   return (
-    <CForm onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} temporaryStorage={temporaryStorage}/>
+    <CForm onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage}/>
   )
 }
 

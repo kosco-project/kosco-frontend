@@ -15,15 +15,15 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const A2Form = ({ onProductsDescription, onInspectionDescription, temporaryStorage }) => {
+const A2Form = ({ onProductsDescription, onInspectionDescription, onStorage }) => {
   return (
-    <form onSubmit={e => temporaryStorage(e, {form : "A2"})}>
+    <form >
       <Info />
       <A2Top onProductsDescription={onProductsDescription}/>
       <A2Bottom onInspectionDescription={onInspectionDescription}/>
       <ButtonBox>
-        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="A2" path="save"/>
-        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="A2" path="complete"/>
+        <TemporaryStorageButton temporaryStorage={onStorage} form="A2" path="save"/>
+        <InspectionCompleteButton temporaryStorage={onStorage} form="A2" path="complete"/>
       </ButtonBox>
     </form>
   );

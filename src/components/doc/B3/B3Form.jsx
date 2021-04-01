@@ -16,16 +16,16 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, temporaryStorage }) => {
+const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, onStorage }) => {
   return (
-    <form onSubmit={e => temporaryStorage(e, { form: "B3" })}>
+    <form>
       <Info />
       <B3Top units={units} onWorkingSystem={onWorkingSystem}/>
       <B3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
       <B3Bottom2 onKeyValueForm={onKeyValueForm}/>
       <ButtonBox>
-        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="B3" path="save"/>
-        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="B3" path="complete"/>
+        <TemporaryStorageButton onStorage={onStorage} form="B3" path="save"/>
+        <InspectionCompleteButton onStorage={onStorage} form="B3" path="complete"/>
       </ButtonBox>
     </form>
   );

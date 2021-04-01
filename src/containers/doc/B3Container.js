@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import B3Form from "../../components/doc/B3/B3Form";
-import useTemporaryStorage from "../../hooks/useTemporaryStorage";
+import useStorage from "../../hooks/useStorage";
 
 const B3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, temporaryStorage, onKeyValueForm } = useTemporaryStorage({
+  const { onWorkingSystem, onWorkingSystemChecked, onStorage, onKeyValueForm } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -138,7 +138,7 @@ const B3Container = () => {
     })();
   }, []);
   return (
-    <B3Form units={units} onWorkingSystem={onWorkingSystem} onWorkingSystemChecked={onWorkingSystemChecked} onKeyValueForm={onKeyValueForm} temporaryStorage={temporaryStorage}/>
+    <B3Form units={units} onWorkingSystem={onWorkingSystem} onWorkingSystemChecked={onWorkingSystemChecked} onKeyValueForm={onKeyValueForm} onStorage={onStorage}/>
   )
 }
 

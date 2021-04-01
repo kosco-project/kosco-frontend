@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import H2AForm from '../../components/doc/H2-A/H2AForm';
+import H2AContainer from '../../containers/doc/H2AContainer';
 
 const H2A = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const H2A = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <H2AForm />
+      <H2AContainer />
     </AppWrapper>
   );
 };
