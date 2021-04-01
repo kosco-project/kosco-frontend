@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H3TopTableRow from './H3TopTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   display: flex;
@@ -97,26 +96,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H3Top = () => {
-  const datas = [
-    'MASKS CHECKED',
-    'BREATHING VALVE CHECKED',
-    'PRESSURE REGULATOR CHECKED',
-    'SUPPLY HOSE CONNECTION CHECKED',
-    'OXYGEN INHALER CHECKED',
-    'DEVICE WHIT FUNCTION TEST',
-    'SERVICE LABEL PUT ON DEVICE',
-    'DELETE',
-  ];
-
-  const nextId = useRef(2);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-  ], nextId);
-   
-
+const H3Top = ({ datas, lists, onRemove, onInsert, onChangeD1, onChange }) => {
   return (
     <>
       <TopBox>
@@ -129,8 +109,8 @@ const H3Top = () => {
         <div className='right-box'>
           <div className='title'>SPECIFICATION OF SETS BELOWS ;</div>
           <div className='description-box'>
-            {lists.map((list, index) => (
-              <H3TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+            {lists.map(list => (
+              <H3TopTableRow key={list.id} id={list.id} onRemove={onRemove} onChangeD1={onChangeD1} onChange={onChange}/>
             ))}
           </div>
         </div>

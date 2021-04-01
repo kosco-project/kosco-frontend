@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import H3Form from '../../components/doc/H3/H3Form';
+import H3Container from '../../containers/doc/H3Container';
 
 const H3 = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const H3 = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <H3Form />
+      <H3Container />
     </AppWrapper>
   );
 };
