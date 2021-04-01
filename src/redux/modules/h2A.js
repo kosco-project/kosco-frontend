@@ -14,7 +14,7 @@ export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const storage = createAction(STORAGE);
 
 // INITIAL STATE
-const initialState = {
+export const initialState = {
   H: {
     RCVNO: "",
     VESSELNM: "",
