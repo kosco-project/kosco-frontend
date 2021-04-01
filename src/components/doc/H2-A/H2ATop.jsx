@@ -53,22 +53,6 @@ const ButtonDiv = styled.div`
 `;
 
 const H2ATop = ({ onChange, onRemove, onInsert, lists }) => {
-  // const nextId = useRef(5);
-  // const [onInsert, onRemove, lists] = useLists([
-  //   {
-  //     id: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //   },
-  //   {
-  //     id: 3,
-  //   },
-  //   {
-  //     id: 4,
-  //   }
-  // ], nextId);
-
 
   return (
     <>

@@ -14,7 +14,7 @@ export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const storage = createAction(STORAGE);
 
 // INITIAL STATE
-const initialState = {
+export const initialState = {
   H: {
     RCVNO: "",
     VESSELNM: "",
@@ -26,7 +26,7 @@ const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     1: {
       CylnType: "",
@@ -34,7 +34,7 @@ const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     2: {
       CylnType: "",
@@ -42,7 +42,7 @@ const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
     3: {
       CylnType: "",
@@ -50,7 +50,7 @@ const initialState = {
       WorkPress: "",
       SerialNo: "",
       TestDt:new Date(),
-      Perform: ""
+      Perform: "GOOD"
     },
   },
   D2: "",

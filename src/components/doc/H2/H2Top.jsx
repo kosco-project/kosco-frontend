@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H2TableRow from './H2TableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -52,22 +51,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H2Top = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
+const H2Top = ({ onChange, onRemove, onInsert, lists }) => {
+
 
   return (
     <>
@@ -87,7 +72,7 @@ const H2Top = () => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H2TableRow key={list.id} id={list.id} onRemove={onRemove} />
+              <H2TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange}/>
             ))}
           </tbody>
         </table>
