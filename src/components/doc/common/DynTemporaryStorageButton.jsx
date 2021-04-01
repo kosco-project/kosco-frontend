@@ -11,9 +11,9 @@ const Button = styled.button`
     color: #fff;
 `;
 
-const DynTemporaryStorageButton = ({ onTemporaryStorage, form, path }) => {
+const DynTemporaryStorageButton = ({ onStorage, form, path }) => {
   return (
-      <Button type='submit' onClick={e => onTemporaryStorage(e, form, path)}>임시 저장</Button>
+      <Button type='submit' onClick={e => onStorage(e, form, path)}>임시 저장</Button>
   );
 };
 

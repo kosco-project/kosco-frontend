@@ -12,9 +12,9 @@ const Button = styled.button `
     color: #fff;
 `;
 
-const DynInspectionCompleteButton = ({ onTemporaryStorage, form, path }) => {
+const DynInspectionCompleteButton = ({ onStorage, form, path }) => {
   return (
-      <Button type='submit' onClick={e => onTemporaryStorage(e, form, path)}>검사 완료</Button>
+      <Button type='submit' onClick={e => onStorage(e, form, path)}>검사 완료</Button>
   );
 };
 
