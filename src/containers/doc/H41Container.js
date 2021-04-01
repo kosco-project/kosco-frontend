@@ -1,13 +1,13 @@
-import H2AForm from "../../components/doc/H2-A/H2AForm";
+import H41Form from "../../components/doc/H4-1/H41Form";
 import useH2H4 from "../../hooks/useH2H4";
 import { addInitialState, changeField, deleteInitialState, storage, changeTextArea } from "../../redux/modules/h2A";
 
-const H2AContainer = () => {
+const H41Container = () => {
   const { onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists } = useH2H4(addInitialState, changeField, deleteInitialState, storage, changeTextArea);
 
   return (
-    <H2AForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea}/>
+    <H41Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea}/>
   )
 }
 
-export default H2AContainer;
+export default H41Container;

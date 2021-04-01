@@ -26,7 +26,7 @@ const H2ABottom = ({ onChangeTextArea }) => {
     <BottomBox>
       <div className='title'>Recommendation ;</div>
       <div className='description'>
-        <textarea name='' id='' onChange={onChangeTextArea}></textarea>
+        <textarea onChange={onChangeTextArea}></textarea>
       </div>
     </BottomBox>
   );

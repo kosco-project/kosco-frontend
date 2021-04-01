@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H4TableRow from './H4TableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -50,22 +49,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H4Top = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
+const H4Top = ({ onChange, onRemove, onInsert, lists }) => {
+
 
   return (
     <>
@@ -85,7 +70,7 @@ const H4Top = () => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H4TableRow key={list.id} id={list.id} onRemove={onRemove} />
+              <H4TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange}/>
             ))}
           </tbody>
         </table>
