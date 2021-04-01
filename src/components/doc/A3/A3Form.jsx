@@ -15,15 +15,15 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const A3Form = ({ units, onWorkingSystemChecked, onWorkingSystem, temporaryStorage }) => {
+const A3Form = ({ units, onWorkingSystemChecked, onWorkingSystem, onStorage }) => {
   return (
-    <form onSubmit={e => temporaryStorage(e, { form: "A3" })}>
+    <form>
       <Info />
       <A3Top units={units} onWorkingSystem={onWorkingSystem}/>
       <A3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} />
       <ButtonBox>
-        <TemporaryStorageButton temporaryStorage={temporaryStorage} form="A3" path="save"/>
-        <InspectionCompleteButton temporaryStorage={temporaryStorage} form="A3" path="complete"/>
+        <TemporaryStorageButton onStorage={onStorage} form="A3" path="save"/>
+        <InspectionCompleteButton onStorage={onStorage} form="A3" path="complete"/>
       </ButtonBox>
     </form>
   );

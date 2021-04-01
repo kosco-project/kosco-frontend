@@ -16,7 +16,7 @@ const ButtonBox = styled.div`
 
 const B1Form = ({ onChange, onRemove, onInsert, lists, onTemporaryStorage }) => {
   return (
-    <form onSubmit={onTemporaryStorage}>
+    <form>
       <Info />
       <B1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <ButtonBox>

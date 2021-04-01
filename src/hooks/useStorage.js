@@ -89,7 +89,7 @@ const useTemporaryStorage = initialState => {
     }
   }
 
-  const temporaryStorage = async (e, form, path) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     await setState({
       ...state,
@@ -111,7 +111,7 @@ const useTemporaryStorage = initialState => {
 
 
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, temporaryStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm }
+  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm }
 }
 
 export default useTemporaryStorage;

@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H2ATableRow from './H2ATableRow';
-import useLists from '../../../hooks/useLists';
+// import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -52,22 +52,22 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H2ATop = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
+const H2ATop = ({ onChange, onRemove, onInsert, lists }) => {
+  // const nextId = useRef(5);
+  // const [onInsert, onRemove, lists] = useLists([
+  //   {
+  //     id: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //   },
+  //   {
+  //     id: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //   }
+  // ], nextId);
 
 
   return (
@@ -88,7 +88,7 @@ const H2ATop = () => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} />
+              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} />
             ))}
           </tbody>
         </table>
