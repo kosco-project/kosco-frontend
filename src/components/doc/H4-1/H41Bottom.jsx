@@ -21,12 +21,12 @@ const BottomBox = styled.div`
   }
 `;
 
-const H41Bottom = () => {
+const H41Bottom = ({ onChangeTextArea }) => {
   return (
     <BottomBox>
       <div className='title'>Recommendation ;</div>
       <div className='description'>
-        <textarea name='' id=''></textarea>
+        <textarea onChange={onChangeTextArea}></textarea>
       </div>
     </BottomBox>
   );

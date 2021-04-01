@@ -22,8 +22,8 @@ const H4Form = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextAr
       <H4Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <H4Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="H2" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="H2" path="complete"/>
+        <DynTemporaryStorageButton onStorage={onStorage} form="H4" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="H4" path="complete"/>
       </ButtonBox>
     </form>
   );
