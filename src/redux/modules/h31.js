@@ -1,14 +1,14 @@
 import { createAction, handleActions } from 'redux-actions';
 
 // ACTION TYPE
-const CHANGE_FIELD_D1 = 'h3/CHANGE_FIELD_D1';
-const CHANGE_FIELD = 'h3/CHANGE_FIELD';
-const CHANGE_TEXT_AREA = 'h3/CHANGE_TEXT_AREA';
-const ADD_INITIALSTATE = 'h3/ADD_INITIALSTATE';
-const ADD_INITIALSTATE_D2 = 'h3/ADD_INITIALSTATE_D2';
-const DELETE_INITIALSTATE = 'h3/DELETE_INITIALSTATE';
-const DELETE_INITIALSTATE_D2 = 'h3/DELETE_INITIALSTATE_D2';
-const STORAGE = 'h3/TEMPORARY_STORAGE';
+const CHANGE_FIELD_D1 = 'h31/CHANGE_FIELD_D1';
+const CHANGE_FIELD = 'h31/CHANGE_FIELD';
+const CHANGE_TEXT_AREA = 'h31/CHANGE_TEXT_AREA';
+const ADD_INITIALSTATE = 'h31/ADD_INITIALSTATE';
+const ADD_INITIALSTATE_D2 = 'h31/ADD_INITIALSTATE_D2';
+const DELETE_INITIALSTATE = 'h31/DELETE_INITIALSTATE';
+const DELETE_INITIALSTATE_D2 = 'h31/DELETE_INITIALSTATE_D2';
+const STORAGE = 'h31/TEMPORARY_STORAGE';
 
 // CREATE ACTION
 export const changeFieldD1 = createAction(CHANGE_FIELD_D1);
@@ -50,7 +50,7 @@ const initialState = {
 };
 
 // REDUCER
-const h3Reducer = handleActions(
+const h31Reducer = handleActions(
   {
 
     [CHANGE_FIELD_D1]: (state, { payload: { id, name, checked } }) => {
@@ -160,4 +160,4 @@ const h3Reducer = handleActions(
 );
 
 
-export default h3Reducer;
+export default h31Reducer;
