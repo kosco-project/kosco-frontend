@@ -1,7 +1,7 @@
 import React from 'react';
 import DeleteButton from '../common/DeleteButton';
 
-const H31BttomTableRow = ({ id, onRemoveD2, onChange, num }) => {
+const H3BottomTableRow = ({ id, onRemoveD2, onChange, num }) => {
   const inputArg = ({ target }) => onChange({ target, id });
   return (
     <tr>
@@ -30,4 +30,4 @@ const H31BttomTableRow = ({ id, onRemoveD2, onChange, num }) => {
   );
 };
 
-export default H31BttomTableRow;
+export default H3BottomTableRow;

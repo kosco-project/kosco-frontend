@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H31TopTableRow from './H31TopTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   display: flex;
@@ -97,27 +96,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H31Top = () => {
-  const datas = [
-    'FACE MASK CHECKED',
-    'BREATHING VALVE CHECKED',
-    'REGULATOR UNIT CHECKED',
-    'HARNESS CHECKED',
-    'FUNCTION TEST WITH TEST EQUIPMENT',
-    'SERVICE LABEL PUT ON EQUIPMENT',
-    'CYLINDER INSPECTED AS PER ENCLOSED SERVICE CHART H4.',
-    'DELETE',
-  ];
-
-  const nextId = useRef(2);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-  ], nextId);
-   
-
-
+const H31Top = ({ datas, lists, onRemove, onInsert, onChangeD1, onChange }) => {
   return (
     <>
       <TopBox>
@@ -130,8 +109,8 @@ const H31Top = () => {
         <div className='right-box'>
           <div className='title'>SPECIFICATION OF SETS BELOWS ;</div>
           <div className='description-box'>
-            {lists.map((list, index) => (
-              <H31TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+            {lists.map(list => (
+              <H31TopTableRow key={list.id} id={list.id} onRemove={onRemove} onChangeD1={onChangeD1} onChange={onChange}/>
             ))}
           </div>
         </div>
