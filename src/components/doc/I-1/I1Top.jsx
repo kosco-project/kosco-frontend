@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import I1TableRow from './I1TableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -51,23 +50,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const I1Top = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
-   
+const I1Top = ({ units, onChange, onRemove, onInsert, lists }) => { 
 
   return (
     <>
@@ -87,7 +70,7 @@ const I1Top = () => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <I1TableRow key={list.id} id={list.id} onRemove={onRemove}/>
+              <I1TableRow key={list.id} id={list.id} onRemove={onRemove} units={units} onChange={onChange}/>
             ))}
           </tbody>
         </table>

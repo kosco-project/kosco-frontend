@@ -1,13 +1,11 @@
-// H2, H2-A, H4, H4-1 컴포넌트에서 사용
-
 import { createAction, handleActions } from 'redux-actions';
 
 // ACTION TYPE
-const CHANGE_FIELD = 'h2A/CHANGE_FIELD';
+const CHANGE_FIELD = 'i1/CHANGE_FIELD';
 const CHANGE_TEXT_AREA = 'h2A/CHANGE_TEXT_AREA';
-const ADD_INITIALSTATE = 'h2A/ADD_INITIALSTATE';
-const DELETE_INITIALSTATE = 'h2A/DELETE_INITIALSTATE';
-const STORAGE = 'h2A/STORAGE';
+const ADD_INITIALSTATE = 'i1/ADD_INITIALSTATE';
+const DELETE_INITIALSTATE = 'i1/DELETE_INITIALSTATE';
+const STORAGE = 'i1/STORAGE';
 // CREATE ACTION
 export const changeField = createAction(CHANGE_FIELD);
 export const changeTextArea = createAction(CHANGE_TEXT_AREA);
@@ -15,7 +13,7 @@ export const addInitialState = createAction(ADD_INITIALSTATE);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const storage = createAction(STORAGE);
 
-// INITIAL STATE
+//  INITIAL STATE 
 const initialState = {
   H: {
     RCVNO: "",
@@ -24,42 +22,42 @@ const initialState = {
   D1: {
     0: {
       CylnType: "",
-      Volume: "",
-      WorkPress: "",
+      Type: "",
+      MFGDt: new Date(),
       SerialNo: "",
-      TestDt:new Date(),
-      Perform: "GOOD"
+      Pressure: "",
+      Perform: "", 
     },
     1: {
       CylnType: "",
-      Volume: "",
-      WorkPress: "",
+      Type: "",
+      MFGDt: new Date(),
       SerialNo: "",
-      TestDt:new Date(),
-      Perform: "GOOD"
+      Pressure: "",
+      Perform: "", 
     },
     2: {
       CylnType: "",
-      Volume: "",
-      WorkPress: "",
+      Type: "",
+      MFGDt: new Date(),
       SerialNo: "",
-      TestDt:new Date(),
-      Perform: "GOOD"
+      Pressure: "",
+      Perform: "", 
     },
     3: {
       CylnType: "",
-      Volume: "",
-      WorkPress: "",
+      Type: "",
+      MFGDt: new Date(),
       SerialNo: "",
-      TestDt:new Date(),
-      Perform: "GOOD"
-    },
+      Pressure: "",
+      Perform: "", 
+    }
   },
   D2: "",
-};
+}
 
 // REDUCER
-const H2AReducer = handleActions(
+const i1Reducer = handleActions(
   {
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
       return {
@@ -73,6 +71,7 @@ const H2AReducer = handleActions(
         }
       }
     },
+    
     [CHANGE_TEXT_AREA]: (state, { payload: value }) => {
       return {
         ...state,
@@ -80,19 +79,18 @@ const H2AReducer = handleActions(
       }
     },
 
-    [ADD_INITIALSTATE]: (state, { payload : id }) => {
+    [ADD_INITIALSTATE]: (state, { payload: id }) => {
       return {
         ...state,
         D1: {
           ...state.D1,
           [id]: {
-            ...state.D1.id,
             CylnType: "",
-            Volume: "",
-            WorkPress: "",
+            Type: "",
+            MFGDt: new Date(),
             SerialNo: "",
-            TestDt:new Date(),
-            Perform: ""
+            Pressure: "",
+            Perform: "",
           },
         }
       }
@@ -114,10 +112,9 @@ const H2AReducer = handleActions(
           VESSELNM,
         }
       }
-    },
+    }
   },
   initialState
 );
 
-
-export default H2AReducer;
+export default i1Reducer;
