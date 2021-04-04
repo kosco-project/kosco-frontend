@@ -1,12 +1,14 @@
 import React from 'react';
 import DeleteButton from '../common/DeleteButton';
 
-const H31TopTableRow = ({ id, onRemove, onChangeD1, onChange }) => {
+const H31TopTableRow = ({ id, onRemove, onChangeD1, num }) => {
   const checkBoxArgument = ({ target }) => onChangeD1({ target, id })
   return (
     <div>
       <div className='title'>
-        <input type='text' style={{ width: '100%' }} onChange={({ target }) => onChange({ target, id })} name="SetNo1" data-form="D1"/>
+        <div style={{ width: '100%'}}>
+          {`Set No.` + num}
+        </div>
       </div>
       <div className='description'>
         <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo2"/>

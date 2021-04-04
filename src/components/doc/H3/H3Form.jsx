@@ -21,7 +21,7 @@ const H3Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, on
   return (
     <form>
       <Info />
-      <H3Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1} onChange={onChange}/>
+      <H3Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
       <H3Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists}/>
       <H3Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
