@@ -96,7 +96,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H3Top = ({ datas, lists, onRemove, onInsert, onChangeD1, onChange }) => {
+const H3Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
   return (
     <>
       <TopBox>
@@ -109,8 +109,8 @@ const H3Top = ({ datas, lists, onRemove, onInsert, onChangeD1, onChange }) => {
         <div className='right-box'>
           <div className='title'>SPECIFICATION OF SETS BELOWS ;</div>
           <div className='description-box'>
-            {lists.map(list => (
-              <H3TopTableRow key={list.id} id={list.id} onRemove={onRemove} onChangeD1={onChangeD1} onChange={onChange}/>
+            {lists.map((list, i) => (
+              <H3TopTableRow key={list.id} num={i + 1} id={list.id} onRemove={onRemove} onChangeD1={onChangeD1}/>
             ))}
           </div>
         </div>

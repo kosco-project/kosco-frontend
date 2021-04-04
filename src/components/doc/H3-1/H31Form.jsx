@@ -21,12 +21,12 @@ const H31Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, o
   return (
     <form>
       <Info />
-      <H31Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1} onChange={onChange}/>
+      <H31Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
       <H31Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists}/>
       <H31Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="H3" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="H3" path="complete"/>
+        <DynTemporaryStorageButton onStorage={onStorage} form="H3-1" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="H3-1" path="complete"/>
       </ButtonBox>
     </form>
   );
