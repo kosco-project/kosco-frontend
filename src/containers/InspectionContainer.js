@@ -32,7 +32,9 @@ const InspectionContainer = () => {
   useEffect(() => {
     (async () => {
       const res = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api/inspectionList/${inputValue.startDate.format('YYYY-MM-DD')}/${inputValue.endDate.format('YYYY-MM-DD')}/${inputValue.process}`
+        `${process.env.REACT_APP_SERVER_URL}/api/inspectionList/${inputValue.startDate.format('YYYY-MM-DD')}/${inputValue.endDate.format('YYYY-MM-DD')}/${inputValue.process}`, {
+          headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
+        }
       );
       setList(res.data.list);
     })();
