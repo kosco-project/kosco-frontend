@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 
 // ACTION TYPE
 const CHANGE_FIELD = 'i1/CHANGE_FIELD';
-const CHANGE_TEXT_AREA = 'h2A/CHANGE_TEXT_AREA';
+const CHANGE_TEXT_AREA = 'i1/CHANGE_TEXT_AREA';
 const ADD_INITIALSTATE = 'i1/ADD_INITIALSTATE';
 const DELETE_INITIALSTATE = 'i1/DELETE_INITIALSTATE';
 const STORAGE = 'i1/STORAGE';
