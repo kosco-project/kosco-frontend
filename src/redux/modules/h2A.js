@@ -1,3 +1,5 @@
+// H2, H2-A, H4, H4-1 컴포넌트에서 사용
+
 import { createAction, handleActions } from 'redux-actions';
 
 // ACTION TYPE
@@ -14,7 +16,7 @@ export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const storage = createAction(STORAGE);
 
 // INITIAL STATE
-export const initialState = {
+const initialState = {
   H: {
     RCVNO: "",
     VESSELNM: "",
