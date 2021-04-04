@@ -20,7 +20,7 @@ const I1TableRow = ({ id, onRemove, onChange, units }) => {
         <DatePicker
           selected={MFGDt}
           name="MFGDt"
-          dateFormat="MMM.yy"
+          dateFormat="MMM.yyyy"
           onChange={value => onChange({ id, target: { name: "MFGDt", value } })}
           showMonthYearPicker
         />
