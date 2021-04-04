@@ -1,11 +1,12 @@
 import { createAction, handleActions } from 'redux-actions';
 
 // ACTION TYPE
-const CHANGE_FIELD = 'i1/CHANGE_FIELD';
-const CHANGE_TEXT_AREA = 'i1/CHANGE_TEXT_AREA';
-const ADD_INITIALSTATE = 'i1/ADD_INITIALSTATE';
-const DELETE_INITIALSTATE = 'i1/DELETE_INITIALSTATE';
-const STORAGE = 'i1/STORAGE';
+const CHANGE_FIELD = 'g/CHANGE_FIELD';
+const CHANGE_TEXT_AREA = 'g/CHANGE_TEXT_AREA';
+const ADD_INITIALSTATE = 'g/ADD_INITIALSTATE';
+const DELETE_INITIALSTATE = 'g/DELETE_INITIALSTATE';
+const STORAGE = 'g/STORAGE';
+
 // CREATE ACTION
 export const changeField = createAction(CHANGE_FIELD);
 export const changeTextArea = createAction(CHANGE_TEXT_AREA);
@@ -13,83 +14,88 @@ export const addInitialState = createAction(ADD_INITIALSTATE);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const storage = createAction(STORAGE);
 
-//  INITIAL STATE 
+// INITIAL STATE
 const initialState = {
   H: {
     RCVNO: "",
-    VESSELNM: "",
+    VESSELNM: ""
   },
-  D1: {
+  D2: {
     0: {
-      CylnType: "",
-      Type: "",
-      MFGDt: new Date(),
+      Qty: "",
       SerialNo: "",
-      Pressure: "",
-      Perform: "", 
+      Manuf: "",
+      Type: "",
+      Capacity: "",
+      TestDt: new Date(),
+      Perform: "",
     },
     1: {
-      CylnType: "",
-      Type: "",
-      MFGDt: new Date(),
+      Qty: "",
       SerialNo: "",
-      Pressure: "",
-      Perform: "", 
+      Manuf: "",
+      Type: "",
+      Capacity: "",
+      TestDt: new Date(),
+      Perform: "",
     },
     2: {
-      CylnType: "",
-      Type: "",
-      MFGDt: new Date(),
+      Qty: "",
       SerialNo: "",
-      Pressure: "",
-      Perform: "", 
+      Manuf: "",
+      Type: "",
+      Capacity: "",
+      TestDt: new Date(),
+      Perform: "",
     },
     3: {
-      CylnType: "",
-      Type: "",
-      MFGDt: new Date(),
+      Qty: "",
       SerialNo: "",
-      Pressure: "",
-      Perform: "", 
-    }
+      Manuf: "",
+      Type: "",
+      Capacity: "",
+      TestDt: new Date(),
+      Perform: "",
+    },
   },
-  D2: "",
+  D3: "",
 }
 
 // REDUCER
-const i1Reducer = handleActions(
+const gReducer = handleActions(
   {
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
       return {
         ...state,
-        D1: {
-          ...state.D1,
+        D2: {
+          ...state.D2,
           [id]: {
-            ...state.D1[id],
+            ...state.D2[id],
             [name]: value,
           },
         }
       }
     },
-    
+
     [CHANGE_TEXT_AREA]: (state, { payload: value }) => {
       return {
         ...state,
-        D2: value,
+        D3: value,
       }
     },
 
     [ADD_INITIALSTATE]: (state, { payload: id }) => {
       return {
         ...state,
-        D1: {
-          ...state.D1,
+        D2: {
+          ...state.D2,
           [id]: {
-            CylnType: "",
-            Type: "",
-            MFGDt: new Date(),
+            Qty: "",
             SerialNo: "",
-            Pressure: "",
+            Manuf: "",
+            Type: "",
+            Capacity: "",
+            TestDt: new Date(),
             Perform: "",
           },
         }
@@ -97,12 +103,13 @@ const i1Reducer = handleActions(
     },
 
     [DELETE_INITIALSTATE]: (state, { payload: { id } }) => {
-      const { [id]: value, ...restItems } = state.D1;
+      const { [id]: value, ...restItems } = state.D2;
       return {
         ...state,
-        D1: restItems,
+        D2: restItems,
       }
     },
+
     [STORAGE]: (state, { payload: { RCVNO, VESSELNM } }) => {
       return {
         ...state,
@@ -117,4 +124,4 @@ const i1Reducer = handleActions(
   initialState
 );
 
-export default i1Reducer;
+export default gReducer;

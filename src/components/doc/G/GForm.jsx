@@ -1,20 +1,34 @@
 import React from 'react';
-import ButtonBox from '../common/ButtonBox';
+import styled from 'styled-components';
 import Info from '../common/Info';
+import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
+import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
 import GBottom from './GBottom';
 import GBottom2 from './GBottom2';
 import GBottom3 from './GBottom3';
 import GTop from './GTop';
 
-const GForm = () => {
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  text-align: center;
+  Button {
+    margin: 0 15px;
+  }`;
+  
+const GForm = ({ onChange, onRemove, onInsert, lists, onStorage, units, onChangeTextArea }) => {
   return (
     <form>
       <Info />
       <GTop />
-      <GBottom />
-      <GBottom2 />
+      <GBottom units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <GBottom2 onChangeTextArea={onChangeTextArea}/>
       <GBottom3 />
-      <ButtonBox />
+      <ButtonBox>
+        <DynTemporaryStorageButton onStorage={onStorage} form="G" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="G" path="complete"/>
+      </ButtonBox>
     </form>
   );
 };
