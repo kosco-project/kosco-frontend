@@ -21,12 +21,12 @@ const BottomBox = styled.div`
   }
 `;
 
-const GBottom2 = () => {
+const GBottom2 = ({ onChangeTextArea }) => {
   return (
     <BottomBox>
       <div className='title'>Recommendation ;</div>
       <div className='description'>
-        <textarea name='' id=''></textarea>
+        <textarea onChange={onChangeTextArea}></textarea>
       </div>
     </BottomBox>
   );

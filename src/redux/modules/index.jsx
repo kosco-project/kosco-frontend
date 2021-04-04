@@ -5,6 +5,7 @@ import h2A from './h2A';
 import h3 from './h3';
 import h31 from './h31';
 import i1 from './i1';
+import g from './g';
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   h3,
   h31,
   i1,
+  g,
 });
 
 export default rootReducer;
