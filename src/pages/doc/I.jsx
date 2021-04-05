@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import IForm from '../../components/doc/I/IForm';
+import IContainer from '../../containers/doc/IContainer';
 
 const I = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const I = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <IForm />
+      <IContainer />
     </AppWrapper>
   );
 };
