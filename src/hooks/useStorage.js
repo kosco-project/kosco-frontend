@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 const useTemporaryStorage = initialState => {
   console.log('초기값', initialState);
+
   const [state, setState] = useState(initialState);
   
   const onProductsDescription = e => {
@@ -62,6 +63,55 @@ const useTemporaryStorage = initialState => {
     } 
   }
 
+
+  const checkState = e => {
+    const { checked, dataset } = e.target
+    if (checked && dataset.key === 'carriedOut') {
+      setState({
+        ...state,
+        [dataset.form]: {
+          ...state[dataset.form],
+          [dataset.name]: {
+            ...state[dataset.form][dataset.name],
+            carriedOut: 1,
+            notCarried: 0,
+            notApplicable: 0,
+          }
+        }
+      })
+    }
+    
+    if (checked && dataset.key === 'notCarried') {
+      setState({
+        ...state,
+        [dataset.form]: {
+          ...state[dataset.form],
+          [dataset.name]: {
+            ...state[dataset.form][dataset.name],
+            carriedOut: 0,
+            notCarried: 1,
+            notApplicable: 0,
+          }
+        }
+      })
+    }
+
+    if (checked && dataset.key === 'notApplicable') {
+      setState({
+        ...state,
+        [dataset.form]: {
+          ...state[dataset.form],
+          [dataset.name]: {
+            ...state[dataset.form][dataset.name],
+            carriedOut: 0,
+            notCarried: 0,
+            notApplicable: 1,
+          }
+        }
+      })
+    }
+  }
+
   const onWorkingSystemChecked = e => {
     const { checked, dataset } = e.target
     if (checked) {
@@ -111,7 +161,7 @@ const useTemporaryStorage = initialState => {
 
 
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm }
+  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState }
 }
 
 export default useTemporaryStorage;

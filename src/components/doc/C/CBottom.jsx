@@ -58,7 +58,7 @@ const BottomBox = styled.div`
   }
 `;
 
-const CBottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
+const CBottom = ({ onWorkingSystem, checkState, state }) => {
   let id = 0;
   const datas = [
     'Tank main service valve closed and secured to prevent accidental discharge',
@@ -114,13 +114,13 @@ const CBottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td>
-                  <input type='checkbox' data-form="D2" data-name={id} data-key="carriedOut" onChange={onWorkingSystemChecked} />
+                  <input type='checkbox' data-form="D2" checked={state.D2[i].carriedOut === 1} data-name={id} data-key="carriedOut" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" data-name={id} data-key="notCarried" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" checked={state.D2[i].notCarried === 1} data-name={id} data-key="notCarried" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" data-name={id} data-key="notApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" checked={state.D2[i].notApplicable === 1} data-name={id} data-key="notApplicable" onChange={checkState} />
                 </td>
                 <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name={id++} data-key="Comm" onChange={onWorkingSystem}/>
