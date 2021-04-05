@@ -4,6 +4,7 @@ import b1 from './b1';
 import h2A from './h2A';
 import h3 from './h3';
 import h31 from './h31';
+import i from './i';
 import i1 from './i1';
 import g from './g';
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   h2A,
   h3,
   h31,
+  i,
   i1,
   g,
 });

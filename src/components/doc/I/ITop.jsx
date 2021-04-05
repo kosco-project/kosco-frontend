@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ITableRow from './ITableRow';
-import useLists from '../../../hooks/useLists';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -51,23 +50,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const ITop = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
-   
+const ITop = ({ onChange, onRemove, onInsert, lists, onChangeD2 }) => {
   return (
     <>
       <BottomBox>
@@ -84,7 +67,7 @@ const ITop = () => {
           </thead>
           <tbody>
           {lists.map((list, index) => (
-            <ITableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+            <ITableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
               ))}
           </tbody>
         </table>
@@ -94,9 +77,9 @@ const ITop = () => {
           </button>
         </ButtonDiv>
         <p className='title'>(2) Special Additional Requirements :</p>
-        <input type='text' style={{ marginBottom: 15, width: '100%', border: '1px solid #000' }} />
+        <input type='text' onChange={onChangeD2} name="0" style={{ marginBottom: 15, width: '100%', border: '1px solid #000' }} />
         <p className='title'>(3) Last Service Date / Service Station :</p>
-        <input type='text' style={{ width: '100%', border: '1px solid #000' }} />
+        <input type='text' onChange={onChangeD2} name="1" style={{ width: '100%', border: '1px solid #000' }} />
       </BottomBox>
     </>
   );

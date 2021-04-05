@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const BottomBox = styled.div`
@@ -42,7 +43,10 @@ const BottomBox = styled.div`
   }
 `;
 
-const IBottom = () => {
+const IBottom = ({ onChecked }) => {
+  const state = useSelector(state => state.i.D3);
+  const inputArg = ({ target }) => onChecked({ target });
+
   return (
     <BottomBox>
       <p className='title'>(4) Inspection Items :</p>
@@ -56,39 +60,39 @@ const IBottom = () => {
         </thead>
         <tbody>
           <tr>
-            <td>1) Lay the Suit on a Clean and Flat surface</td>
+            <td>1&#41; Lay the Suit on a Clean and Flat surface</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="0" data-key="Normal" checked={state[0].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="0" data-key="Abnormal" checked={state[0].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
           <tr>
             <td> Closure state of Storage Bag</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="1" data-key="Normal" checked={state[1].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
-            </td>
-          </tr>
-          <tr>
-            <td>3) State of Labelling of Donning instruction</td>
-            <td>
-              <input type='radio' checked />
-            </td>
-            <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="1" data-key="Abnormal" checked={state[1].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
           <tr>
-            <td>4) State of Labelling of Suit type and size</td>
+            <td>3&#41; State of Labelling of Donning instruction</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="2" data-key="Normal" checked={state[2].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="2" data-key="Abnormal" checked={state[2].Abnormal === 1} onChange={inputArg}/>
+            </td>
+          </tr>
+          <tr>
+            <td>4&#41; State of Labelling of Suit type and size</td>
+            <td>
+              <input type='checkbox' data-name="3" data-key="Normal" checked={state[3].Normal === 1} onChange={inputArg}/>
+            </td>
+            <td>
+              <input type='checkbox' data-name="3" data-key="Abnormal" checked={state[3].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
         </tbody>
@@ -104,66 +108,66 @@ const IBottom = () => {
         </thead>
         <tbody>
           <tr>
-            <td>1) Check Rips, Tears and / or Puncture</td>
+            <td>1&#41; Check Rips, Tears and / or Puncture</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="4" data-key="Normal" checked={state[4].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
-            </td>
-          </tr>
-          <tr>
-            <td>2) Check Zipper operation</td>
-            <td>
-              <input type='radio' checked />
-            </td>
-            <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="4" data-key="Abnormal" checked={state[4].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
           <tr>
-            <td>3) Check Head support and / or Buoyancy ring</td>
+            <td>2&#41; Check Zipper operation</td>
             <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="5" data-key="Normal" checked={state[5].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
-            </td>
-          </tr>
-          <tr>
-            <td>4) Check Inflation hose</td>
-            <td>
-              <input type='radio' />
-            </td>
-            <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="5" data-key="Abnormal" checked={state[5].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
           <tr>
-            <td>5) Check Retro-Reflective tape</td>
+            <td>3&#41; Check Head support and / or Buoyancy ring</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="6" data-key="Normal" checked={state[6].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
-            </td>
-          </tr>
-          <tr>
-            <td>6) Check Whistle, Light and Expiration of Batteies</td>
-            <td>
-              <input type='radio' />
-            </td>
-            <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="6" data-key="Abnormal" checked={state[6].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
           <tr>
-            <td>7) Make sure the suit is Dry inside and outside</td>
+            <td>4&#41; Check Inflation hose</td>
             <td>
-              <input type='radio' checked />
+              <input type='checkbox' data-name="7" data-key="Normal" checked={state[7].Normal === 1} onChange={inputArg}/>
             </td>
             <td>
-              <input type='radio' />
+              <input type='checkbox' data-name="7" data-key="Abnormal" checked={state[7].Abnormal === 1} onChange={inputArg}/>
+            </td>
+          </tr>
+          <tr>
+            <td>5&#41; Check Retro-Reflective tape</td>
+            <td>
+              <input type='checkbox' data-name="8" data-key="Normal" checked={state[8].Normal === 1} onChange={inputArg}/>
+            </td>
+            <td>
+              <input type='checkbox' data-name="8" data-key="Abnormal" checked={state[8].Abnormal === 1} onChange={inputArg}/>
+            </td>
+          </tr>
+          <tr>
+            <td>6&#41; Check Whistle, Light and Expiration of Batteies</td>
+            <td>
+              <input type='checkbox' data-name="9" data-key="Normal" checked={state[9].Normal === 1} onChange={inputArg}/>
+            </td>
+            <td>
+              <input type='checkbox' data-name="9" data-key="Abnormal" checked={state[9].Abnormal === 1} onChange={inputArg}/>
+            </td>
+          </tr>
+          <tr>
+            <td>7&#41; Make sure the suit is Dry inside and outside</td>
+            <td>
+              <input type='checkbox' data-name="10" data-key="Normal" checked={state[10].Normal === 1} onChange={inputArg}/>
+            </td>
+            <td>
+              <input type='checkbox' data-name="10" data-key="Abnormal" checked={state[10].Abnormal === 1} onChange={inputArg}/>
             </td>
           </tr>
         </tbody>

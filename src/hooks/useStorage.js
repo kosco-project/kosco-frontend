@@ -66,50 +66,19 @@ const useTemporaryStorage = initialState => {
 
   const checkState = e => {
     const { checked, dataset } = e.target
-    if (checked && dataset.key === 'carriedOut') {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            carriedOut: 1,
-            notCarried: 0,
-            notApplicable: 0,
-          }
+    if (!checked) return;
+    setState({
+      ...state,
+      [dataset.form]: {
+        ...state[dataset.form],
+        [dataset.name]: {
+          ...state[dataset.form][dataset.name],
+          carriedOut: dataset.key === 'carriedOut' ? 1 : 0,
+          notCarried: dataset.key === 'notCarried' ? 1 : 0,
+          notApplicable: dataset.key === 'notApplicable' ? 1 : 0,
         }
-      })
-    }
-    
-    if (checked && dataset.key === 'notCarried') {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            carriedOut: 0,
-            notCarried: 1,
-            notApplicable: 0,
-          }
-        }
-      })
-    }
-
-    if (checked && dataset.key === 'notApplicable') {
-      setState({
-        ...state,
-        [dataset.form]: {
-          ...state[dataset.form],
-          [dataset.name]: {
-            ...state[dataset.form][dataset.name],
-            carriedOut: 0,
-            notCarried: 0,
-            notApplicable: 1,
-          }
-        }
-      })
-    }
+      }
+    })
   }
 
   const onWorkingSystemChecked = e => {
