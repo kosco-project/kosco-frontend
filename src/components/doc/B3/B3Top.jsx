@@ -73,10 +73,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>1</td>
               <td>Manufacturer</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="0" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="0" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="0" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="0" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -85,7 +85,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="0" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="0" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -93,10 +93,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>2</td>
               <td>Model</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="1" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="1" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="1" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="1" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -105,7 +105,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="1" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="1" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -113,10 +113,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>3</td>
               <td>Serial no.</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="2" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="2" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="2" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="2" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -125,7 +125,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="2" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="2" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -133,10 +133,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>4</td>
               <td>Maximum Charging pressure</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="3" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="3" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="3" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="3" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -145,7 +145,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="3" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="3" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -153,10 +153,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>5</td>
               <td>Revolution</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="4" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="4" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="4" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="4" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -165,7 +165,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="4" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="4" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -173,10 +173,10 @@ const B3Top = ({ units, onWorkingSystem }) => {
               <td>6</td>
               <td>Location of compressor</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="5" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="5" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
-              <select name='' id='' data-form="D1" data-name="5" data-key="unit" onChange={onWorkingSystem}>
+              <select name='' id='' data-form="D1" data-name="5" data-key="Unit" onChange={onWorkingSystem}>
                   {units.map(unit => (
                     <option key={unit.CdNm} value={unit.CdNm}>
                       {unit.CdNm}
@@ -185,7 +185,7 @@ const B3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="5" data-key="remarks" onChange={onWorkingSystem} />
+              <input type='text' data-form="D1" data-name="5" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
           </tbody>

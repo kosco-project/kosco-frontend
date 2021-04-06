@@ -66,7 +66,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>Description</td>
               <td>Value</td>
               <td>Unit</td>
-              <td>Remarks</td>
+              <td>Remark</td>
             </tr>
           </thead>
           <tbody>
@@ -74,7 +74,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>1</td>
               <td>Manufacturer</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="0" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="0" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="0" data-key="unit" onChange={onWorkingSystem}>
@@ -86,7 +86,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="0" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="0" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -94,7 +94,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>2</td>
               <td>Location of foam tank</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="1" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="1" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="1" data-key="unit" onChange={onWorkingSystem}>
@@ -106,7 +106,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="1" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="1" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -114,7 +114,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>3</td>
               <td>Consisting of tank</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="2" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="2" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="2" data-key="unit" onChange={onWorkingSystem}>
@@ -126,7 +126,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="2" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="2" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -134,7 +134,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>4</td>
               <td>Liquid capacity</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="3" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="3" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="3" data-key="unit" onChange={onWorkingSystem}>
@@ -146,7 +146,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="3" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="3" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -154,7 +154,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>5</td>
               <td>Foam concentrate manufacturer / type</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="4" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="4" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="4" data-key="unit" onChange={onWorkingSystem}>
@@ -166,7 +166,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="4" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="4" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -174,7 +174,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>6</td>
               <td>Foam mixing rate (%)</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="5" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="5" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="5" data-key="unit" onChange={onWorkingSystem}>
@@ -186,7 +186,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="5" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="5" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -194,7 +194,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>7</td>
               <td>System Installation date</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="6" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="6" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="6" data-key="unit" onChange={onWorkingSystem}>
@@ -206,7 +206,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="6" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="6" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
 
@@ -214,7 +214,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
               <td>8</td>
               <td>Distribution line</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="7" data-key="value" onChange={onWorkingSystem}/>
+              <input type='text' data-form="D1" data-name="7" data-key="Value" onChange={onWorkingSystem}/>
               </td>
               <td>
                 <select name='' id='' data-form="D1" data-name="7" data-key="unit" onChange={onWorkingSystem}>
@@ -226,7 +226,7 @@ const A3Top = ({ units, onWorkingSystem }) => {
                 </select>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="7" data-key="remarks" onChange={onWorkingSystem} />
+                <input type='text' data-form="D1" data-name="7" data-key="Remark" onChange={onWorkingSystem} />
               </td>
             </tr>
           </tbody>
