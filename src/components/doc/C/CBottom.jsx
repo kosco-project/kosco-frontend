@@ -114,13 +114,13 @@ const CBottom = ({ onWorkingSystem, checkState, state }) => {
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td>
-                  <input type='checkbox' data-form="D2" checked={state.D2[i].carriedOut === 1} data-name={id} data-key="CarriedOut" onChange={checkState} />
+                  <input type='checkbox' data-form="D2" checked={state.D2[i].CarriedOut === 1} data-name={id} data-key="CarriedOut" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].notCarried === 1} data-name={id} data-key="NotCarried" onChange={checkState} />
+                <input type='checkbox' data-form="D2" checked={state.D2[i].NotCarried === 1} data-name={id} data-key="NotCarried" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].notApplicable === 1} data-name={id} data-key="NotApplicable" onChange={checkState} />
+                <input type='checkbox' data-form="D2" checked={state.D2[i].NotApp === 1} data-name={id} data-key="NotApp" onChange={checkState} />
                 </td>
                 <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name={id++} data-key="Comm" onChange={onWorkingSystem}/>

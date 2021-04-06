@@ -83,7 +83,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="0" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="0" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="0" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="0" data-key="Comm" onChange={onWorkingSystem}/>
@@ -100,7 +100,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="1" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="1" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="1" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="1" data-key="Comm" onChange={onWorkingSystem}/>
@@ -117,7 +117,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="2" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="2" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="2" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="2" data-key="Comm" onChange={onWorkingSystem}/>
@@ -134,7 +134,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="3" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="3" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="3" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="3" data-key="Comm" onChange={onWorkingSystem}/>
@@ -151,7 +151,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="4" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="4" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="4" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="4" data-key="Comm" onChange={onWorkingSystem}/>
@@ -168,7 +168,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="5" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="5" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="5" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="5" data-key="Comm" onChange={onWorkingSystem}/>
@@ -185,7 +185,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="6" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="6" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="6" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="6" data-key="Comm" onChange={onWorkingSystem}/>
@@ -202,7 +202,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="7" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="7" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="7" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="7" data-key="Comm" onChange={onWorkingSystem}/>
@@ -219,7 +219,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="8" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="8" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="8" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="8" data-key="Comm" onChange={onWorkingSystem}/>
@@ -236,7 +236,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="9" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="9" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="9" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="9" data-key="Comm" onChange={onWorkingSystem}/>
@@ -253,7 +253,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="10" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="10" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="10" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="10" data-key="Comm" onChange={onWorkingSystem}/>
@@ -270,7 +270,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="11" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="11" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="11" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="11" data-key="Comm" onChange={onWorkingSystem}/>
@@ -287,7 +287,7 @@ const B3Bottom = ({ onWorkingSystemChecked, onWorkingSystem }) => {
                 <input type='checkbox' data-form="D2" data-name="12" data-key="NotCarried" onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="12" data-key="NotApplicable" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="12" data-key="NotApp" onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
                 <input type='text' data-form="D2" data-name="12" data-key="Comm" onChange={onWorkingSystem}/>

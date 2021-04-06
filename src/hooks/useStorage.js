@@ -73,9 +73,9 @@ const useTemporaryStorage = initialState => {
         ...state[dataset.form],
         [dataset.name]: {
           ...state[dataset.form][dataset.name],
-          carriedOut: dataset.key === 'carriedOut' ? 1 : 0,
-          notCarried: dataset.key === 'notCarried' ? 1 : 0,
-          notApplicable: dataset.key === 'notApplicable' ? 1 : 0,
+          CarriedOut: dataset.key === 'CarriedOut' ? 1 : 0,
+          NotCarried: dataset.key === 'NotCarried' ? 1 : 0,
+          NotApplicable: dataset.key === 'NotApplicable' ? 1 : 0,
         }
       }
     })
