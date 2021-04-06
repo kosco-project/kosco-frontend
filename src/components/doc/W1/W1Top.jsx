@@ -32,7 +32,7 @@ const TopBox = styled.div`
   }
 `;
 
-const W1Top = () => {
+const W1Top = ({ onKeyValueForm }) => {
   const datas = ['MAKER', 'NUMER OF DISCHARGE NOZZLE', 'TYPE OF DETECTOR', 'COVERING'];
 
   return (
@@ -42,7 +42,7 @@ const W1Top = () => {
         {datas.map((data, i) => (
           <div className='form1' key={i}>
             {data} :
-            <input type='text' name='top1' />
+            <input type='text' onChange={onKeyValueForm} data-form="D1" data-name={i}/>
           </div>
         ))}
       </div>
