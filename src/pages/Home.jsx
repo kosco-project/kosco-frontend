@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../components/common/AppWrapper';
 import Header from '../components/common/Header';
-import CategoryList from '../components/home/CategoryList';
+import CategoryListContainer from '../containers/CategoryListContainer';
 
 const Home = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const Home = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <CategoryList />
+      <CategoryListContainer />
     </AppWrapper>
   );
 };
