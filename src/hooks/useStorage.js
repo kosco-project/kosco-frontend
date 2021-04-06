@@ -2,10 +2,16 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const useTemporaryStorage = initialState => {
-  console.log('초기값', initialState);
 
   const [state, setState] = useState(initialState);
   
+  const onChangeTextArea = e => {
+    const { value, dataset } = e.target
+    setState({
+      ...state,
+      [dataset.form] : value
+    })
+  }
   const onProductsDescription = e => {
     const { value, dataset } = e.target
       setState({
@@ -75,8 +81,21 @@ const useTemporaryStorage = initialState => {
           ...state[dataset.form][dataset.name],
           CarriedOut: dataset.key === 'CarriedOut' ? 1 : 0,
           NotCarried: dataset.key === 'NotCarried' ? 1 : 0,
-          NotApplicable: dataset.key === 'NotApplicable' ? 1 : 0,
+          NotApp: dataset.key === 'NotApp' ? 1 : 0,
         }
+      }
+    })
+  }
+  
+  // W
+  const onChangeCovering = e => {
+    const { checked, dataset } = e.target
+    if (!checked) return;
+    setState({
+      ...state,
+      D1: {
+        ...state.D1,
+        4: dataset.value,
       }
     })
   }
@@ -130,7 +149,7 @@ const useTemporaryStorage = initialState => {
 
 
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState }
+  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering }
 }
 
 export default useTemporaryStorage;
