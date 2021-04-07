@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import OX2Form from '../../components/doc/OX2/OX2Form';
+import OX2Container from '../../containers/doc/OX2Container';
 
 const OX2 = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const OX2 = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <OX2Form />
+      <OX2Container />
     </AppWrapper>
   );
 };

@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import OX2BttomTableRow from './OX2BttomTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -56,23 +55,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Bottom = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
-   
+const OX2Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists, units, onChangeDatePicker }) => {
   return (
     <>
       <TableBox>
@@ -91,14 +74,14 @@ const OX2Bottom = () => {
             </tr>
           </thead>
           <tbody>
-            {lists.map((list, index) => (
-              <OX2BttomTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+            {D2Lists.map((list, index) => (
+              <OX2BttomTableRow key={list.id} id={list.id} onRemoveD2={onRemoveD2} onChange={onChange} num={index + 1} units={units} onChangeDatePicker={onChangeDatePicker}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onInsert}>
+        <button type='button' onClick={onInsertD2}>
           추가
         </button>
       </ButtonDiv>
