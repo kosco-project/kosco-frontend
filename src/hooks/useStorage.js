@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const useTemporaryStorage = initialState => {
+const useStorage = initialState => {
 
   const [state, setState] = useState(initialState);
   
@@ -32,6 +32,21 @@ const useTemporaryStorage = initialState => {
         [dataset.name]: {
           ...state[dataset.form][dataset.name],
           [dataset.key]: value,
+        }
+      }
+    })
+  }
+  
+  // L1
+  const onchangeDatePicker = ({ target }) => {
+    const { form, name, key, value } = target
+    setState({
+      ...state,
+      [form]: {
+        ...state[form],
+        [name]: {
+          ...state[form][name],
+          [key]: value,
         }
       }
     })
@@ -149,7 +164,7 @@ const useTemporaryStorage = initialState => {
 
 
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering }
+  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering, onchangeDatePicker }
 }
 
-export default useTemporaryStorage;
+export default useStorage;
