@@ -104,14 +104,13 @@ const h3Reducer = handleActions(
           ...state.D1,
           [id]: {
             ...state.D1.id,
-            ins1: "",
+            ins1: 1,
             ins2: 1,
             ins3: 1,
             ins4: 1,
             ins5: 1,
             ins6: 1,
             ins7: 1,
-            ins8: 1,
           },
         }
       }

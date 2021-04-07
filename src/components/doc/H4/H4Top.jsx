@@ -49,7 +49,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H4Top = ({ onChange, onRemove, onInsert, lists }) => {
+const H4Top = ({ onChange, onRemove, onInsert, lists, units }) => {
 
 
   return (
@@ -70,7 +70,7 @@ const H4Top = ({ onChange, onRemove, onInsert, lists }) => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H4TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange}/>
+              <H4TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} units={units}/>
             ))}
           </tbody>
         </table>

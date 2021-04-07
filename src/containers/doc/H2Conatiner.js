@@ -3,10 +3,10 @@ import useH2H4 from "../../hooks/useH2H4";
 import { addInitialState, changeField, deleteInitialState, storage, changeTextArea } from "../../redux/modules/h2A";
 
 const H2Container = () => {
-  const { onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists } = useH2H4(addInitialState, changeField, deleteInitialState, storage, changeTextArea);
+  const { onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units } = useH2H4(addInitialState, changeField, deleteInitialState, storage, changeTextArea);
 
   return (
-    <H2Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea}/>
+    <H2Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea} units={units}/>
   )
 }
 

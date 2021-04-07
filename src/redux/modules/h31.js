@@ -28,14 +28,13 @@ const initialState = {
   },
   D1: {
     0: {
-      ins1: "",
+      ins1: 1,
       ins2: 1,
       ins3: 1,
       ins4: 1,
       ins5: 1,
       ins6: 1,
       ins7: 1,
-      ins8: 1,
     },
   },
   D2: {
