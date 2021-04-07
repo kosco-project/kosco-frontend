@@ -1,18 +1,32 @@
 import React from 'react';
-import ButtonBox from '../common/ButtonBox';
-import Info from '../common/Info';
+import styled from 'styled-components';
+import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
+import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';import Info from '../common/Info';
 import H1Bottom from './H1Bottom';
 import H1Bottom2 from './H1Bottom2';
 import H1Top from './H1Top';
 
-const H1Form = () => {
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  text-align: center;
+  Button {
+    margin: 0 15px;
+    cursor: pointer;
+  }`;
+
+const H1Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, onStorage, lists, D2Lists, datas, onInsertD2, onRemoveD2 }) => {
   return (
     <form>
       <Info />
-      <H1Top />
-      <H1Bottom />
-      <H1Bottom2 />
-      <ButtonBox />
+      <H1Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
+      <H1Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists}/>
+      <H1Bottom2 onChangeTextArea={onChangeTextArea}/>
+      <ButtonBox>
+        <DynTemporaryStorageButton onStorage={onStorage} form="H1" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="H1" path="complete"/>
+      </ButtonBox>
     </form>
   );
 };

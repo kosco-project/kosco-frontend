@@ -9,6 +9,7 @@ import i1 from './i1';
 import g from './g';
 import p1 from './p1';
 import ox2 from './ox2';
+import h1 from './h1';
 
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   g,
   p1,
   ox2,
+  h1, 
 });
 
 export default rootReducer;

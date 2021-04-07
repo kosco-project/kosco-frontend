@@ -25,8 +25,8 @@ const OX2Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, o
       <OX2Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists} units={units} onChangeDatePicker={onChangeDatePicker}/>
       <OX2Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="H3-1" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="H3-1" path="complete"/>
+        <DynTemporaryStorageButton onStorage={onStorage} form="OX2" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="OX2" path="complete"/>
       </ButtonBox>
     </form>
   );
