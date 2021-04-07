@@ -1,16 +1,31 @@
 import React from 'react';
-import ButtonBox from '../common/ButtonBox';
+import styled from 'styled-components';
 import P1Bottom from './P1Bottom';
 import P1Info from './P1Info';
 import P1Top from './P1Top';
+import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
+import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
 
-const P1Form = () => {
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  text-align: center;
+  Button {
+    margin: 0 15px;
+  }`;
+
+
+const P1Form = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextArea }) => {
   return (
     <form>
       <P1Info />
-      <P1Top />
-      <P1Bottom />
-      <ButtonBox />
+      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <P1Bottom onChangeTextArea={onChangeTextArea}/>
+      <ButtonBox>
+        <DynTemporaryStorageButton onStorage={onStorage} form="P1" path="save"/>
+        <DynInspectionCompleteButton onStorage={onStorage} form="P1" path="complete"/>
+      </ButtonBox>
     </form>
   );
 };

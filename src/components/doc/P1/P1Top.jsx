@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import P1TableRow from './P1TableRow';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 
   > .title {
     padding: 5px;
@@ -27,7 +27,9 @@ const TableBox = styled.div`
       &:first-child {
         width: 60px;
       }
-
+      &:nth-child(2) {
+        width: 250px;
+      }
       &:last-child {
         border-right: 0;
       }
@@ -37,6 +39,10 @@ const TableBox = styled.div`
       tr:last-child {
         border-bottom: 0;
       }
+      td:last-child {
+          vertical-align: middle;
+          cursor: pointer;
+        }
     }
 
     input {
@@ -51,11 +57,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const P1Top = () => {
-  const [datas, setDatas] = useState([1]);
-  const onClickAddBtn = () => {
-    setDatas(prevArr => [...prevArr, prevArr[prevArr.length - 1] + 1]);
-  };
+const P1Top = ({ onChange, onRemove, onInsert, lists}) => {
 
   return (
     <>
@@ -69,17 +71,18 @@ const P1Top = () => {
               <td>Quantity</td>
               <td>SIZE</td>
               <td>Perform.</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {datas.map(num => (
-              <P1TableRow key={num} num={num} />
+            {lists.map((list, i) => (
+              <P1TableRow key={list.id} id={list.id} num={i + 1} onRemove={onRemove} onChange={onChange}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onClickAddBtn}>
+        <button type='button' onClick={onInsert}>
           추가
         </button>
       </ButtonDiv>
