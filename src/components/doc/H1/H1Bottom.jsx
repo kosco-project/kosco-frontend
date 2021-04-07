@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import H1BottomTableRow from './H1BottomTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -56,23 +55,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H1Bottom = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
-   
+const H1Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists }) => {
 
   return (
     <>
@@ -90,14 +73,14 @@ const H1Bottom = () => {
             </tr>
           </thead>
           <tbody>
-          {lists.map((list, index) => (
-            <H1BottomTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+          {D2Lists.map((list, index) => (
+            <H1BottomTableRow key={list.id} id={list.id} onRemoveD2={onRemoveD2} onChange={onChange} num={index + 1}/>
             ))}
           </tbody>
         </table>
       </TableBox>
       <ButtonDiv>
-        <button type='button' onClick={onInsert}>
+        <button type='button' onClick={onInsertD2}>
           추가
         </button>
       </ButtonDiv>
