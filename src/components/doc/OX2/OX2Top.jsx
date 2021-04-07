@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import OX2TopTableRow from './OX2TopTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   display: flex;
@@ -96,25 +95,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Top = () => {
-  const datas = [
-    'MASKS CHECKED',
-    'BREATHING VALVE CHECKED',
-    'PRESSURE REGULATOR CHECKED',
-    'SUPPLY HOSE CONNECTION CHECKED',
-    'OXYGEN INHALER CHECKED',
-    'DEVICE WHIT FUNCTION TEST',
-    'SERVICE LABEL PUT ON DEVICE',
-    'DELETE',
-  ];
-
-  const nextId = useRef(2);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-  ], nextId);
-   
+const OX2Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
 
   return (
     <>
@@ -129,7 +110,7 @@ const OX2Top = () => {
           <div className='title'>Specification of medical oxygen ;</div>
           <div className='description-box'>
             {lists.map((list, index) => (
-              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChangeD1={onChangeD1}/>
             ))}
           </div>
         </div>
