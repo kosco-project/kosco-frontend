@@ -11,25 +11,25 @@ const H31TopTableRow = ({ id, onRemove, onChangeD1, num }) => {
         </div>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo2"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins2"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo3"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins3"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo4"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins4"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo5"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins5"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo6"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins6"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo7"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins7"/>
       </div>
       <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="SetNo8"/>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins8"/>
       </div>
       <div className='description' onClick={() => onRemove(id)}>
         <DeleteButton />
