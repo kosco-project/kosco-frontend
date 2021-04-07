@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, changeTextArea ) => {
   const state = useSelector(state => state.h2A);
+  const [units, setUnits] = useState([]);
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -77,12 +78,22 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
     dispatch(
       storage({
         RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'), 
+        VESSELNM: localStorage.getItem('shipNm'),
       })
     )
-  }, [dispatch, storage])
+  }, [dispatch, storage]);
 
-  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists}
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`, {
+        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
+      });
+      setUnits(res.data.data);
+    })();
+  }, []);
+
+
+  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units}
 }
 
 export default useH2H4;

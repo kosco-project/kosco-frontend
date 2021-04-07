@@ -16,11 +16,11 @@ const ButtonBox = styled.div`
     cursor: pointer;
   }`;
 
-const H2AForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextArea }) => {
+const H2AForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextArea, units }) => {
   return (
     <form>
       <Info />
-      <H2ATop onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <H2ATop onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} units={units}/>
       <H2ABottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton onStorage={onStorage} form="H2-A" path="save"/>

@@ -52,7 +52,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H2ATop = ({ onChange, onRemove, onInsert, lists }) => {
+const H2ATop = ({ onChange, onRemove, onInsert, lists, units }) => {
 
   return (
     <>
@@ -72,7 +72,7 @@ const H2ATop = ({ onChange, onRemove, onInsert, lists }) => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} />
+              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} units={units}/>
             ))}
           </tbody>
         </table>

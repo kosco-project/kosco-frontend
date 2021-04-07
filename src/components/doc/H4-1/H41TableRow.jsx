@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
 import DeleteButton from '../common/DeleteButton';
 
-const H41TableRow = ({ id, onRemove, onChange }) => {
+const H41TableRow = ({ id, onRemove, onChange, units }) => {
   const { TestDt } = useSelector(state => state.h2A.D1[id]);
   const inputArg = ({ target }) => onChange({ target, id });
 
@@ -33,8 +33,12 @@ const H41TableRow = ({ id, onRemove, onChange }) => {
       </td>
       <td>
         <select onChange={inputArg} name="Perform">
-          <option value='GOOD'>GOOD</option>
-          <option value='BAD'>BAD</option>
+          <option defaultValue="선택해주세요">선택해주세요</option>
+          {units.map(unit => (
+            <option key={unit.CdNm} value={unit.CD}>
+              {unit.CdNm}
+            </option>
+          ))}
         </select>
       </td>
       <td onClick={() => onRemove(id)}>
