@@ -1,25 +1,31 @@
 import React from 'react';
+import DeleteButton from '../common/DeleteButton';
 
-const P1TableRow = () => {
+const P1TableRow = ({ id, onRemove, num, onChange }) => {
+  const inputArg = ({ target }) => onChange({ target, id });
+
   return (
     <tr>
       <td>
-        <input type='text' />
+        <div>{num}</div>
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={inputArg} name="ProductType"/>
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={inputArg} name="Qty"/>
       </td>
       <td>
-        <input type='text' />
+        <input type='text' onChange={inputArg} name="Size"/>
       </td>
       <td>
-        <select name='' id=''>
+        <select onChange={inputArg} name="Perform">
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
+      </td>
+      <td onClick={() => onRemove(id)}>
+        <DeleteButton />
       </td>
     </tr>
   );

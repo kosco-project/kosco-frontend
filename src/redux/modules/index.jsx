@@ -7,6 +7,7 @@ import h31 from './h31';
 import i from './i';
 import i1 from './i1';
 import g from './g';
+import p1 from './p1';
 
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   i,
   i1,
   g,
+  p1,
 });
 
 export default rootReducer;
