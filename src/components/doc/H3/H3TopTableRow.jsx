@@ -11,6 +11,9 @@ const H3TopTableRow = ({ id, onRemove, onChangeD1, num }) => {
         </div>
       </div>
       <div className='description'>
+        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins1"/>
+      </div>
+      <div className='description'>
         <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins2"/>
       </div>
       <div className='description'>
@@ -27,9 +30,6 @@ const H3TopTableRow = ({ id, onRemove, onChangeD1, num }) => {
       </div>
       <div className='description'>
         <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins7"/>
-      </div>
-      <div className='description'>
-        <input type='checkbox' defaultChecked='checked' onChange={checkBoxArgument} name="ins8"/>
       </div>
       <div className='description' onClick={() => onRemove(id)}>
         <DeleteButton />

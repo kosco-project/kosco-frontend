@@ -49,7 +49,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H41Top = ({ onChange, onRemove, onInsert, lists }) => {
+const H41Top = ({ onChange, onRemove, onInsert, lists, units }) => {
 
   return (
     <>
@@ -69,7 +69,7 @@ const H41Top = ({ onChange, onRemove, onInsert, lists }) => {
           </thead>
           <tbody>
             {lists.map(list => (
-              <H41TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange}/>
+              <H41TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} units={units}/>
             ))}
           </tbody>
         </table>
