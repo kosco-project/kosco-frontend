@@ -24,25 +24,25 @@ const initialState = {
       s_no: "",
       position: "",
       condition: "",
-      remark: "",
+      remark: "GOOd",
     },
     1: {
       s_no: "",
       position: "",
       condition: "",
-      remark: "",
+      remark: "GOOD",
     },
     2: {
       s_no: "",
       position: "",
       condition: "",
-      remark: "",
+      remark: "GOOD",
     },
     3: {
       s_no: "",
       position: "",
       condition: "",
-      remark: "",
+      remark: "GOOD",
     },
 
   }
