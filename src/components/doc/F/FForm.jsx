@@ -13,6 +13,7 @@ const ButtonBox = styled.div`
   text-align: center;
   Button {
     margin: 0 15px;
+    cursor: pointer;
   }`;
 
 
