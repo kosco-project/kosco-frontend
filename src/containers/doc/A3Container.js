@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import A3Form from "../../components/doc/A3/A3Form";
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const A3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, onStorage } = useStorage({
+  const { onWorkingSystem, onWorkingSystemChecked, onStorage, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -154,7 +156,15 @@ const A3Container = () => {
   }, []);
 
   return (
-    <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onStorage={onStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="A3" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="A3" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+    </>
   )
 }
 
