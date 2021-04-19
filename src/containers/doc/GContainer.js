@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import GForm from '../../components/doc/G/GForm';
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, changeField, changeTextArea, deleteInitialState, storage } from "../../redux/modules/g";
 
 const GContainer = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const state = useSelector(state => state.g);
+  const { visible, showModal, commVisible, showCommModal, hideModal, setVisible, setCommVisible } = useStorage()
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -71,6 +75,8 @@ const GContainer = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      setVisible(false);
+      setCommVisible(false);
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -87,19 +93,16 @@ const GContainer = () => {
     )
   }, [dispatch])
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`, {
-  //       headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-  //     });
-  //     console.log('res', res);
-  //     setUnits(res.data.data);
-  //   })();
-  // }, []);
-
   return (
-    // <GForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} units={units} onChangeTextArea={onChangeTextArea}/>
-    <GForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea}/>
+    <>
+      {visible && (
+        <SaveModal form="G" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="G" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <GForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea} showModal={showModal} showCommModal={showCommModal}/>
+    </>
   )
 }
 
