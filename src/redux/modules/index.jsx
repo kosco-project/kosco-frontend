@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-// import inspection from './inspection';
 import b1 from './b1';
 import h2A from './h2A';
 import h3 from './h3';
@@ -10,6 +9,8 @@ import g from './g';
 import p1 from './p1';
 import ox2 from './ox2';
 import h1 from './h1';
+import f from './f';
+import f2 from './f2';
 
 
 const rootReducer = combineReducers({
@@ -23,7 +24,9 @@ const rootReducer = combineReducers({
   g,
   p1,
   ox2,
-  h1, 
+  h1,
+  f,
+  f2,
 });
 
 export default rootReducer;

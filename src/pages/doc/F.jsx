@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import Header from '../../components/common/Header';
-import FForm from '../../components/doc/F/FForm';
+import FContainer from '../../containers/doc/FContainer';
 
 const F = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const F = ({ history }) => {
   return (
     <AppWrapper>
       <Header />
-      <FForm />
+      <FContainer />
     </AppWrapper>
   );
 };

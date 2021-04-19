@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
-import useLists from '../../../hooks/useLists';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -65,22 +64,7 @@ const TopBox = styled.div`
   }
 `;
 
-const FTop = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
+const FTop = ({ onChange, onRemove, onInsert, lists}) => {
 
   return (
     <>
@@ -100,7 +84,7 @@ const FTop = () => {
             </thead>
             <tbody>
               {lists.map((list, index) => (
-                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} />
+                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
               ))}
             </tbody>
           </table>
