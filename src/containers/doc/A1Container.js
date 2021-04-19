@@ -1,9 +1,13 @@
 import React from 'react';
 import A1Form from "../../components/doc/A1/A1Form";
 import useStorage from '../../hooks/useStorage';
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const A1Container = () => {
-  const { onProductsDescription, onInspectionDescription, onStorage } = useStorage({
+  // const [visible, setVisible] = useState(false);
+
+  const { onProductsDescription, onInspectionDescription, onStorage, visible, setVisible, commVisible, setCommVisible } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -50,8 +54,30 @@ const A1Container = () => {
     },
   });
 
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  };
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  };
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  };
+
+
   return (
-    <A1Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="A1" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="A1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <A1Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+    </>
   )
 };
 
