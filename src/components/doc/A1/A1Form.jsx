@@ -22,8 +22,8 @@ const A1Form = ({ onProductsDescription, onInspectionDescription, onStorage, sho
       <A1Top onProductsDescription={onProductsDescription}/>
       <A1Bottom onInspectionDescription={onInspectionDescription} />
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} showModal={showModal} form="A1" path="save"/>
-        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal} form="A1" path="complete"/>
+        <TemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
+        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

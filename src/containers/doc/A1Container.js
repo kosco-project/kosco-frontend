@@ -5,9 +5,7 @@ import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
 
 const A1Container = () => {
-  // const [visible, setVisible] = useState(false);
-
-  const { onProductsDescription, onInspectionDescription, onStorage, visible, setVisible, commVisible, setCommVisible } = useStorage({
+  const { onProductsDescription, onInspectionDescription, onStorage, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -53,20 +51,6 @@ const A1Container = () => {
       21: 1,
     },
   });
-
-  const showModal = e => {
-    e.preventDefault();
-    setVisible(true);
-  };
-  const showCommModal = e => {
-    e.preventDefault();
-    setCommVisible(true);
-  };
-  const hideModal = () => {
-    setVisible(false);
-    setCommVisible(false);
-  };
-
 
   return (
     <>
