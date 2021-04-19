@@ -17,7 +17,7 @@ const Bottom2Box = styled.div`
   }
 `;
 
-const F2Bottom2 = () => {
+const F2Bottom2 = ({ onChangeD2 }) => {
   return (
     <Bottom2Box>
       <div>
@@ -25,11 +25,11 @@ const F2Bottom2 = () => {
         the responsible ship safety authorities.
       </div>
       <div>
-        The hydrostatic release unit shall be serviced together with <input type='text' /> survey at intervals not exceeding 17 months at least at a
+        The hydrostatic release unit shall be serviced together with <input type='text' name="value1" onChange={onChangeD2}/> survey at intervals not exceeding 17 months at least at a
         service station.
       </div>
       <div>
-        This appendix shall bear the same number as the inspection certificate for <input type='text' />.
+        This appendix shall bear the same number as the inspection certificate for <input type='text' name="value2" onChange={onChangeD2}/>.
       </div>
     </Bottom2Box>
   );

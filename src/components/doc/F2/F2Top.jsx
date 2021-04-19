@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import F2TableRow from './F2TableRow';
-import useLists from '../../../hooks/useLists';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -51,23 +50,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const F2Top = () => {
-  const nextId = useRef(5);
-  const [onInsert, onRemove, lists] = useLists([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    }
-  ], nextId);
-   
+const F2Top = ({ onChange, onRemove, onInsert, lists}) => {
 
   return (
     <>
@@ -85,7 +68,7 @@ const F2Top = () => {
           </thead>
           <tbody>
             {lists.map((list, index) => (
-              <F2TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1}/>
+              <F2TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
             ))}
           </tbody>
         </table>
