@@ -16,7 +16,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const W1Form = ({ checkState, state, onWorkingSystem, onKeyValueForm, onStorage }) => {
+const W1Form = ({ checkState, state, onWorkingSystem, onKeyValueForm, onStorage, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
@@ -24,8 +24,8 @@ const W1Form = ({ checkState, state, onWorkingSystem, onKeyValueForm, onStorage 
       <W1Bottom checkState={checkState} state={state} onWorkingSystem={onWorkingSystem}/>
       <W1Bottom2 />
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} form="W1" path="save"/>
-        <InspectionCompleteButton onStorage={onStorage} form="W1" path="complete"/>
+        <TemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
+        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

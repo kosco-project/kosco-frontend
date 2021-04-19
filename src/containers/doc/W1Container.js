@@ -1,8 +1,10 @@
 import W1Form from '../../components/doc/W1/W1Form';
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const W1Container = () => {
-  const { checkState, onWorkingSystem, onStorage, state, onKeyValueForm } = useStorage({
+  const { checkState, onWorkingSystem, onStorage, state, onKeyValueForm, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: ""
@@ -84,8 +86,16 @@ const W1Container = () => {
   })
 
   
-  return (
-    <W1Form checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage}/>
+	return (
+		<>
+			{visible && (
+        <SaveModal form="W1" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="W1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+    	<W1Form checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+		</>
   )
 }
 
