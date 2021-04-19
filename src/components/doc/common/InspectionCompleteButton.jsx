@@ -12,7 +12,7 @@ const Button = styled.button `
     color: #fff;
 `;
 
-const InspectionCompleteButton = ({showCommModal }) => {
+const InspectionCompleteButton = ({ showCommModal }) => {
   return (
       <Button type='submit' onClick={showCommModal}>검사 완료</Button>
   );
