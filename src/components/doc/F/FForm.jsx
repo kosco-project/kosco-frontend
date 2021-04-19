@@ -17,15 +17,15 @@ const ButtonBox = styled.div`
   }`;
 
 
-const FForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextArea }) => {
+const FForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
       <FTop onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <FBottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="F" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="F" path="complete"/>
+        <DynTemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
+        <DynInspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );
