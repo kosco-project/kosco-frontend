@@ -21,12 +21,12 @@ const Bottom3Box = styled.div`
   }
 `;
 
-const F2Bottom3 = () => {
+const F2Bottom3 = ({ onChangeD2 }) => {
   return (
     <Bottom3Box>
       <div className='title'>Recommendation;</div>
       <div className='description'>
-        <textarea name='' id=''></textarea>
+        <textarea name='recommend' onChange={onChangeD2}></textarea>
       </div>
     </Bottom3Box>
   );
