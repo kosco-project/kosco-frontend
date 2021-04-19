@@ -1,9 +1,11 @@
 import WForm from '../../components/doc/W/WForm';
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const WContainer = () => {
 
-  const { checkState, onWorkingSystem, onStorage, state, onChangeTextArea, onKeyValueForm, onChangeCovering } = useStorage({
+  const { checkState, onWorkingSystem, onStorage, state, onChangeTextArea, onKeyValueForm, onChangeCovering, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: ""
@@ -142,8 +144,16 @@ const WContainer = () => {
   })
   
 
-  return (
-    <WForm checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onChangeTextArea={onChangeTextArea} onStorage={onStorage} onKeyValueForm={onKeyValueForm} onChangeCovering={onChangeCovering}/>
+	return (
+		<>
+			{visible && (
+        <SaveModal form="W" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="W" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+    	<WForm checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onChangeTextArea={onChangeTextArea} onStorage={onStorage} onKeyValueForm={onKeyValueForm} onChangeCovering={onChangeCovering} showModal={showModal} showCommModal={showCommModal}/>
+		</>
   )
 }
 export default WContainer;
