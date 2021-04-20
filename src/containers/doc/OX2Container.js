@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import OX2Form from "../../components/doc/OX2/OX2Form";
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, addInitialStateD2, changeFieldD1, changeField, deleteInitialState, deleteInitialStateD2, storage, changeTextArea, changeDatePicker } from "../../redux/modules/ox2";
 
 const OX2Container = () => {
   const dispatch = useDispatch();
   const [units, setUnits] = useState([]);
   const state = useSelector(state => state.ox2);
+  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
   const datas = [
     'MASKS CHECKED',
     'BREATHING VALVE CHECKED',
@@ -127,6 +131,7 @@ const OX2Container = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -151,21 +156,30 @@ const OX2Container = () => {
   }, []);
 
   return (
-    <OX2Form
-      units={units}
-      onChangeD1={onChangeD1}
-      onChange={onChange}
-      onRemove={onRemove}
-      onInsert={onInsert}
-      lists={lists}
-      D2Lists={D2Lists}
-      onStorage={onStorage}
-      onChangeTextArea={onChangeTextArea}
-      datas={datas}
-      onInsertD2={onInsertD2}
-      onRemoveD2={onRemoveD2}
-      onChangeDatePicker={onChangeDatePicker}
-    />
+    <>
+      {visible && (
+        <SaveModal form="OX2" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="OX2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <OX2Form
+        units={units}
+        onChangeD1={onChangeD1}
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        D2Lists={D2Lists}
+        onChangeTextArea={onChangeTextArea}
+        datas={datas}
+        onInsertD2={onInsertD2}
+        onRemoveD2={onRemoveD2}
+        onChangeDatePicker={onChangeDatePicker}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 
