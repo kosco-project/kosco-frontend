@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import IForm from '../../components/doc/I/IForm';
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, changeField, deleteInitialState, storage, changeFieldD2, checkBox } from "../../redux/modules/i";
 
 
@@ -9,6 +12,7 @@ const IContainer = () => {
 const dispatch = useDispatch();
 const nextId = useRef(4);
 const state = useSelector(state => state.i);
+  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
 const [lists, setLists] = useState([
   {
     id: 0,
@@ -87,6 +91,7 @@ const onChange = ({ id, target }) => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -103,7 +108,24 @@ useEffect(() => {
 }, [dispatch])
   
   return (
-    <IForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeD2={onChangeD2} onChecked={onChecked}/>
+    <>
+      {visible && (
+        <SaveModal form="I" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="I" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <IForm
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        onChangeD2={onChangeD2}
+        onChecked={onChecked}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 

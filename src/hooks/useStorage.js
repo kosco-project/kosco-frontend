@@ -167,8 +167,22 @@ const useStorage = initialState => {
   }
 
 
+
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  };
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  };
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  };
+
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering, onchangeDatePicker, visible, setVisible, commVisible, setCommVisible }
+  return { showModal, showCommModal, hideModal, onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering, onchangeDatePicker, visible, setVisible, commVisible, setCommVisible }
 }
 
 export default useStorage;

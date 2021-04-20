@@ -1,8 +1,10 @@
 import L1Form from '../../components/doc/L1/L1Form';
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const L1Container = () => {
-  const { onWorkingSystem, state, onStorage, onchangeDatePicker } = useStorage({
+  const { onWorkingSystem, state, onStorage, onchangeDatePicker, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -32,7 +34,21 @@ const L1Container = () => {
     }
   })
   return (
-    <L1Form state={state} onWorkingSystem={onWorkingSystem} onStorage={onStorage} onchangeDatePicker={onchangeDatePicker}/>
+    <>
+      {visible && (
+        <SaveModal form="L1" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="L1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <L1Form
+        state={state}
+        onWorkingSystem={onWorkingSystem}
+        onchangeDatePicker={onchangeDatePicker}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 

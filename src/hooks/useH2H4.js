@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, changeTextArea ) => {
   const state = useSelector(state => state.h2A);
+  const [visible, setVisible] = useState(false);
+  const [commVisible, setCommVisible] = useState(false);
+
   const [units, setUnits] = useState([]);
   const [lists, setLists] = useState([
     {
@@ -18,9 +21,26 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
     {
       id: 3,
     }
-  ])
+  ]);
+
   const dispatch = useDispatch();
   const nextId = useRef(4);
+
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  };
+
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  };
+
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  };
+
   const onRemove = useCallback(
     id => {
       if (lists.length > 1) {
@@ -47,33 +67,35 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
     const { value, name } = target;
     dispatch(
       changeField({
-          id,
-          value,
-          name,
+        id,
+        value,
+        name,
       })
     )
-  }
+  };
 
   const onChangeTextArea = e => {
     const { value } = e.target;
     dispatch(
       changeTextArea(value)
     )
-  }
+  };
 
 
-  const onStorage = async ( e, form, path ) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
+      }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
   useEffect(() => {
     dispatch(
       storage({
@@ -93,7 +115,7 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
   }, []);
 
 
-  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units}
+  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units, visible, commVisible, hideModal, showModal, showCommModal}
 }
 
 export default useH2H4;

@@ -16,15 +16,15 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const I1Form = ({ onChange, onRemove, onInsert, lists, onStorage, units, onChangeTextArea }) => {
+const I1Form = ({ onChange, onRemove, onInsert, lists, units, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
       <I1Top units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <I1Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="I-1" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="I-1" path="complete"/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

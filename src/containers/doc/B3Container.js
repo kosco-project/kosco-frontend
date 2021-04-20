@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import B3Form from "../../components/doc/B3/B3Form";
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const B3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, onStorage, onKeyValueForm } = useStorage({
+  const { onWorkingSystem, onWorkingSystemChecked, onStorage, onKeyValueForm, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -138,7 +140,22 @@ const B3Container = () => {
     })();
   }, []);
   return (
-    <B3Form units={units} onWorkingSystem={onWorkingSystem} onWorkingSystemChecked={onWorkingSystemChecked} onKeyValueForm={onKeyValueForm} onStorage={onStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="B3" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="B3" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <B3Form
+        units={units}
+        onWorkingSystem={onWorkingSystem}
+        onWorkingSystemChecked={onWorkingSystemChecked}
+        onKeyValueForm={onKeyValueForm}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 

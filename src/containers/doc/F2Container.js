@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import F2Form from '../../components/doc/F2/F2Form';
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, changeField, changeFieldD2, deleteInitialState, storage, checkBox } from "../../redux/modules/f2";
 
 
@@ -9,6 +12,7 @@ const FContainer = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const state = useSelector(state => state.f2);
+  const { visible, showModal, commVisible, showCommModal, hideModal, setVisible, setCommVisible } = useStorage()
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -87,6 +91,8 @@ const FContainer = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      setVisible(false);
+      setCommVisible(false);
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -103,15 +109,24 @@ const FContainer = () => {
   }, [dispatch])
 
   return (
-    <F2Form
-      onChange={onChange}
-      onChangeD2={onChangeD2}
-      onRemove={onRemove}
-      onInsert={onInsert}
-      lists={lists}
-      onStorage={onStorage}
-      onChecked={onChecked}
-    />
+    <>
+      {visible && (
+        <SaveModal form="F2" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="F2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <F2Form
+        onChange={onChange}
+        onChangeD2={onChangeD2}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        onChecked={onChecked}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 };
 

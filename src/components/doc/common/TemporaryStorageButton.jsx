@@ -11,10 +11,8 @@ const Button = styled.button`
     color: #fff;
 `;
 
-// const TemporaryStorageButton = ({ onStorage, form, path, showModal }) => {
 const TemporaryStorageButton = ({ showModal }) => {
   return (
-      // <Button type='submit' onClick={e => onStorage(e, form, path)}>임시 저장</Button>
       <Button type='submit' onClick={e => showModal(e)}>임시 저장</Button>
   );
 };

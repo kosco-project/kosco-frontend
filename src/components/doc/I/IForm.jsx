@@ -16,7 +16,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const IForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeD2, onChecked }) => {
+const IForm = ({ onChange, onRemove, onInsert, lists, onChangeD2, onChecked, showModal, showCommModal }) => {
   return (
     <form>
       <IInfo />
@@ -24,8 +24,8 @@ const IForm = ({ onChange, onRemove, onInsert, lists, onStorage, onChangeD2, onC
       <IBottom onChecked={onChecked}/>
       <IBottom2 />
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="I" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="I" path="complete"/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

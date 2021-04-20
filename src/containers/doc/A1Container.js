@@ -5,9 +5,7 @@ import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
 
 const A1Container = () => {
-  // const [visible, setVisible] = useState(false);
-
-  const { onProductsDescription, onInspectionDescription, onStorage, visible, setVisible, commVisible, setCommVisible } = useStorage({
+  const { onProductsDescription, onInspectionDescription, onStorage, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -54,20 +52,6 @@ const A1Container = () => {
     },
   });
 
-  const showModal = e => {
-    e.preventDefault();
-    setVisible(true);
-  };
-  const showCommModal = e => {
-    e.preventDefault();
-    setCommVisible(true);
-  };
-  const hideModal = () => {
-    setVisible(false);
-    setCommVisible(false);
-  };
-
-
   return (
     <>
       {visible && (
@@ -76,7 +60,10 @@ const A1Container = () => {
       {commVisible && (
         <CompleteModal form="A1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <A1Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+      <A1Form onProductsDescription={onProductsDescription}
+        onInspectionDescription={onInspectionDescription}
+        showModal={showModal}
+        showCommModal={showCommModal} />
     </>
   )
 };
