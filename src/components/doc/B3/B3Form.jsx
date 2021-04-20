@@ -16,7 +16,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, onStorage, showModal, showCommModal }) => {
+const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
@@ -24,8 +24,8 @@ const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm
       <B3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
       <B3Bottom2 onKeyValueForm={onKeyValueForm}/>
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
-        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
+        <TemporaryStorageButton showModal={showModal}/>
+        <InspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

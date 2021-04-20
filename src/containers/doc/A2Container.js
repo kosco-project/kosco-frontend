@@ -60,7 +60,11 @@ const A2Container = () => {
       {commVisible && (
         <CompleteModal form="A2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <A2Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+      <A2Form
+        onProductsDescription={onProductsDescription}
+        onInspectionDescription={onInspectionDescription}
+        showModal={showModal}
+        showCommModal={showCommModal} />
     </>
   )
 };

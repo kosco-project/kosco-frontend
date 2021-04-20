@@ -20,7 +20,6 @@ const H2AContainer = () => {
         onRemove={onRemove}
         onInsert={onInsert}
         lists={lists}
-        onStorage={onStorage}
         onChangeTextArea={onChangeTextArea}
         units={units}
         showModal={showModal}

@@ -101,7 +101,15 @@ const GContainer = () => {
       {commVisible && (
         <CompleteModal form="G" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <GForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeTextArea={onChangeTextArea} showModal={showModal} showCommModal={showCommModal}/>
+      <GForm
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        onChangeTextArea={onChangeTextArea}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

@@ -217,7 +217,14 @@ const CConatiner = () => {
       {commVisible && (
         <CompleteModal form="C" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <CForm checkState={checkState} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage} state={state} showModal={showModal} showCommModal={showCommModal}/>
+      <CForm
+        checkState={checkState}
+        onWorkingSystem={onWorkingSystem}
+        onKeyValueForm={onKeyValueForm}
+        state={state}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

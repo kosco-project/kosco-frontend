@@ -163,7 +163,13 @@ const A3Container = () => {
       {commVisible && (
         <CompleteModal form="A3" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <A3Form units={units} onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+      <A3Form
+        units={units}
+        onWorkingSystemChecked={onWorkingSystemChecked}
+        onWorkingSystem={onWorkingSystem}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

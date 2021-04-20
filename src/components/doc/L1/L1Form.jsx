@@ -15,14 +15,14 @@ const ButtonBox = styled.div`
   }`;
 
 
-const L1Form = ({ onWorkingSystem, state, onStorage, onchangeDatePicker, showModal, showCommModal }) => {
+const L1Form = ({ onWorkingSystem, state, onchangeDatePicker, showModal, showCommModal }) => {
   return (
     <form>
       <L1Info />
       <L1Top onWorkingSystem={onWorkingSystem} state={state} onchangeDatePicker={onchangeDatePicker}/>
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
-        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
+        <TemporaryStorageButton showModal={showModal}/>
+        <InspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

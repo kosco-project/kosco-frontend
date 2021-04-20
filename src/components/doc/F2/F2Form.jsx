@@ -19,7 +19,7 @@ const ButtonBox = styled.div`
   }`;
 
 
-const F2Form = ({ onChange, onChangeD2, onRemove, onInsert, lists, onStorage, onChecked, showModal, showCommModal }) => {
+const F2Form = ({ onChange, onChangeD2, onRemove, onInsert, lists, onChecked, showModal, showCommModal }) => {
   return (
     <form>
       <F2Info />
@@ -28,8 +28,8 @@ const F2Form = ({ onChange, onChangeD2, onRemove, onInsert, lists, onStorage, on
       <F2Bottom2 onChangeD2={onChangeD2}/>
       <F2Bottom3 onChangeD2={onChangeD2}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
-        <DynInspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

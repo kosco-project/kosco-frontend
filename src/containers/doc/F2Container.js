@@ -122,7 +122,6 @@ const FContainer = () => {
         onRemove={onRemove}
         onInsert={onInsert}
         lists={lists}
-        onStorage={onStorage}
         onChecked={onChecked}
         showModal={showModal}
         showCommModal={showCommModal}

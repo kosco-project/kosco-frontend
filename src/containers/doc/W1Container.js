@@ -94,7 +94,14 @@ const W1Container = () => {
       {commVisible && (
         <CompleteModal form="W1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-    	<W1Form checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+			<W1Form
+				checkState={checkState}
+				state={state}
+				onWorkingSystem={onWorkingSystem}
+				onKeyValueForm={onKeyValueForm}
+				showModal={showModal}
+				showCommModal={showCommModal}
+			/>
 		</>
   )
 }

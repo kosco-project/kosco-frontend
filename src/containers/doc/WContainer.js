@@ -152,7 +152,16 @@ const WContainer = () => {
       {commVisible && (
         <CompleteModal form="W" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-    	<WForm checkState={checkState} state={state} onWorkingSystem={onWorkingSystem} onChangeTextArea={onChangeTextArea} onStorage={onStorage} onKeyValueForm={onKeyValueForm} onChangeCovering={onChangeCovering} showModal={showModal} showCommModal={showCommModal}/>
+			<WForm
+				checkState={checkState}
+				state={state}
+				onWorkingSystem={onWorkingSystem}
+				onChangeTextArea={onChangeTextArea}
+				onKeyValueForm={onKeyValueForm}
+				onChangeCovering={onChangeCovering}
+				showModal={showModal}
+				showCommModal={showCommModal}
+			/>
 		</>
   )
 }

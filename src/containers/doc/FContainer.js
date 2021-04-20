@@ -100,7 +100,15 @@ const FContainer = () => {
       {commVisible && (
         <CompleteModal form="F" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <FForm onChange={onChange} onChangeTextArea={onChangeTextArea} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} showModal={showModal} showCommModal={showCommModal}/>
+      <FForm
+        onChange={onChange}
+        onChangeTextArea={onChangeTextArea}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 };

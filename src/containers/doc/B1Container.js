@@ -91,7 +91,14 @@ const B1Container = () => {
       {commVisible && (
         <CompleteModal form="B1" path="complete" onStorage={onTemporaryStorage} hideModal={hideModal}/>
       )}
-      <B1Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} showModal={showModal} showCommModal={showCommModal}/>
+      <B1Form
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

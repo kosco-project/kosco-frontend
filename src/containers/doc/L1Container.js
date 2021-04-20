@@ -41,7 +41,13 @@ const L1Container = () => {
       {commVisible && (
         <CompleteModal form="L1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <L1Form state={state} onWorkingSystem={onWorkingSystem} onStorage={onStorage} onchangeDatePicker={onchangeDatePicker} showModal={showModal} showCommModal={showCommModal}/>
+      <L1Form
+        state={state}
+        onWorkingSystem={onWorkingSystem}
+        onchangeDatePicker={onchangeDatePicker}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

@@ -15,15 +15,15 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const A2Form = ({ onProductsDescription, onInspectionDescription, onStorage, showModal, showCommModal }) => {
+const A2Form = ({ onProductsDescription, onInspectionDescription, showModal, showCommModal }) => {
   return (
     <form >
       <Info />
       <A2Top onProductsDescription={onProductsDescription}/>
       <A2Bottom onInspectionDescription={onInspectionDescription}/>
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
-        <InspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
+        <TemporaryStorageButton showModal={showModal}/>
+        <InspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

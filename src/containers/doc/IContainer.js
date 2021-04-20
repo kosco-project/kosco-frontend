@@ -115,7 +115,16 @@ useEffect(() => {
       {commVisible && (
         <CompleteModal form="I" path="complete" onStorage={onStorage} hideModal={hideModal}/>
       )}
-      <IForm onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} onChangeD2={onChangeD2} onChecked={onChecked} showModal={showModal} showCommModal={showCommModal}/>
+      <IForm
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        onChangeD2={onChangeD2}
+        onChecked={onChecked}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
     </>
   )
 }

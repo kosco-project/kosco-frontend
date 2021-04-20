@@ -17,7 +17,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
   
-const GForm = ({ onChange, onRemove, onInsert, lists, onStorage, units, onChangeTextArea, showModal, showCommModal }) => {
+const GForm = ({ onChange, onRemove, onInsert, lists, units, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
@@ -26,8 +26,8 @@ const GForm = ({ onChange, onRemove, onInsert, lists, onStorage, units, onChange
       <GBottom2 onChangeTextArea={onChangeTextArea}/>
       <GBottom3 />
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} showModal={showModal}/>
-        <DynInspectionCompleteButton onStorage={onStorage} showCommModal={showCommModal}/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );
