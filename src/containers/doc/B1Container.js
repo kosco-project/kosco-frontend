@@ -11,7 +11,7 @@ const B1Container = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const state = useSelector(state => state.b1);
-  const { visible, showModal, commVisible, showCommModal, hideModal, setVisible, setCommVisible } = useStorage()
+  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -67,8 +67,9 @@ const B1Container = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
-      setVisible(false);
-      setCommVisible(false);
+      // setVisible(false);
+      // setCommVisible(false);
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -92,7 +93,7 @@ const B1Container = () => {
       {commVisible && (
         <CompleteModal form="B1" path="complete" onStorage={onTemporaryStorage} hideModal={hideModal}/>
       )}
-      <B1Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onTemporaryStorage={onTemporaryStorage} showModal={showModal} showCommModal={showCommModal}/>
+      <B1Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} showModal={showModal} showCommModal={showCommModal}/>
     </>
   )
 }
