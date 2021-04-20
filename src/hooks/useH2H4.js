@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import useStorage from "./useStorage";
 
 const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, changeTextArea ) => {
   const state = useSelector(state => state.h2A);
-  // const { hideModal } = useStorage();
   const [visible, setVisible] = useState(false);
   const [commVisible, setCommVisible] = useState(false);
 
@@ -23,24 +21,25 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
     {
       id: 3,
     }
-  ])
+  ]);
+
   const dispatch = useDispatch();
   const nextId = useRef(4);
 
   const showModal = e => {
     e.preventDefault();
     setVisible(true);
-  }
+  };
 
   const showCommModal = e => {
     e.preventDefault();
     setCommVisible(true);
-  }
+  };
 
   const hideModal = () => {
     setVisible(false);
     setCommVisible(false);
-  }
+  };
 
   const onRemove = useCallback(
     id => {
@@ -68,34 +67,34 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
     const { value, name } = target;
     dispatch(
       changeField({
-          id,
-          value,
-          name,
+        id,
+        value,
+        name,
       })
     )
-  }
+  };
 
   const onChangeTextArea = e => {
     const { value } = e.target;
     dispatch(
       changeTextArea(value)
     )
-  }
+  };
 
 
-  const onStorage = async ( e, form, path ) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
+      }
       );
       hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     dispatch(
