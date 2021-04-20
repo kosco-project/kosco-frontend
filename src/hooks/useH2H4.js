@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import useStorage from "./useStorage";
 
 const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, changeTextArea ) => {
   const state = useSelector(state => state.h2A);
+  // const { hideModal } = useStorage();
+  const [visible, setVisible] = useState(false);
+  const [commVisible, setCommVisible] = useState(false);
+
   const [units, setUnits] = useState([]);
   const [lists, setLists] = useState([
     {
@@ -21,6 +26,22 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
   ])
   const dispatch = useDispatch();
   const nextId = useRef(4);
+
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  }
+
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  }
+
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  }
+
   const onRemove = useCallback(
     id => {
       if (lists.length > 1) {
@@ -69,11 +90,13 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
   }
+
   useEffect(() => {
     dispatch(
       storage({
@@ -93,7 +116,7 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
   }, []);
 
 
-  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units}
+  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units, visible, commVisible, hideModal, showModal, showCommModal}
 }
 
 export default useH2H4;
