@@ -14,14 +14,14 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const B1Form = ({ onChange, onRemove, onInsert, lists, onTemporaryStorage, showModal, showCommModal }) => {
+const B1Form = ({ onChange, onRemove, onInsert, lists, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
       <B1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onTemporaryStorage={onTemporaryStorage} showModal={showModal}/>
-        <DynInspectionCompleteButton onTemporaryStorage={onTemporaryStorage} showCommModal={showCommModal}/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );
