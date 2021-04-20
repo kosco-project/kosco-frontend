@@ -4,7 +4,9 @@ import { useState } from 'react';
 const useStorage = initialState => {
 
   const [state, setState] = useState(initialState);
-  
+  const [visible, setVisible] = useState(false);
+  const [commVisible, setCommVisible] = useState(false);
+
   const onChangeTextArea = e => {
     const { value, dataset } = e.target
     setState({
@@ -154,8 +156,10 @@ const useStorage = initialState => {
     try {
       const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
+      }
       );
+      setVisible(false);
+      setCommVisible(false);
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -163,8 +167,22 @@ const useStorage = initialState => {
   }
 
 
+
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  };
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  };
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  };
+
   console.log('state',state);
-  return { onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering, onchangeDatePicker }
+  return { showModal, showCommModal, hideModal, onProductsDescription, onInspectionDescription, onStorage, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, state, checkState, onChangeTextArea, onChangeCovering, onchangeDatePicker, visible, setVisible, commVisible, setCommVisible }
 }
 
 export default useStorage;

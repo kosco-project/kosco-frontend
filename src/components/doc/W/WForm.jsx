@@ -16,7 +16,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const WForm = ({ checkState, onWorkingSystem, state, onChangeTextArea, onStorage, onKeyValueForm, onChangeCovering }) => {
+const WForm = ({ checkState, onWorkingSystem, state, onChangeTextArea, onKeyValueForm, onChangeCovering, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
@@ -24,8 +24,8 @@ const WForm = ({ checkState, onWorkingSystem, state, onChangeTextArea, onStorage
       <WBottom checkState={checkState} onWorkingSystem={onWorkingSystem} state={state} />
       <WBottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <TemporaryStorageButton onStorage={onStorage} form="W" path="save"/>
-        <InspectionCompleteButton onStorage={onStorage} form="W" path="complete"/>
+        <TemporaryStorageButton showModal={showModal}/>
+        <InspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

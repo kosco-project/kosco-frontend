@@ -1,8 +1,10 @@
 import CForm from "../../components/doc/C/CForm";
 import useStorage from "../../hooks/useStorage";
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const CConatiner = () => {
-  const { onWorkingSystem, onStorage, onKeyValueForm, state, checkState } = useStorage({
+  const { onWorkingSystem, onStorage, onKeyValueForm, state, checkState, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -208,7 +210,22 @@ const CConatiner = () => {
   })
 
   return (
-    <CForm checkState={checkState} onWorkingSystem={onWorkingSystem} onKeyValueForm={onKeyValueForm} onStorage={onStorage} state={state}/>
+    <>
+      {visible && (
+        <SaveModal form="C" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="C" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <CForm
+        checkState={checkState}
+        onWorkingSystem={onWorkingSystem}
+        onKeyValueForm={onKeyValueForm}
+        state={state}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 

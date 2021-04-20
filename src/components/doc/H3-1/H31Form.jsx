@@ -17,7 +17,7 @@ const ButtonBox = styled.div`
     cursor: pointer;
   }`;
 
-const H31Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, onStorage, lists, D2Lists, datas, onInsertD2, onRemoveD2 }) => {
+const H31Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, lists, D2Lists, datas, onInsertD2, onRemoveD2, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
@@ -25,8 +25,8 @@ const H31Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, o
       <H31Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists}/>
       <H31Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton onStorage={onStorage} form="H3-1" path="save"/>
-        <DynInspectionCompleteButton onStorage={onStorage} form="H3-1" path="complete"/>
+        <DynTemporaryStorageButton showModal={showModal}/>
+        <DynInspectionCompleteButton showCommModal={showCommModal}/>
       </ButtonBox>
     </form>
   );

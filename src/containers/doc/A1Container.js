@@ -1,9 +1,11 @@
 import React from 'react';
 import A1Form from "../../components/doc/A1/A1Form";
 import useStorage from '../../hooks/useStorage';
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
 
 const A1Container = () => {
-  const { onProductsDescription, onInspectionDescription, onStorage } = useStorage({
+  const { onProductsDescription, onInspectionDescription, onStorage, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
     H: {
       RCVNO: "",
       VESSELNM: "",
@@ -51,7 +53,18 @@ const A1Container = () => {
   });
 
   return (
-    <A1Form onProductsDescription={onProductsDescription} onInspectionDescription={onInspectionDescription} onStorage={onStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="A1" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="A1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <A1Form onProductsDescription={onProductsDescription}
+        onInspectionDescription={onInspectionDescription}
+        showModal={showModal}
+        showCommModal={showCommModal} />
+    </>
   )
 };
 

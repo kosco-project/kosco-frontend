@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import B1Form from "../../components/doc/B1/B1Form";
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, changeField, deleteInitialState, temporaryStorage } from "../../redux/modules/b1";
 
 const B1Container = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const state = useSelector(state => state.b1);
+  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -63,6 +67,7 @@ const B1Container = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -79,7 +84,22 @@ const B1Container = () => {
   }, [dispatch])
 
   return (
-    <B1Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onTemporaryStorage={onTemporaryStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="B1" path="save" onStorage={onTemporaryStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="B1" path="complete" onStorage={onTemporaryStorage} hideModal={hideModal}/>
+      )}
+      <B1Form
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 

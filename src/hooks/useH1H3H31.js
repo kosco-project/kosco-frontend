@@ -1,27 +1,13 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SaveModal from "../../components/common/SaveModal";
-import CompleteModal from "../../components/common/CompleteModal";
-import OX2Form from "../../components/doc/OX2/OX2Form";
-import useStorage from "../../hooks/useStorage";
-import { addInitialState, addInitialStateD2, changeFieldD1, changeField, deleteInitialState, deleteInitialStateD2, storage, changeTextArea, changeDatePicker } from "../../redux/modules/ox2";
+import { addInitialState, addInitialStateD2, changeFieldD1, changeField, deleteInitialState, deleteInitialStateD2, storage, changeTextArea } from "../redux/modules/h1h3h31";
 
-const OX2Container = () => {
+const useH1H3H31 = () => {
   const dispatch = useDispatch();
-  const [units, setUnits] = useState([]);
-  const state = useSelector(state => state.ox2);
-  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
-  const datas = [
-    'MASKS CHECKED',
-    'BREATHING VALVE CHECKED',
-    'PRESSURE REGULATOR CHECKED',
-    'SUPPLY HOSE CONNECTION CHECKED',
-    'OXYGEN INHALER CHECKED',
-    'DEVICE WHIT FUNCTION TEST',
-    'SERVICE LABEL PUT ON DEVICE',
-    'DELETE',
-  ];
+  const state = useSelector(state => state.h1h3h31);
+  const [visible, setVisible] = useState(false);
+  const [commVisible, setCommVisible] = useState(false);
 
   const nextId = useRef(2);
   const [lists, setLists] = useState([
@@ -29,13 +15,28 @@ const OX2Container = () => {
       id: 0,
     },
   ]);
-  const nextIdD2 = useRef(1);
+  const nextIdD2 = useRef(5);
   const [D2Lists, setD2Lists] = useState([
     {
       id: 0,
     },
-  ])
-   
+  ]);
+
+  const showModal = e => {
+    e.preventDefault();
+    setVisible(true);
+  };
+
+  const showCommModal = e => {
+    e.preventDefault();
+    setCommVisible(true);
+  };
+
+  const hideModal = () => {
+    setVisible(false);
+    setCommVisible(false);
+  };
+
   const onInsert = useCallback(
     () => {
       setLists(lists.concat({
@@ -112,75 +113,30 @@ const OX2Container = () => {
     )
   }
 
-  const onChangeDatePicker = ({ id, target }) => {
-    const { name, value, form } = target;
-    dispatch(
-      changeDatePicker({
-        name,
-        id,
-        value,
-        form,
-      })
-    )
-  }
 
-  const onStorage = async ( e, form, path ) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-        }
+      }
       );
       hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
   useEffect(() => {
     dispatch(
       storage({
         RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'), 
+        VESSELNM: localStorage.getItem('shipNm'),
       })
     )
-  }, [dispatch])
-
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-      });
-      setUnits(res.data.data);
-    })();
-  }, []);
-
-  return (
-    <>
-      {visible && (
-        <SaveModal form="OX2" path="save" onStorage={onStorage} hideModal={hideModal}/>
-      )}
-      {commVisible && (
-        <CompleteModal form="OX2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
-      )}
-      <OX2Form
-        units={units}
-        onChangeD1={onChangeD1}
-        onChange={onChange}
-        onRemove={onRemove}
-        onInsert={onInsert}
-        lists={lists}
-        D2Lists={D2Lists}
-        onChangeTextArea={onChangeTextArea}
-        datas={datas}
-        onInsertD2={onInsertD2}
-        onRemoveD2={onRemoveD2}
-        onChangeDatePicker={onChangeDatePicker}
-        showModal={showModal}
-        showCommModal={showCommModal}
-      />
-    </>
-  )
+  }, [dispatch]);
+  return { onChangeD1, onChange, onRemove, onInsert, lists, D2Lists, onStorage, onChangeTextArea, onInsertD2, onRemoveD2, visible, commVisible, hideModal, showModal, showCommModal }
 }
 
-export default OX2Container;
+export default useH1H3H31;

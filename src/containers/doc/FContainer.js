@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import FForm from '../../components/doc/F/FForm';
 import { addInitialState, changeField, changeTextArea, deleteInitialState, storage } from "../../redux/modules/f";
+import useStorage from '../../hooks/useStorage';
 
 
 const FContainer = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
-  const state = useSelector(state => state.b1);
+  const state = useSelector(state => state.f);
+  const { visible, showModal, commVisible, showCommModal, hideModal, setVisible, setCommVisible } = useStorage()
   const [lists, setLists] = useState([
     {
       id: 0,
@@ -72,12 +76,13 @@ const FContainer = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      setVisible(false);
+      setCommVisible(false);
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
   }
-  console.log('state', state);
   useEffect(() => {
     dispatch(
       storage({
@@ -88,7 +93,23 @@ const FContainer = () => {
   }, [dispatch])
 
   return (
-    <FForm onChange={onChange} onChangeTextArea={onChangeTextArea} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage}/>
+    <>
+      {visible && (
+        <SaveModal form="F" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="F" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <FForm
+        onChange={onChange}
+        onChangeTextArea={onChangeTextArea}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 };
 
