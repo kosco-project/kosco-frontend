@@ -67,8 +67,6 @@ const B1Container = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
-      // setVisible(false);
-      // setCommVisible(false);
       hideModal();
       console.log('res', res);
     } catch (e) {
