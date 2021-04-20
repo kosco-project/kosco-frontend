@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SaveModal from "../../components/common/SaveModal";
+import CompleteModal from "../../components/common/CompleteModal";
 import I1Form from "../../components/doc/I-1/I1Form";
+import useStorage from "../../hooks/useStorage";
 import { addInitialState, changeField, changeTextArea, deleteInitialState, storage } from "../../redux/modules/i1";
 
 const I1Container = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const state = useSelector(state => state.i1);
+  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
   const [units, setUnits] = useState([]);
   const [lists, setLists] = useState([
     {
@@ -72,6 +76,7 @@ const I1Container = () => {
         headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
         }
       );
+      hideModal();
       console.log('res', res);
     } catch (e) {
       console.log(e);
@@ -98,7 +103,24 @@ const I1Container = () => {
   }, []);
 
   return (
-    <I1Form onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onStorage={onStorage} units={units} onChangeTextArea={onChangeTextArea}/>
+    <>
+      {visible && (
+        <SaveModal form="I-1" path="save" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      {commVisible && (
+        <CompleteModal form="I-1" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+      )}
+      <I1Form
+        onChange={onChange}
+        onRemove={onRemove}
+        onInsert={onInsert}
+        lists={lists}
+        units={units}
+        onChangeTextArea={onChangeTextArea}
+        showModal={showModal}
+        showCommModal={showCommModal}
+      />
+    </>
   )
 }
 
