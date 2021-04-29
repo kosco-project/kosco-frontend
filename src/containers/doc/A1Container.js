@@ -9,8 +9,6 @@ import useCompModal from '../../hooks/useCompModal';
 import getItemData from '../../components/common/getItemData';
 
 const A1Container = () => {
-  const CERT_NO = JSON.parse(localStorage.getItem('certNo'));
-
   // const { tempVisible, showTempModal, hideTempModal } = useTempModal();
 
   // const [compVisible, showCompModal, hideCompModal] = useCompModal();
@@ -74,10 +72,8 @@ const A1Container = () => {
   });
 
   useEffect(() => {
-    if (CERT_NO) {
-      getItemData(CERT_NO, setState);
-    }
-  }, [CERT_NO, setState]);
+    getItemData(setState);
+  }, [setState]);
 
   return (
     <>
