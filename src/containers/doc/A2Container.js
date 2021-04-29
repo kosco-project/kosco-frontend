@@ -1,30 +1,42 @@
-import React from 'react';
-import A2Form from "../../components/doc/A2/A2Form";
+import React, { useEffect } from 'react';
+import A2Form from '../../components/doc/A2/A2Form';
 import useStorage from '../../hooks/useStorage';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
+import getItemData from '../../components/common/getItemData';
 
 const A2Container = () => {
-  const { onProductsDescription, onInspectionDescription, onStorage, visible, showModal, commVisible, showCommModal, hideModal  } = useStorage({
+  const {
+    onProductsDescription,
+    onInspectionDescription,
+    onStorage,
+    visible,
+    showModal,
+    commVisible,
+    showCommModal,
+    hideModal,
+    state,
+    setState,
+  } = useStorage({
     H: {
-      RCVNO: "",
-      VESSELNM: "",
+      RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+      VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
     },
     D1: {
-      0: "",
-      1: "",
-      2: "",
-      3: "",
-      4: "",
-      5: "",
-      6: "",
-      7: "",
-      8: "",
-      9: "",
-      10: "",
-      11: "",
-      12: "",
-      13: "",
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+      4: '',
+      5: '',
+      6: '',
+      7: '',
+      8: '',
+      9: '',
+      10: '',
+      11: '',
+      12: '',
+      13: '',
     },
     D2: {
       0: 1,
@@ -52,21 +64,37 @@ const A2Container = () => {
     },
   });
 
+  useEffect(() => {
+    getItemData(setState);
+  }, [setState]);
+
   return (
     <>
       {visible && (
-        <SaveModal form="A2" path="save" onStorage={onStorage} hideModal={hideModal}/>
+        <SaveModal
+          form='A2'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       {commVisible && (
-        <CompleteModal form="A2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal
+          form='A2'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <A2Form
         onProductsDescription={onProductsDescription}
         onInspectionDescription={onInspectionDescription}
         showModal={showModal}
-        showCommModal={showCommModal} />
+        showCommModal={showCommModal}
+        state={state}
+      />
     </>
-  )
+  );
 };
 
 export default A2Container;
