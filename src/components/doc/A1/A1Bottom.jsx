@@ -36,7 +36,7 @@ const A1Bottom = ({ onInspectionDescription, state }) => {
       <div className='bottom-description'>
         <div>
           <div>
-            <input type='checkbox' data-name="0" data-form="D2" id='bottom1'  checked={!!D2[0]} onChange={onInspectionDescription}/>
+            <input type='checkbox' data-name="0" data-form="D2" id='bottom1' checked={!!D2[0]} onChange={onInspectionDescription}/>
           </div>
           <label htmlFor='bottom1'>1. Before starting the inspection, made sure that all distributing valves were closed.</label>
         </div>
