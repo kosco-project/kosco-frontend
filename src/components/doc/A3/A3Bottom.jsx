@@ -58,7 +58,8 @@ const BottomBox = styled.div`
   }
 `;
 
-const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
+const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked, state }) => {
+  const { D2 } = state;
   return (
     <BottomBox>
       <p className='top-title'>Description of Working System</p>
@@ -77,13 +78,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>1</td>
               <td>System secured</td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="0" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="0" data-key="CarriedOut" checked={!!D2[0].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="0" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="0" data-key="NotCarried" checked={!!D2[0].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="0" data-key="remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="0" data-key="Remark" value={D2[0].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -91,13 +92,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>2</td>
               <td>Foam liquid tank visually inspected and breather valve checked</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="1" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="1" data-key="CarriedOut" checked={!!D2[1].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="1" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="1" data-key="NotCarried" checked={!!D2[1].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="1" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="1" data-key="Remark" value={D2[1].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -105,13 +106,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>3</td>
               <td>Foam concentrate content and liquid level indicator inspected / checked</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="2" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="2" data-key="CarriedOut" checked={!!D2[2].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="2" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="2" data-key="NotCarried" checked={!!D2[2].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="2" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="2" data-key="Remark" value={D2[2].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -119,13 +120,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>4</td>
               <td>Distribution lines and nozzles/monitors visually inspected</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="3" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="3" data-key="CarriedOut" checked={!!D2[3].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="3" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="3" data-key="NotCarried" checked={!!D2[3].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="3" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="3" data-key="Remark" value={D2[3].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -133,13 +134,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>5</td>
               <td>All cabinet doors, hinges, locks and instruction on installation visually inspected</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="4" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="4" data-key="CarriedOut" checked={!!D2[4].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="4" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="4" data-key="NotCarried" checked={!!D2[4].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="4" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="4" data-key="Remark" value={D2[4].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -147,13 +148,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>6</td>
               <td>Foam mixing units inspect and correct setting of foam mix ratio checked</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="5" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="5" data-key="CarriedOut" checked={!!D2[5].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="5" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="5" data-key="NotCarried" checked={!!D2[5].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="5" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="5" data-key="Remark" value={D2[5].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -161,13 +162,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>7</td>
               <td>Control cabinet(s)/release stations inspected / function tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="6" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="6" data-key="CarriedOut" checked={!!D2[6].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="6" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="6" data-key="NotCarried" checked={!!D2[6].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="6" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="6" data-key="Remark" value={D2[6].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -175,13 +176,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>8</td>
               <td>Fan stop/fire dampers (if part of the system) inspected / tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="7" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="7" data-key="CarriedOut" checked={!!D2[7].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="7" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="7" data-key="NotCarried" checked={!!D2[7].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="7" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="7" data-key="Remark" value={D2[7].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -189,13 +190,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>9</td>
               <td>Foam tank valve(s) inspected / function tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="8" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="8" data-key="CarriedOut" checked={!!D2[8].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="8" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="8" data-key="NotCarried" checked={!!D2[8].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="8" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="8" data-key="Remark" value={D2[8].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -203,13 +204,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>10</td>
               <td>Warning alarms (Audio/visual) tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="9" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="9" data-key="CarriedOut" checked={!!D2[9].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="9" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="9" data-key="NotCarried" checked={!!D2[9].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="9" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="9" data-key="Remark" value={D2[9].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -217,13 +218,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>11</td>
               <td>Pressure switches and gauges visually inspected / function tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="10" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="10" data-key="CarriedOut" checked={!!D2[10].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="10" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="10" data-key="NotCarried" checked={!!D2[10].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="10" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="10" data-key="Remark" value={D2[10].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -231,13 +232,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>12</td>
               <td>Foam pump(s) – tested for correct rotation and pressure</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="11" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="11" data-key="CarriedOut" checked={!!D2[11].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="11" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="11" data-key="NotCarried" checked={!!D2[11].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="11" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="11" data-key="Remark" value={D2[11].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -245,13 +246,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>13</td>
               <td>System ran through test line. Flushed and re-set</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="12" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="12" data-key="CarriedOut" checked={!!D2[12].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="12" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="12" data-key="NotCarried" checked={!!D2[12].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="12" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="12" data-key="Remark" value={D2[12].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -259,13 +260,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>14</td>
               <td>Foam pump(s) including relief/overflow/de-airing valve inspected / function tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="13" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="13" data-key="CarriedOut" checked={!!D2[13].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="13" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="13" data-key="NotCarried" checked={!!D2[13].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="13" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="13" data-key="Remark" value={D2[13].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -273,13 +274,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>15</td>
               <td>Selection valves visually inspected and verified correct position / function tested</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="14" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="14" data-key="CarriedOut" checked={!!D2[14].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="14" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="14" data-key="NotCarried" checked={!!D2[14].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="14" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="14" data-key="Remark" value={D2[14].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -287,13 +288,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>16</td>
               <td>Control valve overhaul inspection.</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="15" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="15" data-key="CarriedOut" checked={!!D2[15].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="15" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="15" data-key="NotCarried" checked={!!D2[15].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="15" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="15" data-key="Remark" value={D2[15].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -301,7 +302,7 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>17</td>
               <td>Foam concentrate sample periodical test arranged according to Foam Test Service Report</td>
               <td>
-                <input type='checkbox' data-form="D2" data-name="16" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+                <input type='checkbox' data-form="D2" data-name="16" data-key="CarriedOut" checked={!!D2[16].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td colSpan='2'>ATTACH</td>
             </tr>
@@ -310,13 +311,13 @@ const A3Bottom = ({ onWorkingSystem, onWorkingSystemChecked }) => {
               <td>18</td>
               <td>System reconn, sealed, inspection date labels attached and system put back in servicet</td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="17" data-key="CarriedOut" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="17" data-key="CarriedOut" checked={!!D2[17].CarriedOut} onChange={onWorkingSystemChecked} />
               </td>
               <td>
-              <input type='checkbox' data-form="D2" data-name="17" data-key="NotCarried" onChange={onWorkingSystemChecked} />
+              <input type='checkbox' data-form="D2" data-name="17" data-key="NotCarried" checked={!!D2[17].NotCarried} onChange={onWorkingSystemChecked} />
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="17" data-key="Remark" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="17" data-key="Remark" value={D2[17].Remark} onChange={onWorkingSystem}/>
               </td>
             </tr>
           </tbody>
