@@ -1,5 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import useStorage from '../../../hooks/useStorage';
 import B1TableRow from './B1TableRow';
 
 const TableBox = styled.div`
@@ -63,7 +65,9 @@ const TableBox = styled.div`
 `;
 
 
-const B1Top = ({ onChange, onRemove, onInsert, lists}) => {
+const B1Top = ({ onChange, onRemove, onInsert }) => {
+  const D1 = useSelector(state => state.b1.D1);
+  
   return (
     <>
       <TableBox>
@@ -85,9 +89,9 @@ const B1Top = ({ onChange, onRemove, onInsert, lists}) => {
               </tr>
             </thead>
             <tbody>
-              {lists.map((list, index) => (
-                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
-              ))}
+              {Object.entries(D1).map((item, index) => (
+                  <B1TableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChange={onChange} />
+                ))}
             </tbody>
           </table>
         </div>
