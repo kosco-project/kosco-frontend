@@ -29,7 +29,7 @@ const useStorage = initialState => {
 
   const onWorkingSystem = e => {
     const { value, dataset } = e.target;
-    console.log(dataset);
+
     setState({
       ...state,
       [dataset.form]: {
@@ -59,7 +59,7 @@ const useStorage = initialState => {
 
   const onKeyValueForm = e => {
     const { value, dataset } = e.target;
-    console.log(dataset);
+
     setState({
       ...state,
       [dataset.form]: {
