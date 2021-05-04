@@ -1,139 +1,151 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import A3Form from "../../components/doc/A3/A3Form";
-import useStorage from "../../hooks/useStorage";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import A3Form from '../../components/doc/A3/A3Form';
+import useStorage from '../../hooks/useStorage';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
+import getItemData from '../../components/common/getItemData';
 
 const A3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, onStorage, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
+  const {
+    onWorkingSystem,
+    onWorkingSystemChecked,
+    onStorage,
+    visible,
+    showModal,
+    commVisible,
+    showCommModal,
+    hideModal,
+    state,
+    setState,
+  } = useStorage({
     H: {
-      RCVNO: "",
-      VESSELNM: "",
+      RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+      VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
     },
     D1: {
       0: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       1: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       2: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       3: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       4: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       5: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       6: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       7: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
     },
     D2: {
       0: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       1: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       2: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       3: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       4: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       5: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       6: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       7: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       8: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       9: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       10: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       11: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       12: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       13: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       14: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       15: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
       16: {
         CarriedOut: 0,
@@ -141,27 +153,45 @@ const A3Container = () => {
       17: {
         CarriedOut: 0,
         NotCarried: 0,
-        Remark: "",
+        Remark: '',
       },
-    }
-  })
+    },
+  });
+
+  const getUnits = async () => {
+    const res = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+        },
+      }
+    );
+    setUnits(res.data.units);
+  };
 
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`, {
-          headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`},
-      });
-      setUnits(res.data.units);
-    })();
-  }, []);
+    getUnits();
+    getItemData(setState);
+  }, [setState]);
 
   return (
     <>
       {visible && (
-        <SaveModal form="A3" path="save" onStorage={onStorage} hideModal={hideModal}/>
+        <SaveModal
+          form='A3'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       {commVisible && (
-        <CompleteModal form="A3" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal
+          form='A3'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <A3Form
         units={units}
@@ -169,9 +199,10 @@ const A3Container = () => {
         onWorkingSystem={onWorkingSystem}
         showModal={showModal}
         showCommModal={showCommModal}
+        state={state}
       />
     </>
-  )
-}
+  );
+};
 
 export default A3Container;

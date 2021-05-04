@@ -4,54 +4,64 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
 import DeleteButton from '../common/DeleteButton';
 
-const TableRow = ({ id, onRemove, onChange, num }) => {
-  const { TestDt } = useSelector(state => state.b1.D1[id]);
-  const inputArg = ({ target }) => onChange({ target, id });
+const B1TableRow = ({ id, onRemove, onChange, num }) => {
+  const D1 = useSelector(state => state.b1.D1[id]);
+  const { GasType, SerialNo, TestDt, TareWT, GrossWT, Capacity, Press, Temp, Perform } = D1;
 
+  const inputArg = ({ target }) => onChange({ target, id });
+  
   return (
-    <tr>
+     <tr>
       <td>{num}</td>
       <td>
-        <input type='text' onChange={inputArg} name="GasType"/>
+        <input type='text' onChange={inputArg} value={GasType || ''} name="GasType"/>
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="SerialNo"/>
+        <input type='text' onChange={inputArg} value={SerialNo || ''} name="SerialNo"/>
       </td>
       <td>
         <DatePicker
-          selected={TestDt}
+          selected={new Date(TestDt) || new Date()}
           name="TestDt"
-          dateFormat="MMM.yyyy"
-          onChange={value => onChange({ id, target: { name: "TestDt", value } })}
+          dateFormat="yyyy-MM"
+          onChange={date => {
+            onChange({
+              id,
+              target: {
+                name: "TestDt", value: date.getMonth() + 1 + '.' + date.getFullYear()
+              }
+            }
+            )
+          }}
           showMonthYearPicker
         />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="TareWT" />
+        <input type='text' onChange={inputArg} value={TareWT || ''}  name="TareWT" />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="GrossWT" />
+        <input type='text' onChange={inputArg} value={GrossWT || ''}  name="GrossWT" />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Capacity" />
+        <input type='text' onChange={inputArg} value={Capacity || ''}  name="Capacity" />
       </td>
       <td>
-        <input type='text' onChange={inputArg}  name="Press" />
+        <input type='text' onChange={inputArg} value={Press || ''} name="Press" />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Temp" />
+        <input type='text' onChange={inputArg} value={Temp || ''} name="Temp" />
       </td>
       <td>
-        <select onChange={inputArg} name="Perform" >
+        <select onChange={inputArg} value={Perform || ''} name="Perform" >
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
       </td>
       <td onClick={() => onRemove(id)}>
-        <DeleteButton />
-      </td>
+      <DeleteButton />
+    </td>
     </tr>
   );
 };
 
-export default TableRow;
+export default B1TableRow;

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -22,11 +23,14 @@ const ItemBox = styled(Link)`
 `;
 
 const InpectionItem = ({ item }) => {
-  const onClick = useCallback(item => {
-    localStorage.setItem('rcvNo', item.RCVNO);
-    localStorage.setItem('certNo', item.CERT_NO);
-    localStorage.setItem('shipNm', item.SHIPNM);
-  }, []);
+  const { CUSTNM, RCVDT, SHIPNM, RCVNO, DOC_NO, DOC_NM, CERT_NO } = item;
+
+  
+  const onClick = useCallback(() => {
+    localStorage.setItem('rcvNo', JSON.stringify(RCVNO));
+    localStorage.setItem('certNo', JSON.stringify(CERT_NO));
+    localStorage.setItem('shipNm', JSON.stringify(SHIPNM));
+  }, [CERT_NO, RCVNO, SHIPNM]);
   
 
   useEffect(() => {
@@ -37,15 +41,18 @@ const InpectionItem = ({ item }) => {
     )
   })
 
+
   return (
-    <ItemBox to={`/doc/${item.DOC_NO}`} onClick={() => onClick(item)}>
-      <p>{item.CUSTNM || ' '}</p>
-      <p>{item.RCVDT || ' '}</p>
-      <p>{item.SHIPNM || ' '}</p>
-      <p>{item.RCVNO || ' '}</p>
-      <p>{item.DOC_NO || ' '}</p>
-      <p>{item.DOC_NM || ' '}</p>
-      <p>{item.CERT_NO || ' '}</p>
+    // 나중에 `/doc/${DOC_NO}` 이걸로 꼭 수정하기
+    // 확인하기 위한 쿼리임
+    <ItemBox to={`${CERT_NO ? `/doc/${DOC_NO}`: `/doc/${DOC_NO}?ct=${CERT_NO}`}`} item={item} onClick={onClick}>
+      <p>{CUSTNM || ' '}</p>
+      <p>{RCVDT || ' '}</p>
+      <p>{SHIPNM || ' '}</p>
+      <p>{RCVNO || ' '}</p>
+      <p>{DOC_NO || ' '}</p>
+      <p>{DOC_NM || ' '}</p>
+      <p>{CERT_NO || ' '}</p>
     </ItemBox>
   );
 };

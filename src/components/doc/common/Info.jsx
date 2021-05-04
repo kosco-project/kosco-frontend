@@ -39,6 +39,7 @@ const InfoBox = styled.div`
 `;
 
 const Info = () => {
+  const shipNm = JSON.parse(localStorage.getItem('shipNm'));
 
   return (
     <InfoBox>
@@ -48,11 +49,11 @@ const Info = () => {
       </div>
       <div className='info-type'>
         <p>Type and name of vessel/unit:</p>
-        <input type='text' defaultValue={ localStorage.getItem('shipNm') } disabled />
+        <input type='text' defaultValue={shipNm || ''} disabled />
       </div>
       <div className='info-certificate'>
         <p>Certificate No:</p>
-        <input type='text' defaultValue={ localStorage.getItem('certNo') } disabled />
+        <input type='text' defaultValue={ JSON.parse(localStorage.getItem('certNo')) } disabled />
       </div>
     </InfoBox>
   );

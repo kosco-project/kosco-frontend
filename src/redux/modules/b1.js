@@ -4,65 +4,65 @@ import { createAction, handleActions } from 'redux-actions';
 const CHANGE_FIELD = 'b1/CHANGE_FIELD';
 const ADD_INITIALSTATE = 'b1/ADD_INITIALSTATE';
 const DELETE_INITIALSTATE = 'b1/DELETE_INITIALSTATE';
-const TEMPORARY_STORAGE = 'b1/TEMPORARY_STORAGE';
+const GET_B1_DATA = 'b1/GET_B1_DATA';
 // CREATE ACTION
 export const changeField = createAction(CHANGE_FIELD);
 export const addInitialState = createAction(ADD_INITIALSTATE);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
-export const temporaryStorage = createAction(TEMPORARY_STORAGE);
+export const getB1Data = createAction(GET_B1_DATA);
 
 // INITIAL STATE
 const initialState = {
   H: {
-    RCVNO: "",
-    VESSELNM: "",
+    RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+    VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
   },
   D1: {
     0: {
-      GasType: "",
-      SerialNo: "",
+      GasType: '',
+      SerialNo: '',
       TestDt: new Date(),
-      TareWT: "",
-      GrossWT: "",
-      Capacity: "",
-      Press: "",
-      Temp: "",
-      Perform: "",
+      TareWT: '',
+      GrossWT: '',
+      Capacity: '',
+      Press: '',
+      Temp: '',
+      Perform: '',
     },
     1: {
-      GasType: "",
-      SerialNo: "",
+      GasType: '',
+      SerialNo: '',
       TestDt: new Date(),
-      TareWT: "",
-      GrossWT: "",
-      Capacity: "",
-      Press: "",
-      Temp: "",
-      Perform: "",
+      TareWT: '',
+      GrossWT: '',
+      Capacity: '',
+      Press: '',
+      Temp: '',
+      Perform: '',
     },
     2: {
-      GasType: "",
-      SerialNo: "",
+      GasType: '',
+      SerialNo: '',
       TestDt: new Date(),
-      TareWT: "",
-      GrossWT: "",
-      Capacity: "",
-      Press: "",
-      Temp: "",
-      Perform: "",
+      TareWT: '',
+      GrossWT: '',
+      Capacity: '',
+      Press: '',
+      Temp: '',
+      Perform: '',
     },
     3: {
-      GasType: "",
-      SerialNo: "",
+      GasType: '',
+      SerialNo: '',
       TestDt: new Date(),
-      TareWT: "",
-      GrossWT: "",
-      Capacity: "",
-      Press: "",
-      Temp: "",
-      Perform: "",
-    }, 
-  }
+      TareWT: '',
+      GrossWT: '',
+      Capacity: '',
+      Press: '',
+      Temp: '',
+      Perform: '',
+    },
+  },
 };
 
 // REDUCER
@@ -72,54 +72,38 @@ const b1Reducer = handleActions(
       return {
         ...state,
         D1: {
-         ...state.D1,
+          ...state.D1,
           [id]: {
             ...state.D1[id],
             [name]: value,
           },
-        }
-      }
+        },
+      };
     },
-    [ADD_INITIALSTATE]: (state, { payload : id }) => {
+    [ADD_INITIALSTATE]: (state, { payload: id }) => {
       return {
         ...state,
         D1: {
           ...state.D1,
-          [id]: {
-            ...state.D1.id,
-            GasType: "",
-            SerialNo: "",
-            TestDt: new Date(),
-            TareWT: "",
-            GrossWT: "",
-            Capacity: "",
-            Press: "",
-            Temp: "",
-            Perform: "",
-          },
-        }
-      }
+          [id]: initialState.D1[0],
+        },
+      };
     },
-    [DELETE_INITIALSTATE]: (state, { payload: { id } }) => {
-      const { [id]: value, ...restItems } = state.D1;
-      return {
-        ...state,
-        D1: restItems,
-      }
+    [DELETE_INITIALSTATE]: (state, { payload: id }) => {
+      delete state.D1[id];
+      return { ...state, D1: state.D1 };
     },
-    [TEMPORARY_STORAGE]: (state, { payload : { RCVNO, VESSELNM } }) => {
+    [GET_B1_DATA]: (state, { payload: { D1 } }) => {
       return {
         ...state,
         H: {
           ...state.H,
-          RCVNO,
-          VESSELNM,
-        }
-      }
-    }
+        },
+        D1,
+      };
+    },
   },
   initialState
 );
-
 
 export default b1Reducer;

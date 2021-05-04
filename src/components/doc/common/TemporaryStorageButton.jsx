@@ -13,7 +13,7 @@ const Button = styled.button`
 
 const TemporaryStorageButton = ({ showModal }) => {
   return (
-      <Button type='submit' onClick={e => showModal(e)}>임시 저장</Button>
+      <Button type='button' onClick={e => showModal(e)}>임시 저장</Button>
   );
 };
 
