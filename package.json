@@ -10,6 +10,7 @@
     "antd": "^4.10.2",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "immer": "^9.0.2",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-datepicker": "^3.6.0",
