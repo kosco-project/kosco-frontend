@@ -1,47 +1,60 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import B3Form from "../../components/doc/B3/B3Form";
-import useStorage from "../../hooks/useStorage";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import B3Form from '../../components/doc/B3/B3Form';
+import useStorage from '../../hooks/useStorage';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
+import getItemData from '../../components/common/getItemData';
 
 const B3Container = () => {
   const [units, setUnits] = useState([]);
-  const { onWorkingSystem, onWorkingSystemChecked, onStorage, onKeyValueForm, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
+  const {
+    onWorkingSystem,
+    onWorkingSystemChecked,
+    onStorage,
+    onKeyValueForm,
+    visible,
+    showModal,
+    commVisible,
+    showCommModal,
+    hideModal,
+    state,
+    setState,
+  } = useStorage({
     H: {
-      RCVNO: "",
-      VESSELNM: "",
+      RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+      VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
     },
     D1: {
       0: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       1: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       2: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       3: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       4: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
       5: {
-        Value: "",
-        Unit: "대",
-        Remark: "",
+        Value: '',
+        Unit: '대',
+        Remark: '',
       },
     },
     D2: {
@@ -49,103 +62,122 @@ const B3Container = () => {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       1: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       2: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       3: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       4: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       5: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       6: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       7: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       8: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       9: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       10: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       11: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       12: {
         CarriedOut: 0,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
     },
     D3: {
-      0: "",
-      1: "",
-      2: "",
-      3: "",
-    }
-  })
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+    },
+  });
+
+  const getUnits = async () => {
+    const res = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+        },
+      }
+    );
+    setUnits(res.data.units);
+  };
+
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/inspectionList/units`, {
-          headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`},
-      });
-      setUnits(res.data.units);
-    })();
-  }, []);
+    getUnits();
+    getItemData(setState);
+  }, [setState]);
   return (
     <>
       {visible && (
-        <SaveModal form="B3" path="save" onStorage={onStorage} hideModal={hideModal}/>
+        <SaveModal
+          form='B3'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       {commVisible && (
-        <CompleteModal form="B3" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal
+          form='B3'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <B3Form
         units={units}
@@ -154,9 +186,10 @@ const B3Container = () => {
         onKeyValueForm={onKeyValueForm}
         showModal={showModal}
         showCommModal={showCommModal}
+        state={state}
       />
     </>
-  )
-}
+  );
+};
 
-export default B3Container
+export default B3Container;
