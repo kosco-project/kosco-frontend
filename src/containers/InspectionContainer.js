@@ -43,7 +43,6 @@ const InspectionContainer = () => {
       }
     );
     setList(res.data.list);
-    await console.log(list);
   }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
 
   useEffect(() => {
@@ -63,6 +62,7 @@ const InspectionContainer = () => {
         : 1,
     });
   }, []);
+
   return (
     <InspectionBox
       list={list}

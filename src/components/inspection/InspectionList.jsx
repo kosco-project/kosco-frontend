@@ -10,7 +10,6 @@ const Listbox = styled.div`
 `;
 
 const InspectionList = ({ list }) => {
-  
   return (
     <Listbox >
       {list.length === 0 && <Empty />}
