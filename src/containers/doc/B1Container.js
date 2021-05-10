@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
@@ -7,9 +8,11 @@ import B1Form from '../../components/doc/B1/B1Form';
 import useStorage from '../../hooks/useStorage';
 import {
   addInitialState,
+  b1Initialize,
   changeField,
   deleteInitialState,
   getB1Data,
+  getB1H,
 } from '../../redux/modules/b1';
 import getItemData from '../../components/common/getItemData';
 
@@ -17,6 +20,8 @@ const B1Container = () => {
   const dispatch = useDispatch();
   const nextId = useRef(4);
   const b1state = useSelector(state => state.b1);
+
+  const history = useHistory();
 
   const {
     visible,
@@ -68,6 +73,7 @@ const B1Container = () => {
         }
       );
       hideModal();
+      await history.push('/inspection');
     } catch (e) {
       console.log(e);
     }
@@ -75,10 +81,21 @@ const B1Container = () => {
 
   useEffect(() => {
     (async () => {
+      dispatch(
+        getB1H({
+          RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+          VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+          CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
+        })
+      );
       const data = await getItemData(setState);
-      if (Object.keys(data.D1).length === 0) return;
+      if (!data) return;
       await dispatch(getB1Data(data));
     })();
+
+    return () => {
+      dispatch(b1Initialize());
+    };
   }, [dispatch, setState]);
 
   return (
