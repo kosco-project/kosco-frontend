@@ -28,7 +28,7 @@ const B1TableRow = ({ id, onRemove, onChange, num }) => {
             onChange({
               id,
               target: {
-                name: "TestDt", value: date.getMonth() + 1 + '.' + date.getFullYear()
+                name: "TestDt", value: date.getFullYear() + '-' + (date.getMonth() + 1)
               }
             }
             )
