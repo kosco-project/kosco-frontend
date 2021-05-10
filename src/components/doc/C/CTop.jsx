@@ -53,8 +53,9 @@ const TopBox = styled.div`
   }
 `;
 
-const CTop = ({ onKeyValueForm }) => {
-  let id = 0;
+const CTop = ({ onKeyValueForm, state }) => {
+  const { D1 } = state;
+  
   const datas = [
     'Manufacturer',
     'Number of tanks',
@@ -79,11 +80,11 @@ const CTop = ({ onKeyValueForm }) => {
           </thead>
           <tbody>
             {datas.map((data, i) => (
-              <tr key={i}>
+              <tr key={data}>
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td style={{ padding: '0 5px' }}>
-                <input type='text' data-name={id++} data-form="D1" onChange={onKeyValueForm} style={{ width: '100%' }} />
+                <input type='text' data-name={i} data-form="D1" value={D1[i] || ''} onChange={onKeyValueForm} style={{ width: '100%' }} />
                 </td>
               </tr>
             ))}
