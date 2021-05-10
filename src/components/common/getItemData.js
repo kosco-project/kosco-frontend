@@ -30,7 +30,10 @@ const getItemData = async setState => {
       ...rest,
     });
 
-    return res.data;
+    return {
+      D1,
+      ...rest,
+    };
   } catch (e) {
     console.error(e);
   }
