@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const getItemData = async setState => {
   const CERT_NO = JSON.parse(localStorage.getItem('certNo'));
+  const RCVNO = JSON.parse(localStorage.getItem('rcvNo'));
+  const VESSELNM = JSON.parse(localStorage.getItem('shipNm'));
 
   if (!CERT_NO) return;
 
@@ -22,9 +24,9 @@ const getItemData = async setState => {
 
     setState({
       H: {
-        RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
-        VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
-        CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
+        RCVNO,
+        VESSELNM,
+        CERTNO: CERT_NO || null,
       },
       D1,
       ...rest,
