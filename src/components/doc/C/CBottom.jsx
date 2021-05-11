@@ -59,7 +59,8 @@ const BottomBox = styled.div`
 `;
 
 const CBottom = ({ onWorkingSystem, checkState, state }) => {
-  let id = 0;
+  const { D2 } = state;
+  
   const datas = [
     'Tank main service valve closed and secured to prevent accidental discharge',
     'Distribution valves verified closed',
@@ -110,20 +111,20 @@ const CBottom = ({ onWorkingSystem, checkState, state }) => {
           </thead>
           <tbody>
             {datas.map((data, i) => (
-              <tr key={i}>
+              <tr key={data}>
                 <td>{i + 1}</td>
                 <td>{data}</td>
                 <td>
-                  <input type='checkbox' data-form="D2" checked={state.D2[i].CarriedOut === 1} data-name={id} data-key="CarriedOut" onChange={checkState} />
+                  <input type='checkbox' data-form="D2" checked={!!D2[i].CarriedOut} data-name={i} data-key="CarriedOut" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].NotCarried === 1} data-name={id} data-key="NotCarried" onChange={checkState} />
+                <input type='checkbox' data-form="D2" checked={!!D2[i].NotCarried} data-name={i} data-key="NotCarried" onChange={checkState} />
                 </td>
                 <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].NotApp === 1} data-name={id} data-key="NotApp" onChange={checkState} />
+                <input type='checkbox' data-form="D2" checked={!!D2[i].NotApp} data-name={i} data-key="NotApp" onChange={checkState} />
                 </td>
                 <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name={id++} data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name={i} data-key="Comm" value={D2[i].Comm || ''} onChange={onWorkingSystem}/>
                 </td>
               </tr>
             ))}

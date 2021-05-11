@@ -1,221 +1,248 @@
-import CForm from "../../components/doc/C/CForm";
-import useStorage from "../../hooks/useStorage";
+import { useEffect } from 'react';
+import CForm from '../../components/doc/C/CForm';
+import useStorage from '../../hooks/useStorage';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
+import getItemData from '../../components/common/getItemData';
 
 const CConatiner = () => {
-  const { onWorkingSystem, onStorage, onKeyValueForm, state, checkState, visible, showModal, commVisible, showCommModal, hideModal } = useStorage({
+  const {
+    onWorkingSystem,
+    onStorage,
+    onKeyValueForm,
+    state,
+    setState,
+    checkState,
+    visible,
+    showModal,
+    commVisible,
+    showCommModal,
+    hideModal,
+  } = useStorage({
     H: {
-      RCVNO: "",
-      VESSELNM: "",
+      RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+      VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
     },
     D1: {
-      0: "",
-      1: "",
-      2: "",
-      3: "",
-      4: "",
-      5: "",
-      6: "",
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+      4: '',
+      5: '',
+      6: '',
     },
     D2: {
       0: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       1: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       2: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       3: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       4: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       5: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       6: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       7: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       8: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       9: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       10: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       11: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       12: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       13: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       14: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       15: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       16: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       17: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       18: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       19: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       20: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       21: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       22: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       23: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       24: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       25: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       26: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       27: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       28: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       29: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
       30: {
         CarriedOut: 1,
         NotCarried: 0,
         NotApp: 0,
-        Comm: "",
+        Comm: '',
       },
-
     },
-  })
+  });
+
+  useEffect(() => {
+    getItemData(setState);
+  }, [setState]);
 
   return (
     <>
       {visible && (
-        <SaveModal form="C" path="save" onStorage={onStorage} hideModal={hideModal}/>
+        <SaveModal
+          form='C'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       {commVisible && (
-        <CompleteModal form="C" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal
+          form='C'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <CForm
         checkState={checkState}
@@ -226,7 +253,7 @@ const CConatiner = () => {
         showCommModal={showCommModal}
       />
     </>
-  )
-}
+  );
+};
 
 export default CConatiner;

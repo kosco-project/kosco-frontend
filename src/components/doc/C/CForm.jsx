@@ -19,8 +19,8 @@ const CForm = ({ onWorkingSystem, checkState, onKeyValueForm, state, showModal, 
   return (
     <form>
       <Info />
-      <CTop onKeyValueForm={onKeyValueForm}/>
-      <CBottom checkState={checkState} onWorkingSystem={onWorkingSystem} state={state}/>
+      <CTop onKeyValueForm={onKeyValueForm} state={state} />
+      <CBottom checkState={checkState} onWorkingSystem={onWorkingSystem} state={state} />
       <ButtonBox>
         <TemporaryStorageButton showModal={showModal}/>
         <InspectionCompleteButton showCommModal={showCommModal}/>
