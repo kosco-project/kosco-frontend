@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const BottomBox = styled.div`
@@ -33,10 +34,12 @@ const BottomBox = styled.div`
 `;
 
 const FBottom = ({ onChangeTextArea }) => {
+  const D2 = useSelector(state => state.f.D2);
+
   return (
     <BottomBox>
       <div className='top-description'>
-        <textarea onChange={onChangeTextArea} style={{ width: '100%', height: '100px' }}></textarea>
+        <textarea value={D2} onChange={onChangeTextArea} style={{ width: '100%', height: '100px' }}></textarea>
       </div>
     </BottomBox>
   );
