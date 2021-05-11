@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
 
@@ -64,7 +65,8 @@ const TopBox = styled.div`
   }
 `;
 
-const FTop = ({ onChange, onRemove, onInsert, lists}) => {
+const FTop = ({ onChange, onRemove, onInsert }) => {
+  const D1 = useSelector(state => state.f.D1);
 
   return (
     <>
@@ -83,8 +85,8 @@ const FTop = ({ onChange, onRemove, onInsert, lists}) => {
               </tr>
             </thead>
             <tbody>
-              {lists.map((list, index) => (
-                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
+              {Object.entries(D1).map((item, index) => (
+                <FTableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChange={onChange} />
               ))}
             </tbody>
           </table>
