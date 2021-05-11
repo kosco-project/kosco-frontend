@@ -60,10 +60,10 @@ const B1Container = () => {
     );
   };
 
-  const onTemporaryStorage = async (e, form, path) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`,
         b1state,
         {
@@ -104,7 +104,7 @@ const B1Container = () => {
         <SaveModal
           form='B1'
           path='save'
-          onStorage={onTemporaryStorage}
+          onStorage={onStorage}
           hideModal={hideModal}
         />
       )}
@@ -112,7 +112,7 @@ const B1Container = () => {
         <CompleteModal
           form='B1'
           path='complete'
-          onStorage={onTemporaryStorage}
+          onStorage={onStorage}
           hideModal={hideModal}
         />
       )}
