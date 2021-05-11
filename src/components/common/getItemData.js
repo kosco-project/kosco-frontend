@@ -22,6 +22,8 @@ const getItemData = async setState => {
 
     const { D1, ...rest } = await res.data;
 
+    if (!Object.keys(D1).length) return;
+
     setState({
       H: {
         RCVNO,
