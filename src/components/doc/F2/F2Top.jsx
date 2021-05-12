@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import F2TableRow from './F2TableRow';
 
@@ -50,7 +51,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const F2Top = ({ onChange, onRemove, onInsert, lists}) => {
+const F2Top = ({ onChange, onRemove, onInsert }) => {
+  const D1 = useSelector(state => state.f2.D1);
 
   return (
     <>
@@ -67,8 +69,8 @@ const F2Top = ({ onChange, onRemove, onInsert, lists}) => {
             </tr>
           </thead>
           <tbody>
-            {lists.map((list, index) => (
-              <F2TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
+            {Object.entries(D1).map((item, index) => (
+                <F2TableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChange={onChange} />
             ))}
           </tbody>
         </table>

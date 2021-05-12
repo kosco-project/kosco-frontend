@@ -5,15 +5,15 @@ const CHANGE_FIELD = 'b1/CHANGE_FIELD';
 const B1_INITIALIZE = 'b1/B1_INITIALIZE';
 const ADD_INITIALSTATE = 'b1/ADD_INITIALSTATE';
 const DELETE_INITIALSTATE = 'b1/DELETE_INITIALSTATE';
-const GET_B1_DATA = 'b1/GET_B1_DATA';
 const GET_B1_H = 'b1/GET_B1_H';
+const GET_B1_DATA = 'b1/GET_B1_DATA';
 // CREATE ACTION
 export const changeField = createAction(CHANGE_FIELD);
 export const b1Initialize = createAction(B1_INITIALIZE);
 export const addInitialState = createAction(ADD_INITIALSTATE);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
-export const getB1Data = createAction(GET_B1_DATA);
 export const getB1H = createAction(GET_B1_H);
+export const getB1Data = createAction(GET_B1_DATA);
 
 // INITIAL STATE
 const initialState = {

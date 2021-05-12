@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const Bottom2Box = styled.div`
@@ -18,6 +19,9 @@ const Bottom2Box = styled.div`
 `;
 
 const F2Bottom2 = ({ onChangeD2 }) => {
+  const D2 = useSelector(state => state.f2.D2);
+  const { value1, value2 } = D2;
+
   return (
     <Bottom2Box>
       <div>
@@ -25,11 +29,11 @@ const F2Bottom2 = ({ onChangeD2 }) => {
         the responsible ship safety authorities.
       </div>
       <div>
-        The hydrostatic release unit shall be serviced together with <input type='text' name="value1" onChange={onChangeD2}/> survey at intervals not exceeding 17 months at least at a
+        The hydrostatic release unit shall be serviced together with <input type='text' name="value1" value={value1} onChange={onChangeD2}/> survey at intervals not exceeding 17 months at least at a
         service station.
       </div>
       <div>
-        This appendix shall bear the same number as the inspection certificate for <input type='text' name="value2" onChange={onChangeD2}/>.
+        This appendix shall bear the same number as the inspection certificate for <input type='text' name="value2" value={value2} onChange={onChangeD2}/>.
       </div>
     </Bottom2Box>
   );
