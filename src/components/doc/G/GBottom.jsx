@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import GTableRow from './GTableRow';
 
@@ -55,7 +56,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const GBottom = ({ units, onChange, onRemove, onInsert, lists }) => {
+const GBottom = ({ onChange, onRemove, onInsert }) => {
+  const D2 = useSelector(state => state.g.D2);
    
   return (
     <>
@@ -75,9 +77,9 @@ const GBottom = ({ units, onChange, onRemove, onInsert, lists }) => {
             </tr>
           </thead>
           <tbody>
-              {lists.map(list => (
-                <GTableRow key={list.id} id={list.id} onRemove={onRemove} units={units} onChange={onChange}/>
-              ))}
+            {Object.entries(D2).map(item => (
+              <GTableRow key={item[0]} id={item[0]} onRemove={onRemove} onChange={onChange} />
+            ))}
           </tbody>
         </table>
       </TableBox>
