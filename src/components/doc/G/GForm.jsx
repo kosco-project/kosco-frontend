@@ -17,12 +17,12 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
   
-const GForm = ({ onChange, onRemove, onInsert, lists, units, onChangeTextArea, showModal, showCommModal }) => {
+const GForm = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
       <GTop />
-      <GBottom units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <GBottom onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
       <GBottom2 onChangeTextArea={onChangeTextArea}/>
       <GBottom3 />
       <ButtonBox>
