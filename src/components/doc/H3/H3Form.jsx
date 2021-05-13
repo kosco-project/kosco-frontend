@@ -17,12 +17,12 @@ const ButtonBox = styled.div`
     cursor: pointer;
   }`;
 
-const H3Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, lists, D2Lists, datas, onInsertD2, onRemoveD2, showModal, showCommModal }) => {
+const H3Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, datas, onInsertD2, onRemoveD2, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
-      <H3Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
-      <H3Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists}/>
+      <H3Top datas={datas} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1} />
+      <H3Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} />
       <H3Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton showModal={showModal}/>
