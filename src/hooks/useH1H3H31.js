@@ -1,26 +1,30 @@
-import axios from "axios";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addInitialState, addInitialStateD2, changeFieldD1, changeField, deleteInitialState, deleteInitialStateD2, storage, changeTextArea } from "../redux/modules/h1h3h31";
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import getItemData from '../components/common/getItemData';
+import {
+  addInitialState,
+  addInitialStateD2,
+  changeFieldD1,
+  changeField,
+  deleteInitialState,
+  deleteInitialStateD2,
+  changeTextArea,
+  getH1H3H,
+  getH1H3Data,
+  h1h3Initialize,
+} from '../redux/modules/h1h3h31';
+import useStorage from './useStorage';
 
 const useH1H3H31 = () => {
   const dispatch = useDispatch();
   const state = useSelector(state => state.h1h3h31);
   const [visible, setVisible] = useState(false);
   const [commVisible, setCommVisible] = useState(false);
+  const { setState } = useStorage();
 
-  const nextId = useRef(2);
-  const [lists, setLists] = useState([
-    {
-      id: 0,
-    },
-  ]);
-  const nextIdD2 = useRef(5);
-  const [D2Lists, setD2Lists] = useState([
-    {
-      id: 0,
-    },
-  ]);
+  const history = useHistory();
 
   const showModal = e => {
     e.preventDefault();
@@ -37,50 +41,26 @@ const useH1H3H31 = () => {
     setCommVisible(false);
   };
 
-  const onInsert = useCallback(
-    () => {
-      setLists(lists.concat({
-        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0
-      }));
-      dispatch(
-        addInitialState(nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0))
-    },
-    [dispatch, lists]
-  );
+  const onInsert = useCallback(() => {
+    dispatch(addInitialState(Object.keys(state.D1).length));
+  }, [dispatch, state.D1]);
 
-  const onInsertD2 = useCallback(
-    () => {
-      setD2Lists(D2Lists.concat({
-        id: nextIdD2.current = D2Lists.length ? Math.max(...D2Lists.map(list => list.id)) + 1 : 0
-      }));
-      dispatch(
-        addInitialStateD2(nextIdD2.current = D2Lists.length ? Math.max(...D2Lists.map(list => list.id)) + 1 : 0))
-    },
-    [D2Lists, dispatch]
-  );
+  const onInsertD2 = useCallback(() => {
+    dispatch(addInitialStateD2(Object.keys(state.D2).length));
+  }, [dispatch, state.D2]);
 
   const onRemove = useCallback(
     id => {
-      if (lists.length > 1) {
-        setLists(lists.filter(list => list.id !== id));
-        dispatch(
-          deleteInitialState(...lists.filter(list => list.id === id))
-        )
-      }
+      dispatch(deleteInitialState(id));
     },
-    [dispatch, lists],
+    [dispatch]
   );
 
   const onRemoveD2 = useCallback(
     id => {
-      if (D2Lists.length > 1) {
-        setD2Lists(D2Lists.filter(list => list.id !== id));
-        dispatch(
-          deleteInitialStateD2(...D2Lists.filter(list => list.id === id))
-        )
-      }
+      dispatch(deleteInitialStateD2(id));
     },
-    [dispatch, D2Lists],
+    [dispatch]
   );
 
   const onChangeD1 = ({ id, target }) => {
@@ -91,8 +71,8 @@ const useH1H3H31 = () => {
         checked,
         name,
       })
-    )
-  }
+    );
+  };
 
   const onChange = ({ id, target }) => {
     const { value, name, dataset } = target;
@@ -103,40 +83,67 @@ const useH1H3H31 = () => {
         value,
         dataset,
       })
-    )
-  }
+    );
+  };
 
   const onChangeTextArea = e => {
     const { value } = e.target;
-    dispatch(
-      changeTextArea(value)
-    )
-  }
-
+    dispatch(changeTextArea(value));
+  };
 
   const onStorage = async (e, form, path) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-      }
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`,
+        state,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+          },
+        }
       );
       hideModal();
-      console.log('res', res);
+      await history.push('/inspection');
     } catch (e) {
       console.log(e);
     }
   };
 
   useEffect(() => {
-    dispatch(
-      storage({
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
-      })
-    )
-  }, [dispatch]);
-  return { onChangeD1, onChange, onRemove, onInsert, lists, D2Lists, onStorage, onChangeTextArea, onInsertD2, onRemoveD2, visible, commVisible, hideModal, showModal, showCommModal }
-}
+    (async () => {
+      dispatch(
+        getH1H3H({
+          RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+          VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+          CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
+        })
+      );
+      const data = await getItemData(setState);
+      if (!data) return;
+      await dispatch(getH1H3Data(data));
+    })();
+
+    return () => {
+      dispatch(h1h3Initialize());
+    };
+  }, [dispatch, setState]);
+  return {
+    onChangeD1,
+    onChange,
+    onRemove,
+    onInsert,
+    onStorage,
+    onChangeTextArea,
+    onInsertD2,
+    onRemoveD2,
+    visible,
+    commVisible,
+    hideModal,
+    showModal,
+    showCommModal,
+  };
+};
 
 export default useH1H3H31;
