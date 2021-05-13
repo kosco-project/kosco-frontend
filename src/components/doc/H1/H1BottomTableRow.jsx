@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import DeleteButton from '../common/DeleteButton';
 
 const H1BottomTableRow = ({ id, onRemoveD2, onChange, num }) => {
+  const {Manuf, Type, SerialNo, Remark } = useSelector(state => state.h1h3h31.D2[id]);
+
   const inputArg = ({ target }) => onChange({ target, id });
   return (
     <tr>
@@ -9,16 +12,16 @@ const H1BottomTableRow = ({ id, onRemoveD2, onChange, num }) => {
         {'SET NO.' + num}
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Manuf" data-form="D2"/>
+        <input type='text' value={Manuf} onChange={inputArg} name="Manuf" data-form="D2"/>
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Type" data-form="D2"/>
+        <input type='text' value={Type} onChange={inputArg} name="Type" data-form="D2"/>
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="SerialNo" data-form="D2"/>
+        <input type='text' value={SerialNo} onChange={inputArg} name="SerialNo" data-form="D2"/>
       </td>
       <td>
-        <select onChange={inputArg} name="Remark" data-form="D2">
+        <select value={Remark} onChange={inputArg} name="Remark" data-form="D2">
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>

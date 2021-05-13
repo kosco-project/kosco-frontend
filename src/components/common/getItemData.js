@@ -21,7 +21,7 @@ const getItemData = async setState => {
     );
 
     const { D1, ...rest } = await res.data;
-
+    console.log(res.data);
     if (!Object.keys(D1).length && !Object.keys(rest.D2).length) return;
 
     setState({

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import H1TopTableRow from './H1TopTableRow';
 
@@ -96,7 +97,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H1Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
+const H1Top = ({ datas, onRemove, onInsert, onChangeD1 }) => {
+  const D1 = useSelector(state => state.h1h3h31.D1);
   return (
     <>
       <TopBox>
@@ -109,8 +111,8 @@ const H1Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
         <div className='right-box'>
           <div className='title'>SPECIFICATION OF SETS BELOWS ;</div>
           <div className='description-box'>
-          {lists.map((list, i) => (
-            <H1TopTableRow key={list.id} num={i + 1} id={list.id} onRemove={onRemove} onChangeD1={onChangeD1}/>
+             {Object.entries(D1).map((item, index) => (
+                <H1TopTableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChangeD1={onChangeD1} />
             ))}
           </div>
         </div>
