@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import H31BttomTableRow from './H31BttomTableRow';
 
@@ -55,8 +56,9 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H31Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists }) => {
-   
+const H31Bottom = ({ onInsertD2, onRemoveD2, onChange }) => {
+  const D2 = useSelector(state => state.h1h3h31.D2);
+
   return (
     <>
       <TableBox>
@@ -73,8 +75,8 @@ const H31Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists }) => {
             </tr>
           </thead>
           <tbody>
-            {D2Lists.map((list, index) => (
-              <H31BttomTableRow key={list.id} id={list.id} onRemove={onRemoveD2} onChange={onChange} num={index + 1} />
+             {Object.entries(D2).map((item, index) => (
+                <H31BttomTableRow key={item[0]} id={item[0]} num={index + 1} onRemoveD2={onRemoveD2} onChange={onChange} />
             ))}
           </tbody>
         </table>
