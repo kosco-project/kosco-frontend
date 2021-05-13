@@ -18,8 +18,6 @@ const H3Container = () => {
     onChange,
     onRemove,
     onInsert,
-    lists,
-    D2Lists,
     onStorage,
     onChangeTextArea,
     onInsertD2,
@@ -73,8 +71,6 @@ const H3Container = () => {
         onChange={onChange}
         onRemove={onRemove}
         onInsert={onInsert}
-        lists={lists}
-        D2Lists={D2Lists}
         onChangeTextArea={onChangeTextArea}
         datas={datas}
         onInsertD2={onInsertD2}

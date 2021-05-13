@@ -56,9 +56,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H1Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists }) => {
+const H1Bottom = ({ onInsertD2, onRemoveD2, onChange }) => {
   const D2 = useSelector(state => state.h1h3h31.D2);
-  console.log(D2);
 
   return (
     <>
