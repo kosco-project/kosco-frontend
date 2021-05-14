@@ -1,30 +1,29 @@
-import axios from "axios";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import getItemData from '../components/common/getItemData';
+import {
+  addInitialState,
+  changeField,
+  deleteInitialState,
+  changeTextArea,
+  getH2AData,
+  getH2A_H,
+  h2AInitialize,
+} from '../redux/modules/h2A';
+import useStorage from './useStorage';
 
-const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, changeTextArea ) => {
+const useH2H4 = () => {
   const state = useSelector(state => state.h2A);
   const [visible, setVisible] = useState(false);
   const [commVisible, setCommVisible] = useState(false);
+  const { setState } = useStorage();
 
+  const history = useHistory();
   const [units, setUnits] = useState([]);
-  const [lists, setLists] = useState([
-    {
-      id: 0,
-    },
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    }
-  ]);
 
   const dispatch = useDispatch();
-  const nextId = useRef(4);
 
   const showModal = e => {
     e.preventDefault();
@@ -43,25 +42,13 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
 
   const onRemove = useCallback(
     id => {
-      if (lists.length > 1) {
-        setLists(lists.filter(list => list.id !== id));
-        dispatch(
-          deleteInitialState(...lists.filter(list => list.id === id))
-        )
-      }
+      dispatch(deleteInitialState(id));
     },
-    [deleteInitialState, dispatch, lists],
+    [dispatch]
   );
-  const onInsert = useCallback(
-    () => {
-      setLists(lists.concat({
-        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0
-      }));
-      dispatch(
-        addInitialState(nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0))
-    },
-    [addInitialState, dispatch, lists]
-  );
+  const onInsert = useCallback(() => {
+    dispatch(addInitialState(Object.keys(state.D1).length));
+  }, [dispatch, state.D1]);
 
   const onChange = ({ id, target }) => {
     const { value, name } = target;
@@ -71,51 +58,80 @@ const useH2H4 = ( addInitialState, changeField, deleteInitialState, storage, cha
         value,
         name,
       })
-    )
+    );
   };
 
   const onChangeTextArea = e => {
     const { value } = e.target;
-    dispatch(
-      changeTextArea(value)
-    )
+    dispatch(changeTextArea(value));
   };
-
 
   const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-      }
+      const res = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`,
+        state,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+          },
+        }
       );
       hideModal();
-      console.log('res', res);
+      await history.push('/inspection');
     } catch (e) {
       console.log(e);
     }
   };
 
-  useEffect(() => {
+  const getUnits = async () => {
+    const res = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+        },
+      }
+    );
+    setUnits(res.data.data);
+  };
+
+  const getData = useCallback(async () => {
     dispatch(
-      storage({
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
+      getH2A_H({
+        RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+        VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+        CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
       })
-    )
-  }, [dispatch, storage]);
+    );
+    const data = await getItemData(setState);
+    if (!data) return;
+    await dispatch(getH2AData(data));
+  }, [dispatch, setState]);
 
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-      });
-      setUnits(res.data.data);
-    })();
-  }, []);
+    getUnits();
+    getData();
 
+    return () => {
+      dispatch(h2AInitialize());
+    };
+  }, [dispatch, getData, setState]);
 
-  return {onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units, visible, commVisible, hideModal, showModal, showCommModal}
-}
+  return {
+    onStorage,
+    onChangeTextArea,
+    onChange,
+    onInsert,
+    onRemove,
+    units,
+    visible,
+    commVisible,
+    hideModal,
+    showModal,
+    showCommModal,
+  };
+};
 
 export default useH2H4;

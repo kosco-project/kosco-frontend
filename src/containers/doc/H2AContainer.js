@@ -1,19 +1,34 @@
 // import { useState } from "react";
-import H2AForm from "../../components/doc/H2-A/H2AForm";
-import useH2H4 from "../../hooks/useH2H4";
-import SaveModal from "../../components/common/SaveModal";
-import CompleteModal from "../../components/common/CompleteModal";
-import { addInitialState, changeField, deleteInitialState, storage, changeTextArea } from "../../redux/modules/h2A";
+import H2AForm from '../../components/doc/H2-A/H2AForm';
+import useH2H4 from '../../hooks/useH2H4';
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
+import {
+  addInitialState,
+  changeField,
+  deleteInitialState,
+  changeTextArea,
+} from '../../redux/modules/h2A';
 
 const H2AContainer = () => {
-  const { onStorage, onChangeTextArea, onChange, onInsert, onRemove, lists, units, visible, commVisible, hideModal, showModal, showCommModal } = useH2H4(addInitialState, changeField, deleteInitialState, storage, changeTextArea);
+  const {
+    onChangeTextArea,
+    onChange,
+    onInsert,
+    onRemove,
+    lists,
+    units,
+    visible,
+    commVisible,
+    hideModal,
+    showModal,
+    showCommModal,
+  } = useH2H4(addInitialState, changeField, deleteInitialState, changeTextArea);
   return (
     <>
-      {visible && (
-        <SaveModal form="H2-A" path="save" onStorage={onStorage} hideModal={hideModal}/>
-      )}
+      {visible && <SaveModal form='H2-A' path='save' hideModal={hideModal} />}
       {commVisible && (
-        <CompleteModal form="H2-A" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal form='H2-A' path='complete' hideModal={hideModal} />
       )}
       <H2AForm
         onChange={onChange}
@@ -26,7 +41,7 @@ const H2AContainer = () => {
         showCommModal={showCommModal}
       />
     </>
-  )
-}
+  );
+};
 
 export default H2AContainer;

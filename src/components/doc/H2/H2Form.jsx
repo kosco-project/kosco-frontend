@@ -16,11 +16,11 @@ const ButtonBox = styled.div`
     cursor: pointer;
   }`;
 
-const H2Form = ({ onChange, onRemove, onInsert, lists, onChangeTextArea, units, showModal, showCommModal }) => {
+const H2Form = ({ onChange, onRemove, onInsert, onChangeTextArea, units, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
-      <H2Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} units={units}/>
+      <H2Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} units={units}/>
       <H2Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton showModal={showModal}/>
