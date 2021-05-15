@@ -33,7 +33,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: '선택해주세요.',
+      Perform: '',
     },
     1: {
       CylnType: '',
@@ -41,7 +41,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: '선택해주세요.',
+      Perform: '',
     },
     2: {
       CylnType: '',
@@ -49,7 +49,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: '선택해주세요.',
+      Perform: '',
     },
     3: {
       CylnType: '',
@@ -57,7 +57,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: '선택해주세요.',
+      Perform: '',
     },
   },
   D2: '',
@@ -67,6 +67,7 @@ const initialState = {
 const H2AReducer = handleActions(
   {
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
+      console.log(id, name, value);
       return {
         ...state,
         D1: {
