@@ -52,6 +52,7 @@ const useH2H4 = () => {
 
   const onChange = ({ id, target }) => {
     const { value, name } = target;
+    console.log(id, value, name);
     dispatch(
       changeField({
         id,

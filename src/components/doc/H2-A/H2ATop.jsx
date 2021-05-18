@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import H2ATableRow from './H2ATableRow';
 // import useLists from '../../../hooks/useLists';
@@ -52,7 +53,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H2ATop = ({ onChange, onRemove, onInsert, lists, units }) => {
+const H2ATop = ({ onChange, onRemove, onInsert, units }) => {
+  const D1 = useSelector(state => state.h2A.D1);
 
   return (
     <>
@@ -71,8 +73,8 @@ const H2ATop = ({ onChange, onRemove, onInsert, lists, units }) => {
             </tr>
           </thead>
           <tbody>
-            {lists.map(list => (
-              <H2ATableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} units={units}/>
+            {Object.entries(D1).map(item => (
+              <H2ATableRow key={item[0]} id={item[0]} onRemove={onRemove} onChange={onChange} units={units} />
             ))}
           </tbody>
         </table>
