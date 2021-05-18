@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import ITableRow from './ITableRow';
 
@@ -50,7 +51,10 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const ITop = ({ onChange, onRemove, onInsert, lists, onChangeD2 }) => {
+const ITop = ({ onChange, onRemove, onInsert, onChangeD2 }) => {
+  const D1 = useSelector(state => state.i.D1)
+  const D2 = useSelector(state => state.i.D2)
+
   return (
     <>
       <BottomBox>
@@ -66,9 +70,9 @@ const ITop = ({ onChange, onRemove, onInsert, lists, onChangeD2 }) => {
             </tr>
           </thead>
           <tbody>
-          {lists.map((list, index) => (
-            <ITableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
-              ))}
+            {Object.entries(D1).map((item, index) => (
+              <ITableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChange={onChange} />
+            ))}
           </tbody>
         </table>
         <ButtonDiv>
@@ -77,9 +81,9 @@ const ITop = ({ onChange, onRemove, onInsert, lists, onChangeD2 }) => {
           </button>
         </ButtonDiv>
         <p className='title'>(2) Special Additional Requirements :</p>
-        <input type='text' onChange={onChangeD2} name="0" style={{ marginBottom: 15, width: '100%', border: '1px solid #000' }} />
+        <input type='text' value={D2[0]} onChange={onChangeD2} name="0" style={{ marginBottom: 15, width: '100%', border: '1px solid #000' }} />
         <p className='title'>(3) Last Service Date / Service Station :</p>
-        <input type='text' onChange={onChangeD2} name="1" style={{ width: '100%', border: '1px solid #000' }} />
+        <input type='text' value={D2[1]} onChange={onChangeD2} name="1" style={{ width: '100%', border: '1px solid #000' }} />
       </BottomBox>
     </>
   );
