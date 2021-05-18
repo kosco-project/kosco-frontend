@@ -155,7 +155,6 @@ const iReducer = handleActions(
     },
 
     [DELETE_INITIALSTATE]: (state, { payload: id }) => {
-      console.log(id);
       delete state.D1[id];
       return { ...state, D1: state.D1 };
     },
