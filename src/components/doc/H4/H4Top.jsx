@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import H4TableRow from './H4TableRow';
 
@@ -50,7 +51,7 @@ const ButtonDiv = styled.div`
 `;
 
 const H4Top = ({ onChange, onRemove, onInsert, lists, units }) => {
-
+  const D1 = useSelector(state => state.h2A.D1);
 
   return (
     <>
@@ -69,8 +70,8 @@ const H4Top = ({ onChange, onRemove, onInsert, lists, units }) => {
             </tr>
           </thead>
           <tbody>
-            {lists.map(list => (
-              <H4TableRow key={list.id} id={list.id} onRemove={onRemove} onChange={onChange} units={units}/>
+            {Object.entries(D1).map(item => (
+              <H4TableRow key={item[0]} id={item[0]} onRemove={onRemove} onChange={onChange} units={units} />
             ))}
           </tbody>
         </table>
