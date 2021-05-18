@@ -16,11 +16,11 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const IForm = ({ onChange, onRemove, onInsert, lists, onChangeD2, onChecked, showModal, showCommModal }) => {
+const IForm = ({ onChange, onRemove, onInsert, onChangeD2, onChecked, showModal, showCommModal }) => {
   return (
     <form>
       <IInfo />
-      <ITop onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onChangeD2={onChangeD2}/>
+      <ITop onChange={onChange} onRemove={onRemove} onInsert={onInsert} onChangeD2={onChangeD2}/>
       <IBottom onChecked={onChecked}/>
       <IBottom2 />
       <ButtonBox>
