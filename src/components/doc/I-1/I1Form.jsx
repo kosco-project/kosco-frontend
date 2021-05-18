@@ -16,11 +16,11 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const I1Form = ({ onChange, onRemove, onInsert, lists, units, onChangeTextArea, showModal, showCommModal }) => {
+const I1Form = ({ onChange, onRemove, onInsert, units, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
-      <I1Top units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <I1Top units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
       <I1Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton showModal={showModal}/>
