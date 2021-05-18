@@ -50,7 +50,7 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const H4Top = ({ onChange, onRemove, onInsert, lists, units }) => {
+const H4Top = ({ onChange, onRemove, onInsert, units }) => {
   const D1 = useSelector(state => state.h2A.D1);
 
   return (
