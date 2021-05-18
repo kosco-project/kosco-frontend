@@ -33,7 +33,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: 'GOOD',
+      Perform: '',
     },
     1: {
       CylnType: '',
@@ -41,7 +41,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: 'GOOD',
+      Perform: '',
     },
     2: {
       CylnType: '',
@@ -49,7 +49,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: 'GOOD',
+      Perform: '',
     },
     3: {
       CylnType: '',
@@ -57,7 +57,7 @@ const initialState = {
       WorkPress: '',
       SerialNo: '',
       TestDt: new Date(),
-      Perform: 'GOOD',
+      Perform: '',
     },
   },
   D2: '',
@@ -67,6 +67,7 @@ const initialState = {
 const H2AReducer = handleActions(
   {
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
+      console.log(id, name, value);
       return {
         ...state,
         D1: {
@@ -97,7 +98,7 @@ const H2AReducer = handleActions(
             WorkPress: '',
             SerialNo: '',
             TestDt: new Date(),
-            Perform: '',
+            Perform: '선택해주세요.',
           },
         },
       };

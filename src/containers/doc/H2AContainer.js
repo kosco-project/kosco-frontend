@@ -16,25 +16,36 @@ const H2AContainer = () => {
     onChange,
     onInsert,
     onRemove,
-    lists,
+    onStorage,
     units,
     visible,
     commVisible,
     hideModal,
     showModal,
     showCommModal,
-  } = useH2H4(addInitialState, changeField, deleteInitialState, changeTextArea);
+  } = useH2H4();
   return (
     <>
-      {visible && <SaveModal form='H2-A' path='save' hideModal={hideModal} />}
+      {visible && (
+        <SaveModal
+          form='H2-A'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
+      )}
       {commVisible && (
-        <CompleteModal form='H2-A' path='complete' hideModal={hideModal} />
+        <CompleteModal
+          form='H2-A'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <H2AForm
         onChange={onChange}
         onRemove={onRemove}
         onInsert={onInsert}
-        lists={lists}
         onChangeTextArea={onChangeTextArea}
         units={units}
         showModal={showModal}

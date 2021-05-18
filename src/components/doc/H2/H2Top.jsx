@@ -53,8 +53,6 @@ const ButtonDiv = styled.div`
 `;
 
 const H2Top = ({ onChange, onRemove, onInsert, units }) => {
-  const res = useSelector(state => state.h2A);
-  console.log(res);
   const D1 = useSelector(state => state.h2A.D1);
 
   return (
