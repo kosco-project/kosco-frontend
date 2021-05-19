@@ -9,7 +9,9 @@ const ADD_INITIALSTATE = 'ox2/ADD_INITIALSTATE';
 const ADD_INITIALSTATE_D2 = 'ox2/ADD_INITIALSTATE_D2';
 const DELETE_INITIALSTATE = 'ox2/DELETE_INITIALSTATE';
 const DELETE_INITIALSTATE_D2 = 'ox2/DELETE_INITIALSTATE_D2';
-const STORAGE = 'ox2/TEMPORARY_STORAGE';
+const GET_OX2_H = 'ox2/GET_OX2_H';
+const GET_OX2_DATA = 'ox2/GET_OX2_DATA';
+const OX2_INITIALIZE = 'ox2/OX2_INITIALIZE';
 
 // CREATE ACTION
 export const changeFieldD1 = createAction(CHANGE_FIELD_D1);
@@ -20,18 +22,19 @@ export const addInitialState = createAction(ADD_INITIALSTATE);
 export const addInitialStateD2 = createAction(ADD_INITIALSTATE_D2);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
 export const deleteInitialStateD2 = createAction(DELETE_INITIALSTATE_D2);
-export const storage = createAction(STORAGE);
-
+export const getOX2h = createAction(GET_OX2_H);
+export const getOX2data = createAction(GET_OX2_DATA);
+export const ox2Initialize = createAction(OX2_INITIALIZE);
 
 // INITIAL STATE
 const initialState = {
   H: {
-    RCVNO: "",
-    VESSELNM: "",
+    RCVNO: '',
+    VESSELNM: '',
   },
   D1: {
-    0: { 
-      SetNo1:1,
+    0: {
+      SetNo1: 1,
       SetNo2: 1,
       SetNo3: 1,
       SetNo4: 1,
@@ -41,22 +44,21 @@ const initialState = {
     },
   },
   D2: {
-    0: { 
-      Manuf:"",
-      Volume: "",
-      WorkPress: "",
+    0: {
+      Manuf: '',
+      Volume: '',
+      WorkPress: '',
       TestDt: new Date(),
-      SerialNo: "",
-      Perform: "",
+      SerialNo: '',
+      Perform: '',
     },
   },
-  D3 : "",
-}
+  D3: '',
+};
 
 // REDUCER
 const ox2Reducer = handleActions(
   {
-
     [CHANGE_FIELD_D1]: (state, { payload: { id, name, checked } }) => {
       if (checked) {
         return {
@@ -66,9 +68,9 @@ const ox2Reducer = handleActions(
             [id]: {
               ...state.D1[id],
               [name]: 1,
-            }
-          }
-        }
+            },
+          },
+        };
       }
       if (!checked) {
         return {
@@ -78,42 +80,42 @@ const ox2Reducer = handleActions(
             [id]: {
               ...state.D1[id],
               [name]: 0,
-            }
-          }
-        }
+            },
+          },
+        };
       }
     },
     [CHANGE_FIELD]: (state, { payload: { id, name, value, dataset } }) => {
       return {
         ...state,
         [dataset.form]: {
-         ...state[dataset.form],
+          ...state[dataset.form],
           [id]: {
             ...state[dataset.form][id],
             [name]: value,
           },
-        }
-      }
+        },
+      };
     },
     [CHANGE_TEXT_AREA]: (state, { payload: value }) => {
       return {
         ...state,
         D3: value,
-      }
+      };
     },
     [CHANGE_DATE_PICKER]: (state, { payload: { id, name, value, form } }) => {
       return {
         ...state,
         [form]: {
-         ...state[form],
+          ...state[form],
           [id]: {
             ...state[form][id],
             [name]: value,
           },
-        }
-      }
+        },
+      };
     },
-    [ADD_INITIALSTATE]: (state, { payload : id }) => {
+    [ADD_INITIALSTATE]: (state, { payload: id }) => {
       return {
         ...state,
         D1: {
@@ -128,8 +130,8 @@ const ox2Reducer = handleActions(
             SetNo6: 1,
             SetNo7: 1,
           },
-        }
-      }
+        },
+      };
     },
     [ADD_INITIALSTATE_D2]: (state, { payload: id }) => {
       return {
@@ -138,40 +140,39 @@ const ox2Reducer = handleActions(
           ...state.D2,
           [id]: {
             ...state.D2.id,
-            Manuf:"",
-            Volume: "",
-            WorkPress: "",
+            Manuf: '',
+            Volume: '',
+            WorkPress: '',
             TestDt: new Date(),
-            SerialNo: "",
-            Perform: "",
-          }
-        }
-      }
+            SerialNo: '',
+            Perform: '',
+          },
+        },
+      };
     },
-    [DELETE_INITIALSTATE]: (state, { payload: { id } }) => {
-      const { [id]: value, ...restItems } = state.D1;
+    [DELETE_INITIALSTATE]: (state, { payload: id }) => {
+      delete state.D1[id];
+      return { ...state, D1: state.D1 };
+    },
+    [DELETE_INITIALSTATE_D2]: (state, { payload: id }) => {
+      delete state.D2[id];
+      return { ...state, D2: state.D2 };
+    },
+    [GET_OX2_H]: (state, { payload }) => {
       return {
         ...state,
-        D1: restItems,
-      }
+        H: payload,
+      };
     },
-    [DELETE_INITIALSTATE_D2]: (state, { payload: { id } }) => {
-      const { [id]: value, ...restItems } = state.D2;
+    [GET_OX2_DATA]: (state, { payload: { D1, D2, D3 } }) => {
       return {
         ...state,
-        D2: restItems,
-      }
+        D1,
+        D2,
+        D3,
+      };
     },
-    [STORAGE]: (state, { payload : { RCVNO, VESSELNM } }) => {
-      return {
-        ...state,
-        H: {
-          ...state.H,
-          RCVNO,
-          VESSELNM,
-        }
-      }
-    }
+    [OX2_INITIALIZE]: () => initialState,
   },
   initialState
 );

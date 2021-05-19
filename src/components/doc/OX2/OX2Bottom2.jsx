@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const BottomBox = styled.div`
@@ -22,11 +23,13 @@ const BottomBox = styled.div`
 `;
 
 const OX2Bottom2 = ({ onChangeTextArea }) => {
+  const D3 = useSelector(state => state.ox2.D3);
+
   return (
     <BottomBox>
       <div className='title'>Recommendation ;</div>
       <div className='description'>
-        <textarea onChange={onChangeTextArea}></textarea>
+        <textarea value={D3} onChange={onChangeTextArea}></textarea>
       </div>
     </BottomBox>
   );
