@@ -22,7 +22,7 @@ const WForm = ({ checkState, onWorkingSystem, state, onChangeTextArea, onKeyValu
       <Info />
       <WTop onKeyValueForm={onKeyValueForm} state={state} onChangeCovering={onChangeCovering}/>
       <WBottom checkState={checkState} onWorkingSystem={onWorkingSystem} state={state} />
-      <WBottom2 onChangeTextArea={onChangeTextArea}/>
+      <WBottom2 onChangeTextArea={onChangeTextArea} state={state} />
       <ButtonBox>
         <TemporaryStorageButton showModal={showModal}/>
         <InspectionCompleteButton showCommModal={showCommModal}/>

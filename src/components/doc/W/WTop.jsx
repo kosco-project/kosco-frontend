@@ -38,6 +38,8 @@ const TopBox = styled.div`
 `;
 
 const WTop = ({ onKeyValueForm, state, onChangeCovering }) => {
+  const { D1 } = state;
+
   const datas = ['MAKER', `TYPE & MFG' NO`, 'NUMBER OF ZONE', 'TYPE OF DETECTOR'];
 
   return (
@@ -47,20 +49,20 @@ const WTop = ({ onKeyValueForm, state, onChangeCovering }) => {
         {datas.map((data, i) => (
           <div className='form1' key={i}>
             {data} &#58;
-            <input type='text' onChange={onKeyValueForm} data-form="D1" data-name={i} />
+            <input type='text' value={D1[i]} onChange={onKeyValueForm} data-form="D1" data-name={i} />
           </div>
         ))}
         <div className='form1'>
           <div>COVERING &#58;</div>
           <div>
-            <input type='checkbox' onChange={onChangeCovering} data-value="1" checked={state.D1[4] === "1"}/><span>1&#41; MAIN ENGINE</span>
-            <input type='checkbox' onChange={onChangeCovering} data-value="2" checked={state.D1[4] === "2"}/><span>2&#41; NO.1&#38;2 GENERATOR</span> 
-            <input type='checkbox' onChange={onChangeCovering} data-value="3" checked={state.D1[4] === "3"}/><span>3&#41; NO.3 GENERATOR</span>
+            <input type='checkbox' onChange={onChangeCovering} data-value="1" checked={D1[4] === "1"}/><span>1&#41; MAIN ENGINE</span>
+            <input type='checkbox' onChange={onChangeCovering} data-value="2" checked={D1[4] === "2"}/><span>2&#41; NO.1&#38;2 GENERATOR</span> 
+            <input type='checkbox' onChange={onChangeCovering} data-value="3" checked={D1[4] === "3"}/><span>3&#41; NO.3 GENERATOR</span>
           </div>
           <div>
-            <input type='checkbox' onChange={onChangeCovering} data-value="4" checked={state.D1[4] === "4"}/><span>4&#41; PURIFIER ROOM</span>
-            <input type='checkbox' onChange={onChangeCovering} data-value="5" checked={state.D1[4] === "5"}/><span>5&#41; AUX BOILER</span> 
-            <input type='checkbox' onChange={onChangeCovering} data-value="6" checked={state.D1[4] === "6"}/><span>6&#41; INCINERATOR</span> 
+            <input type='checkbox' onChange={onChangeCovering} data-value="4" checked={D1[4] === "4"}/><span>4&#41; PURIFIER ROOM</span>
+            <input type='checkbox' onChange={onChangeCovering} data-value="5" checked={D1[4] === "5"}/><span>5&#41; AUX BOILER</span> 
+            <input type='checkbox' onChange={onChangeCovering} data-value="6" checked={D1[4] === "6"}/><span>6&#41; INCINERATOR</span> 
           </div>
         </div>
       </div>
