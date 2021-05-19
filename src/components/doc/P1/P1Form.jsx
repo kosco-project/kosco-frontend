@@ -16,11 +16,11 @@ const ButtonBox = styled.div`
   }`;
 
 
-const P1Form = ({ onChange, onRemove, onInsert, lists, onChangeTextArea, showModal, showCommModal }) => {
+const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, showCommModal }) => {
   return (
     <form>
       <P1Info />
-      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
       <P1Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton showModal={showModal}/>
