@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -51,7 +52,7 @@ const useStorage = initialState => {
         ...state[form],
         [name]: {
           ...state[form][name],
-          [key]: value,
+          [key]: moment(value).format('yyyy-MM'),
         },
       },
     });
