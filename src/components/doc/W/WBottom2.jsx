@@ -32,12 +32,14 @@ const TopBox = styled.div`
   }
 `;
 
-const WBottom2 = ({ onChangeTextArea }) => {
+const WBottom2 = ({ onChangeTextArea, state }) => {
+  const { D3 } = state;
+
   return (
     <TopBox>
       <p className='top-title'>Recommendation;</p>
       <div className='top-description'>
-        <textarea onChange={onChangeTextArea} data-form="D3" style={{ width: '100%', height: '100px' }}></textarea>
+        <textarea value={D3} onChange={onChangeTextArea} data-form="D3" style={{ width: '100%', height: '100px' }}></textarea>
       </div>
     </TopBox>
   );
