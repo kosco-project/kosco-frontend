@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import OX2TopTableRow from './OX2TopTableRow';
 
@@ -95,7 +96,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
+const OX2Top = ({ datas, onRemove, onInsert, onChangeD1 }) => {
+  const D1 = useSelector(state => state.ox2.D1);
 
   return (
     <>
@@ -109,8 +111,8 @@ const OX2Top = ({ datas, lists, onRemove, onInsert, onChangeD1 }) => {
         <div className='right-box'>
           <div className='title'>Specification of medical oxygen ;</div>
           <div className='description-box'>
-            {lists.map((list, index) => (
-              <OX2TopTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChangeD1={onChangeD1}/>
+             {Object.entries(D1).map((item, index) => (
+              <OX2TopTableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChangeD1={onChangeD1}/>
             ))}
           </div>
         </div>

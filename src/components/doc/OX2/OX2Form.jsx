@@ -17,12 +17,12 @@ const ButtonBox = styled.div`
     cursor: pointer;
   }`;
 
-const OX2Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, lists, D2Lists, datas, onInsertD2, onRemoveD2, units, onChangeDatePicker, showModal, showCommModal }) => {
+const OX2Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, datas, onInsertD2, onRemoveD2, units, onChangeDatePicker, showModal, showCommModal }) => {
   return (
     <form>
       <Info />
-      <OX2Top datas={datas} lists={lists} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
-      <OX2Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} D2Lists={D2Lists} units={units} onChangeDatePicker={onChangeDatePicker}/>
+      <OX2Top datas={datas} onRemove={onRemove} onInsert={onInsert} onChangeD1={onChangeD1}/>
+      <OX2Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} units={units} onChangeDatePicker={onChangeDatePicker}/>
       <OX2Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
         <DynTemporaryStorageButton showModal={showModal}/>

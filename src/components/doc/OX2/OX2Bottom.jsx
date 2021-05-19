@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import OX2BttomTableRow from './OX2BttomTableRow';
 
@@ -55,7 +56,9 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists, units, onChangeDatePicker }) => {
+const OX2Bottom = ({ onInsertD2, onRemoveD2, onChange, units, onChangeDatePicker }) => {
+  const D2 = useSelector(state => state.ox2.D2);
+
   return (
     <>
       <TableBox>
@@ -74,8 +77,8 @@ const OX2Bottom = ({ onInsertD2, onRemoveD2, onChange, D2Lists, units, onChangeD
             </tr>
           </thead>
           <tbody>
-            {D2Lists.map((list, index) => (
-              <OX2BttomTableRow key={list.id} id={list.id} onRemoveD2={onRemoveD2} onChange={onChange} num={index + 1} units={units} onChangeDatePicker={onChangeDatePicker}/>
+             {Object.entries(D2).map((item, index) => (
+              <OX2BttomTableRow key={item[0]} id={item[0]} onRemove={onRemoveD2} onChange={onChange} num={index + 1} units={units} onChangeDatePicker={onChangeDatePicker}/>
             ))}
           </tbody>
         </table>

@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 const getItemData = async setState => {
-  const CERT_NO = JSON.parse(localStorage.getItem('certNo'));
+  const CERTNO = JSON.parse(localStorage.getItem('certNo'));
   const RCVNO = JSON.parse(localStorage.getItem('rcvNo'));
   const VESSELNM = JSON.parse(localStorage.getItem('shipNm'));
 
-  if (!CERT_NO) return;
+  if (!CERTNO) return;
 
   const params = new URL(window.location.href).pathname;
   const path = params.split('/')[2];
 
   try {
     const res = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/api/doc/${path}?ct=${CERT_NO}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/doc/${path}?ct=${CERTNO}`,
       {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
@@ -28,7 +28,7 @@ const getItemData = async setState => {
       H: {
         RCVNO,
         VESSELNM,
-        CERTNO: CERT_NO || null,
+        CERTNO,
       },
       D1,
       ...rest,

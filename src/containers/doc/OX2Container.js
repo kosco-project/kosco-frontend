@@ -1,17 +1,37 @@
-import axios from "axios";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import SaveModal from "../../components/common/SaveModal";
-import CompleteModal from "../../components/common/CompleteModal";
-import OX2Form from "../../components/doc/OX2/OX2Form";
-import useStorage from "../../hooks/useStorage";
-import { addInitialState, addInitialStateD2, changeFieldD1, changeField, deleteInitialState, deleteInitialStateD2, storage, changeTextArea, changeDatePicker } from "../../redux/modules/ox2";
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import SaveModal from '../../components/common/SaveModal';
+import CompleteModal from '../../components/common/CompleteModal';
+import OX2Form from '../../components/doc/OX2/OX2Form';
+import useStorage from '../../hooks/useStorage';
+import {
+  addInitialState,
+  addInitialStateD2,
+  changeFieldD1,
+  changeField,
+  deleteInitialState,
+  deleteInitialStateD2,
+  changeTextArea,
+  changeDatePicker,
+  getOX2h,
+  getOX2data,
+  ox2Initialize,
+} from '../../redux/modules/ox2';
+import getItemData from '../../components/common/getItemData';
 
 const OX2Container = () => {
   const dispatch = useDispatch();
   const [units, setUnits] = useState([]);
-  const state = useSelector(state => state.ox2);
-  const { visible, showModal, commVisible, showCommModal, hideModal } = useStorage()
+  const ox2state = useSelector(state => state.ox2);
+  const {
+    visible,
+    showModal,
+    commVisible,
+    showCommModal,
+    hideModal,
+    setState,
+  } = useStorage();
   const datas = [
     'MASKS CHECKED',
     'BREATHING VALVE CHECKED',
@@ -23,63 +43,26 @@ const OX2Container = () => {
     'DELETE',
   ];
 
-  const nextId = useRef(2);
-  const [lists, setLists] = useState([
-    {
-      id: 0,
-    },
-  ]);
-  const nextIdD2 = useRef(1);
-  const [D2Lists, setD2Lists] = useState([
-    {
-      id: 0,
-    },
-  ])
-   
-  const onInsert = useCallback(
-    () => {
-      setLists(lists.concat({
-        id: nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0
-      }));
-      dispatch(
-        addInitialState(nextId.current = lists.length ? Math.max(...lists.map(list => list.id)) + 1 : 0))
-    },
-    [dispatch, lists]
-  );
+  const onInsert = useCallback(() => {
+    dispatch(addInitialState(Object.keys(ox2state.D1).length));
+  }, [dispatch, ox2state.D1]);
 
-  const onInsertD2 = useCallback(
-    () => {
-      setD2Lists(D2Lists.concat({
-        id: nextIdD2.current = D2Lists.length ? Math.max(...D2Lists.map(list => list.id)) + 1 : 0
-      }));
-      dispatch(
-        addInitialStateD2(nextIdD2.current = D2Lists.length ? Math.max(...D2Lists.map(list => list.id)) + 1 : 0))
-    },
-    [D2Lists, dispatch]
-  );
+  const onInsertD2 = useCallback(() => {
+    dispatch(addInitialStateD2(Object.keys(ox2state.D2).length));
+  }, [dispatch, ox2state.D2]);
 
   const onRemove = useCallback(
     id => {
-      if (lists.length > 1) {
-        setLists(lists.filter(list => list.id !== id));
-        dispatch(
-          deleteInitialState(...lists.filter(list => list.id === id))
-        )
-      }
+      dispatch(deleteInitialState(id));
     },
-    [dispatch, lists],
+    [dispatch]
   );
 
   const onRemoveD2 = useCallback(
     id => {
-      if (D2Lists.length > 1) {
-        setD2Lists(D2Lists.filter(list => list.id !== id));
-        dispatch(
-          deleteInitialStateD2(...D2Lists.filter(list => list.id === id))
-        )
-      }
+      dispatch(deleteInitialStateD2(id));
     },
-    [dispatch, D2Lists],
+    [dispatch]
   );
 
   const onChangeD1 = ({ id, target }) => {
@@ -90,8 +73,8 @@ const OX2Container = () => {
         checked,
         name,
       })
-    )
-  }
+    );
+  };
 
   const onChange = ({ id, target }) => {
     const { value, name, dataset } = target;
@@ -102,15 +85,13 @@ const OX2Container = () => {
         value,
         dataset,
       })
-    )
-  }
+    );
+  };
 
   const onChangeTextArea = e => {
     const { value } = e.target;
-    dispatch(
-      changeTextArea(value)
-    )
-  }
+    dispatch(changeTextArea(value));
+  };
 
   const onChangeDatePicker = ({ id, target }) => {
     const { name, value, form } = target;
@@ -121,14 +102,19 @@ const OX2Container = () => {
         value,
         form,
       })
-    )
-  }
+    );
+  };
 
-  const onStorage = async ( e, form, path ) => {
+  const onStorage = async (e, form, path) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`, state, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
+      const res = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`,
+        ox2state,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+          },
         }
       );
       hideModal();
@@ -136,32 +122,61 @@ const OX2Container = () => {
     } catch (e) {
       console.log(e);
     }
-  }
-  useEffect(() => {
+  };
+
+  const getUnits = async () => {
+    const res = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+        },
+      }
+    );
+    setUnits(res.data.data);
+  };
+
+  const getData = useCallback(async () => {
     dispatch(
-      storage({
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'), 
+      getOX2h({
+        RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+        VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+        CERTNO: JSON.parse(localStorage.getItem('certNo')),
       })
-    )
-  }, [dispatch])
+    );
+    const data = await getItemData(setState);
+
+    if (!data) return;
+
+    await dispatch(getOX2data(data));
+  }, [dispatch, setState]);
 
   useEffect(() => {
-    (async () => {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/checkedInfo`, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}` },
-      });
-      setUnits(res.data.data);
-    })();
-  }, []);
+    getUnits();
+    getData();
+
+    return () => {
+      dispatch(ox2Initialize());
+    };
+  }, [dispatch, getData, setState]);
 
   return (
     <>
       {visible && (
-        <SaveModal form="OX2" path="save" onStorage={onStorage} hideModal={hideModal}/>
+        <SaveModal
+          form='OX2'
+          path='save'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       {commVisible && (
-        <CompleteModal form="OX2" path="complete" onStorage={onStorage} hideModal={hideModal}/>
+        <CompleteModal
+          form='OX2'
+          path='complete'
+          onStorage={onStorage}
+          hideModal={hideModal}
+        />
       )}
       <OX2Form
         units={units}
@@ -169,8 +184,6 @@ const OX2Container = () => {
         onChange={onChange}
         onRemove={onRemove}
         onInsert={onInsert}
-        lists={lists}
-        D2Lists={D2Lists}
         onChangeTextArea={onChangeTextArea}
         datas={datas}
         onInsertD2={onInsertD2}
@@ -180,7 +193,7 @@ const OX2Container = () => {
         showCommModal={showCommModal}
       />
     </>
-  )
-}
+  );
+};
 
 export default OX2Container;
