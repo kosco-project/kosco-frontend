@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import P1TableRow from './P1TableRow';
 
@@ -57,7 +58,8 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const P1Top = ({ onChange, onRemove, onInsert, lists}) => {
+const P1Top = ({ onChange, onRemove, onInsert }) => {
+  const D1 = useSelector(state => state.p1.D1);
 
   return (
     <>
@@ -75,8 +77,8 @@ const P1Top = ({ onChange, onRemove, onInsert, lists}) => {
             </tr>
           </thead>
           <tbody>
-            {lists.map((list, i) => (
-              <P1TableRow key={list.id} id={list.id} num={i + 1} onRemove={onRemove} onChange={onChange}/>
+            {Object.entries(D1).map((item, i) => (
+              <P1TableRow key={item[0]} id={item[0]} num={i + 1} onRemove={onRemove} onChange={onChange} />
             ))}
           </tbody>
         </table>
