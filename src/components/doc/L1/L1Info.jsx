@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -48,13 +49,13 @@ const L1Info = () => {
       </p>
       <div className='info-box'>
         <p>
-          <span>Ship's Name :</span>
+          <span>Ship's Name :</span> { JSON.parse(localStorage.getItem('shipNm')) }
         </p>
         <p>
-          <span>Certificate No :</span>
+          <span>Certificate No :</span> { JSON.parse(localStorage.getItem('certNo')) }
         </p>
         <p>
-          <span>Inspection Date :</span>
+          <span>Inspection Date :</span> { moment().format('YYYY-MM-DD') }
         </p>
       </div>
       <p className='description'>

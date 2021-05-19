@@ -57,7 +57,8 @@ const TableBox = styled.div`
 `;
 
 const L1Top = ({ onWorkingSystem, state, onchangeDatePicker }) => {
-  console.log(state.D2[2].Value1);
+  const { D2 } = state;
+
   return (
     <TableBox>
       <p className='title'>* FOAM LIQUID FOR PORTABLE FOAM APPLICATOR *</p>
@@ -89,16 +90,16 @@ const L1Top = ({ onWorkingSystem, state, onchangeDatePicker }) => {
         <div className='line'>
           <div className='first-value'>• Location</div>
           <div className='content-value'>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value1"/>
+            <input type='text' value={D2[0].Value1} onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value1"/>
           </div>
           <div className='content-value'>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value2"/>
+            <input type='text' value={D2[0].Value2} onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value2"/>
           </div>
           <div className='content-value'>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value3"/>
+            <input type='text' value={D2[0].Value3} onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value3"/>
           </div>
           <div className='content-value'>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value4"/>
+            <input type='text' value={D2[0].Value4} onChange={onWorkingSystem} data-form="D2" data-name="0" data-key="Value4"/>
           </div>
         </div>
 
@@ -106,19 +107,19 @@ const L1Top = ({ onWorkingSystem, state, onchangeDatePicker }) => {
           <div className='first-value'>• Capacity / Quantity</div>
           <div className='content-value'>
             <p>20 Ltr X</p>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value1"/>
+            <input type='text' value={D2[1].Value1} onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value1"/>
           </div>
           <div className='content-value'>
             <p>20 Ltr X</p>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value2"/>
+            <input type='text' value={D2[1].Value2} onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value2"/>
           </div>
           <div className='content-value'>
             <p>20 Ltr X</p>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value3"/>
+            <input type='text' value={D2[1].Value3} onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value3"/>
           </div>
           <div className='content-value'>
             <p>20 Ltr X</p>
-            <input type='text' onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value4"/>
+            <input type='text' value={D2[1].Value4} onChange={onWorkingSystem} data-form="D2" data-name="1" data-key="Value4"/>
           </div>
         </div>
 
@@ -126,44 +127,44 @@ const L1Top = ({ onWorkingSystem, state, onchangeDatePicker }) => {
           <div className='first-value'>• Expiry Date</div>
           <div className='content-value'>
             <DatePicker
-              selected={state.D2[2].Value1}
-              dateFormat="MMM.yyyy"
-              onChange={value => onchangeDatePicker({ target: { form:"D2", name: "2",key:"Value1", value } })}
+              selected={new Date(D2[2].Value1)}
+              dateFormat="yyyy-MM"
+              onChange={value => onchangeDatePicker({ target: { form:"D2", name: "2", key:"Value1", value } })}
               showMonthYearPicker
             />          
           </div>
           <div className='content-value'>
             <DatePicker
-              selected={state.D2[2].Value2}
+              selected={new Date(D2[2].Value2)}
               name="Value2"
               data-form="D2"
               data-name="2"
               data-key="Value1"
-              dateFormat="MMM.yyyy"
+              dateFormat="yyyy-MM"
               onChange={value => onchangeDatePicker({ target: { form:"D2", name: "2",key:"Value2", value } })}
               showMonthYearPicker
             />          
           </div>
           <div className='content-value'>
             <DatePicker
-              selected={state.D2[2].Value3}
+              selected={new Date(D2[2].Value3)}
               name="Value3"
               data-form="D2"
               data-name="2"
               data-key="Value1"
-              dateFormat="MMM.yyyy"
+              dateFormat="yyyy-MM"
               onChange={value => onchangeDatePicker({ target: { form:"D2", name: "2",key:"Value3", value } })}
               showMonthYearPicker
             />          
           </div>
           <div className='content-value'>
             <DatePicker
-              selected={state.D2[2].Value4}
+              selected={new Date(D2[2].Value4)}
               name="Value4"
               data-form="D2"
               data-name="2"
               data-key="Value1"
-              dateFormat="MMM.yyyy"
+              dateFormat="yyyy-MM"
               onChange={value => onchangeDatePicker({ target: { form:"D2", name: "2",key:"Value4", value } })}
               showMonthYearPicker
             />          
