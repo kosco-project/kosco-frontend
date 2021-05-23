@@ -22,9 +22,9 @@ const WContainer = () => {
     hideModal,
   } = useStorage({
     H: {
-      RCVNO: '',
-      VESSELNM: '',
-      CERTNO: '',
+      RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+      VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+      CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
     },
     D1: {
       0: '',

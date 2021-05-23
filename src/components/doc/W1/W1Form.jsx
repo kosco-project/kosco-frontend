@@ -20,7 +20,7 @@ const W1Form = ({ checkState, state, onWorkingSystem, onKeyValueForm, showModal,
   return (
     <form>
       <Info />
-      <W1Top onKeyValueForm={onKeyValueForm}/>
+      <W1Top onKeyValueForm={onKeyValueForm} state={state} />
       <W1Bottom checkState={checkState} state={state} onWorkingSystem={onWorkingSystem}/>
       <W1Bottom2 />
       <ButtonBox>

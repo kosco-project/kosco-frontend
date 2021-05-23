@@ -5,31 +5,34 @@ const CHANGE_FIELD = 'p1/CHANGE_FIELD';
 const CHANGE_TEXT_AREA = 'p1/CHANGE_TEXT_AREA';
 const ADD_INITIALSTATE = 'p1/ADD_INITIALSTATE';
 const DELETE_INITIALSTATE = 'p1/DELETE_INITIALSTATE';
-const STORAGE = 'p1/STORAGE';
+const GET_P1_H = 'p1/GET_P1_H';
+const GET_P1_DATA = 'p1/GET_P1_DATA';
+const P1_INITIALIZE = 'p1/P1_INITIALIZE';
 // CREATE ACTION
 export const changeField = createAction(CHANGE_FIELD);
 export const changeTextArea = createAction(CHANGE_TEXT_AREA);
 export const addInitialState = createAction(ADD_INITIALSTATE);
 export const deleteInitialState = createAction(DELETE_INITIALSTATE);
-export const storage = createAction(STORAGE);
+export const getP1h = createAction(GET_P1_H);
+export const getP1data = createAction(GET_P1_DATA);
+export const p1Initialize = createAction(P1_INITIALIZE);
 
-//  INITIAL STATE 
+//  INITIAL STATE
 const initialState = {
   H: {
-    RCVNO: "",
-    VESSELNM: ""
+    RCVNO: '',
+    VESSELNM: '',
   },
   D1: {
-     0: {
-       ProductType: "",
-       Qty: "",
-       Size: "",
-       Perform: "Good",
-     },
+    0: {
+      ProductType: '',
+      Qty: '',
+      Size: '',
+      Perform: 'Good',
+    },
   },
-  D2: "",
-}
-
+  D2: '',
+};
 
 // REDUCER
 const p1Reducer = handleActions(
@@ -43,15 +46,15 @@ const p1Reducer = handleActions(
             ...state.D1[id],
             [name]: value,
           },
-        }
-      }
+        },
+      };
     },
-    
+
     [CHANGE_TEXT_AREA]: (state, { payload: value }) => {
       return {
         ...state,
         D2: value,
-      }
+      };
     },
 
     [ADD_INITIALSTATE]: (state, { payload: id }) => {
@@ -60,32 +63,32 @@ const p1Reducer = handleActions(
         D1: {
           ...state.D1,
           [id]: {
-            ProductType: "",
-            Qty: "",
-            Size: "",
-            Perform: "Good",
+            ProductType: '',
+            Qty: '',
+            Size: '',
+            Perform: 'Good',
           },
-        }
-      }
+        },
+      };
     },
-
-    [DELETE_INITIALSTATE]: (state, { payload: { id } }) => {
-      const { [id]: value, ...restItems } = state.D1;
+    [DELETE_INITIALSTATE]: (state, { payload: id }) => {
+      delete state.D1[id];
+      return { ...state, D1: state.D1 };
+    },
+    [GET_P1_H]: (state, { payload }) => {
       return {
         ...state,
-        D1: restItems,
-      }
+        H: payload,
+      };
     },
-    [STORAGE]: (state, { payload: { RCVNO, VESSELNM } }) => {
+    [GET_P1_DATA]: (state, { payload: { D1, D2 } }) => {
       return {
         ...state,
-        H: {
-          ...state.H,
-          RCVNO,
-          VESSELNM,
-        }
-      }
-    }
+        D1,
+        D2,
+      };
+    },
+    [P1_INITIALIZE]: () => initialState,
   },
   initialState
 );

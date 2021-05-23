@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
 import OX2Form from '../../components/doc/OX2/OX2Form';
@@ -22,6 +23,7 @@ import getItemData from '../../components/common/getItemData';
 
 const OX2Container = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [units, setUnits] = useState([]);
   const ox2state = useSelector(state => state.ox2);
   const {
@@ -119,6 +121,7 @@ const OX2Container = () => {
       );
       hideModal();
       console.log('res', res);
+      await history.push('/inspection');
     } catch (e) {
       console.log(e);
     }

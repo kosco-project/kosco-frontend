@@ -61,6 +61,8 @@ const BottomBox = styled.div`
 `;
 
 const W1Bottom = ({ checkState, state, onWorkingSystem }) => {
+  const { D2 } = state;
+
   return (
     <BottomBox>
       <div className='top-description'>
@@ -78,32 +80,32 @@ const W1Bottom = ({ checkState, state, onWorkingSystem }) => {
             <tr>
               <td>1. Visual checked secure service valve</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[0].CarriedOut === 1} data-name="0" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[0].CarriedOut} data-name="0" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[0].NotCarried === 1} data-name="0" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[0].NotCarried} data-name="0" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[0].NotApp === 1} data-name="0" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[0].NotApp} data-name="0" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="0" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="0" data-key="Comm" value={D2[0].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>2. Check that all distribution valves</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[1].CarriedOut === 1} data-name="1" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[1].CarriedOut} data-name="1" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[1].NotCarried === 1} data-name="1" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[1].NotCarried} data-name="1" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[1].NotApp === 1} data-name="1" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[1].NotApp} data-name="1" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="1" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="1" data-key="Comm" value={D2[1].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -118,32 +120,32 @@ const W1Bottom = ({ checkState, state, onWorkingSystem }) => {
             <tr>
               <td style={{ paddingLeft: 40 }}>a. Flame detector</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[2].CarriedOut === 1} data-name="2" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[2].CarriedOut} data-name="2" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[2].NotCarried === 1} data-name="2" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[2].NotCarried} data-name="2" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[2].NotApp === 1} data-name="2" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[2].NotApp} data-name="2" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="2" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="2" data-key="Comm" value={D2[2].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td style={{ paddingLeft: 40 }}>b. Pre warning alarm</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[3].CarriedOut === 1} data-name="3" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[3].CarriedOut} data-name="3" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[3].NotCarried === 1} data-name="3" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[3].NotCarried} data-name="3" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[3].NotApp === 1} data-name="3" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[3].NotApp} data-name="3" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="3" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="3" data-key="Comm" value={D2[3].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
@@ -158,112 +160,112 @@ const W1Bottom = ({ checkState, state, onWorkingSystem }) => {
             <tr>
               <td style={{ paddingLeft: 40 }}>- Automatic valve open</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[4].CarriedOut === 1} data-name="4" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[4].CarriedOut} data-name="4" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[4].NotCarried === 1} data-name="4" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[4].NotCarried} data-name="4" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[4].NotApp === 1} data-name="4" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[4].NotApp} data-name="4" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="4" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="4" data-key="Comm" value={D2[4].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>5. Distribution valve inspected</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[5].CarriedOut === 1} data-name="5" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[5].CarriedOut} data-name="5" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[5].NotCarried === 1} data-name="5" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[5].NotCarried} data-name="5" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[5].NotApp === 1} data-name="5" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[5].NotApp} data-name="5" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="5" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="5" data-key="Comm" value={D2[5].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>6. Release stations inspected</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[6].CarriedOut === 1} data-name="6" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[6].CarriedOut} data-name="6" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[6].NotCarried === 1} data-name="6" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[6].NotCarried} data-name="6" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[6].NotApp === 1} data-name="6" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[6].NotApp} data-name="6" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="6" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="6" data-key="Comm" value={D2[6].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>7. Automatic release mechanism inspected</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[7].CarriedOut === 1} data-name="7" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[7].CarriedOut} data-name="7" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[7].NotCarried === 1} data-name="7" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[7].NotCarried} data-name="7" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[7].NotApp === 1} data-name="7" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[7].NotApp} data-name="7" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="7" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="7" data-key="Comm" value={D2[7].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>8. Functions tested</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[8].CarriedOut === 1} data-name="8" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[8].CarriedOut} data-name="8" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[8].NotCarried === 1} data-name="8" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[8].NotCarried} data-name="8" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[8].NotApp === 1} data-name="8" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[8].NotApp} data-name="8" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="8" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="8" data-key="Comm" value={D2[8].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>9. Distribution lines and nozzles inspected</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[9].CarriedOut === 1} data-name="9" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[9].CarriedOut} data-name="9" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[9].NotCarried === 1} data-name="9" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[9].NotCarried} data-name="9" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[9].NotApp === 1} data-name="9" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[9].NotApp} data-name="9" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="9" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="9" data-key="Comm" value={D2[9].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
 
             <tr>
               <td>10. All doors, hinges, locks inspected</td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[10].CarriedOut === 1} data-name="10" data-key="CarriedOut" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[10].CarriedOut} data-name="10" data-key="CarriedOut" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[10].NotCarried === 1} data-name="10" data-key="NotCarried" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[10].NotCarried} data-name="10" data-key="NotCarried" onChange={checkState}/>
               </td>
               <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[10].NotApp === 1} data-name="10" data-key="NotApp" onChange={checkState}/>
+                <input type='checkbox' data-form="D2" checked={!!D2[10].NotApp} data-name="10" data-key="NotApp" onChange={checkState}/>
               </td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name="10" data-key="Comm" onChange={onWorkingSystem}/>
+                <input type='text' data-form="D2" data-name="10" data-key="Comm" value={D2[10].Comm} onChange={onWorkingSystem}/>
               </td>
             </tr>
           </tbody>
