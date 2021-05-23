@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
 import P1Form from '../../components/doc/P1/P1Form';
@@ -10,12 +11,15 @@ import {
   changeField,
   changeTextArea,
   deleteInitialState,
-  storage,
+  getP1data,
+  getP1h,
+  p1Initialize,
 } from '../../redux/modules/p1';
+import getItemData from '../../components/common/getItemData';
 
 const P1Container = () => {
   const dispatch = useDispatch();
-  const nextId = useRef(1);
+  const history = useHistory();
   const p1state = useSelector(state => state.p1);
   const {
     visible,
@@ -23,6 +27,7 @@ const P1Container = () => {
     commVisible,
     showCommModal,
     hideModal,
+    setState,
   } = useStorage();
 
   const onRemove = useCallback(
@@ -65,20 +70,36 @@ const P1Container = () => {
         }
       );
       hideModal();
+      await history.push('/inspection');
       console.log('res', res);
     } catch (e) {
       console.log(e);
     }
   };
 
-  useEffect(() => {
+  const getData = useCallback(async () => {
     dispatch(
-      storage({
-        RCVNO: localStorage.getItem('rcvNo'),
-        VESSELNM: localStorage.getItem('shipNm'),
+      getP1h({
+        RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
+        VESSELNM: JSON.parse(localStorage.getItem('shipNm')),
+        CERTNO: JSON.parse(localStorage.getItem('certNo')) || null,
       })
     );
-  }, [dispatch]);
+
+    const data = await getItemData(setState);
+
+    if (!data) return;
+
+    await dispatch(getP1data(data));
+
+    return () => {
+      dispatch(p1Initialize());
+    };
+  }, [dispatch, setState]);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
 
   return (
     <>
@@ -87,7 +108,7 @@ const P1Container = () => {
           form='P1'
           path='save'
           onStorage={onStorage}
-          hP1deModal={hideModal}
+          hideModal={hideModal}
         />
       )}
       {commVisible && (

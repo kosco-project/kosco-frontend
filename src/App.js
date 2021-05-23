@@ -63,8 +63,8 @@ function App() {
         <Route path='/doc/H4-1' component={H41} />
         <Route path='/doc/P1' component={P1} />
         <Route path='/doc/L1' component={L1} />
-        <Route component={NotFound} />
       </ScrollToTop>
+      <Route component={NotFound} />
     </Switch>
   );
 }
