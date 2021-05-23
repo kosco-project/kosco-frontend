@@ -150,13 +150,7 @@ const useStorage = initialState => {
 
   const onStorage = async (e, form, path) => {
     e.preventDefault();
-    // await setState({
-    //   ...state,
-    //   H: {
-    //     RCVNO: localStorage.getItem('rcvNo'),
-    //     VESSELNM: localStorage.getItem('shipNm'),
-    //   },
-    // });
+
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api/doc/${form}/inspection/${path}`,
@@ -170,7 +164,6 @@ const useStorage = initialState => {
       setVisible(false);
       setCommVisible(false);
       await history.push('/inspection');
-      await console.log('res', res);
     } catch (e) {
       console.log(e);
     }
@@ -189,7 +182,6 @@ const useStorage = initialState => {
     setCommVisible(false);
   };
 
-  console.log('state', state);
   return {
     showModal,
     showCommModal,
