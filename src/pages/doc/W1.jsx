@@ -10,7 +10,7 @@ const W1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="WATER SPRAY SYSTEM" />
       <W1Container />
     </AppWrapper>
   );

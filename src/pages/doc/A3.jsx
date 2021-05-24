@@ -10,7 +10,7 @@ const A3 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="FIXED FOAM FIRE EXTINGUISHING SYSTEM" />
       <A3Container />
     </AppWrapper>
   );

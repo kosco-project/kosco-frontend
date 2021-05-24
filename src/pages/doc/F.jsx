@@ -10,7 +10,7 @@ const F = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="Fire detection system" />
       <FContainer />
     </AppWrapper>
   );

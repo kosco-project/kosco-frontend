@@ -10,7 +10,7 @@ const H3 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="EBBD(Emergency Escape Breathing Device)" />
       <H3Container />
     </AppWrapper>
   );

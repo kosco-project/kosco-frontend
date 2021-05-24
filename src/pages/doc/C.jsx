@@ -10,7 +10,7 @@ const C = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="CO2 LOW PRESSURE SYSTEM" />
       <CConatiner />
     </AppWrapper>
   );

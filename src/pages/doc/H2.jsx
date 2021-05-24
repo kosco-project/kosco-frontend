@@ -10,7 +10,7 @@ const H2 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="BREATHING AIR CYLINDERS" />
       <H2Container />
     </AppWrapper>
   );

@@ -10,7 +10,7 @@ const OX2 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="OXYGEN RESUSCITATOR CYLINDER" />
       <OX2Container />
     </AppWrapper>
   );

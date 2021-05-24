@@ -10,7 +10,7 @@ const B3 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="BREATING AIR COMPRESSOR" />
       <B3Container />
     </AppWrapper>
   );

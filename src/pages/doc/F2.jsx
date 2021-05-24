@@ -10,7 +10,7 @@ const F2 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="PILOT CYLINDER SPECIFICATION" />
       <F2Container />
     </AppWrapper>
   );

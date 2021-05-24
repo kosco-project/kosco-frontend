@@ -10,7 +10,7 @@ const I1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="GAS TIGHT SUIT" />
       <I1Container />
     </AppWrapper>
   );

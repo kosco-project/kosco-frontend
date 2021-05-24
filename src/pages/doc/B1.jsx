@@ -6,7 +6,7 @@ import B1Container from '../../containers/doc/B1Container';
 const B1 = () => {
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="CYLINDER SPECIFICATION" />
       <B1Container />
     </AppWrapper>
   );
