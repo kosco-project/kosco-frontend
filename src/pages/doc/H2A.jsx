@@ -10,7 +10,7 @@ const H2A = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="LIFE BOAT AIR CYLINDERS" />
       <H2AContainer />
     </AppWrapper>
   );

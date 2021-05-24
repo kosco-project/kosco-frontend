@@ -70,7 +70,7 @@ const GBottom = ({ onChange, onRemove, onInsert }) => {
               <td>Serial No and/or Location</td>
               <td>Manufacturer</td>
               <td>Type</td>
-              <td>Caoacuty</td>
+              <td>Capacity</td>
               <td>Last Hydro-Test Date</td>
               <td>Perform</td>
               <td></td>

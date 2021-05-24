@@ -10,7 +10,7 @@ const L1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="FOAM APPLICATOR" />
       <L1Container />
     </AppWrapper>
   );

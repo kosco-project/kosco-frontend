@@ -43,9 +43,7 @@ const InpectionItem = ({ item }) => {
 
 
   return (
-    // 나중에 `/doc/${DOC_NO}` 이걸로 꼭 수정하기
-    // 확인하기 위한 쿼리임
-    <ItemBox to={`${CERT_NO ? `/doc/${DOC_NO}`: `/doc/${DOC_NO}?ct=${CERT_NO}`}`} item={item} onClick={onClick}>
+    <ItemBox to={`/doc/${DOC_NO}`} item={item} onClick={onClick}>
       <p>{CUSTNM || ' '}</p>
       <p>{RCVDT || ' '}</p>
       <p>{SHIPNM || ' '}</p>

@@ -10,7 +10,7 @@ const G = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="FIRE EXTINGUISHERS" />
       <GContainer />
     </AppWrapper>
   );

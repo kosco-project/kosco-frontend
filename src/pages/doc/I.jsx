@@ -10,7 +10,7 @@ const I = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="IMMERSION SUIT" />
       <IContainer />
     </AppWrapper>
   );

@@ -10,7 +10,7 @@ const A1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="FIXED FIRE APPLIANCE" />
       <A1Container/>
     </AppWrapper>
   );

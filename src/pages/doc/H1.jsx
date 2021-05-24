@@ -10,7 +10,7 @@ const H1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="BREATHING AIR APPARATUS" />
       <H1Container />
     </AppWrapper>
   );

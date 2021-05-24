@@ -10,7 +10,7 @@ const W = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header docDesc="WATER MIST FIRE FIGHTING SYSTEM" />
       <WContainer />
     </AppWrapper>
   );
