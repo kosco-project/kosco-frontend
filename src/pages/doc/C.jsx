@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import CConatiner from '../../containers/doc/CContainer';
 
 const C = ({ history }) => {
@@ -10,7 +10,7 @@ const C = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="CO2 LOW PRESSURE SYSTEM" />
+      <DocsHeader docDesc="CO2 LOW PRESSURE SYSTEM" />
       <CConatiner />
     </AppWrapper>
   );

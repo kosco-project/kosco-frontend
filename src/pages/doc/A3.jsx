@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import A3Container from '../../containers/doc/A3Container';
 
 const A3 = ({ history }) => {
@@ -10,7 +10,7 @@ const A3 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="FIXED FOAM FIRE EXTINGUISHING SYSTEM" />
+      <DocsHeader docDesc="FIXED FOAM FIRE EXTINGUISHING SYSTEM" />
       <A3Container />
     </AppWrapper>
   );

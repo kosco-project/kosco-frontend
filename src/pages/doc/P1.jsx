@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import P1Container from '../../containers/doc/P1Container';
 
 const P1 = ({ history }) => {
@@ -10,7 +10,7 @@ const P1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="PORTABLE FOAM APPLICATOR UNITS" />
+      <DocsHeader docDesc="PORTABLE FOAM APPLICATOR UNITS" />
       <P1Container />
     </AppWrapper>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import IContainer from '../../containers/doc/IContainer';
 
 const I = ({ history }) => {
@@ -10,7 +10,7 @@ const I = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="IMMERSION SUIT" />
+      <DocsHeader docDesc="IMMERSION SUIT" />
       <IContainer />
     </AppWrapper>
   );

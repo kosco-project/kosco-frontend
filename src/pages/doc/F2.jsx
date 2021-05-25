@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import F2Container from '../../containers/doc/F2Container';
 
 const F2 = ({ history }) => {
@@ -10,7 +10,7 @@ const F2 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="PILOT CYLINDER SPECIFICATION" />
+      <DocsHeader docDesc="PILOT CYLINDER SPECIFICATION" />
       <F2Container />
     </AppWrapper>
   );

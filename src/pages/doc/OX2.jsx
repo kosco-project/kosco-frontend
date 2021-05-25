@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import OX2Container from '../../containers/doc/OX2Container';
 
 const OX2 = ({ history }) => {
@@ -10,7 +10,7 @@ const OX2 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="OXYGEN RESUSCITATOR CYLINDER" />
+      <DocsHeader docDesc="OXYGEN RESUSCITATOR CYLINDER" />
       <OX2Container />
     </AppWrapper>
   );
