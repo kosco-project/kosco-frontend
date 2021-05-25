@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import W1Container from '../../containers/doc/W1Container';
 
 const W1 = ({ history }) => {
@@ -10,7 +10,7 @@ const W1 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="WATER SPRAY SYSTEM" />
+      <DocsHeader docDesc="WATER SPRAY SYSTEM" />
       <W1Container />
     </AppWrapper>
   );

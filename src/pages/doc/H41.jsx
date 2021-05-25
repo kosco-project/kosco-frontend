@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import H41Container from '../../containers/doc/H41Container';
 
 const H41 = ({ history }) => {
@@ -10,7 +10,7 @@ const H41 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="ESCAPESET" />
+      <DocsHeader docDesc="ESCAPESET" />
       <H41Container />
     </AppWrapper>
   );

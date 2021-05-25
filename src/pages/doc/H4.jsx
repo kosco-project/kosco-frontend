@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import H4Container from '../../containers/doc/H4Container';
 
 const H4 = ({ history }) => {
@@ -10,7 +10,7 @@ const H4 = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="EBBD(Emergency Escape Breathing Device)" />
+      <DocsHeader docDesc="EBBD(Emergency Escape Breathing Device)" />
       <H4Container />
     </AppWrapper>
   );

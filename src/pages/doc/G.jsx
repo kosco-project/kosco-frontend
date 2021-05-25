@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
+import DocsHeader from '../../components/common/DocsHeader';
 import GContainer from '../../containers/doc/GContainer';
 
 const G = ({ history }) => {
@@ -10,7 +10,7 @@ const G = ({ history }) => {
 
   return (
     <AppWrapper>
-      <Header docDesc="FIRE EXTINGUISHERS" />
+      <DocsHeader docDesc="FIRE EXTINGUISHERS" />
       <GContainer />
     </AppWrapper>
   );
