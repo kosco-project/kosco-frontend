@@ -10,6 +10,7 @@ const InspectionContainer = () => {
     process: 1,
   });
   const [list, setList] = useState([]);
+  const [pageList, setPageList] = useState([]);
 
   const onChangeDate = useCallback((_, datas) => {
     setInputValue(prevValue => ({
@@ -43,7 +44,15 @@ const InspectionContainer = () => {
       }
     );
     setList(res.data.list);
+    setPageList(res.data.list.slice(0, 10));
   }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
+
+  const onChangePage = useCallback(
+    page => {
+      setPageList(list.slice((page - 1) * 10, (page - 1) * 10 + 10));
+    },
+    [list]
+  );
 
   useEffect(() => {
     getList();
@@ -66,9 +75,11 @@ const InspectionContainer = () => {
   return (
     <InspectionBox
       list={list}
+      pageList={pageList}
       onChangeDate={onChangeDate}
       onChangeProcess={onChangeProcess}
       inputValue={inputValue}
+      onChangePage={onChangePage}
     />
   );
 };
