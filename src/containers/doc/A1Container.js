@@ -3,15 +3,9 @@ import A1Form from '../../components/doc/A1/A1Form';
 import useStorage from '../../hooks/useStorage';
 import SaveModal from '../../components/common/SaveModal';
 import CompleteModal from '../../components/common/CompleteModal';
-import useTempModal from '../../hooks/useTempModal';
-import useCompModal from '../../hooks/useCompModal';
 import getItemData from '../../components/common/getItemData';
 
 const A1Container = () => {
-  // const { tempVisible, showTempModal, hideTempModal } = useTempModal();
-
-  // const [compVisible, showCompModal, hideCompModal] = useCompModal();
-
   const {
     onProductsDescription,
     onInspectionDescription,
