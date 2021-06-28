@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import InspectionBox from '../components/inspection/InspectionBox';
+import { getInspectionList } from '../redux/modules/inspectionList';
 
 const InspectionContainer = () => {
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({
     startDate: moment(),
     endDate: moment().add(1, 'M'),
     process: 1,
   });
-  const [list, setList] = useState([]);
-  const [pageList, setPageList] = useState([]);
 
   const onChangeDate = useCallback((_, datas) => {
     setInputValue(prevValue => ({
@@ -31,28 +32,26 @@ const InspectionContainer = () => {
   }, []);
 
   const getList = useCallback(async () => {
-    const res = await axios.get(
-      `${
-        process.env.REACT_APP_SERVER_URL
-      }/api/inspectionList/${inputValue.startDate.format(
-        'YYYY-MM-DD'
-      )}/${inputValue.endDate.format('YYYY-MM-DD')}/${inputValue.process}`,
-      {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
-        },
-      }
-    );
-    setList(res.data.list);
-    setPageList(res.data.list.slice(0, 10));
-  }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
+    try {
+      const res = await axios.get(
+        `${
+          process.env.REACT_APP_SERVER_URL
+        }/api/inspectionList/${inputValue.startDate.format(
+          'YYYY-MM-DD'
+        )}/${inputValue.endDate.format('YYYY-MM-DD')}/${inputValue.process}`,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
+          },
+        }
+      );
 
-  const onChangePage = useCallback(
-    page => {
-      setPageList(list.slice((page - 1) * 10, (page - 1) * 10 + 10));
-    },
-    [list]
-  );
+      dispatch(getInspectionList(res.data.list_info));
+    } catch (e) {
+      console.log(e);
+      console.log(e.response);
+    }
+  }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
 
   useEffect(() => {
     getList();
@@ -73,14 +72,11 @@ const InspectionContainer = () => {
   }, []);
 
   return (
-    <InspectionBox
-      list={list}
-      pageList={pageList}
-      onChangeDate={onChangeDate}
-      onChangeProcess={onChangeProcess}
-      inputValue={inputValue}
-      onChangePage={onChangePage}
-    />
+      <InspectionBox
+        onChangeDate={onChangeDate}
+        onChangeProcess={onChangeProcess}
+        inputValue={inputValue}
+      />
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Empty } from 'antd';
 import Pagination from 'rc-pagination';
@@ -50,17 +51,31 @@ const ListContainer = styled.div`
   }
 `;
 
-const InspectionList = ({ list, pageList, onChangePage }) => {
+const InspectionList = () => {
+  const list = useSelector(state => state.inspectionList.list);
+  const total_pages = useSelector(state => state.inspectionList.total_pages);
+
+  const [limit, setLimit] = useState(1);
+
+  const slice_list = list.slice(10 * (limit - 1), 10 * limit);
+
+  const onChangePage = useCallback(
+    page => {
+      setLimit(page)
+    },
+    []
+  );
+
   return (
     <ListContainer>
     <Listbox >
-      {pageList.length === 0 && <Empty />}
-      {pageList.length > 0 && pageList.map((item, i) => <InpectionItem key={i} item={item}/>)}
+      {list.length === 0 && <Empty />}
+      {list.length > 0 && slice_list.map((item, i) => <InpectionItem key={i} item={item}/>)}
     </Listbox>
       {
-        pageList.length > 0 &&
+        list.length > 0 &&
         <Pagination
-          total={list.length}
+          total={total_pages}
           pageSize={10}
           prevIcon={<IoIosArrowBack />}
           nextIcon={<IoIosArrowForward />}
@@ -69,7 +84,7 @@ const InspectionList = ({ list, pageList, onChangePage }) => {
           onChange={page => onChangePage(page)}
         />
       }
-   
+
       </ListContainer>
   );
 };

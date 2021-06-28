@@ -9,10 +9,11 @@ import ox2 from './ox2';
 import h1h3h31 from './h1h3h31';
 import f from './f';
 import f2 from './f2';
+import inspectionList from './inspectionList';
 
 
 const rootReducer = combineReducers({
-  // inspection,
+  inspectionList,
   b1,
   h2A,
   h1h3h31,
