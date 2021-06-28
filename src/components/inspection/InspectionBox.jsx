@@ -12,17 +12,17 @@ const ConditionWrapper = styled.div`
   padding: 0 20px;
 `;
 
-const InspectionBox = ({ list, setList, pageList, setPageList, onChangeDate, onChangeProcess, inputValue, onChangePage }) => {
+const InspectionBox = ({   onChangeDate, onChangeProcess, inputValue }) => {
 
   return (
     <>
     <ConditionWrapper>
       <InspectionCondition  inputValue={inputValue} onChangeDate={onChangeDate} onChangeProcess={onChangeProcess} />
-      <InputSearch list={list} setList={setList} setPageList={setPageList} />
+      <InputSearch />
     </ConditionWrapper>
     <div>
       <InspectionTitleBox />
-      <InspectionList inputValue={inputValue} list={list} pageList={pageList} onChangePage={onChangePage} />
+      <InspectionList inputValue={inputValue} />
     </div>
     </>
   );
