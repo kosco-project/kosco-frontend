@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import usePostFetch from '../../hooks/usePostFetch';
 
 const ModalBackground = styled.div`
   width: 100vw;
@@ -45,7 +46,9 @@ const ModalBackground = styled.div`
   }
 `;
 
-const FetchModal = ({ onStorage, form, path, children, isActive, setFetchModal }) => {
+const FetchModal = ({ form, children, isActive, setFetchModal }) => {
+  const [postFetch] = usePostFetch(form);
+  
   return (
     <>
       {isActive && (<ModalBackground
@@ -57,11 +60,7 @@ const FetchModal = ({ onStorage, form, path, children, isActive, setFetchModal }
             {children} 하시겠습니까?
           </div>
           <div className="button_wrap">
-            <button className="confirm" onClick={e => {
-              console.log(e);
-              onStorage(e, form, path)
-            }
-            }>확인</button>
+            <button className="confirm" onClick={() => postFetch()}>확인</button>
             <button type="button" className="cancel" onClick={() =>setFetchModal(false)}>취소</button>
           </div>
         </div>
