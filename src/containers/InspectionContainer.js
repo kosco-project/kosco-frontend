@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import moment from 'moment';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -7,6 +9,7 @@ import { getInspectionList } from '../redux/modules/inspectionList';
 
 const InspectionContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [inputValue, setInputValue] = useState({
     startDate: moment(),
     endDate: moment().add(1, 'M'),
@@ -48,8 +51,11 @@ const InspectionContainer = () => {
 
       dispatch(getInspectionList(res.data.list_info));
     } catch (e) {
+      if (e.response.status === 401 || e.response.status === 409) {
+        sessionStorage.removeItem('KOSCO_token');
+        history.push('/');
+      }
       console.log(e);
-      console.log(e.response);
     }
   }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
 

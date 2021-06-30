@@ -10,9 +10,11 @@ import h1h3h31 from './h1h3h31';
 import f from './f';
 import f2 from './f2';
 import inspectionList from './inspectionList';
+import docsInput from "./docsInput";
 
 
 const rootReducer = combineReducers({
+  docsInput,
   inspectionList,
   b1,
   h2A,
