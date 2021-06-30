@@ -37,8 +37,6 @@ const A2Form = () => {
     }
   }, [dispatch, history, state]);
 
-  
-
   return (
     <form >
       <Info />

@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import A2Container from '../../containers/doc/A2Container';
+import A2Form from "../../components/doc/A2/A2Form";
 
-const A2 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const A2 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="FIXED FIRE APPLIANCE" />
-      <A2Container />
+      <A2Form />
     </AppWrapper>
   );
 };
