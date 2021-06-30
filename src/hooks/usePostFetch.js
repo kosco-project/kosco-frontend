@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const usePostFetch = (form = null) => {
   const state = useSelector(state => state.docsInput);
   const location = useLocation();
+  const history = useHistory();
 
   const path = location.pathname.split('/')[2];
 
@@ -20,7 +21,9 @@ const usePostFetch = (form = null) => {
           },
         }
       );
+
       console.log(res);
+      await history.push('/inspection');
     } catch (e) {
       if (e.response.status === 401 || e.response.status === 409) {
         sessionStorage.removeItem('startDate');
@@ -32,7 +35,7 @@ const usePostFetch = (form = null) => {
     }
   }, [form, path, state]);
 
-  return [postFetch];
+  return postFetch;
 };
 
 export default usePostFetch;
