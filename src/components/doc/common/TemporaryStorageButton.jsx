@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import useModal from '../../../hooks/useModal';
+import FetchModal from '../../common/FetchModal';
 
 const Button = styled.button`
     width: 87px;
@@ -11,9 +13,16 @@ const Button = styled.button`
     color: #fff;
 `;
 
-const TemporaryStorageButton = ({ showModal }) => {
+const TemporaryStorageButton = () => {
+  const [fetchModal, setFetchModal] = useModal()
+  
   return (
-      <Button type='button' onClick={e => showModal(e)}>임시 저장</Button>
+    <>
+      <Button type='button' onClick={() => setFetchModal(true)}>임시 저장</Button>
+      <FetchModal setFetchModal={setFetchModal} isActive={fetchModal} form="save">
+          임시저장
+      </FetchModal>
+    </>
   );
 };
 
