@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import A1Container from '../../containers/doc/A1Container';
+import A1Form from '../../components/doc/A1/A1Form';
 
 const A1 = ({ history }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const A1 = ({ history }) => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="FIXED FIRE APPLIANCE" />
-      <A1Container/>
+      <A1Form />
     </AppWrapper>
   );
 };
