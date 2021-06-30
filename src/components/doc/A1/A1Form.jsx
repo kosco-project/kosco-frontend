@@ -5,6 +5,8 @@ import A1Top from './A1Top';
 import TemporaryStorageButton from '../common/TemporaryStorageButton';
 import InspectionCompleteButton from '../common/InspectionCompleteButton';
 import Info from '../common/Info';
+import FetchModal from "../../common/FetchModal";
+import useModal from '../../../hooks/useModal';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -14,16 +16,15 @@ const ButtonBox = styled.div`
   Button {
     margin: 0 15px;
   }`;
-const A1Form = ({ onProductsDescription, onInspectionDescription, showModal, showCommModal, state }) => {
-  
+const A1Form = () => {
   return (
     <form>
       <Info />
-      <A1Top onProductsDescription={onProductsDescription} state={state}/>
-      <A1Bottom onInspectionDescription={onInspectionDescription} state={state} />
+      <A1Top />
+      <A1Bottom />
       <ButtonBox>
-        <TemporaryStorageButton showModal={showModal}/>
-        <InspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );
