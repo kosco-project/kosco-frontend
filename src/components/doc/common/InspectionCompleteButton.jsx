@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import useModal from '../../../hooks/useModal';
+import FetchModal from '../../common/FetchModal';
 
 
 const Button = styled.button `
@@ -12,9 +14,15 @@ const Button = styled.button `
     color: #fff;
 `;
 
-const InspectionCompleteButton = ({ showCommModal }) => {
+const InspectionCompleteButton = () => {
+  const [completeModal, setCompleteModal] = useModal();
   return (
-      <Button type='submit' onClick={showCommModal}>검사 완료</Button>
+    <>
+      <Button type='button' onClick={() => setCompleteModal(true)}>검사 완료</Button>
+      <FetchModal setFetchModal={setCompleteModal} isActive={completeModal}>
+          검사완료
+      </FetchModal>
+    </>
   );
 };
 
