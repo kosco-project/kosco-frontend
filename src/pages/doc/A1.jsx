@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
 import A1Form from '../../components/doc/A1/A1Form';
 
-const A1 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const A1 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="FIXED FIRE APPLIANCE" />

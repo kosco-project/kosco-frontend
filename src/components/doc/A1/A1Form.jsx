@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { initialize } from '../../../redux/modules/docsInput';
+import { useHistory } from 'react-router-dom';
+import { deleteInitialState, initialize } from '../../../redux/modules/docsInput';
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
@@ -24,13 +25,17 @@ const ButtonBox = styled.div`
 
 const A1Form = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const state = useGetFetch(A1_INIT);
 
   useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
     dispatch(initialize(state));
-  }, [dispatch, state]);
 
+    return () => {
+      dispatch(deleteInitialState());
+    }
+  }, [dispatch, history, state]);
 
   return (
     <form>
