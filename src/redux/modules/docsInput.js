@@ -40,6 +40,7 @@ const docsInput = handleActions(
       });
     },
 
+    [DELETE_INITIALSTATE]: (state, payload) => initialState,
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
       return {
         ...state,
@@ -61,10 +62,6 @@ const docsInput = handleActions(
           [id]: initialState.D1[0],
         },
       };
-    },
-    [DELETE_INITIALSTATE]: (state, { payload: id }) => {
-      delete state.D1[id];
-      return { ...state, D1: state.D1 };
     },
     [GET_DOCS_DATA]: (state, { payload: { D1 } }) => {
       return {
