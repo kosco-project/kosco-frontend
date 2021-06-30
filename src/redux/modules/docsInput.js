@@ -4,6 +4,7 @@ import produce from 'immer';
 // ACTION TYPE
 const INITIALIZE = 'docs/DOCS_INITIALIZE';
 const CHANGE_A_D1 = 'docs/CHANGE_A_D1';
+const CHANGE_CHECKBOX = 'docs/CHANGE_CHECKBOX';
 const CHANGE_FIELD = 'docs/CHANGE_FIELD';
 const ADD_INITIALSTATE = 'docs/ADD_INITIALSTATE';
 const DELETE_INITIALSTATE = 'docs/DELETE_INITIALSTATE';
@@ -11,6 +12,7 @@ const GET_DOCS_DATA = 'docs/GET_DOCS_DATA';
 
 // CREATE ACTION
 export const changeA_D1 = createAction(CHANGE_A_D1);
+export const change_checkbox = createAction(CHANGE_CHECKBOX);
 export const changeField = createAction(CHANGE_FIELD);
 export const initialize = createAction(INITIALIZE);
 export const addInitialState = createAction(ADD_INITIALSTATE);
@@ -31,6 +33,12 @@ const docsInput = handleActions(
       produce(state, draft => {
         draft[form][name] = value;
       }),
+
+    [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked } }) => {
+      return produce(state, draft => {
+        draft[form][name] = +checked;
+      });
+    },
 
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
       return {
