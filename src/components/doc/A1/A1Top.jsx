@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import useChangeD1 from '../../../hooks/useChangeD1';
-import { changeA_D1 } from '../../../redux/modules/docsInput';
+import { changeA_D1, deleteInitialState } from '../../../redux/modules/docsInput';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
