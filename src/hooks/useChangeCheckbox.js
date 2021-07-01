@@ -5,8 +5,8 @@ const useChangeCheckbox = () => {
   const dispatch = useDispatch();
 
   const onChangeCheckbox = ({ target }) => {
-    const { form, name } = target.dataset;
-    dispatch(change_checkbox({ checked: target.checked, form, name }));
+    const { form, name, key } = target.dataset;
+    dispatch(change_checkbox({ checked: target.checked, form, name, key }));
   };
 
   return onChangeCheckbox;
