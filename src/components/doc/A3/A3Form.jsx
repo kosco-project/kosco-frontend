@@ -23,7 +23,7 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const A3Form = ({ onWorkingSystemChecked, onWorkingSystem }) => {
+const A3Form = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useGetFetch(A3_INIT);
@@ -41,7 +41,7 @@ const A3Form = ({ onWorkingSystemChecked, onWorkingSystem }) => {
     <form>
       <Info />
       <A3Top />
-      <A3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} state={state} />
+      <A3Bottom />
       <ButtonBox>
         <TemporaryStorageButton />
         <InspectionCompleteButton />
