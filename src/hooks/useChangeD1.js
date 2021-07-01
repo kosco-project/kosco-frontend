@@ -6,9 +6,9 @@ const useChangeD1 = () => {
 
   const onChangeD1 = ({ target }) => {
     const { value, dataset } = target;
-    const { form, name } = dataset;
+    const { form, name, key } = dataset;
 
-    dispatch(changeA_D1({ value, form, name }));
+    dispatch(changeA_D1({ value, form, name, key }));
   };
 
   return onChangeD1;
