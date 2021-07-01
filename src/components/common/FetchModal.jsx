@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { CheckCircleTwoTone } from '@ant-design/icons';
+
 import usePostFetch from '../../hooks/usePostFetch';
 
 const ModalBackground = styled.div`
@@ -16,38 +18,47 @@ const ModalBackground = styled.div`
   background-color: rgba(62, 60, 70, 0.5);
 
   .save_modal_wrap {
-    padding: 45px 30px;
-    width: 300px;
-    height: 150px;
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 200px;
     z-index: 100;
     background-color: #fff;
+    border-radius: 5px;
   }
   .comment {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 25px;
+    padding: 0 20px 20px;
   }
   .button_wrap {
-    display: flex;
-    justify-content: center;
+    align-items: stretch;
     > button {
-      width: 76px;
-      height: 32px;
-      margin: 0 15px;
+      width: 50%;
+      height: 45px;
       border-style: none;
+      border-bottom: 5px;
       color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0;
     }
-      .confirm {
-        background: #1890ff;
-      }
-      .cancel {
-        background: #ff4d4f;
-      }
+    .confirm {
+      background: #292f4c;
+      border-bottom-left-radius: 5px;
+    }
+    .cancel {
+      background: #f04242;
+      border-bottom-right-radius: 5px;
+    }
   }
 `;
 
 const FetchModal = ({ form, children, isActive, setFetchModal }) => {
-  const [postFetch] = usePostFetch(form);
+  const postFetch = usePostFetch(form);
   
   return (
     <>
@@ -57,10 +68,18 @@ const FetchModal = ({ form, children, isActive, setFetchModal }) => {
       >
         <div className="save_modal_wrap">
           <div className="comment">
+          <CheckCircleTwoTone
+              twoToneColor='#52c41a'
+              style={{
+                fontSize: 50,
+                marginRight: 10,
+                verticalAlign: 'middle',
+              }}
+            />
             {children} 하시겠습니까?
           </div>
           <div className="button_wrap">
-            <button className="confirm" onClick={() => postFetch()}>확인</button>
+            <button className="confirm" onClick={postFetch}>확인</button>
             <button type="button" className="cancel" onClick={() =>setFetchModal(false)}>취소</button>
           </div>
         </div>
@@ -70,3 +89,4 @@ const FetchModal = ({ form, children, isActive, setFetchModal }) => {
 };
 
 export default FetchModal;
+
