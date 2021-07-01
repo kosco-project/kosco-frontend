@@ -29,14 +29,28 @@ const docsInput = handleActions(
       return { ...datas };
     },
 
-    [CHANGE_A_D1]: (state, { payload: { form, name, value } }) =>
+    [CHANGE_A_D1]: (state, { payload: { form, name, value, key } }) =>
       produce(state, draft => {
-        draft[form][name] = value;
+        if (!key) draft[form][name] = value;
+        else draft[form][name][key] = value;
       }),
 
-    [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked } }) => {
+    [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked, key } }) => {
+      console.log(form, name, key, checked);
+
       return produce(state, draft => {
-        draft[form][name] = +checked;
+        if (!key) draft[form][name] = +checked;
+
+        if (key && !checked) draft[form][name][key] = 0;
+
+        if (key === 'CarriedOut' && checked) {
+          draft[form][name].CarriedOut = 1;
+          draft[form][name].NotCarried = 0;
+        }
+        if (key === 'NotCarried' && checked) {
+          draft[form][name][key] = 1;
+          draft[form][name].CarriedOut = 0;
+        }
       });
     },
 
