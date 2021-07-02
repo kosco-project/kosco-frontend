@@ -57,7 +57,13 @@ const InspectionContainer = () => {
       }
       console.log(e);
     }
-  }, [inputValue.endDate, inputValue.process, inputValue.startDate]);
+  }, [
+    dispatch,
+    history,
+    inputValue.endDate,
+    inputValue.process,
+    inputValue.startDate,
+  ]);
 
   useEffect(() => {
     getList();
@@ -78,11 +84,11 @@ const InspectionContainer = () => {
   }, []);
 
   return (
-      <InspectionBox
-        onChangeDate={onChangeDate}
-        onChangeProcess={onChangeProcess}
-        inputValue={inputValue}
-      />
+    <InspectionBox
+      onChangeDate={onChangeDate}
+      onChangeProcess={onChangeProcess}
+      inputValue={inputValue}
+    />
   );
 };
 
