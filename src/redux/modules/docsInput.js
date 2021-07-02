@@ -46,10 +46,18 @@ const docsInput = handleActions(
         if (key === 'CarriedOut' && checked) {
           draft[form][name].CarriedOut = 1;
           draft[form][name].NotCarried = 0;
+          draft[form][name].NotApp && (draft[form][name].NotApp = 0);
         }
         if (key === 'NotCarried' && checked) {
           draft[form][name][key] = 1;
           draft[form][name].CarriedOut = 0;
+          draft[form][name].NotApp && (draft[form][name].NotApp = 0);
+        }
+
+        if (key === 'NotApp' && checked) {
+          draft[form][name][key] = 1;
+          draft[form][name].CarriedOut = 0;
+          draft[form][name].NotCarried = 0;
         }
       });
     },
