@@ -24,8 +24,6 @@ const useGetFetch = (initialState = {}) => {
       );
 
       const { D1, ...rest } = await res.data;
-      console.log('res', res.data);
-      if (!Object.keys(D1).length && !Object.keys(rest.D2).length) return;
 
       await setState(() => ({
         H: {
@@ -37,13 +35,13 @@ const useGetFetch = (initialState = {}) => {
         ...rest,
       }));
     } catch (e) {
+      console.log(e);
       if (e.response.status === 401 || e.response.status === 409) {
         sessionStorage.removeItem('startDate');
         sessionStorage.removeItem('endDate');
         sessionStorage.removeItem('KOSCO_token');
         window.location.replace('/');
       }
-      console.log(e);
     }
   }, [CERTNO, RCVNO, VESSELNM, path]);
 
