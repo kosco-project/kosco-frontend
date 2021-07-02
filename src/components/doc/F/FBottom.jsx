@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import useChangeD1 from '../../../hooks/useChangeD1';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -33,13 +34,15 @@ const BottomBox = styled.div`
   }
 `;
 
-const FBottom = ({ onChangeTextArea }) => {
-  const D2 = useSelector(state => state.f.D2);
+const FBottom = () => {
+  const D2 = useSelector(state => state.docsInput.D2);
+
+  const onChangeText = useChangeD1();
 
   return (
     <BottomBox>
       <div className='top-description'>
-        <textarea value={D2} onChange={onChangeTextArea} style={{ width: '100%', height: '100px' }}></textarea>
+        <textarea value={D2} data-form="D2" onChange={e => onChangeText(e)} style={{ width: '100%', height: '100px' }}></textarea>
       </div>
     </BottomBox>
   );
