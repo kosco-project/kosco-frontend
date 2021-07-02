@@ -13,6 +13,8 @@ const useGetFetch = (initialState = {}) => {
   const VESSELNM = JSON.parse(localStorage.getItem('shipNm')) || '';
 
   const getFetch = useCallback(async () => {
+    if (!CERTNO) return setState(initialState);
+
     try {
       const res = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api/doc/${path}?ct=${CERTNO}`,
@@ -26,11 +28,7 @@ const useGetFetch = (initialState = {}) => {
       const { D1, ...rest } = await res.data;
 
       await setState(() => ({
-        H: {
-          CERTNO,
-          RCVNO,
-          VESSELNM,
-        },
+        ...state,
         D1,
         ...rest,
       }));
