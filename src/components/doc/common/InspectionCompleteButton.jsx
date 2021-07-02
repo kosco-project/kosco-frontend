@@ -19,7 +19,7 @@ const InspectionCompleteButton = () => {
   return (
     <>
       <Button type='button' onClick={() => setCompleteModal(true)}>검사 완료</Button>
-      <FetchModal setFetchModal={setCompleteModal} isActive={completeModal}>
+      <FetchModal setFetchModal={setCompleteModal} isActive={completeModal} form="complete">
           검사완료
       </FetchModal>
     </>
