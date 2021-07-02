@@ -28,7 +28,11 @@ const useGetFetch = (initialState = {}) => {
       const { D1, ...rest } = await res.data;
 
       await setState(() => ({
-        ...state,
+        H: {
+          CERTNO,
+          RCVNO,
+          VESSELNM,
+        },
         D1,
         ...rest,
       }));
@@ -41,7 +45,7 @@ const useGetFetch = (initialState = {}) => {
         window.location.replace('/');
       }
     }
-  }, [CERTNO, RCVNO, VESSELNM, path]);
+  }, [CERTNO, RCVNO, VESSELNM, initialState, path]);
 
   useEffect(() => {
     getFetch();
