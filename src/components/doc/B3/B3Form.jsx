@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import B3_INIT from '../../../docsInitialState/B3';
+import useGetFetch from '../../../hooks/useGetFetch';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 import Info from '../common/Info';
 import InspectionCompleteButton from '../common/InspectionCompleteButton';
 import TemporaryStorageButton from '../common/TemporaryStorageButton';
@@ -16,7 +21,20 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, showModal, showCommModal, state }) => {
+const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, showModal, showCommModal }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(B3_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
