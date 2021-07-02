@@ -33,7 +33,7 @@ const usePostFetch = (form = null) => {
       }
       console.log(e);
     }
-  }, [form, path, state]);
+  }, [form, history, path, state]);
 
   return postFetch;
 };
