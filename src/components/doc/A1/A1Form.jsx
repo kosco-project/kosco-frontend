@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { deleteInitialState, initialize } from '../../../redux/modules/docsInput';
+import { resetInitialState, initialize } from '../../../redux/modules/docsInput';
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
@@ -33,7 +33,7 @@ const A1Form = () => {
     dispatch(initialize(state));
 
     return () => {
-      dispatch(deleteInitialState());
+      dispatch(resetInitialState());
     }
   }, [dispatch, history, state]);
 
