@@ -1,4 +1,4 @@
-const A3_INIT = {
+const B3_INIT = {
   H: {
     RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
     VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
@@ -35,107 +35,93 @@ const A3_INIT = {
       Unit: '대',
       Remark: '',
     },
-    6: {
-      Value: '',
-      Unit: '대',
-      Remark: '',
-    },
-    7: {
-      Value: '',
-      Unit: '대',
-      Remark: '',
-    },
   },
   D2: {
     0: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     1: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     2: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     3: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     4: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     5: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     6: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     7: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     8: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     9: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     10: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     11: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
     12: {
       CarriedOut: 0,
       NotCarried: 0,
-      Remark: '',
+      NotApp: 0,
+      Comm: '',
     },
-    13: {
-      CarriedOut: 0,
-      NotCarried: 0,
-      Remark: '',
-    },
-    14: {
-      CarriedOut: 0,
-      NotCarried: 0,
-      Remark: '',
-    },
-    15: {
-      CarriedOut: 0,
-      NotCarried: 0,
-      Remark: '',
-    },
-    16: {
-      CarriedOut: 0,
-    },
-    17: {
-      CarriedOut: 0,
-      NotCarried: 0,
-      Remark: '',
-    },
+  },
+  D3: {
+    0: '',
+    1: '',
+    2: '',
+    3: '',
   },
 };
 
-export default A3_INIT;
+export default B3_INIT;
