@@ -1,23 +1,28 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
+import useChangeD1 from '../../../hooks/useChangeD1';
+import { deleteList } from '../../../redux/modules/docsInput';
+
 import DeleteButton from '../common/DeleteButton';
 
-const B1TableRow = ({ id, onRemove, onChange, num }) => {
-  const D1 = useSelector(state => state.b1.D1[id]);
+const B1TableRow = ({ id, num }) => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1[id]);
   const { GasType, SerialNo, TestDt, TareWT, GrossWT, Capacity, Press, Temp, Perform } = D1;
 
-  const inputArg = ({ target }) => onChange({ target, id });
+  const onChangeD1 = useChangeD1();
   
   return (
      <tr>
       <td>{num}</td>
       <td>
-        <input type='text' onChange={inputArg} value={GasType || ''} name="GasType"/>
+        <input type='text' data-name={ id } data-form="D1" data-key="GasType" onChange={e => onChangeD1(e)} value={GasType || ''} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={SerialNo || ''} name="SerialNo"/>
+        <input type='text' data-name={ id } data-form="D1" data-key="SerialNo" onChange={e => onChangeD1(e)} value={SerialNo || ''} />
       </td>
       <td>
         <DatePicker
@@ -25,10 +30,14 @@ const B1TableRow = ({ id, onRemove, onChange, num }) => {
           name="TestDt"
           dateFormat="yyyy-MM"
           onChange={date => {
-            onChange({
-              id,
+            onChangeD1({
               target: {
-                name: "TestDt", value: date.getFullYear() + '-' + (date.getMonth() + 1)
+                dataset: {
+                  form: 'D1',
+                  name: id,
+                  key: "TestDt",
+                },
+                value: date.getFullYear() + '-' + (date.getMonth() + 1)
               }
             }
             )
@@ -37,27 +46,27 @@ const B1TableRow = ({ id, onRemove, onChange, num }) => {
         />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={TareWT || ''}  name="TareWT" />
+        <input type='text' data-name={ id } data-form="D1" data-key="TareWT" onChange={e => onChangeD1(e)} value={TareWT || ''} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={GrossWT || ''}  name="GrossWT" />
+        <input type='text' data-name={ id } data-form="D1" data-key="GrossWT" onChange={e => onChangeD1(e)} value={GrossWT || ''} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={Capacity || ''}  name="Capacity" />
+        <input type='text' data-name={ id } data-form="D1" data-key="Capacity" onChange={e => onChangeD1(e)} value={Capacity || ''} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={Press || ''} name="Press" />
+        <input type='text' data-name={ id } data-form="D1" data-key="Press" onChange={e => onChangeD1(e)} value={Press || ''} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} value={Temp || ''} name="Temp" />
+        <input type='text' data-name={ id } data-form="D1" data-key="Temp" onChange={e => onChangeD1(e)} value={Temp || ''} />
       </td>
       <td>
-        <select onChange={inputArg} value={Perform || ''} name="Perform" >
+        <select data-name={ id } data-form="D1" data-key="Perform" onChange={e => onChangeD1(e)} value={Perform || ''} >
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
       </td>
-      <td onClick={() => onRemove(id)}>
+      <td onClick={() => dispatch(deleteList({ form: 'D1', id }))}>
       <DeleteButton />
     </td>
     </tr>
