@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import b1 from './b1';
 import h2A from './h2A';
 import i from './i';
 import i1 from './i1';
@@ -16,7 +15,6 @@ import docsInput from "./docsInput";
 const rootReducer = combineReducers({
   docsInput,
   inspectionList,
-  b1,
   h2A,
   h1h3h31,
   i,
