@@ -3,20 +3,22 @@ import produce from 'immer';
 
 // ACTION TYPE
 const INITIALIZE = 'docs/DOCS_INITIALIZE';
-const CHANGE_A_D1 = 'docs/CHANGE_A_D1';
+const CHANGE_D1 = 'docs/CHANGE_D1';
 const CHANGE_CHECKBOX = 'docs/CHANGE_CHECKBOX';
 const CHANGE_FIELD = 'docs/CHANGE_FIELD';
-const ADD_INITIALSTATE = 'docs/ADD_INITIALSTATE';
-const DELETE_INITIALSTATE = 'docs/DELETE_INITIALSTATE';
+const ADD_LIST = 'docs/ADD_LIST';
+const DELETE_LIST = 'docs/DELETE_LIST';
+const RESET_INITIALSTATE = 'docs/RESET_INITIALSTATE';
 const GET_DOCS_DATA = 'docs/GET_DOCS_DATA';
 
 // CREATE ACTION
-export const changeA_D1 = createAction(CHANGE_A_D1);
+export const initialize = createAction(INITIALIZE);
+export const change_D1 = createAction(CHANGE_D1);
 export const change_checkbox = createAction(CHANGE_CHECKBOX);
 export const changeField = createAction(CHANGE_FIELD);
-export const initialize = createAction(INITIALIZE);
-export const addInitialState = createAction(ADD_INITIALSTATE);
-export const deleteInitialState = createAction(DELETE_INITIALSTATE);
+export const addList = createAction(ADD_LIST);
+export const deleteList = createAction(DELETE_LIST);
+export const resetInitialState = createAction(RESET_INITIALSTATE);
 export const getDocsData = createAction(GET_DOCS_DATA);
 
 // INITIAL STATE
@@ -29,15 +31,13 @@ const docsInput = handleActions(
       return { ...datas };
     },
 
-    [CHANGE_A_D1]: (state, { payload: { form, name, value, key } }) =>
+    [CHANGE_D1]: (state, { payload: { form, name, value, key } }) =>
       produce(state, draft => {
         if (!key) draft[form][name] = value;
         else draft[form][name][key] = value;
       }),
 
     [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked, key } }) => {
-      console.log(form, name, key, checked);
-
       return produce(state, draft => {
         if (!key) draft[form][name] = +checked;
 
@@ -54,7 +54,22 @@ const docsInput = handleActions(
       });
     },
 
-    [DELETE_INITIALSTATE]: (state, payload) => initialState,
+    [ADD_LIST]: (state, { payload: { form, initState } }) => {
+      const id =
+        +Object.keys(state[form])[Object.keys(state[form]).length - 1] + 1;
+
+      return produce(state, draft => {
+        draft[form][id] = initState;
+      });
+    },
+
+    [DELETE_LIST]: (state, { payload: { form, id } }) => {
+      return produce(state, draft => {
+        delete draft[form][id];
+      });
+    },
+
+    [RESET_INITIALSTATE]: () => initialState,
     [CHANGE_FIELD]: (state, { payload: { id, name, value } }) => {
       return {
         ...state,
@@ -68,15 +83,6 @@ const docsInput = handleActions(
       };
     },
 
-    [ADD_INITIALSTATE]: (state, { payload: id }) => {
-      return {
-        ...state,
-        D1: {
-          ...state.D1,
-          [id]: initialState.D1[0],
-        },
-      };
-    },
     [GET_DOCS_DATA]: (state, { payload: { D1 } }) => {
       return {
         ...state,
