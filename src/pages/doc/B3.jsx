@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
 import B3Form  from "../../components/doc/B3/B3Form";
 
-const B3 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const B3 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="BREATING AIR COMPRESSOR" />
