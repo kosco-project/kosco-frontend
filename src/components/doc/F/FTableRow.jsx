@@ -1,35 +1,37 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import DeleteButton from '../common/DeleteButton';
+import { useDispatch, useSelector } from 'react-redux';
+import useChangeD1 from '../../../hooks/useChangeD1';
+import { deleteList } from '../../../redux/modules/docsInput';
+import DeleteButton from '../../common/DeleteButton';
 
-const FTableRow = ({ id, onRemove, onChange, num }) => {
-  const D1 = useSelector(state => state.f.D1[id]);
-  const { s_no, position, condition, remark } = D1;
+const FTableRow = ({ id, num }) => {
+  const dispatch = useDispatch();
+  const { s_no, position, condition, remark } = useSelector(state => state.docsInput.D1[id]);
 
-  const inputArg = ({ target }) => onChange({ target, id });
+  const onChange = useChangeD1();
 
   return (
-    <tr>
-      <td>{num}</td>
-      <td>
-        <input type='text' value={s_no} onChange={inputArg} name="s_no"/>
-      </td>
-      <td>
-        <input type='text' value={position} onChange={inputArg} name="position"/>
-      </td>
-      <td>
-        <select value={condition} onChange={inputArg} name="condition">
-          <option value='GOOD'>GOOD</option>
-          <option value='BAD'>BAD</option>
-        </select>
-      </td>
-      <td>
-        <input type='text' value={remark} onChange={inputArg} name="remark"/>
-      </td>
-      <td onClick={() => onRemove(id)}>
-        <DeleteButton />
-      </td>
-    </tr>
+        <tr>
+        <td>{num}</td>
+        <td>
+          <input type='text' name="s_no" data-form="D1" data-key={id} value={s_no} onChange={onChange} />
+        </td>
+        <td>
+          <input type='text' name="position" data-form="D1" data-key={id} value={position} onChange={onChange} />
+        </td>
+        <td>
+          <select name="condition" data-form="D1" data-key={id} value={condition} onChange={onChange}>
+            <option value='GOOD'>GOOD</option>
+            <option value='BAD'>BAD</option>
+          </select>
+        </td>
+        <td>
+          <input type='text' name="remark" data-form="D1" data-key={id} value={remark} onChange={onChange} />
+        </td>
+        <td onClick={() => dispatch(deleteList({ form: 'D1', id }))}>
+          <DeleteButton />
+        </td>
+      </tr>
   );
 };
 

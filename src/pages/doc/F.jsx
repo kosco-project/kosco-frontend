@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import FContainer from '../../containers/doc/FContainer';
+import FForm from '../../components/doc/F/FForm';
 
-const F = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const F = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="Fire detection system" />
-      <FContainer />
+      <FForm />
     </AppWrapper>
   );
 };

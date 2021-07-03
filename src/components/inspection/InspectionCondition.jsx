@@ -1,6 +1,11 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DatePicker, Radio } from 'antd';
+import { useHistory, useLocation } from 'react-router-dom';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { getInspectionList } from '../../redux/modules/inspectionList';
+import useGetList from '../../hooks/useGetList';
 
 const { RangePicker } = DatePicker;
 
@@ -17,13 +22,39 @@ const InspectionForm = styled.form`
   }
 `;
 
-const InspectionCondition = ({ inputValue, onChangeDate, onChangeProcess }) => {
-  const { startDate, endDate, process } = inputValue;
+const InspectionCondition = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
+  const [start, setStart] = useState(sessionStorage.getItem('startDate') ? moment(sessionStorage.getItem('startDate')) : moment());
+  const [end, setEnd] = useState(sessionStorage.getItem('endDate') ? moment(sessionStorage.getItem('endDate')) : moment().add(1, 'M'));
+  const [process, setProcess] = useState(1);
+  
+  const list = useGetList(start, end, process);
+  
+
+  const onChangeD = (_, [start, end]) => {
+    setStart(moment(start));
+    setEnd(moment(end));
+    history.push(`/inspectionList/${start}/${end}/${process}`);
+    sessionStorage.setItem('startDate', start);
+    sessionStorage.setItem('endDate', end);
+  };
+
+  const onChangeProcess = ({ target }) => {
+    setProcess(target.value);
+    history.push(`/inspectionList/${start.format('YYYY-MM-DD')}/${end.format('YYYY-MM-DD')}/${process}`);
+  };
+
+  useEffect(() => {
+    if (list) dispatch(getInspectionList(list))
+  }, [dispatch, list]);
+
   return (
     <InspectionForm>
       <div className='inspection-input-box'>
         <label htmlFor='DateRange'>날짜 :</label>
-        <RangePicker size='large' onChange={onChangeDate} value={[startDate, endDate]} format={'YYYY-MM-DD'} allowClear={false} />
+        <RangePicker size='large' onChange={onChangeD} value={[start, end]} format={'YYYY-MM-DD'} allowClear={false} />
       </div>
       <div className='inspection-input-box'>
         <label htmlFor='DateRange'>진행 :</label>

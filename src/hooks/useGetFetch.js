@@ -5,14 +5,20 @@ import { useLocation } from 'react-router-dom';
 const useGetFetch = (initialState = {}) => {
   const [state, setState] = useState(initialState);
 
+  const CERTNO = JSON.parse(localStorage.getItem('certNo'));
+  const RCVNO = JSON.parse(localStorage.getItem('rcvNo')) || '';
+  const VESSELNM = JSON.parse(localStorage.getItem('shipNm')) || '';
+
+  const H = { CERTNO, RCVNO, VESSELNM };
+  initialState.H = H;
+
   const location = useLocation();
 
   const path = location.pathname.split('/')[2];
-  const CERTNO = JSON.parse(localStorage.getItem('certNo'));
-  const RCVNO = JSON.parse(localStorage.getItem('rcvNo'));
-  const VESSELNM = JSON.parse(localStorage.getItem('shipNm')) || '';
 
   const getFetch = useCallback(async () => {
+    if (!CERTNO) return setState(initialState);
+
     try {
       const res = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api/doc/${path}?ct=${CERTNO}`,
@@ -24,8 +30,6 @@ const useGetFetch = (initialState = {}) => {
       );
 
       const { D1, ...rest } = await res.data;
-      console.log('res', res.data);
-      if (!Object.keys(D1).length && !Object.keys(rest.D2).length) return;
 
       await setState(() => ({
         H: {
@@ -37,15 +41,15 @@ const useGetFetch = (initialState = {}) => {
         ...rest,
       }));
     } catch (e) {
+      console.log(e);
       if (e.response.status === 401 || e.response.status === 409) {
         sessionStorage.removeItem('startDate');
         sessionStorage.removeItem('endDate');
         sessionStorage.removeItem('KOSCO_token');
         window.location.replace('/');
       }
-      console.log(e);
     }
-  }, [CERTNO, RCVNO, VESSELNM, path]);
+  }, [CERTNO, RCVNO, VESSELNM, initialState, path]);
 
   useEffect(() => {
     getFetch();

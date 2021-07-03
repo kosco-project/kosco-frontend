@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import P1_INIT from '../../../docsInitialState/P1';
+import { addList } from '../../../redux/modules/docsInput';
 import P1TableRow from './P1TableRow';
 
 const TableBox = styled.div`
@@ -58,36 +60,43 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const P1Top = ({ onChange, onRemove, onInsert }) => {
-  const D1 = useSelector(state => state.p1.D1);
+const P1Top = () => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const P1_state = P1_INIT.D1[0];
 
   return (
     <>
-      <TableBox>
-        <div className='title'>Description of products ;</div>
-        <table>
-          <thead>
-            <tr>
-              <td>NO.</td>
-              <td>Type of a product</td>
-              <td>Quantity</td>
-              <td>SIZE</td>
-              <td>Perform.</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(D1).map((item, i) => (
-              <P1TableRow key={item[0]} id={item[0]} num={i + 1} onRemove={onRemove} onChange={onChange} />
-            ))}
-          </tbody>
-        </table>
-      </TableBox>
-      <ButtonDiv>
-        <button type='button' onClick={onInsert}>
-          추가
-        </button>
-      </ButtonDiv>
+      {D1 && (
+        <>
+        <TableBox>
+          <div className='title'>Description of products ;</div>
+          <table>
+            <thead>
+              <tr>
+                <td>NO.</td>
+                <td>Type of a product</td>
+                <td>Quantity</td>
+                <td>SIZE</td>
+                <td>Perform.</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(D1).map((item, i) => (
+                <P1TableRow key={item[0]} id={item[0]} num={i + 1} />
+              ))}
+            </tbody>
+          </table>
+        </TableBox>
+        <ButtonDiv>
+          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: P1_state }))}>
+            추가
+          </button>
+        </ButtonDiv>
+      </>
+      )}
     </>
   );
 };

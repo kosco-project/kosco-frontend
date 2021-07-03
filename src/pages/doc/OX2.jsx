@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import OX2Container from '../../containers/doc/OX2Container';
+import OX2Form from '../../components/doc/OX2/OX2Form';
 
-const OX2 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const OX2 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="OXYGEN RESUSCITATOR CYLINDER" />
-      <OX2Container />
+      <OX2Form />
     </AppWrapper>
   );
 };

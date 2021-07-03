@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Info from '../common/Info';
-import I1Bottom from './I1Bottom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import Info from '../../common/Info';
 import I1Top from './I1Top';
-import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
-import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
+import I1Bottom from './I1Bottom';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import I1_INIT from '../../../docsInitialState/I1';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 
 const ButtonBox = styled.div`
@@ -16,15 +24,28 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const I1Form = ({ onChange, onRemove, onInsert, units, onChangeTextArea, showModal, showCommModal }) => {
+const I1Form = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(I1_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
-      <I1Top units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
-      <I1Bottom onChangeTextArea={onChangeTextArea}/>
+      <I1Top />
+      <I1Bottom />
       <ButtonBox>
-        <DynTemporaryStorageButton showModal={showModal}/>
-        <DynInspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

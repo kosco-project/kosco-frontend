@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import F2Container from '../../containers/doc/F2Container';
+import F2Form from '../../components/doc/F2/F2Form';
 
-const F2 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const F2 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="PILOT CYLINDER SPECIFICATION" />
-      <F2Container />
+      <F2Form />
     </AppWrapper>
   );
 };

@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import IContainer from '../../containers/doc/IContainer';
+import IForm from '../../components/doc/I/IForm';
 
-const I = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const I = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="IMMERSION SUIT" />
-      <IContainer />
+      <IForm />
     </AppWrapper>
   );
 };
