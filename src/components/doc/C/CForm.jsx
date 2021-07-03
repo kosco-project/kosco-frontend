@@ -6,11 +6,11 @@ import { initialize, resetInitialState } from '../../../redux/modules/docsInput'
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
-import Info from '../common/Info';
+import Info from '../../common/Info';
 import CTop from './CTop';
 import CBottom from './CBottom';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import { C_INIT } from "../../../docsInitialState/C";
 

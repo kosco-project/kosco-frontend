@@ -34,7 +34,7 @@ const F2Bottom3 = () => {
       <Bottom3Box>
         <div className='title'>Recommendation;</div>
         <div className='description'>
-          <textarea name='recommend' value={D2.recommend} data-form="D2" onChange={onChange}></textarea>
+          <textarea value={D2.recommend} data-form="D2" data-key="recommend" onChange={onChange}></textarea>
         </div>
       </Bottom3Box>
       )}

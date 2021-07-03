@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useChangeD1 from '../../../hooks/useChangeD1';
 import { deleteList } from '../../../redux/modules/docsInput';
 
-import DeleteButton from '../common/DeleteButton';
+import DeleteButton from '../../common/DeleteButton';
 
 const B1TableRow = ({ id, num }) => {
   const dispatch = useDispatch();
@@ -32,10 +32,10 @@ const B1TableRow = ({ id, num }) => {
           onChange={date => {
             onChange({
               target: {
+                name: 'TestDt',
                 dataset: {
                   form: 'D1',
-                  name: id,
-                  key: "TestDt",
+                  key: id,
                 },
                 value: date.getFullYear() + '-' + (date.getMonth() + 1)
               }

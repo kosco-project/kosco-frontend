@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { OX2_D1_DATAS, OX2_INIT } from '../../../docsInitialState/OX2';
+import { addList } from '../../../redux/modules/docsInput';
 import OX2TopTableRow from './OX2TopTableRow';
 
 const TopBox = styled.div`
@@ -96,32 +98,39 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Top = ({ datas, onRemove, onInsert, onChangeD1 }) => {
-  const D1 = useSelector(state => state.ox2.D1);
+const OX2Top = () => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1);
+  
+  const OX2_state = OX2_INIT.D1[0];
 
   return (
     <>
-      <TopBox>
-        <div className='left-box'>
-          <div className='title'>Description of inspection</div>
-          {datas.map((data, i) => (
-            <p key={i}>{`${i + 1}. ${data}`}</p>
-          ))}
-        </div>
-        <div className='right-box'>
-          <div className='title'>Specification of medical oxygen ;</div>
-          <div className='description-box'>
-             {Object.entries(D1).map((item, index) => (
-              <OX2TopTableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChangeD1={onChangeD1}/>
+      {D1 && (
+        <>
+        <TopBox>
+          <div className='left-box'>
+            <div className='title'>Description of inspection</div>
+            {OX2_D1_DATAS.map((data, i) => (
+              <p key={i}>{`${i + 1}. ${data}`}</p>
             ))}
           </div>
-        </div>
-      </TopBox>
-      <ButtonDiv>
-        <button type='button' onClick={onInsert}>
-          추가
-        </button>
-      </ButtonDiv>
+          <div className='right-box'>
+            <div className='title'>Specification of medical oxygen ;</div>
+            <div className='description-box'>
+               {Object.entries(D1).map((item, index) => (
+                <OX2TopTableRow key={item[0]} id={item[0]} num={index + 1} />
+              ))}
+            </div>
+          </div>
+        </TopBox>
+        <ButtonDiv>
+          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: OX2_state }))}>
+            추가
+          </button>
+        </ButtonDiv>
+      </>
+      )}
     </>
   );
 };

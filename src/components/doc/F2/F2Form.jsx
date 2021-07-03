@@ -10,8 +10,8 @@ import F2Top from './F2Top';
 import F2Bottom from './F2Bottom';
 import F2Bottom2 from './F2Bottom2';
 import F2Bottom3 from './F2Bottom3';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import F2_INIT from '../../../docsInitialState/F2';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useChangeD1 from '../../../hooks/useChangeD1';
 import { deleteList } from '../../../redux/modules/docsInput';
-import DeleteButton from '../common/DeleteButton';
+import DeleteButton from '../../common/DeleteButton';
 
 const F2TableRow = ({ id, num }) => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const F2TableRow = ({ id, num }) => {
         <tr>
         <td>{num}</td>
         <td>
-            <input type='text' name="manuf" data-form="D2" data-key={id} value={manuf} onChange={onChange} />
+            <input type='text' name="manuf" data-form="D1" data-key={id} value={manuf} onChange={onChange} />
         </td>
         <td>
           <input type='text' name="type" data-form="D1" data-key={id} value={type} onChange={onChange} />

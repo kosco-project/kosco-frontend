@@ -61,30 +61,34 @@ const F2Top = () => {
 
   return (
     <>
-      <BottomBox>
-        <table>
-          <thead>
-            <tr>
-              <td>NO.</td>
-              <td>Manufacturer</td>
-              <td>Type</td>
-              <td>Serial No.</td>
-              <td>Remark</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {D1 && Object.entries(D1).map((item, index) => (
-              <F2TableRow key={item[0]} id={item[0]} num={index + 1} />
-            ))}
-          </tbody>
-        </table>
-        <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: F2_state }))}>
-            추가
-          </button>
-        </ButtonDiv>
-      </BottomBox>
+      {D1 && (
+        <>
+        <BottomBox>
+          <table>
+            <thead>
+              <tr>
+                <td>NO.</td>
+                <td>Manufacturer</td>
+                <td>Type</td>
+                <td>Serial No.</td>
+                <td>Remark</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(D1).map((item, index) => (
+                <F2TableRow key={item[0]} id={item[0]} num={index + 1} />
+              ))}
+            </tbody>
+          </table>
+          <ButtonDiv>
+            <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: F2_state }))}>
+              추가
+            </button>
+          </ButtonDiv>
+        </BottomBox>
+      </>
+      )}
     </>
   );
 };

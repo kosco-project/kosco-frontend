@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import useChangeD1 from '../../../hooks/useChangeD1';
 import { deleteList } from '../../../redux/modules/docsInput';
-import DeleteButton from '../common/DeleteButton';
+import DeleteButton from '../../common/DeleteButton';
 
 const GTableRow = ({ id }) => {
   const dispatch = useDispatch();

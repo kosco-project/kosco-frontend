@@ -5,11 +5,11 @@ import { useHistory } from 'react-router-dom';
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
-import Info from '../common/Info';
+import Info from '../../common/Info';
 import FTop from './FTop';
 import FBottom from './FBottom';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import F_INIT from "../../../docsInitialState/F";
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';

@@ -6,11 +6,11 @@ import { resetInitialState, initialize } from '../../../redux/modules/docsInput'
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
-import Info from '../common/Info';
+import Info from '../../common/Info';
 import A3Top from './A3Top';
 import A3Bottom from './A3Bottom';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import A3_INIT from '../../../docsInitialState/A3';
 

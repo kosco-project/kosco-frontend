@@ -5,13 +5,13 @@ import { useHistory } from 'react-router-dom';
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
-import Info from '../common/Info';
+import Info from '../../common/Info';
 import GTop from './GTop';
 import GBottom from './GBottom';
 import GBottom2 from './GBottom2';
 import GBottom3 from './GBottom3';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import G_INIT from '../../../docsInitialState/G';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';

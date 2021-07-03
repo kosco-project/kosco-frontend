@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
+import { resetInitialState, initialize } from '../../../redux/modules/docsInput';
 
 import useGetFetch from '../../../hooks/useGetFetch';
 
-import P1Info from './P1Info';
-import P1Top from './P1Top';
-import P1Bottom from './P1Bottom';
-import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import Info from '../../common/Info';
+import A1Top from './A1Top';
+import A1Bottom from './A1Bottom';
 import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
 
-import P1_INIT from '../../../docsInitialState/P1';
-import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import A1_INIT from '../../../docsInitialState/A1';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -23,13 +23,17 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-
-const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, showCommModal }) => {
+const A1Form = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const state = useGetFetch(P1_INIT);
-
+  const state = useGetFetch(A1_INIT);
+  const RCVNO =  JSON.parse(localStorage.getItem('rcvNo'))
+  const VESSELNM=  JSON.parse(localStorage.getItem('shipNm'))
+  const CERTNO = JSON.parse(localStorage.getItem('certNo'))
+  console.log(RCVNO, VESSELNM, CERTNO);
+  
   useEffect(() => {
+    console.log(A1_INIT);
     if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
     dispatch(initialize(state));
 
@@ -40,9 +44,9 @@ const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, sho
 
   return (
     <form>
-      <P1Info />
-      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
-      <P1Bottom onChangeTextArea={onChangeTextArea}/>
+      <Info />
+      <A1Top />
+      <A1Bottom />
       <ButtonBox>
         <TemporaryStorageButton />
         <InspectionCompleteButton />
@@ -51,4 +55,4 @@ const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, sho
   );
 };
 
-export default P1Form;
+export default A1Form;
