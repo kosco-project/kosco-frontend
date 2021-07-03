@@ -42,7 +42,7 @@ const docsInput = handleActions(
       return produce(state, draft => {
         if (!name) draft[form][key] = +checked;
 
-        if (name && !checked) draft[form][key][name] = 0;
+        if (name) draft[form][key][name] = +checked;
 
         if (name === 'CarriedOut' && checked) {
           draft[form][key].CarriedOut = 1;
@@ -59,6 +59,16 @@ const docsInput = handleActions(
           draft[form][key][name] = 1;
           draft[form][key].CarriedOut = 0;
           draft[form][key].NotCarried = 0;
+        }
+
+        if (name === 'Normal' && checked) {
+          draft[form][key][name] = 1;
+          draft[form][key].Abnormal = 0;
+        }
+
+        if (name === 'Abnormal' && checked) {
+          draft[form][key][name] = 1;
+          draft[form][key].Normal = 0;
         }
       });
     },
