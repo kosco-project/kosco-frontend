@@ -63,7 +63,7 @@ const BottomBox = styled.div`
 const B3Bottom2 = () => {
   const D3 = useSelector(state => state.docsInput.D3);
 
-  const onChangeText = useChangeD1();
+  const onChange = useChangeD1();
   
   return (
     <>
@@ -77,7 +77,7 @@ const B3Bottom2 = () => {
               <td>A</td>
               <td>Air quality check : CO = Max. 15 ppm</td>
               <td style={{ padding: '0 5px' }}>
-                <input type='text' data-name="0" data-form="D3" value={D3[0]} onChange={e => onChangeText(e)} style={{ width: '100%' }} />
+                <input type='text' data-key="0" data-form="D3" value={D3[0]} onChange={onChange} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -85,7 +85,7 @@ const B3Bottom2 = () => {
               <td>B</td>
               <td>Air quality check : CO2 = Max. 500 ppm</td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="1" data-form="D3" value={D3[1]} onChange={e => onChangeText(e)} style={{ width: '100%' }} />
+              <input type='text' data-key="1" data-form="D3" value={D3[1]} onChange={onChange} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -95,7 +95,7 @@ const B3Bottom2 = () => {
                 Air quality check : H2O = Max. 50 mg/m<sup>3</sup>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="2" data-form="D3" value={D3[2]} onChange={e => onChangeText(e)} style={{ width: '100%' }} />
+              <input type='text' data-key="2" data-form="D3" value={D3[2]} onChange={onChange} style={{ width: '100%' }} />
               </td>
             </tr>
 
@@ -105,7 +105,7 @@ const B3Bottom2 = () => {
                 Air quality check : Oil = Max. 0.5 mg/m<sup>3</sup>
               </td>
               <td style={{ padding: '0 5px' }}>
-              <input type='text' data-name="3" data-form="D3" value={D3[3]} onChange={e => onChangeText(e)} style={{ width: '100%' }} />
+              <input type='text' data-key="3" data-form="D3" value={D3[3]} onChange={onChange} style={{ width: '100%' }} />
               </td>
             </tr>
           </tbody>

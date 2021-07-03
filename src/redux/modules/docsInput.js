@@ -33,9 +33,9 @@ const docsInput = handleActions(
 
     [CHANGE_D1]: (state, { payload: { form, name, value, key } }) =>
       produce(state, draft => {
-        if (!name) draft[form] = value;
-        else if (!key) draft[form][name] = value;
-        else draft[form][name][key] = value;
+        if (!key) draft[form] = value;
+        else if (!name) draft[form][key] = value;
+        else draft[form][key][name] = value;
       }),
 
     [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked, key } }) => {

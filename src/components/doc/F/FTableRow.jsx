@@ -8,25 +8,25 @@ const FTableRow = ({ id, num }) => {
   const dispatch = useDispatch();
   const { s_no, position, condition, remark } = useSelector(state => state.docsInput.D1[id]);
 
-  const onChangeText = useChangeD1();
+  const onChange = useChangeD1();
 
   return (
         <tr>
         <td>{num}</td>
         <td>
-          <input type='text' data-name={ id } data-form="D1" data-key="s_no" value={s_no} onChange={e => onChangeText(e)} />
+          <input type='text' name="s_no" data-form="D1" data-key={id} value={s_no} onChange={onChange} />
         </td>
         <td>
-          <input type='text' data-name={ id } data-form="D1" data-key="position" value={position} onChange={e => onChangeText(e)} />
+          <input type='text' name="position" data-form="D1" data-key={id} value={position} onChange={onChange} />
         </td>
         <td>
-          <select data-name={ id } data-form="D1" data-key="condition" value={condition} onChange={e => onChangeText(e)}>
+          <select name="condition" data-form="D1" data-key={id} value={condition} onChange={onChange}>
             <option value='GOOD'>GOOD</option>
             <option value='BAD'>BAD</option>
           </select>
         </td>
         <td>
-          <input type='text' data-name={ id } data-form="D1" data-key="remark" value={remark} onChange={e => onChangeText(e)} />
+          <input type='text' name="remark" data-form="D1" data-key={id} value={remark} onChange={onChange} />
         </td>
         <td onClick={() => dispatch(deleteList({ form: 'D1', id }))}>
           <DeleteButton />

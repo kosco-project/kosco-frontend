@@ -37,12 +37,12 @@ const BottomBox = styled.div`
 const FBottom = () => {
   const D2 = useSelector(state => state.docsInput.D2);
 
-  const onChangeText = useChangeD1();
+  const onChange = useChangeD1();
 
   return (
     <BottomBox>
       <div className='top-description'>
-        <textarea value={D2} data-form="D2" onChange={e => onChangeText(e)} style={{ width: '100%', height: '100px' }}></textarea>
+        <textarea value={D2} data-form="D2" onChange={onChange} style={{ width: '100%', height: '100px' }}></textarea>
       </div>
     </BottomBox>
   );

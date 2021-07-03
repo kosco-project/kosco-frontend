@@ -90,16 +90,16 @@ const CBottom = () => {
                   <td>{i + 1}</td>
                   <td>{data}</td>
                   <td>
-                    <input type='checkbox' data-form="D2" checked={!!D2[i].CarriedOut} data-name={i} data-key="CarriedOut" onChange={e => onChangeCheckbox(e)} />
+                    <input type='checkbox' data-form="D2" data-key={i} name="CarriedOut" checked={!!D2[i].CarriedOut} onChange={onChangeCheckbox} />
                   </td>
                   <td>
-                  <input type='checkbox' data-form="D2" checked={!!D2[i].NotCarried} data-name={i} data-key="NotCarried" onChange={e => onChangeCheckbox(e)} />
+                  <input type='checkbox' data-form="D2" data-key={i} name="NotCarried" checked={!!D2[i].NotCarried} onChange={onChangeCheckbox} />
                   </td>
                   <td>
-                  <input type='checkbox' data-form="D2" checked={!!D2[i].NotApp} data-name={i} data-key="NotApp" onChange={e => onChangeCheckbox(e)} />
+                  <input type='checkbox' data-form="D2" data-key={i} name="NotApp" checked={!!D2[i].NotApp} onChange={onChangeCheckbox} />
                   </td>
                   <td style={{ padding: '0 5px' }}>
-                  <input type='text' data-form="D2" data-name={i} data-key="Comm" value={D2[i].Comm} onChange={e => onChangeText(e)}/>
+                  <input type='text' data-form="D2" data-key={i} name="Comm" value={D2[i].Comm} onChange={onChangeText}/>
                   </td>
                 </tr>
               ))}

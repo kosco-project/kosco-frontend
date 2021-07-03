@@ -38,13 +38,13 @@ const F2Bottom2 = () => {
         </div>
         <div>
           The hydrostatic release unit shall be serviced together with
-          <input type='text' name="value1" data-form="D2" value={D2.value1} onChange={onChange} />
+          <input type='text' data-form="D2" data-key="value1" value={D2.value1} onChange={onChange} />
           survey at intervals not exceeding 17 months at least at a
           service station.
         </div>
         <div>
           This appendix shall bear the same number as the inspection certificate for
-          <input type='text' name="value2" data-form="D2" value={D2.value2} onChange={onChange} />
+          <input type='text' data-form="D2" data-key="value2" value={D2.value2} onChange={onChange} />
         </div>
       </Bottom2Box>
       )}

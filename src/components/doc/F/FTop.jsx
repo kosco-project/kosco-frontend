@@ -93,7 +93,7 @@ const FTop = () => {
               </tr>
             </thead>
             <tbody>
-              {D1 && Object.entries(D1).map((item, index) => (
+              {Object.entries(D1).map((item, index) => (
                 <FTableRow key={item[0]} id={item[0]} num={index + 1} />
               ))}
             </tbody>

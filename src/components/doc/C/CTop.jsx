@@ -60,7 +60,7 @@ const TopBox = styled.div`
 const CTop = () => {
   const D1 = useSelector(state => state.docsInput.D1);
 
-  const onChangeD1 = useChangeD1();
+  const onChange = useChangeD1();
 
   return (
     <>
@@ -82,7 +82,7 @@ const CTop = () => {
                   <td>{i + 1}</td>
                   <td>{data}</td>
                   <td style={{ padding: '0 5px' }}>
-                  <input type='text' data-name={i} data-form="D1" value={D1[i] || ''} onChange={e => onChangeD1(e)} style={{ width: '100%' }} />
+                  <input type='text' data-key={i} data-form="D1" value={D1[i] || ''} onChange={onChange} style={{ width: '100%' }} />
                   </td>
                 </tr>
               ))}

@@ -50,19 +50,19 @@ const F2Bottom = () => {
         <BottomBox>
         <div className='left-box'>
           <div>
-              <input type='checkbox' value="0" data-form="D2" name="confirm" checked={D2.confirm === "0"} onChange={onChange} id='select1' />
+              <input type='checkbox' value="0" data-form="D2" data-key="confirm" checked={D2.confirm === "0"} onChange={onChange} id='select1' />
               <label htmlFor='select1'> Tested By Air Chamber</label>
           </div>
           <div>
-              <input type='checkbox' value="1" data-form="D2" name="confirm" checked={D2.confirm === "1"} onChange={onChange} id='select2' />
+              <input type='checkbox' value="1" data-form="D2" data-key="confirm" checked={D2.confirm === "1"} onChange={onChange} id='select2' />
               <label htmlFor='select2'> Renewed</label>
           </div>
           <div>
-              <input type='checkbox' value="2" data-form="D2" name="confirm" checked={D2.confirm === "2"} onChange={onChange} id='select3' />
+              <input type='checkbox' value="2" data-form="D2" data-key="confirm" checked={D2.confirm === "2"} onChange={onChange} id='select3' />
               <label htmlFor='select3'> Repaired</label>
           </div>
           <div>
-              <input type='checkbox' value="3" data-form="D2" name="confirm" checked={D2.confirm === "3"} onChange={onChange} id='select4'/>
+              <input type='checkbox' value="3" data-form="D2" data-key="confirm" checked={D2.confirm === "3"} onChange={onChange} id='select4'/>
               <label htmlFor='select4'> Confirmed</label>
           </div>
         </div>
@@ -76,7 +76,7 @@ const F2Bottom = () => {
                 data-form="D2"
                 onChange={onChange}
                 id='input1'
-                name="f_pressure"
+                data-key="f_pressure"
               />
             Kg/cm<sup>2</sup>
           </div>
@@ -88,7 +88,7 @@ const F2Bottom = () => {
                 data-form="D2"
                 onChange={onChange}
                 id='input2'
-                name="f_depth"
+                data-key="f_depth"
               />
             Meters
           </div>
@@ -99,8 +99,8 @@ const F2Bottom = () => {
               dateFormat="yyyy-MM"
                 onChange={value => onChange({
                   target: {
-                    name: "expiry_date", value,
-                    dataset: { form: "D2"}
+                    value,
+                    dataset: { form: "D2", key: "expiry_date"}
                   },
                 })}
               id='input3'

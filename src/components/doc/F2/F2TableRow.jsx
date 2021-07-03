@@ -14,16 +14,16 @@ const F2TableRow = ({ id, num }) => {
         <tr>
         <td>{num}</td>
         <td>
-            <input type='text' name={id} data-form="D1" data-key="manuf" value={manuf} onChange={onChange} />
+            <input type='text' name="manuf" data-form="D2" data-key={id} value={manuf} onChange={onChange} />
         </td>
         <td>
-          <input type='text' name={id} data-form="D1" data-key="type" value={type} onChange={onChange} />
+          <input type='text' name="type" data-form="D1" data-key={id} value={type} onChange={onChange} />
         </td>
         <td>
-          <input type='text' name={id} data-form="D1" data-key="s_no" value={s_no} onChange={onChange} />
+          <input type='text' name="s_no" data-form="D1" data-key={id} value={s_no} onChange={onChange} />
         </td>
         <td>
-          <select name={id} data-form="D1" data-key="remark" value={remark} onChange={onChange}>
+        <select name="remark" data-form="D1" data-key={id} value={remark} onChange={onChange}>
             <option value='GOOD'>GOOD</option>
             <option value='BAD'>BAD</option>
           </select>

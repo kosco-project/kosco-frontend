@@ -13,16 +13,16 @@ const B1TableRow = ({ id, num }) => {
   const D1 = useSelector(state => state.docsInput.D1[id]);
   const { GasType, SerialNo, TestDt, TareWT, GrossWT, Capacity, Press, Temp, Perform } = D1;
 
-  const onChangeD1 = useChangeD1();
+  const onChange = useChangeD1();
   
   return (
      <tr>
       <td>{num}</td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="GasType" onChange={e => onChangeD1(e)} value={GasType || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="GasType" onChange={onChange} value={GasType} />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="SerialNo" onChange={e => onChangeD1(e)} value={SerialNo || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="SerialNo" onChange={onChange} value={SerialNo} />
       </td>
       <td>
         <DatePicker
@@ -30,7 +30,7 @@ const B1TableRow = ({ id, num }) => {
           name="TestDt"
           dateFormat="yyyy-MM"
           onChange={date => {
-            onChangeD1({
+            onChange({
               target: {
                 dataset: {
                   form: 'D1',
@@ -46,22 +46,22 @@ const B1TableRow = ({ id, num }) => {
         />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="TareWT" onChange={e => onChangeD1(e)} value={TareWT || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="TareWT" onChange={onChange} value={TareWT} />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="GrossWT" onChange={e => onChangeD1(e)} value={GrossWT || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="GrossWT" onChange={onChange} value={GrossWT} />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="Capacity" onChange={e => onChangeD1(e)} value={Capacity || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="Capacity" onChange={onChange} value={Capacity} />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="Press" onChange={e => onChangeD1(e)} value={Press || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="Press" onChange={onChange} value={Press} />
       </td>
       <td>
-        <input type='text' data-name={ id } data-form="D1" data-key="Temp" onChange={e => onChangeD1(e)} value={Temp || ''} />
+        <input type='text' data-key={ id } data-form="D1" name="Temp" onChange={onChange} value={Temp} />
       </td>
       <td>
-        <select data-name={ id } data-form="D1" data-key="Perform" onChange={e => onChangeD1(e)} value={Perform || ''} >
+        <select data-key={ id } data-form="D1" name="Perform" onChange={onChange} value={Perform} >
           <option value='GOOD'>GOOD</option>
           <option value='BAD'>BAD</option>
         </select>
