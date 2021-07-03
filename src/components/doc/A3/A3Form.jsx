@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Info from '../common/Info';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
-import A3Bottom from './A3Bottom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { resetInitialState, initialize } from '../../../redux/modules/docsInput';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import Info from '../../common/Info';
 import A3Top from './A3Top';
+import A3Bottom from './A3Bottom';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import A3_INIT from '../../../docsInitialState/A3';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -15,15 +23,28 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const A3Form = ({ units, onWorkingSystemChecked, onWorkingSystem, showModal, showCommModal, state }) => {
+const A3Form = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(A3_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
-      <A3Top units={units} onWorkingSystem={onWorkingSystem} state={state} />
-      <A3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem} state={state} />
+      <A3Top />
+      <A3Bottom />
       <ButtonBox>
-        <TemporaryStorageButton showModal={showModal}/>
-        <InspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

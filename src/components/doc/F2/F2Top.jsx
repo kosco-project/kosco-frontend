@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import F2_INIT from '../../../docsInitialState/F2';
+import { addList } from '../../../redux/modules/docsInput';
 import F2TableRow from './F2TableRow';
 
 const BottomBox = styled.div`
@@ -51,35 +53,42 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const F2Top = ({ onChange, onRemove, onInsert }) => {
-  const D1 = useSelector(state => state.f2.D1);
+const F2Top = () => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const F2_state = F2_INIT.D1[0];
 
   return (
     <>
-      <BottomBox>
-        <table>
-          <thead>
-            <tr>
-              <td>NO.</td>
-              <td>Manufacturer</td>
-              <td>Type</td>
-              <td>Serial No.</td>
-              <td>Remark</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(D1).map((item, index) => (
-                <F2TableRow key={item[0]} id={item[0]} onRemove={onRemove} num={index + 1} onChange={onChange} />
-            ))}
-          </tbody>
-        </table>
-        <ButtonDiv>
-          <button type='button' onClick={onInsert}>
-            추가
-          </button>
-        </ButtonDiv>
-      </BottomBox>
+      {D1 && (
+        <>
+        <BottomBox>
+          <table>
+            <thead>
+              <tr>
+                <td>NO.</td>
+                <td>Manufacturer</td>
+                <td>Type</td>
+                <td>Serial No.</td>
+                <td>Remark</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(D1).map((item, index) => (
+                <F2TableRow key={item[0]} id={item[0]} num={index + 1} />
+              ))}
+            </tbody>
+          </table>
+          <ButtonDiv>
+            <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: F2_state }))}>
+              추가
+            </button>
+          </ButtonDiv>
+        </BottomBox>
+      </>
+      )}
     </>
   );
 };

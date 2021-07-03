@@ -1,8 +1,8 @@
 const A1_INIT = {
   H: {
-    CERTNO: '',
     RCVNO: '',
     VESSELNM: '',
+    CERTNO: '',
   },
   D1: {
     0: '',

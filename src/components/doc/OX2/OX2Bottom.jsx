@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { OX2_INIT } from '../../../docsInitialState/OX2';
+import { addList } from '../../../redux/modules/docsInput';
 import OX2BttomTableRow from './OX2BttomTableRow';
 
 const TableBox = styled.div`
@@ -56,38 +58,45 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const OX2Bottom = ({ onInsertD2, onRemoveD2, onChange, units, onChangeDatePicker }) => {
-  const D2 = useSelector(state => state.ox2.D2);
+const OX2Bottom = () => {
+  const dispatch = useDispatch();
+  const D2 = useSelector(state => state.docsInput.D2);
+
+  const OX2_state = OX2_INIT.D2[0];
 
   return (
     <>
-      <TableBox>
-        <div className='title'>Specification of above sets with cylinder</div>
-        <table>
-          <thead>
-            <tr>
-              <td>Nos.</td>
-              <td>Manufacturer</td>
-              <td>Volume (Ltr)</td>
-              <td>Working Press. (Bar)</td>
-              <td>Cylinder Serial Nos.</td>
-              <td>Last Hydro-Test Date</td>
-              <td>Performed / Recommend</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-             {Object.entries(D2).map((item, index) => (
-              <OX2BttomTableRow key={item[0]} id={item[0]} onRemove={onRemoveD2} onChange={onChange} num={index + 1} units={units} onChangeDatePicker={onChangeDatePicker}/>
-            ))}
-          </tbody>
-        </table>
-      </TableBox>
-      <ButtonDiv>
-        <button type='button' onClick={onInsertD2}>
-          추가
-        </button>
-      </ButtonDiv>
+      {D2 && (
+        <>
+        <TableBox>
+          <div className='title'>Specification of above sets with cylinder</div>
+          <table>
+            <thead>
+              <tr>
+                <td>Nos.</td>
+                <td>Manufacturer</td>
+                <td>Volume (Ltr)</td>
+                <td>Working Press. (Bar)</td>
+                <td>Cylinder Serial Nos.</td>
+                <td>Last Hydro-Test Date</td>
+                <td>Performed / Recommend</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+               {Object.entries(D2).map((item, index) => (
+                <OX2BttomTableRow key={item[0]} id={item[0]} num={index + 1} />
+              ))}
+            </tbody>
+          </table>
+        </TableBox>
+        <ButtonDiv>
+          <button type='button' onClick={() => dispatch(addList({ form: 'D2', initState: OX2_state }))}>
+            추가
+          </button>
+        </ButtonDiv>
+      </>
+      )}
     </>
   );
 };

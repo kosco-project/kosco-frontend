@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import P1Container from '../../containers/doc/P1Container';
+import P1Form from '../../components/doc/P1/P1Form';
 
-const P1 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const P1 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="PORTABLE FOAM APPLICATOR UNITS" />
-      <P1Container />
+      <P1Form />
     </AppWrapper>
   );
 };
