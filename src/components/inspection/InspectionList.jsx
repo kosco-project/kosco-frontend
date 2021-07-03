@@ -1,11 +1,13 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Empty } from 'antd';
 import Pagination from 'rc-pagination';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import axios from 'axios';
 import InpectionItem from './InpectionItem';
+import useGetList from '../../hooks/useGetList';
 
 require('dotenv').config();
 
@@ -52,6 +54,8 @@ const ListContainer = styled.div`
 `;
 
 const InspectionList = () => {
+  const history = useHistory();
+  const location = useLocation();
   const list = useSelector(state => state.inspectionList.list);
   const total_pages = useSelector(state => state.inspectionList.total_pages);
 
@@ -61,10 +65,14 @@ const InspectionList = () => {
 
   const onChangePage = useCallback(
     page => {
-      setLimit(page)
+      history.push({ search: '?page=' + page });
     },
-    []
+    [history]
   );
+
+  useEffect(() => {
+    setLimit(+location.search.split('?page=')[1] || 1);
+  }, [location.search]);
 
   return (
     <ListContainer>
@@ -76,6 +84,7 @@ const InspectionList = () => {
         list.length > 0 &&
         <Pagination
           total={total_pages}
+          current={limit}
           pageSize={10}
           prevIcon={<IoIosArrowBack />}
           nextIcon={<IoIosArrowForward />}

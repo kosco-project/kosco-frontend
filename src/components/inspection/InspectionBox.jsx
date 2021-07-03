@@ -1,9 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import styled from 'styled-components';
 import InspectionCondition from './InspectionCondition';
 import InspectionList from './InspectionList';
 import InspectionTitleBox from './InspectionTitleBox';
 import InputSearch from '../common/InputSearch';
+import useGetList from '../../hooks/useGetList';
 
 const ConditionWrapper = styled.div`
   display: flex;
@@ -12,17 +13,17 @@ const ConditionWrapper = styled.div`
   padding: 0 20px;
 `;
 
-const InspectionBox = ({   onChangeDate, onChangeProcess, inputValue }) => {
+const InspectionBox = () => {
 
   return (
     <>
     <ConditionWrapper>
-      <InspectionCondition  inputValue={inputValue} onChangeDate={onChangeDate} onChangeProcess={onChangeProcess} />
+      <InspectionCondition />
       <InputSearch />
     </ConditionWrapper>
     <div>
       <InspectionTitleBox />
-      <InspectionList inputValue={inputValue} />
+      <InspectionList />
     </div>
     </>
   );
