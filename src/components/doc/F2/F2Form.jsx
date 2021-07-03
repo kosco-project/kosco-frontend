@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import F2Info from './F2Info';
+import F2Top from './F2Top';
 import F2Bottom from './F2Bottom';
 import F2Bottom2 from './F2Bottom2';
 import F2Bottom3 from './F2Bottom3';
-import F2Info from './F2Info';
-import F2Top from './F2Top';
-import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
-import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
+import TemporaryStorageButton from '../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../common/InspectionCompleteButton';
+
+import F2_INIT from '../../../docsInitialState/F2';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -19,17 +27,30 @@ const ButtonBox = styled.div`
   }`;
 
 
-const F2Form = ({ onChange, onChangeD2, onRemove, onInsert, lists, onChecked, showModal, showCommModal }) => {
+const F2Form = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(F2_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <F2Info />
-      <F2Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
-      <F2Bottom onChecked={onChecked} onChangeD2={onChangeD2}/>
-      <F2Bottom2 onChangeD2={onChangeD2}/>
-      <F2Bottom3 onChangeD2={onChangeD2}/>
+      <F2Top />
+      <F2Bottom />
+      <F2Bottom2 />
+      <F2Bottom3 />
       <ButtonBox>
-        <DynTemporaryStorageButton showModal={showModal}/>
-        <DynInspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

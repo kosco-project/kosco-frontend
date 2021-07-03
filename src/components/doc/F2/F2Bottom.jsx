@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
+import useChangeD1 from '../../../hooks/useChangeD1';
 
 const BottomBox = styled.div`
   display: flex;
@@ -26,61 +27,90 @@ const BottomBox = styled.div`
     label {
       display: inline-block;
       width: 150px;
+      margin-left: 10px;
     }
 
     input {
-      margin-right: 5px;
+
       width: 150px;
       border: 1px solid #000;
+      display: inline-block;
     }
   }
 `;
 
-const F2Bottom = ({ onChecked, onChangeD2 }) => {
-  const D2 = useSelector(state => state.f2.D2);
-  const { confirm, f_pressure, f_depth, expiry_date } = D2;
-
-  const inputArg = ({ target }) => onChecked({ target });
+const F2Bottom = () => {
+  const D2 = useSelector(state => state.docsInput.D2);
+    
+  const onChange = useChangeD1();
 
   return (
-    <BottomBox>
-      <div className='left-box'>
-        <div>
-          <input type='checkbox' checked={confirm === "0"} onChange={inputArg} id='select1' data-value="0"/> <label htmlFor='select1'>Tested By Air Chamber</label>
+    <>
+      {D2 && (
+        <BottomBox>
+        <div className='left-box'>
+          <div>
+              <input type='checkbox' value="0" data-form="D2" name="confirm" checked={D2.confirm === "0"} onChange={onChange} id='select1' />
+              <label htmlFor='select1'> Tested By Air Chamber</label>
+          </div>
+          <div>
+              <input type='checkbox' value="1" data-form="D2" name="confirm" checked={D2.confirm === "1"} onChange={onChange} id='select2' />
+              <label htmlFor='select2'> Renewed</label>
+          </div>
+          <div>
+              <input type='checkbox' value="2" data-form="D2" name="confirm" checked={D2.confirm === "2"} onChange={onChange} id='select3' />
+              <label htmlFor='select3'> Repaired</label>
+          </div>
+          <div>
+              <input type='checkbox' value="3" data-form="D2" name="confirm" checked={D2.confirm === "3"} onChange={onChange} id='select4'/>
+              <label htmlFor='select4'> Confirmed</label>
+          </div>
         </div>
-        <div>
-          <input type='checkbox' checked={confirm === "1"} onChange={inputArg} id='select2' data-value="1"/> <label htmlFor='select2'>Renewed</label>
+  
+        <div className='right-box'>
+          <div>
+              <label htmlFor='input1'>Function Pressure </label>:
+              <input
+                type='text'
+                value={D2.f_pressure}
+                data-form="D2"
+                onChange={onChange}
+                id='input1'
+                name="f_pressure"
+              />
+            Kg/cm<sup>2</sup>
+          </div>
+          <div>
+              <label htmlFor='input2'>Function Depth </label>:
+              <input
+                type='text'
+                value={D2.f_depth}
+                data-form="D2"
+                onChange={onChange}
+                id='input2'
+                name="f_depth"
+              />
+            Meters
+          </div>
+          <div>
+            <label htmlFor='input3'>Expiry Date </label>:
+            <DatePicker
+              selected={new Date(D2.expiry_date) || new Date()}
+              dateFormat="yyyy-MM"
+                onChange={value => onChange({
+                  target: {
+                    name: "expiry_date", value,
+                    dataset: { form: "D2"}
+                  },
+                })}
+              id='input3'
+              showMonthYearPicker
+          />
+          </div>
         </div>
-        <div>
-          <input type='checkbox' checked={confirm === "2"} onChange={inputArg} id='select3' data-value="2"/> <label htmlFor='select3'>Repaired</label>
-        </div>
-        <div>
-          <input type='checkbox' checked={confirm === "3"} onChange={inputArg} id='select4' data-value="3"/> <label htmlFor='select4'>Confirmed</label>
-        </div>
-      </div>
-
-      <div className='right-box'>
-        <div>
-          <label htmlFor='input1'>Function Pressure </label>: <input type='text' value={f_pressure} onChange={onChangeD2} id='input1' name="f_pressure"/>
-          Kg/cm<sup>2</sup>
-        </div>
-        <div>
-          <label htmlFor='input2'>Function Depth </label>: <input type='text' value={f_depth} onChange={onChangeD2} id='input2' name="f_depth"/>
-          Meters
-        </div>
-        <div>
-          <label htmlFor='input3'>Expiry Date </label>
-          <span style={{ marginRight: '0.3em'}}>:</span>
-          <DatePicker
-            selected={new Date(expiry_date) || new Date()}
-            dateFormat="yyyy-MM"
-            onChange={value => onChangeD2({ target: { name: "expiry_date", value } })}
-            id='input3'
-            showMonthYearPicker
-        />
-        </div>
-      </div>
-    </BottomBox>
+      </BottomBox>
+      )}
+    </>
   );
 };
 
