@@ -48,19 +48,24 @@ const ModalBackground = styled.div`
 
 const FetchModal = ({ form, children, isActive, setFetchModal }) => {
   const postFetch = usePostFetch(form);
-  
+  const onClick = ({ target }) => {
+    if (target.type === 'button') setFetchModal(false);
+    // eslint-disable-next-line no-useless-return
+    else return;
+  };
+
   return (
     <>
       {isActive && (<ModalBackground
         data-name="close"
-        onClick={() => setFetchModal(false)}
+        onClick={onClick}
       >
         <div className="save_modal_wrap">
           <div className="comment">
             {children} 하시겠습니까?
           </div>
           <div className="button_wrap">
-            <button className="confirm" onClick={postFetch}>확인</button>
+            <button type="button" className="confirm" onClick={postFetch}>확인</button>
             <button type="button" className="cancel" onClick={() =>setFetchModal(false)}>취소</button>
           </div>
         </div>
