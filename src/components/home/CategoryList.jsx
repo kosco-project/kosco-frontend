@@ -23,10 +23,14 @@ const CategoryWrapper = styled.section`
   }
 `;
 
-const CategoryList = ({ logout }) => {
+const CategoryList = () => {
+  const logout = () => {
+    sessionStorage.clear();
+  };
+
   return (
     <CategoryWrapper>
-      <Link to='/inspection'>
+      <Link to='/inspectionList'>
         <p className='category-title'>검사 계획</p>
         <p className='category-description'>
           금일 검사 목록을 확인할 수 있습니다.
