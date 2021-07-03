@@ -6,7 +6,6 @@ import g from './g';
 import p1 from './p1';
 import ox2 from './ox2';
 import h1h3h31 from './h1h3h31';
-import f2 from './f2';
 import inspectionList from './inspectionList';
 import docsInput from "./docsInput";
 
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
   g,
   p1,
   ox2,
-  f2,
 });
 
 export default rootReducer;
