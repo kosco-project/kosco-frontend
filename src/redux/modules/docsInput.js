@@ -40,25 +40,25 @@ const docsInput = handleActions(
 
     [CHANGE_CHECKBOX]: (state, { payload: { form, name, checked, key } }) => {
       return produce(state, draft => {
-        if (!key) draft[form][name] = +checked;
+        if (!name) draft[form][key] = +checked;
 
-        if (key && !checked) draft[form][name][key] = 0;
+        if (name && !checked) draft[form][key][name] = 0;
 
-        if (key === 'CarriedOut' && checked) {
-          draft[form][name].CarriedOut = 1;
-          draft[form][name].NotCarried = 0;
-          draft[form][name].NotApp && (draft[form][name].NotApp = 0);
+        if (name === 'CarriedOut' && checked) {
+          draft[form][key].CarriedOut = 1;
+          draft[form][key].NotCarried = 0;
+          draft[form][key].NotApp && (draft[form][key].NotApp = 0);
         }
-        if (key === 'NotCarried' && checked) {
-          draft[form][name][key] = 1;
-          draft[form][name].CarriedOut = 0;
-          draft[form][name].NotApp && (draft[form][name].NotApp = 0);
+        if (name === 'NotCarried' && checked) {
+          draft[form][key][name] = 1;
+          draft[form][key].CarriedOut = 0;
+          draft[form][key].NotApp && (draft[form][key].NotApp = 0);
         }
 
-        if (key === 'NotApp' && checked) {
-          draft[form][name][key] = 1;
-          draft[form][name].CarriedOut = 0;
-          draft[form][name].NotCarried = 0;
+        if (name === 'NotApp' && checked) {
+          draft[form][key][name] = 1;
+          draft[form][key].CarriedOut = 0;
+          draft[form][key].NotCarried = 0;
         }
       });
     },
