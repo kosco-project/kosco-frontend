@@ -5,12 +5,16 @@ import { useLocation } from 'react-router-dom';
 const useGetFetch = (initialState = {}) => {
   const [state, setState] = useState(initialState);
 
+  const CERTNO = JSON.parse(localStorage.getItem('certNo'));
+  const RCVNO = JSON.parse(localStorage.getItem('rcvNo')) || '';
+  const VESSELNM = JSON.parse(localStorage.getItem('shipNm')) || '';
+
+  const H = { CERTNO, RCVNO, VESSELNM };
+  initialState.H = H;
+
   const location = useLocation();
 
   const path = location.pathname.split('/')[2];
-  const CERTNO = JSON.parse(localStorage.getItem('certNo'));
-  const RCVNO = JSON.parse(localStorage.getItem('rcvNo'));
-  const VESSELNM = JSON.parse(localStorage.getItem('shipNm')) || '';
 
   const getFetch = useCallback(async () => {
     if (!CERTNO) return setState(initialState);
