@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getInspectionList } from '../../redux/modules/inspectionList';
 
 const { Option } = Select;
@@ -23,8 +24,11 @@ const Form = styled.form`
 
 const InputSearch = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
-  const [searchType, setSearchType] = useState('CUSTNM');
+  const [schType, setSearchType] = useState('CUSTNM');
+  const [schKeyword, setSchKeyword] = useState('');
 
   const handleChange = useCallback(name => {
     setSearchType(name);
@@ -35,7 +39,7 @@ const InputSearch = () => {
       const res = await axios.get(
         `${
           process.env.REACT_APP_SERVER_URL
-        }/api/inspectionList/${sessionStorage.getItem('startDate')}/${sessionStorage.getItem('endDate')}/${sessionStorage.getItem('process') || 1}?sch_type=${searchType}&sch_keyword=${value}`,
+        }/api/inspectionList/${sessionStorage.getItem('startDate')}/${sessionStorage.getItem('endDate')}/${sessionStorage.getItem('process') || 1}?sch_type=${schType}&sch_keyword=${value}`,
         {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem('KOSCO_token')}`,
@@ -43,13 +47,15 @@ const InputSearch = () => {
         }
       );
 
-      dispatch(getInspectionList(res.data.list_info))
+      await dispatch(getInspectionList(res.data.list_info));
+      await history.push({ search: location.search.split('&')[0] + `&sch-type=${schType}&sch-keyword=${schKeyword}`})
     } catch (e) {
-      console.log(e.res);
       console.log(e);
     }
 
   };
+
+  const onChange = ({ target }) => setSchKeyword(target.value);
 
   return (
     <Form>
@@ -61,7 +67,7 @@ const InputSearch = () => {
       <Option value="DOC_NO">양식번호</Option>
       <Option value="CERT_NO">서트관리번호</Option>
     </SelectWrapper>
-     <SearchWrapper placeholder="검색어를 입력해주세요" allowClear onSearch={onSearch} />
+     <SearchWrapper placeholder="검색어를 입력해주세요" allowClear onChange={onChange} onSearch={onSearch} />
     </Form>
   );
 };
