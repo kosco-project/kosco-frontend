@@ -1,15 +1,15 @@
 import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import P1Form from '../../components/doc/P1/P1Form';
+import A1Form from '../../components/doc/A1A2/A1Form';
 
-const P1 = () => {
+const A1A2 = () => {
   return (
     <AppWrapper>
-      <DocsHeader docDesc="PORTABLE FOAM APPLICATOR UNITS" />
-      <P1Form />
+      <DocsHeader docDesc="FIXED FIRE APPLIANCE" />
+      <A1Form />
     </AppWrapper>
   );
 };
 
-export default P1;
+export default A1A2;

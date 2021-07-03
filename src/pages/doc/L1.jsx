@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
 import DocsHeader from '../../components/common/DocsHeader';
-import L1Container from '../../containers/doc/L1Container';
+import L1Form from '../../components/doc/L1/L1Form';
 
-const L1 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const L1 = () => {
   return (
     <AppWrapper>
       <DocsHeader docDesc="FOAM APPLICATOR" />
-      <L1Container />
+      <L1Form />
     </AppWrapper>
   );
 };
