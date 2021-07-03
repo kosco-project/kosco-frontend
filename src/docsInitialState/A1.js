@@ -1,8 +1,8 @@
 const A1_INIT = {
   H: {
-    RCVNO: JSON.parse(localStorage.getItem('rcvNo')),
-    VESSELNM: JSON.parse(localStorage.getItem('shipNm')) || '',
-    CERTNO: JSON.parse(localStorage.getItem('certNo')) || '',
+    RCVNO: '',
+    VESSELNM: '',
+    CERTNO: '',
   },
   D1: {
     0: '',
