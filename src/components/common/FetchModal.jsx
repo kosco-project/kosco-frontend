@@ -60,7 +60,7 @@ const ModalBackground = styled.div`
 const FetchModal = ({ form, children, isActive, setFetchModal }) => {
   const postFetch = usePostFetch(form);
   const onClick = ({ target }) => {
-    if (target.type === 'button') setFetchModal(false);
+    if (target.type === 'button' || target.dataset.name === 'close') setFetchModal(false);
     // eslint-disable-next-line no-useless-return
     else return;
   };
