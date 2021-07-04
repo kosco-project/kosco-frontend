@@ -7,13 +7,11 @@ const HeaderWraper = styled.header`
     margin: 50px auto;
     width: 200px;
     cursor: pointer;
-
     img {
       width: 100%;
     }
   }
 `;
-
 const Header = () => {
   return (
     <HeaderWraper>
@@ -26,5 +24,4 @@ const Header = () => {
     </HeaderWraper>
   );
 };
-
 export default Header;

@@ -1,50 +1,68 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux';
-import DeleteButton from '../common/DeleteButton';
+import { useDispatch, useSelector } from 'react-redux';
+import useChangeD1 from '../../../hooks/useChangeD1';
+import useGetUnits from '../../../hooks/useGetUnits';
+import { deleteList } from '../../../redux/modules/docsInput';
+import DeleteButton from '../../common/DeleteButton';
 
-const OX2BttomTableRow = ({ id, onRemoveD2, onChange, num, units, onChangeDatePicker }) => {
-  const { TestDt } = useSelector(state => state.ox2.D2[id]);
-  const inputArg = ({ target }) => onChange({ target, id });
+const OX2BttomTableRow = ({ id, num }) => {
+  const dispatch = useDispatch();
+  const { Manuf, Volume, WorkPress, SerialNo, TestDt, Perform } = useSelector(state => state.docsInput.D2[id]);
+
+  const { units } = useGetUnits();
+  const onChange = useChangeD1();
+
+  
   return (
     <tr>
       <td>
         {'NO.' + num}
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Manuf" data-form="D2"/>
+        <input type='text' value={Manuf} onChange={onChange} name="Manuf" data-form="D2" data-key={id} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="Volume" data-form="D2"/>
+        <input type='text' value={Volume} onChange={onChange} name="Volume" data-form="D2" data-key={id} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="WorkPress" data-form="D2"/>
+        <input type='text' value={WorkPress} onChange={onChange} name="WorkPress" data-form="D2" data-key={id} />
       </td>
       <td>
-        <input type='text' onChange={inputArg} name="SerialNo" data-form="D2"/>
+        <input type='text' value={SerialNo} onChange={onChange} name="SerialNo" data-form="D2" data-key={id} />
       </td>
       <td>
         <DatePicker
-          selected={TestDt}
+          selected={new Date(TestDt)}
           name="TestDt"
           data-form="D2"
-          dateFormat="MMM.yyyy"
-          onChange={value => onChangeDatePicker({ id, target: { name: "TestDt", form: "D2", value } })}
+          dateFormat="yyyy-MM"
+          onChange={value => onChange({
+            id,
+            target: {
+              name: "TestDt",
+              value,
+              dataset: {
+                form: 'D2',
+                key: id,
+              }
+            }
+          })}
           showMonthYearPicker
         />
       </td>
       <td>
-        <select name="Perform" data-form="D2" onChange={inputArg}>
+        <select name="Perform" data-form="D2" data-key={id} value={Perform} onChange={onChange}>
           <option defaultValue="선택해주세요">선택해주세요</option>
-          {units.map(unit => (
-            <option key={unit.CdNm} value={unit.CD}>
-              {unit.CdNm}
+          {units.map(({CdNm, CD}) => (
+            <option key={CdNm} value={CD}>
+              {CdNm}
             </option>
           ))}
         </select>
       </td>
-      <td onClick={() => onRemoveD2(id)}>
+      <td onClick={() => dispatch(deleteList({ form: 'D2', id }))}>
         <DeleteButton />
       </td>
     </tr>

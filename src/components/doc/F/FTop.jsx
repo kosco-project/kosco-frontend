@@ -1,6 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import FTableRow from './FTableRow';
+
+import F_INIT from "../../../docsInitialState/F";
+import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
+
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -64,11 +70,16 @@ const TopBox = styled.div`
   }
 `;
 
-const FTop = ({ onChange, onRemove, onInsert, lists}) => {
+const FTop = () => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1);
+  const F_state = F_INIT.D1[0];
 
   return (
     <>
-      <TopBox>
+      {D1 && (
+        <>
+        <TopBox>
         <p className='top-title'>FLAME DETECTOR</p>
         <div className='top-description'>
           <table>
@@ -83,18 +94,18 @@ const FTop = ({ onChange, onRemove, onInsert, lists}) => {
               </tr>
             </thead>
             <tbody>
-              {lists.map((list, index) => (
-                <FTableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
+              {Object.entries(D1).map((item, index) => (
+                <FTableRow key={item[0]} id={item[0]} num={index + 1} />
               ))}
             </tbody>
           </table>
         </div>
       </TopBox>
-      <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
-          추가
-        </button>
-      </div>
+        <div style={{ textAlign: 'center' }}>
+        <AddButton form="D1" state={F_state} />
+        </div>
+      </>
+      )}
     </>
   );
 };

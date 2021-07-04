@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Info from '../common/Info';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import Info from '../../common/Info';
+import WTop from './WTop';
 import WBottom from './WBottom';
 import WBottom2 from './WBottom2';
-import WTop from './WTop';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import { W_INIT } from '../../../docsInitialState/W';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -16,16 +24,29 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const WForm = ({ checkState, onWorkingSystem, state, onChangeTextArea, onKeyValueForm, onChangeCovering, showModal, showCommModal }) => {
+const WForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(W_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
-      <WTop onKeyValueForm={onKeyValueForm} state={state} onChangeCovering={onChangeCovering}/>
-      <WBottom checkState={checkState} onWorkingSystem={onWorkingSystem} state={state} />
-      <WBottom2 onChangeTextArea={onChangeTextArea}/>
+      <WTop />
+      <WBottom />
+      <WBottom2 />
       <ButtonBox>
-        <TemporaryStorageButton showModal={showModal}/>
-        <InspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
-import WContainer from '../../containers/doc/WContainer';
+import DocsHeader from '../../components/common/DocsHeader';
+import WForm from '../../components/doc/W/WForm';
 
-const W = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const W = () => {
   return (
     <AppWrapper>
-      <Header />
-      <WContainer />
+      <DocsHeader docDesc="WATER MIST FIRE FIGHTING SYSTEM" />
+      <WForm />
     </AppWrapper>
   );
 };

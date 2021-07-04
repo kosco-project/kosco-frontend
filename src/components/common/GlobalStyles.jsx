@@ -24,6 +24,9 @@ const globalStyles = createGlobalStyle`
     clip: rect(0 0 0 0);
     clip: rect(0, 0, 0, 0);
   }
+  img {
+      filter: opacity(.8);
+  }
   /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)

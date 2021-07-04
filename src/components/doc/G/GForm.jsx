@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Info from '../common/Info';
-import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
-import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import Info from '../../common/Info';
+import GTop from './GTop';
 import GBottom from './GBottom';
 import GBottom2 from './GBottom2';
 import GBottom3 from './GBottom3';
-import GTop from './GTop';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import G_INIT from '../../../docsInitialState/G';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -17,17 +25,30 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
   
-const GForm = ({ onChange, onRemove, onInsert, lists, units, onChangeTextArea, showModal, showCommModal }) => {
+const GForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(G_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
       <GTop />
-      <GBottom units={units} onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
-      <GBottom2 onChangeTextArea={onChangeTextArea}/>
+      <GBottom />
+      <GBottom2 />
       <GBottom3 />
       <ButtonBox>
-        <DynTemporaryStorageButton showModal={showModal}/>
-        <DynInspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton /> 
       </ButtonBox>
     </form>
   );

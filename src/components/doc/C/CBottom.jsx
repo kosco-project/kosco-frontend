@@ -1,5 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { C_D2_DATAS } from "../../../docsInitialState/C";
+import useChangeCheckbox from '../../../hooks/useChangeCheckbox';
+import useChangeD1 from '../../../hooks/useChangeD1';
 
 const BottomBox = styled.div`
   margin-bottom: 15px;
@@ -7,6 +11,11 @@ const BottomBox = styled.div`
 
   input {
     border: 1px solid #000;
+  }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
   }
 
   > .top-title {
@@ -58,79 +67,53 @@ const BottomBox = styled.div`
   }
 `;
 
-const CBottom = ({ onWorkingSystem, checkState, state }) => {
-  let id = 0;
-  const datas = [
-    'Tank main service valve closed and secured to prevent accidental discharge',
-    'Distribution valves verified closed',
-    'Check correct function of level indicator',
-    'Contents of CO2 tank checked by tank level indicator',
-    'Contents of CO2 tank checked by riser Tube reading',
-    'Contents of CO2 tank checked by level Control valve',
-    'Supports of tank inspected',
-    'Insulation on tank inspected',
-    'Safety valves of tank visual inspected',
-    'Safety valves of tank tested',
-    'Contents of pilot cylinders checked',
-    'Star/stop function of cooling compressors tested',
-    'All connected electrical alarms and Indicators tested',
-    'Main manifold valve inspected',
-    'Main manifold valve tested',
-    'Distribution valves inspected',
-    'Distribution valves tested',
-    'Release stations inspected',
-    'Total flooding release mechanism inspected',
-    'Total flooding release mechanism tested',
-    'Time delay devices tested for correct setting',
-    'Warning alarms tested',
-    'Fan stop tested',
-    'Distribution lines and nozzles inspected',
-    'Distribution lines and nozzles tested',
-    'Distribution lines and nozzles blown through',
-    'All doors, hinges and locks inspected',
-    'All instruction plates inspected',
-    'Tank main service valve reopened and Secured open',
-    'System put back in service',
-    'Inspection date tags attached',
-  ];
+const CBottom = () => {
+  const D2 = useSelector(state => state.docsInput.D2);
+
+  const onChangeText = useChangeD1();
+  const onChangeCheckbox = useChangeCheckbox();
 
   return (
-    <BottomBox>
-      <div className='top-description'>
-        <table>
-          <thead>
-            <tr>
-              <td>No.</td>
-              <td>Description</td>
-              <td>Carried out</td>
-              <td>Not carried</td>
-              <td>Not applicable</td>
-              <td>Comment</td>
-            </tr>
-          </thead>
-          <tbody>
-            {datas.map((data, i) => (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{data}</td>
-                <td>
-                  <input type='checkbox' data-form="D2" checked={state.D2[i].CarriedOut === 1} data-name={id} data-key="CarriedOut" onChange={checkState} />
-                </td>
-                <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].NotCarried === 1} data-name={id} data-key="NotCarried" onChange={checkState} />
-                </td>
-                <td>
-                <input type='checkbox' data-form="D2" checked={state.D2[i].NotApp === 1} data-name={id} data-key="NotApp" onChange={checkState} />
-                </td>
-                <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D2" data-name={id++} data-key="Comm" onChange={onWorkingSystem}/>
-                </td>
+    <>
+      {D2 && (
+        <BottomBox>
+        <div className='top-description'>
+          <table>
+            <thead>
+              <tr>
+                <td>No.</td>
+                <td>Description</td>
+                <td>Carried out</td>
+                <td>Not carried</td>
+                <td>Not applicable</td>
+                <td>Comment</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </BottomBox>
+            </thead>
+            <tbody>
+              {C_D2_DATAS.map((data, i) => (
+                <tr key={data}>
+                  <td>{i + 1}</td>
+                  <td>{data}</td>
+                  <td>
+                    <input type='checkbox' data-form="D2" data-key={i} name="CarriedOut" checked={!!D2[i].CarriedOut} onChange={onChangeCheckbox} />
+                  </td>
+                  <td>
+                  <input type='checkbox' data-form="D2" data-key={i} name="NotCarried" checked={!!D2[i].NotCarried} onChange={onChangeCheckbox} />
+                  </td>
+                  <td>
+                  <input type='checkbox' data-form="D2" data-key={i} name="NotApp" checked={!!D2[i].NotApp} onChange={onChangeCheckbox} />
+                  </td>
+                  <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D2" data-key={i} name="Comm" value={D2[i].Comm} onChange={onChangeText}/>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </BottomBox>
+      )}
+    </>
   );
 };
 

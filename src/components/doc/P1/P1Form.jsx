@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import P1Bottom from './P1Bottom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
 import P1Info from './P1Info';
 import P1Top from './P1Top';
-import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
-import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
+import P1Bottom from './P1Bottom';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import P1_INIT from '../../../docsInitialState/P1';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -16,15 +24,28 @@ const ButtonBox = styled.div`
   }`;
 
 
-const P1Form = ({ onChange, onRemove, onInsert, lists, onChangeTextArea, showModal, showCommModal }) => {
+const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, showCommModal }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(P1_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <P1Info />
-      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists}/>
+      <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
       <P1Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
-        <DynTemporaryStorageButton showModal={showModal}/>
-        <DynInspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

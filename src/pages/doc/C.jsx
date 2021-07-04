@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
-import CConatiner from '../../containers/doc/CContainer';
+import DocsHeader from '../../components/common/DocsHeader';
+import CForm from "../../components/doc/C/CForm";
 
-const C = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const C = () => {
   return (
     <AppWrapper>
-      <Header />
-      <CConatiner />
+      <DocsHeader docDesc="CO2 LOW PRESSURE SYSTEM" />
+      <CForm />
     </AppWrapper>
   );
 };

@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
-import GContainer from '../../containers/doc/GContainer';
+import DocsHeader from '../../components/common/DocsHeader';
+import GForm from '../../components/doc/G/GForm';
 
-const G = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const G = () => {
   return (
     <AppWrapper>
-      <Header />
-      <GContainer />
+      <DocsHeader docDesc="FIRE EXTINGUISHERS" />
+      <GForm />
     </AppWrapper>
   );
 };

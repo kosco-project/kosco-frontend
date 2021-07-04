@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppWrapper from '../../components/common/AppWrapper';
-import Header from '../../components/common/Header';
-import A3Container from '../../containers/doc/A3Container';
+import DocsHeader from '../../components/common/DocsHeader';
+import A3Form from "../../components/doc/A3/A3Form";
 
-const A3 = ({ history }) => {
-  useEffect(() => {
-    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
-  }, [history]);
-
+const A3 = () => {
   return (
     <AppWrapper>
-      <Header />
-      <A3Container />
+      <DocsHeader docDesc="FIXED FOAM FIRE EXTINGUISHING SYSTEM" />
+      <A3Form />
     </AppWrapper>
   );
 };

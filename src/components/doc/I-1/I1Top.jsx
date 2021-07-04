@@ -1,5 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import I1_INIT from '../../../docsInitialState/I1';
+import AddButton from '../../common/AddButton';
 import I1TableRow from './I1TableRow';
 
 const TableBox = styled.div`
@@ -46,40 +49,45 @@ const TableBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
-const I1Top = ({ units, onChange, onRemove, onInsert, lists }) => { 
+const I1Top = () => {
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const I1_state = I1_INIT.D1[0];
 
   return (
     <>
-      <TableBox>
-        <div className='title'>Description of Products and Inspection :</div>
-        <table>
-          <thead>
-            <tr>
-              <td>Type and Make of Cylinders</td>
-              <td>TYPE</td>
-              <td>YEAR OF M.F.G DATE</td>
-              <td>Serial Nos.</td>
-              <td>Pressure Reading (Kpa / Psi)</td>
-              <td>Performed / Recommend.</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {lists.map(list => (
-              <I1TableRow key={list.id} id={list.id} onRemove={onRemove} units={units} onChange={onChange}/>
-            ))}
-          </tbody>
-        </table>
-      </TableBox>
-      <ButtonDiv>
-        <button type='button' onClick={onInsert}>
-          추가
-        </button>
-      </ButtonDiv>
+      {D1 && (
+        <>
+        <TableBox>
+          <div className='title'>Description of Products and Inspection :</div>
+          <table>
+            <thead>
+              <tr>
+                <td>Type and Make of Cylinders</td>
+                <td>TYPE</td>
+                <td>YEAR OF M.F.G DATE</td>
+                <td>Serial Nos.</td>
+                <td>Pressure Reading (Kpa / Psi)</td>
+                <td>Performed / Recommend.</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+               {Object.entries(D1).map(item => (
+                <I1TableRow key={item[0]} id={item[0]} />
+              ))}
+            </tbody>
+          </table>
+        </TableBox>
+          <ButtonDiv>
+            <AddButton form="D1" state={I1_state} />
+        </ButtonDiv>
+      </>
+      )}
     </>
   );
 };

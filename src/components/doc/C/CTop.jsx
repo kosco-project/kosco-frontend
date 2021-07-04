@@ -1,5 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import useChangeD1 from '../../../hooks/useChangeD1';
+
+import { C_D1_DATAS } from "../../../docsInitialState/C";
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -53,44 +57,41 @@ const TopBox = styled.div`
   }
 `;
 
-const CTop = ({ onKeyValueForm }) => {
-  let id = 0;
-  const datas = [
-    'Manufacturer',
-    'Number of tanks',
-    'Tanks capacity (Ltr)',
-    'Number of pilot cylinders',
-    'Pilot cylinder capacity (each)',
-    'Number of distribution lines',
-    'Protected space(s)',
-  ];
+const CTop = () => {
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const onChange = useChangeD1();
 
   return (
-    <TopBox>
-      <p className='top-title'>Technical description</p>
-      <div className='top-description'>
-        <table>
-          <thead>
-            <tr>
-              <td>No.</td>
-              <td>Description</td>
-              <td>Value</td>
-            </tr>
-          </thead>
-          <tbody>
-            {datas.map((data, i) => (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{data}</td>
-                <td style={{ padding: '0 5px' }}>
-                <input type='text' data-name={id++} data-form="D1" onChange={onKeyValueForm} style={{ width: '100%' }} />
-                </td>
+    <>
+      {D1 && (
+        <TopBox>
+        <p className='top-title'>Technical description</p>
+        <div className='top-description'>
+          <table>
+            <thead>
+              <tr>
+                <td>No.</td>
+                <td>Description</td>
+                <td>Value</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </TopBox>
+            </thead>
+            <tbody>
+              {C_D1_DATAS.map((data, i) => (
+                <tr key={data}>
+                  <td>{i + 1}</td>
+                  <td>{data}</td>
+                  <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-key={i} data-form="D1" value={D1[i] || ''} onChange={onChange} style={{ width: '100%' }} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </TopBox>
+      )}
+    </>
   );
 };
 

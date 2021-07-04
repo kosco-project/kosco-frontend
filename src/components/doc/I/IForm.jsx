@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import DynTemporaryStorageButton from '../common/DynTemporaryStorageButton';
-import DynInspectionCompleteButton from '../common/DynInspectionCompleteButton';
-import IBottom from './IBottom';
-import IBottom2 from './IBottom2';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
 import IInfo from './IInfo';
 import ITop from './ITop';
+import IBottom from './IBottom';
+import IBottom2 from './IBottom2';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import I_INIT from '../../../docsInitialState/I';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -16,16 +24,30 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const IForm = ({ onChange, onRemove, onInsert, lists, onChangeD2, onChecked, showModal, showCommModal }) => {
+const IForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(I_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
+
   return (
     <form>
       <IInfo />
-      <ITop onChange={onChange} onRemove={onRemove} onInsert={onInsert} lists={lists} onChangeD2={onChangeD2}/>
-      <IBottom onChecked={onChecked}/>
+      <ITop />
+      <IBottom />
       <IBottom2 />
       <ButtonBox>
-        <DynTemporaryStorageButton showModal={showModal}/>
-        <DynInspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

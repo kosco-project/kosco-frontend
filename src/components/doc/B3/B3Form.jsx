@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Info from '../common/Info';
-import InspectionCompleteButton from '../common/InspectionCompleteButton';
-import TemporaryStorageButton from '../common/TemporaryStorageButton';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+
+import useGetFetch from '../../../hooks/useGetFetch';
+
+import Info from '../../common/Info';
+import B3Top from './B3Top';
 import B3Bottom from './B3Bottom';
 import B3Bottom2 from './B3Bottom2';
-import B3Top from './B3Top';
+import TemporaryStorageButton from '../../common/TemporaryStorageButton';
+import InspectionCompleteButton from '../../common/InspectionCompleteButton';
+
+import B3_INIT from '../../../docsInitialState/B3';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -16,16 +24,29 @@ const ButtonBox = styled.div`
     margin: 0 15px;
   }`;
 
-const B3Form = ({ units, onWorkingSystem, onWorkingSystemChecked, onKeyValueForm, showModal, showCommModal }) => {
+const B3Form = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const state = useGetFetch(B3_INIT);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('KOSCO_token')) history.push('/');
+    dispatch(initialize(state));
+
+    return () => {
+      dispatch(resetInitialState());
+    }
+  }, [dispatch, history, state]);
+
   return (
     <form>
       <Info />
-      <B3Top units={units} onWorkingSystem={onWorkingSystem}/>
-      <B3Bottom onWorkingSystemChecked={onWorkingSystemChecked} onWorkingSystem={onWorkingSystem}/>
-      <B3Bottom2 onKeyValueForm={onKeyValueForm}/>
+      <B3Top />
+      <B3Bottom />
+      <B3Bottom2 />
       <ButtonBox>
-        <TemporaryStorageButton showModal={showModal}/>
-        <InspectionCompleteButton showCommModal={showCommModal}/>
+        <TemporaryStorageButton />
+        <InspectionCompleteButton />
       </ButtonBox>
     </form>
   );

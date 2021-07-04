@@ -1,5 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import useChangeD1 from '../../../hooks/useChangeD1';
+import useGetUnits from '../../../hooks/useGetUnits';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -53,186 +56,194 @@ const TopBox = styled.div`
   }
 `;
 
-const A3Top = ({ units, onWorkingSystem }) => {
+const A3Top = () => {
+  const D1 = useSelector(state => state.docsInput.D1);
+  const { units } = useGetUnits();
+
+  const onChange = useChangeD1();
 
   return (
-    <TopBox>
-      <p className='top-title'>Description of Working System</p>
-      <div className='top-description'>
-        <table>
-          <thead>
-            <tr>
-              <td>No.</td>
-              <td>Description</td>
-              <td>Value</td>
-              <td>Unit</td>
-              <td>Remark</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Manufacturer</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="0" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="0" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="0" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>Location of foam tank</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="1" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="1" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="1" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>3</td>
-              <td>Consisting of tank</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="2" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="2" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="2" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>4</td>
-              <td>Liquid capacity</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="3" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="3" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="3" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>5</td>
-              <td>Foam concentrate manufacturer / type</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="4" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="4" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="4" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>6</td>
-              <td>Foam mixing rate (%)</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="5" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="5" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="5" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>7</td>
-              <td>System Installation date</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="6" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="6" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="6" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-
-            <tr>
-              <td>8</td>
-              <td>Distribution line</td>
-              <td style={{ padding: '0 5px' }}>
-              <input type='text' data-form="D1" data-name="7" data-key="Value" onChange={onWorkingSystem}/>
-              </td>
-              <td>
-                <select name='' id='' data-form="D1" data-name="7" data-key="unit" onChange={onWorkingSystem}>
-                  {units.map(unit => (
-                    <option key={unit.CdNm} value={unit.CdNm}>
-                      {unit.CdNm}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td style={{ padding: '0 5px' }}>
-                <input type='text' data-form="D1" data-name="7" data-key="Remark" onChange={onWorkingSystem} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </TopBox>
+    <>
+      {D1 && (
+        <TopBox>
+        <p className='top-title'>Description of Working System</p>
+        <div className='top-description'>
+          <table>
+            <thead>
+              <tr>
+                <td>No.</td>
+                <td>Description</td>
+                <td>Value</td>
+                <td>Unit</td>
+                <td>Remark</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Manufacturer</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="0" name="Value" value={D1[0].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="0" name="Unit" value={D1[0].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="0" name="Remark" value={D1[0].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>2</td>
+                <td>Location of foam tank</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="1" name="Value" value={D1[1].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="1" name="Unit" value={D1[1].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="1" name="Remark" value={D1[1].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>3</td>
+                <td>Consisting of tank</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="2" name="Value" value={D1[2].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="2" name="Unit" value={D1[2].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="2" name="Remark" value={D1[2].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>4</td>
+                <td>Liquid capacity</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="3" name="Value" value={D1[3].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="3" name="Unit" value={D1[3].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="3" name="Remark" value={D1[3].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>5</td>
+                <td>Foam concentrate manufacturer / type</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="4" name="Value" value={D1[4].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="4" name="Unit" value={D1[4].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="4" name="Remark" value={D1[4].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>6</td>
+                <td>Foam mixing rate (%)</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="5" name="Value" value={D1[5].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="5" name="Unit" value={D1[5].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="5" name="Remark" value={D1[5].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>7</td>
+                <td>System Installation date</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="6" name="Value" value={D1[6].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="6" name="Unit" value={D1[6].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="6" name="Remark" value={D1[6].Remark} onChange={onChange} />
+                </td>
+              </tr>
+  
+              <tr>
+                <td>8</td>
+                <td>Distribution line</td>
+                <td style={{ padding: '0 5px' }}>
+                <input type='text' data-form="D1" data-key="7" name="Value" value={D1[7].Value} onChange={onChange}/>
+                </td>
+                <td>
+                  <select data-form="D1" data-key="7" name="Unit" value={D1[7].Unit} onChange={onChange}>
+                    {units.map(({CdNm}) => (
+                      <option key={CdNm} value={CdNm}>
+                        {CdNm}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td style={{ padding: '0 5px' }}>
+                  <input type='text' data-form="D1" data-key="7" name="Remark" value={D1[7].Remark} onChange={onChange} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </TopBox>
+      )}
+    </>
   );
 };
 

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
+
+import B1_INIT from "../../../docsInitialState/B1";
+import AddButton from '../../common/AddButton';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -63,10 +67,17 @@ const TableBox = styled.div`
 `;
 
 
-const B1Top = ({ onChange, onRemove, onInsert, lists}) => {
+const B1Top = () => {
+  const dispatch = useDispatch();
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const B1_state = B1_INIT.D1[0];
+  
   return (
     <>
-      <TableBox>
+      {D1 && (
+        <>
+        <TableBox>
         <div className='top-description'>
           <table>
             <thead>
@@ -85,19 +96,20 @@ const B1Top = ({ onChange, onRemove, onInsert, lists}) => {
               </tr>
             </thead>
             <tbody>
-              {lists.map((list, index) => (
-                <B1TableRow key={list.id} id={list.id} onRemove={onRemove} num={index + 1} onChange={onChange}/>
-              ))}
+              {Object.entries(D1).map((item, index) => (
+                  <B1TableRow key={item[0]} id={item[0]} num={index + 1} />
+                ))}
             </tbody>
           </table>
         </div>
       </TableBox>
-      <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={onInsert}>
-          추가
-        </button>
+        <div style={{ textAlign: 'center', marginBottom: 30 }}>
+        <AddButton form="D1" state={B1_state} />
       </div>
-    </>
+        </>
+      )}
+      </>
+      
   );
 };
 

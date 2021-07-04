@@ -1,5 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { W1_D1_DATAS } from '../../../docsInitialState/W1';
+import useChangeD1 from '../../../hooks/useChangeD1';
 
 const TopBox = styled.div`
   margin-bottom: 15px;
@@ -32,21 +35,27 @@ const TopBox = styled.div`
   }
 `;
 
-const W1Top = ({ onKeyValueForm }) => {
-  const datas = ['MAKER', 'NUMER OF DISCHARGE NOZZLE', 'TYPE OF DETECTOR', 'COVERING'];
+const W1Top = () => {
+  const D1 = useSelector(state => state.docsInput.D1);
+
+  const onChange = useChangeD1();
 
   return (
-    <TopBox>
-      <p className='top-title'>Technical Description :</p>
-      <div className='top-description'>
-        {datas.map((data, i) => (
-          <div className='form1' key={i}>
-            {data} :
-            <input type='text' onChange={onKeyValueForm} data-form="D1" data-name={i}/>
-          </div>
-        ))}
-      </div>
-    </TopBox>
+    <>
+      {D1 && (
+            <TopBox>
+            <p className='top-title'>Technical Description :</p>
+            <div className='top-description'>
+              {W1_D1_DATAS.map((data, i) => (
+                <div className='form1' key={i}>
+                  {data} :
+                  <input type='text' value={D1[i]} onChange={onChange} data-form="D1" data-key={i}/>
+                </div>
+              ))}
+            </div>
+          </TopBox>
+      )}
+    </>
   );
 };
 

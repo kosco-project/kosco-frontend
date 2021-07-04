@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import GTableRow from './GTableRow';
+
+import G_INIT from '../../../docsInitialState/G';
+import AddButton from '../../common/AddButton';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -55,11 +59,16 @@ const ButtonDiv = styled.div`
   text-align: center;
 `;
 
-const GBottom = ({ units, onChange, onRemove, onInsert, lists }) => {
-   
+const GBottom = () => {
+  const D2 = useSelector(state => state.docsInput.D2);
+
+  const G_state = G_INIT.D2[0];
+
   return (
     <>
-      <TableBox>
+      {D2 && (
+        <>
+          <TableBox>
         <div className='title'>Description of products ;</div>
         <table>
           <thead>
@@ -68,24 +77,25 @@ const GBottom = ({ units, onChange, onRemove, onInsert, lists }) => {
               <td>Serial No and/or Location</td>
               <td>Manufacturer</td>
               <td>Type</td>
-              <td>Caoacuty</td>
+              <td>Capacity</td>
               <td>Last Hydro-Test Date</td>
               <td>Perform</td>
               <td></td>
             </tr>
           </thead>
           <tbody>
-              {lists.map(list => (
-                <GTableRow key={list.id} id={list.id} onRemove={onRemove} units={units} onChange={onChange}/>
-              ))}
+            {Object.entries(D2).map(item => (
+              <GTableRow key={item[0]} id={item[0]} />
+            ))}
           </tbody>
         </table>
       </TableBox>
-      <ButtonDiv>
-        <button type='button' onClick={onInsert}>
-          추가
-        </button>
+        <ButtonDiv>
+          <AddButton form="D2" state={G_state} />
       </ButtonDiv>
+        </>
+      )}
+      
     </>
   );
 };
