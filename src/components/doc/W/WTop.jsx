@@ -14,6 +14,7 @@ const TopBox = styled.div`
     border: 1px solid #000;
   }
 
+
   > .top-title {
     padding: 5px;
     border-bottom: 1px solid #000;

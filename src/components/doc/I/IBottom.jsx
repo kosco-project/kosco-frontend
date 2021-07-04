@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import useChangeCheckbox from '../../../hooks/useChangeCheckbox';
 
 const BottomBox = styled.div`
+
+  input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+  }
+  
   > .title {
     margin-bottom: 5px;
     font-weight: 900;

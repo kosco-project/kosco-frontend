@@ -11,6 +11,11 @@ const BottomBox = styled.div`
   margin-bottom: 15px;
   flex-flow: row wrap;
 
+
+  input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+  }
   > .left-box {
     flex-grow: 1;
 
@@ -31,7 +36,6 @@ const BottomBox = styled.div`
     }
 
     input {
-
       width: 150px;
       border: 1px solid #000;
       display: inline-block;
