@@ -26,7 +26,7 @@ const NotFoundWrapper = styled.div`
 
 const Warning = styled(WarningOutlined)`
   font-size: 100px;
-  color: #ff4d4f;
+  color: #c62828;
 `;
 
 
