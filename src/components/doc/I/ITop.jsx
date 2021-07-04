@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import I_INIT from '../../../docsInitialState/I';
 import useChangeD1 from '../../../hooks/useChangeD1';
 import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import ITableRow from './ITableRow';
 
 const BottomBox = styled.div`
@@ -50,7 +51,7 @@ const BottomBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
@@ -85,10 +86,8 @@ const ITop = () => {
               ))}
             </tbody>
           </table>
-          <ButtonDiv>
-            <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: I_state }))}>
-              추가
-            </button>
+            <ButtonDiv>
+              <AddButton form="D1" state={I_state} />
           </ButtonDiv>
           <p className='title'>(2) Special Additional Requirements :</p>
           <input type='text' data-form='D2' data-key='0' value={D2[0]} onChange={onChange} style={{ marginBottom: 15, width: '100%', border: '1px solid #000' }} />

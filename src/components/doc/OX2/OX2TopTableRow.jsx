@@ -6,7 +6,7 @@ import DeleteButton from '../../common/DeleteButton';
 
 const OX2TopTableRow = ({ id, num }) => {
   const dispatch = useDispatch();
-  const { SetNo1, SetNo2, SetNo3, SetNo4, SetNo5, SetNo6, SetNo7 } = useSelector(state => state.ox2.D1[id]);
+  const { SetNo1, SetNo2, SetNo3, SetNo4, SetNo5, SetNo6, SetNo7 } = useSelector(state => state.docsInput.D1[id]);
 
   const onChange = useChangeCheckbox;
 

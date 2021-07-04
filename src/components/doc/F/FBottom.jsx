@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useChangeD1 from '../../../hooks/useChangeD1';
 
 const BottomBox = styled.div`
+  margin-top: 30px;
   margin-bottom: 15px;
   border: 2px solid #000;
 

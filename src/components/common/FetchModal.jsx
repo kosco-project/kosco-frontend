@@ -26,7 +26,7 @@ const ModalBackground = styled.div`
     height: 200px;
     z-index: 100;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
   }
   .comment {
     text-align: center;
@@ -47,12 +47,12 @@ const ModalBackground = styled.div`
       margin: 0;
     }
     .confirm {
-      background: #292f4c;
-      border-bottom-left-radius: 5px;
+      background: #33373f;
+      border-bottom-left-radius: 3px;
     }
     .cancel {
-      background: #f04242;
-      border-bottom-right-radius: 5px;
+      background: #ff4d4f;
+      border-bottom-right-radius: 3px;
     }
   }
 `;
@@ -60,7 +60,7 @@ const ModalBackground = styled.div`
 const FetchModal = ({ form, children, isActive, setFetchModal }) => {
   const postFetch = usePostFetch(form);
   const onClick = ({ target }) => {
-    if (target.type === 'button') setFetchModal(false);
+    if (target.type === 'button' || target.dataset.name === 'close') setFetchModal(false);
     // eslint-disable-next-line no-useless-return
     else return;
   };

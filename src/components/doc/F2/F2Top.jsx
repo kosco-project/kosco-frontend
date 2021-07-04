@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import F2_INIT from '../../../docsInitialState/F2';
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import F2TableRow from './F2TableRow';
 
 const BottomBox = styled.div`
@@ -54,7 +54,6 @@ const ButtonDiv = styled.div`
 `;
 
 const F2Top = () => {
-  const dispatch = useDispatch();
   const D1 = useSelector(state => state.docsInput.D1);
 
   const F2_state = F2_INIT.D1[0];
@@ -82,9 +81,7 @@ const F2Top = () => {
             </tbody>
           </table>
           <ButtonDiv>
-            <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: F2_state }))}>
-              추가
-            </button>
+            <AddButton form="D1" state={F2_state} />
           </ButtonDiv>
         </BottomBox>
       </>

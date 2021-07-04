@@ -5,6 +5,7 @@ import FTableRow from './FTableRow';
 
 import F_INIT from "../../../docsInitialState/F";
 import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 
 
 const TopBox = styled.div`
@@ -100,11 +101,9 @@ const FTop = () => {
           </table>
         </div>
       </TopBox>
-      <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={() => dispatch(addList({ form: 'D1', initState: F_state }))}>
-          추가
-        </button>
-          </div>
+        <div style={{ textAlign: 'center' }}>
+        <AddButton form="D1" state={F_state} />
+        </div>
       </>
       )}
     </>

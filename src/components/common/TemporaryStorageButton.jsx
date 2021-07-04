@@ -8,10 +8,10 @@ const Button = styled.button`
     margin-top: 30px !important;
     width: 150px;
     height: 45px;
-    border-color: #f04242;
-    border-radius: 5px;
-    background: #f04242;
-    font-size: 14px;
+    border-color: #ff4d4f;
+    /* border-radius: 2px; */
+    background: #ff4d4f;
+    font-size: 18px;
     border-style: none;
     color: #fff;
 `;

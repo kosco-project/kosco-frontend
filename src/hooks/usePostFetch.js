@@ -7,7 +7,7 @@ const usePostFetch = (form = null) => {
   const state = useSelector(state => state.docsInput);
   const location = useLocation();
   const history = useHistory();
-
+  console.log(history);
   const path = location.pathname.split('/')[2];
 
   const postFetch = useCallback(async () => {
@@ -23,9 +23,12 @@ const usePostFetch = (form = null) => {
       );
 
       console.log(res);
-      await history.push('/inspection');
+      await history.goBack();
     } catch (e) {
-      if (e.response.status === 401 || e.response.status === 409) {
+      if (
+        e.response &&
+        (e.response.status === 401 || e.response.status === 409)
+      ) {
         sessionStorage.removeItem('startDate');
         sessionStorage.removeItem('endDate');
         sessionStorage.removeItem('KOSCO_token');

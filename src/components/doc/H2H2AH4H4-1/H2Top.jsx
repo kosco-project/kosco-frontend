@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import H2_INIT from '../../../docsInitialState/H2';
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import H2TableRow from './H2TableRow';
 
 const TableBox = styled.div`
@@ -85,10 +85,8 @@ const H2Top = () => {
             </tbody>
           </table>
         </TableBox>
-        <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: H2_state }))}>
-            추가
-          </button>
+          <ButtonDiv>
+            <AddButton form="D1" state={H2_state} />
         </ButtonDiv>
       </>
       )}

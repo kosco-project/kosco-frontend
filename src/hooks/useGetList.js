@@ -24,7 +24,10 @@ const useGetList = (start, end, processValue) => {
       await setList(() => res.data.list_info);
     } catch (e) {
       console.log(e);
-      if (e.response.status === 401 || e.response.status === 409) {
+      if (
+        e.response &&
+        (e.response.status === 401 || e.response.status === 409)
+      ) {
         sessionStorage.removeItem('startDate');
         sessionStorage.removeItem('endDate');
         sessionStorage.removeItem('KOSCO_token');
