@@ -4,10 +4,13 @@ import useModal from '../../hooks/useModal';
 import FetchModal from './FetchModal';
 
 const Button = styled.button`
-    width: 87px;
-    height: 32px;
-    border-color: #ff4d4f;
-    background: #ff4d4f;
+    margin-right: 50px !important;
+    margin-top: 30px !important;
+    width: 150px;
+    height: 45px;
+    border-color: #f04242;
+    border-radius: 5px;
+    background: #f04242;
     font-size: 14px;
     border-style: none;
     color: #fff;
@@ -27,5 +30,6 @@ const TemporaryStorageButton = () => {
 };
 
 export default TemporaryStorageButton;
+
 
 
