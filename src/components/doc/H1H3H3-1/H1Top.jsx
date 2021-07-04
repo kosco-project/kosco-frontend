@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { H_D1_DATAS, H_INIT } from '../../../docsInitialState/H';
 import useChangeD1 from '../../../hooks/useChangeD1';
 import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import H1TopTableRow from './H1TopTableRow';
 
 const TopBox = styled.div`
@@ -96,12 +97,11 @@ const TopBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
 const H1Top = () => {
-  const dispatch = useDispatch();
   const D1 = useSelector(state => state.docsInput.D1);
 
   const H_state = H_INIT.D1[0];
@@ -127,9 +127,7 @@ const H1Top = () => {
           </div>
         </TopBox>
         <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: H_state }))}>
-            추가
-          </button>
+          <AddButton form="D1" state={H_state} />
         </ButtonDiv>
       </>
       )}

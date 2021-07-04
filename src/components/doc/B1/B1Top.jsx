@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import B1TableRow from './B1TableRow';
 
 import B1_INIT from "../../../docsInitialState/B1";
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 
 const TableBox = styled.div`
   margin-bottom: 15px;
@@ -103,10 +103,8 @@ const B1Top = () => {
           </table>
         </div>
       </TableBox>
-      <div style={{ textAlign: 'center' }}>
-        <button type='button' style={{ marginBottom: 30 }} onClick={() => dispatch(addList({ form: 'D1', initState: B1_state }))}>
-          추가
-        </button>
+        <div style={{ textAlign: 'center', marginBottom: 30 }}>
+        <AddButton form="D1" state={B1_state} />
       </div>
         </>
       )}

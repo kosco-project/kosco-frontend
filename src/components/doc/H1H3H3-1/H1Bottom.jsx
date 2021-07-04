@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { H_INIT } from '../../../docsInitialState/H';
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import H1BottomTableRow from './H1BottomTableRow';
 
 const TableBox = styled.div`
@@ -54,12 +54,11 @@ const TableBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
 const H1Bottom = () => {
-  const dispatch = useDispatch();
   const D2 = useSelector(state => state.docsInput.D2);
 
   const H_state = H_INIT.D2[0];
@@ -89,9 +88,7 @@ const H1Bottom = () => {
           </table>
         </TableBox>
         <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D2', initState: H_state }))}>
-            추가
-          </button>
+            <AddButton form="D2" state={H_state} />
         </ButtonDiv>
       </>
       )}
