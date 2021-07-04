@@ -26,7 +26,7 @@ const ModalBackground = styled.div`
     height: 200px;
     z-index: 100;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
   }
   .comment {
     text-align: center;
@@ -47,12 +47,12 @@ const ModalBackground = styled.div`
       margin: 0;
     }
     .confirm {
-      background: #292f4c;
-      border-bottom-left-radius: 5px;
+      background: #33373f;
+      border-bottom-left-radius: 3px;
     }
     .cancel {
-      background: #f04242;
-      border-bottom-right-radius: 5px;
+      background: #ff4d4f;
+      border-bottom-right-radius: 3px;
     }
   }
 `;
