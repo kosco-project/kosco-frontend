@@ -1,10 +1,9 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import InspectionCondition from './InspectionCondition';
 import InspectionList from './InspectionList';
 import InspectionTitleBox from './InspectionTitleBox';
 import InputSearch from '../common/InputSearch';
-import useGetList from '../../hooks/useGetList';
 
 const ConditionWrapper = styled.div`
   display: flex;
