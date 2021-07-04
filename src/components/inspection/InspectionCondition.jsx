@@ -20,14 +20,33 @@ const InspectionForm = styled.form`
       width: 50px;
     }
   }
+  .ant-radio-button-wrapper:hover {
+    border-color: #605C72;
+    color: #605C72;
+  }
+  .ant-radio-button-wrapper-checked {
+    border-color: #605C72;
+    color: #fff;
+  }
+
+  .ant-radio-button-wrapper-checked:hover {
+    border-color: #605C72;
+    color: #fff;
+  }
+
+  .ant-radio-button-checked{
+    border-color: #605C72;
+    background-color: #605C72;
+    color: #fff;
+  }
 `;
 
 const InspectionCondition = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   
-  const [start, setStart] = useState(sessionStorage.getItem('startDate') ? moment(sessionStorage.getItem('startDate')) : moment());
-  const [end, setEnd] = useState(sessionStorage.getItem('endDate') ? moment(sessionStorage.getItem('endDate')) : moment().add(1, 'M'));
+  const [start, setStart] = useState(sessionStorage.getItem('startDate') ? moment(sessionStorage.getItem('startDate')) : moment().subtract(1, 'M'));
+  const [end, setEnd] = useState(sessionStorage.getItem('endDate') ? moment(sessionStorage.getItem('endDate')) : moment());
   const [process, setProcess] = useState(1);
   
   const list = useGetList(start, end, process);
