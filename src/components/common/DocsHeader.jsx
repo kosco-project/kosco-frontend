@@ -22,7 +22,6 @@ const DocType = styled.div`
   margin-top: 50px;
   margin-bottom: 30px;
   margin-right: 20px;
-  color: #CF0000;
 
   > .chart-name {
     font-size: 28px;
@@ -30,6 +29,7 @@ const DocType = styled.div`
 
   > .chart-desc {
     margin-top: 1em;
+    margin-left: 0.3em;
   }
 `;
 

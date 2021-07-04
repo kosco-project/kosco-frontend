@@ -30,21 +30,21 @@ const Warning = styled(WarningOutlined)`
 `;
 
 
-const NotFound = () => {
+const ErrorPage = () => {
   return (
     <NotFoundWrapper>
       <Warning />
       <h1>
-        404
+        500
       </h1>
       <div className='title'>
-        Not Found
+        Try again!
       </div>
       <div className='desc'>
-        The resource requested could not be found on this server!
+        에러가 계속 발생한다면 담당자에게 연락해주세요
       </div>
     </NotFoundWrapper>
     );
 };
 
-export default NotFound;
+export default ErrorPage;

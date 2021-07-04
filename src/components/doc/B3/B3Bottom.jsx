@@ -12,6 +12,11 @@ const BottomBox = styled.div`
     border: 1px solid #000;
   }
 
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
   > .top-title {
     padding: 5px;
     border-bottom: 1px solid #000;

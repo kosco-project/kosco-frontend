@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import P1_INIT from '../../../docsInitialState/P1';
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import P1TableRow from './P1TableRow';
 
 const TableBox = styled.div`
@@ -56,12 +56,11 @@ const TableBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
 const P1Top = () => {
-  const dispatch = useDispatch();
   const D1 = useSelector(state => state.docsInput.D1);
 
   const P1_state = P1_INIT.D1[0];
@@ -90,10 +89,8 @@ const P1Top = () => {
             </tbody>
           </table>
         </TableBox>
-        <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: P1_state }))}>
-            추가
-          </button>
+          <ButtonDiv>
+            <AddButton form="D1" state={P1_state} />
         </ButtonDiv>
       </>
       )}

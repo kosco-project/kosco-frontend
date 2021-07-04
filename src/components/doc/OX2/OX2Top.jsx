@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { OX2_D1_DATAS, OX2_INIT } from '../../../docsInitialState/OX2';
-import { addList } from '../../../redux/modules/docsInput';
+import AddButton from '../../common/AddButton';
 import OX2TopTableRow from './OX2TopTableRow';
 
 const TopBox = styled.div`
@@ -94,12 +94,11 @@ const TopBox = styled.div`
 `;
 
 const ButtonDiv = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
 const OX2Top = () => {
-  const dispatch = useDispatch();
   const D1 = useSelector(state => state.docsInput.D1);
   
   const OX2_state = OX2_INIT.D1[0];
@@ -124,10 +123,8 @@ const OX2Top = () => {
             </div>
           </div>
         </TopBox>
-        <ButtonDiv>
-          <button type='button' onClick={() => dispatch(addList({ form: 'D1', initState: OX2_state }))}>
-            추가
-          </button>
+          <ButtonDiv>
+            <AddButton form="D1" state={OX2_state} />
         </ButtonDiv>
       </>
       )}

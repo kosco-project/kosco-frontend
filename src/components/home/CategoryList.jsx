@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import useSearchCondition from '../../hooks/useSearchCondition';
 
 const CategoryWrapper = styled.section`
   margin-top: 15px;
@@ -28,9 +29,11 @@ const CategoryList = () => {
     sessionStorage.clear();
   };
 
+  const { start, end, process } = useSearchCondition();
+
   return (
     <CategoryWrapper>
-      <Link to='/inspectionList'>
+      <Link to={`/inspectionList/${start.format('YYYY-MM-DD')}/${end.format('YYYY-MM-DD')}/${process}`}>
         <p className='category-title'>검사 계획</p>
         <p className='category-description'>
           금일 검사 목록을 확인할 수 있습니다.

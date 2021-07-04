@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const useGetFetch = (initialState = {}) => {
   const [state, setState] = useState(initialState);
@@ -12,6 +12,7 @@ const useGetFetch = (initialState = {}) => {
   const H = { CERTNO, RCVNO, VESSELNM };
   initialState.H = H;
 
+  const history = useHistory();
   const location = useLocation();
 
   const path = location.pathname.split('/')[2];
@@ -46,7 +47,7 @@ const useGetFetch = (initialState = {}) => {
         sessionStorage.removeItem('startDate');
         sessionStorage.removeItem('endDate');
         sessionStorage.removeItem('KOSCO_token');
-        window.location.replace('/');
+        history.push('/');
       }
     }
   }, [CERTNO, RCVNO, VESSELNM, initialState, path]);

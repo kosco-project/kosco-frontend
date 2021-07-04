@@ -5,11 +5,14 @@ import FetchModal from './FetchModal';
 
 
 const Button = styled.button `
-    width: 87px;
-    height: 32px;
-    border-color: #1890ff;
-    background: #1890ff;
-    font-size: 14px;
+    margin-top: 30px !important;
+    width: 150px;
+    height: 45px;
+    border-color: #363347;
+    /* border-radius: 2px; */
+    /* margin-left: 10px; */
+    background: #363347;
+    font-size: 18px;
     border-style: none;
     color: #fff;
 `;
@@ -28,3 +31,4 @@ const InspectionCompleteButton = () => {
 };
 
 export default InspectionCompleteButton;
+
