@@ -12,6 +12,12 @@ const FormBox = styled.section`
   transform: translate(-50%, -90%);
   width: 500px;
 
+  .ant-input:focus {
+    border-color: #363347;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+    box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+  }
   > .img-box {
     margin: 0 auto;
     margin-bottom: 30px;
@@ -32,6 +38,13 @@ const FormBox = styled.section`
     > .submit-btn {
       display: block;
       margin: 20px auto 0;
+      width: 100px;
+      height: 45px;
+      border-color: #363347;
+      background: #363347;
+      font-size: 18px;
+      border-style: none;
+      color: #fff;
     }
 
     > .error-message {
