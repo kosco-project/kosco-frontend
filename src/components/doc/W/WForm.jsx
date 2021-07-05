@@ -14,6 +14,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import { W_INIT } from '../../../docsInitialState/W';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -45,6 +46,7 @@ const WForm = () => {
       <WBottom />
       <WBottom2 />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>
