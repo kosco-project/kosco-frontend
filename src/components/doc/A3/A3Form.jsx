@@ -13,6 +13,7 @@ import TemporaryStorageButton from '../../common/TemporaryStorageButton';
 import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import A3_INIT from '../../../docsInitialState/A3';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const A3Form = () => {
       <A3Top />
       <A3Bottom />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>

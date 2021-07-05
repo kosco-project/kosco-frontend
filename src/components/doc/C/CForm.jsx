@@ -13,6 +13,7 @@ import TemporaryStorageButton from '../../common/TemporaryStorageButton';
 import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import { C_INIT } from "../../../docsInitialState/C";
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const CForm = () => {
       <CTop />
       <CBottom />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>

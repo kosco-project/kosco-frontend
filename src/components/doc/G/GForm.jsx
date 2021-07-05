@@ -15,6 +15,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import G_INIT from '../../../docsInitialState/G';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ const GForm = () => {
       <GBottom2 />
       <GBottom3 />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton /> 
       </ButtonBox>
