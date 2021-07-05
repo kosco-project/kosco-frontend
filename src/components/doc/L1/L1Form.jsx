@@ -12,6 +12,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import L1_INIT from '../../../docsInitialState/L1';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const L1Form = () => {
       <L1Info />
       <L1Top  />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>
