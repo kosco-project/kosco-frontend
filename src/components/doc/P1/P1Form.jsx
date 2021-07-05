@@ -13,6 +13,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import P1_INIT from '../../../docsInitialState/P1';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ const P1Form = ({ onChange, onRemove, onInsert, onChangeTextArea, showModal, sho
       <P1Top onChange={onChange} onRemove={onRemove} onInsert={onInsert} />
       <P1Bottom onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>

@@ -13,6 +13,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import I1_INIT from '../../../docsInitialState/I1';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 
 const ButtonBox = styled.div`
@@ -44,6 +45,7 @@ const I1Form = () => {
       <I1Top />
       <I1Bottom />
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>

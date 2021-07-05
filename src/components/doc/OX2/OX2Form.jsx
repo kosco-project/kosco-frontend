@@ -14,6 +14,7 @@ import InspectionCompleteButton from '../../common/InspectionCompleteButton';
 
 import { OX2_INIT } from '../../../docsInitialState/OX2';
 import { initialize, resetInitialState } from '../../../redux/modules/docsInput';
+import GobackButton from '../../common/GobackButton';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -46,6 +47,7 @@ const OX2Form = ({ onChangeD1, onChange, onRemove, onInsert, onChangeTextArea, d
       <OX2Bottom onInsertD2={onInsertD2} onRemoveD2={onRemoveD2} onChange={onChange} units={units} onChangeDatePicker={onChangeDatePicker}/>
       <OX2Bottom2 onChangeTextArea={onChangeTextArea}/>
       <ButtonBox>
+        <GobackButton />
         <TemporaryStorageButton />
         <InspectionCompleteButton />
       </ButtonBox>

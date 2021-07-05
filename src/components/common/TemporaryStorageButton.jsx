@@ -4,7 +4,7 @@ import useModal from '../../hooks/useModal';
 import FetchModal from './FetchModal';
 
 const Button = styled.button`
-    margin-right: 50px !important;
+    margin-right: 15px !important;
     margin-top: 30px !important;
     width: 150px;
     height: 45px;

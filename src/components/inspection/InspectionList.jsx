@@ -5,15 +5,13 @@ import styled from 'styled-components';
 import { Empty } from 'antd';
 import Pagination from 'rc-pagination';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import axios from 'axios';
 import InpectionItem from './InpectionItem';
-import useGetList from '../../hooks/useGetList';
 
 require('dotenv').config();
 
 const Listbox = styled.div`
   padding: 20px 0;
-  min-height: 500px;
+  min-height: 800px;
 `;
 
 const ListContainer = styled.div`
