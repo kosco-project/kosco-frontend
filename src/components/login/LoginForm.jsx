@@ -38,13 +38,6 @@ const FormBox = styled.section`
     > .submit-btn {
       display: block;
       margin: 20px auto 0;
-      width: 100px;
-      height: 45px;
-      border-color: #363347;
-      background: #363347;
-      font-size: 18px;
-      border-style: none;
-      color: #fff;
     }
 
     > .error-message {
